@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JQuery outerHTMLº¯Êý</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<script type="text/javascript">
+jQuery.fn.outerHTML = function(s) {
+	return s
+    ? this.before(s).remove()
+    : jQuery("<p>").append(this.eq(0).clone()).html();
+};
+
+$(function () {
+	alert('outerHTML: ' + $('.test').outerHTML());
+})
+</script>
+</head>
+
+<body>
+
+	<div class="test">content</div>
+	
+</body>
+</html>

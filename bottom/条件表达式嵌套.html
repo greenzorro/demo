@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>条件表达式</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<script type="text/javascript">
+$(function () {
+	var num = 2;
+	var test;
+	test = (num<=10 && num>=0)?"between 0 and 10":(num<0)?"less than 0":"more than 10";
+	$('body').html(test);
+})
+</script>
+</head>
+
+<body>
+</body>
+</html>

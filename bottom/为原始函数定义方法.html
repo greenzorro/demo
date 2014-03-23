@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>为原始函数定义方法</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<script>
+Function.prototype.method1=function(){ 
+    alert(1); 
+} 
+Function.prototype.method1.method2=function(){ 
+    alert(2); 
+} 
+Function.prototype.method1.method2.method3=function(){ 
+    alert(3); 
+} 
+function func1(a,b,c){ 
+    return a+b+c; 
+} 
+func1.method1.method2.method3.method1.method2.method1();
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

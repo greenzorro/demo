@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS遍历</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<style>
+</style>
+<script type="text/javascript">
+$(function(){
+	var counter = 0;
+	var allParent = getElementsByClassName('test');
+	for (var i = 0; i < allParent.length; i++) {
+		var allChild = getChildElements(allParent[i],'span');
+		counter = counter + allChild.length;
+		for (var j = 0; j < allChild.length; j++) {
+			allChild[j].style.color = 'red';
+		};
+	};
+	$('body').append('选择class为test的元素下的span标签，节点个数：' + counter);
+
+	function getChildElements(ele,tagName){//获取ele对象的元素子节点
+		if(!(ele&&ele.nodeType&&ele.nodeType===1))//传进来的对象是一个元素类型的DOM节点才行，否则退出
+			return false
+		var child=ele.firstChild;//从第一个节点开始判断
+		var a=[]
+		if(tagName){//参数是可选的，如果第二个参数传进来了
+			while(child){
+				if(child.nodeType==1&&child.tagName.toLowerCase()==tagName.toLowerCase()){
+						a.push(child);
+				}
+				child=child.nextSibling;//判断完这个节点就判断下一个节点
+			}
+		}else{//如果第二个参数没有传
+			while(child){
+				if(child.nodeType==1){
+					a.push(child);
+				}
+				child=child.nextSibling;
+			}
+		}
+		return a//最后别忘把此数组返回
+	}
+	function getElementsByClassName(n) { 
+	    var classElements = [],allElements = document.getElementsByTagName('*'); 
+	    for (var i=0; i< allElements.length; i++ ) 
+	    { 
+	        if (allElements[i].className == n ) { 
+	            classElements[classElements.length] = allElements[i]; 
+	        } 
+	    } 
+	    return classElements; 
+	}
+})
+</script>
+</head>
+
+<body>
+	<div class="test">
+		<span>test</span>
+		<span>test</span>
+		<span>test</span>
+	</div>
+	<div class="test">
+		<span>test</span>
+		<span>test</span>
+	</div>
+	<div class="nothing">
+		<span>test</span>
+		<span>test</span>
+	</div>
+</body>
+</html>
