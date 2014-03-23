@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>居中截取图片</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js" type="text/javascript"></script>
+<style>
+body { width:1000px; margin:auto; }
+.pic_center { display:block; width:150px; height:150px; overflow:hidden; margin:20px 0; background:#ccc; position:relative; }
+.pic_center img { position:relative; }
+</style>
+</head>
+
+<body>
+<a class="pic_center" href="#"><img src="http://img.baozang.com/201009/17/16/39/1639023013.jpg" /></a>
+<a class="pic_center" href="#"><img src="http://img.baozang.com/201112/2615/1534267549l.jpg" /></a>
+<p>请使用调试工具查看图片，原图并非正方形</p>
+</div>
+<script>
+$(function(){
+	function setImg(thisEle){
+		var wrapWidth = $(thisEle).width();
+		var wrapHeight = $(thisEle).height();
+		var picWidth = $(thisEle).find("img").width();
+		var picHeight = $(thisEle).find("img").height();
+		var wrapShape = wrapWidth / wrapHeight;
+		var picShape = picWidth / picHeight;
+		var picWidthS = picWidth/picHeight*wrapHeight;
+		var picHeightS = picHeight/picWidth*wrapWidth;
+		if(wrapShape > picShape)
+		{
+			$(thisEle).find("img").css({"width":"100%","height":"auto","top":(wrapHeight-picHeightS)/2,"left":"0"});
+		}
+		else
+		{
+			$(thisEle).find("img").css({"width":"auto","height":"100%","left":(wrapWidth-picWidthS)/2,"top":"0"});
+		}
+	}
+	function setAllCenter(){
+		$(".pic_center").each(function(){
+			var self = this;
+			var pic = $(self).find("img");
+			var src = $(this).attr("src");
+			$(pic).hide();
+			var imgW,imgH;
+			var img = new Image();
+			$(img).bind("load", function() {
+				imgW = pic.width();
+				imgH = pic.height();
+				setImg(self);
+			}).attr("src", pic.attr("src"));
+			pic.show()
+		});
+	}
+	if($(".pic_center").length > 0)
+	{
+		setAllCenter();
+	}
+});
+
+
+</script>
+</body>
+</html>

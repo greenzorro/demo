@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>IE6透明PNG</title>
+<link href="../../common/css/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../common/js/jquery-latest.js"></script>
+    <!--[if IE 6]>
+        <script type="text/javascript" src="DD_belatedPNG.js"></script>
+        <script type="text/javascript">
+         DD_belatedPNG.fix('.png, a.png:hover');
+        </script>
+    <![endif]-->
+<style>
+body { background:#000; }
+span { color:#fff; }
+div { height:700px; background:#000 url(../../common/images/mousepostion_bg_3.png) no-repeat center top; }
+</style>
+</head>
+
+<body>
+<span>使得IE6下能使用透明PNG图片的插件</span>
+<div class="png"></div>
+
+</body>
+</html>

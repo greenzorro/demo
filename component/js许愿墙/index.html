@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<TITLE>JS许愿墙特效</TITLE>
+<link href="css/kaiwo.css" type="text/css" rel="stylesheet">
+</HEAD>
+<body>
+
+<div class="box" id="msgList"></div>
+
+<script language=javascript src="js/kaiwo.js" type=text/javascript></script>
+<script language=javascript type=text/javascript>
+//<![CDATA[
+(function() {		 
+var doc = document.documentElement, htmlBody = $(document.body);
+// <summary>拖动处理类<summary>
+// <param name="element">可以拖动的元素</param>
+// <param name="trigger">拖动触发元素</param>
+function DragHandler(element, trigger) {
+	var wallBorder = {
+		x : 783,
+		y : 500
+	}
+	var origPos = {
+		x : parseInt(element.style.left || 0) - htmlBody.scrollLeft,
+		y : parseInt(element.style.top || 0) - htmlBody.scrollTop
+	}, diffPos;
+	
+	var move = function(e) {
+		var newPos = {
+				x : Math.max(0, Math.min(Math.min(doc.scrollWidth - element.offsetWidth, e.pageX - diffPos.x),wallBorder.x)),
+				y : Math.max(0, Math.min(Math.min(doc.scrollHeight - element.offsetHeight, e.pageY - diffPos.y),wallBorder.y))
+			};
+		element.style.left = newPos.x + "px"; element.style.top = newPos.y + "px";
+		origPos = {
+			x : newPos.x - htmlBody.scrollLeft,
+			y : newPos.y - htmlBody.scrollTop
+		};
+		e.cancelBubble = true;
+	};
+	
+	var stopMove = function() {
+		if(element.releaseCapture) {
+			element.releaseCapture();  
+		} else if(window.captureEvents) {
+			window.captureEvents(Event.MOUSEMOVE|Event.MOUSEUP);
+		}
+		NTES.event.removeEvent(htmlBody, "mousemove", move);
+		NTES.event.removeEvent(htmlBody, "mouseup", stopMove);
+	};
+	
+	if (trigger) {
+		NTES.event.addEvent(
+			trigger,
+			"mousedown",
+			function(e) {
+				if (element.setCapture) {
+					element.setCapture();
+				} else if(window.captureEvents) {
+					window.captureEvents(Event.MOUSEMOVE|Event.MOUSEUP);
+				}
+				
+				diffPos = { x : e.pageX - element.offsetLeft, y : e.pageY - element.offsetTop };
+				NTES.event.addEvent(htmlBody, "mousemove", move);
+				NTES.event.addEvent(htmlBody, "mouseup", stopMove);
+				e.preventDefault();
+			}
+		);
+	}
+}
+// <summary>弹窗类</summary>
+// <param name="wrapper">弹窗的最外围元素</param>
+function Win(wrapper) {
+	
+	// <summary>隐藏窗口</summary>
+	this.hide = function() {
+		wrapper.style.visibility = "hidden";
+		return false;
+	};
+	
+	// 启用拖动功能
+	new DragHandler(wrapper, wrapper);
+	
+	NTES.event.addEvent(wrapper, "mousedown", function() {
+		this.style.zIndex = Win.maxLayer++;
+	});
+	
+	// 关闭窗口
+	$("a.wall_close", wrapper).addEvent("click", this.hide);
+};
+Win.maxLayer = 50;
+var MessageWall = function(boardId, threadId) {
+	
+	this.show = function(data, count) {
+				
+		for (var i = data.length - 1, temp; i >= 1; i--) {
+			temp = data[i].body.split(/<br\s?\/?>/i);
+			if (temp.length <= 1) {
+				data[i].to = "";
+			} else {
+				data[i].to = temp[0];
+				temp.splice(0, 1);
+				data[i].body = temp.join("");
+				data[i].top = parseInt(Math.random() * (400 - 10 + 1) + 10);
+				data[i].left = parseInt(Math.random() * (600 - 10 + 1) + 100);
+			}
+		}
+		
+		$("#msgList").innerHTML = NTES.util.parseTpl('<#\
+    	for (var i = 0, len = data.length; i < len; i++) {\
+    #>\
+		<div class="wall_paste" style="left:<#=data[i].left#>px;top:<#=data[i].top#>px;">\
+            <a href="#" class="wall_close"><img src="images/close.png" /></a>\
+            <span class="sentto"><#=data[i].to#></span>\
+            <p class="wall_subcont"><#=data[i].body#></p>\
+            <p class="from"><#=data[i].ptime#><br /><#=data[i].nickname#></p>\
+		</div>\
+    <#\
+    	}\
+    #>', { data : data });
+		var msgs = $("#msgList > div");
+		for (var i = msgs.length - 1; i >= 0; i--) {
+			new Win(msgs[i]);
+		}
+	};
+	
+};
+
+
+var data = [		
+			{ nickname : 'www.kaiwo123.com', ptime : '2010-11-16 13:20:55', body : ' 2010网络语言<br>别以为你长着一张西门庆的脸，就可以追求姐，姐不是潘金莲。' }
+				,
+			{ nickname : 'www.kaiwo123.com', ptime : '2010-11-02 07:02:12', body : ' 2010网络语言<br>不求门当户对，只求感觉到位。' }
+				,
+			{ nickname : 'www.kaiwo123.com', ptime : '2010-11-01 10:18:07', body : ' 2010网络语言<br>都说女人如水，所以我学会了游泳。' }
+				,
+			{ nickname : 'www.kaiwo123.com', ptime : '2010-10-31 21:55:27', body : ' 2010网络语言<br>好久没用笔写过字了，不写不知道，一写吓一跳：火星文。' }
+				,
+			{ nickname : 'www.kaiwo123.com', ptime : '2010-10-31 14:17:57', body : ' 2010网络语言<br>都想抓住青春的尾巴，可惜青春是只壁虎。' }
+				,
+			{ nickname : 'www.kaiwo123.com', ptime : '2010-10-31 14:11:02', body : ' 2010网络语言<br>你走你的过街天桥，我过我的地下通道。' }
+			,
+			{ nickname : 'www.kaiwo123.com', ptime : '2010-10-31 14:11:02', body : ' 2010网络语言<br>我的兴趣爱好可分为静态和动态两种，静态就是睡觉，动态就是翻身…' },
+			{ nickname : '163.com', ptime : '2010-10-31 14:11:02', body : ' 2010网络语言<br>所谓美女，大都是化妆品的奴隶。' },
+			{ nickname : 'www.kaiwo123.com', ptime : '2010-10-31 14:11:02', body : ' 2010网络语言<br>人生只有三天，活在昨天的人迷惑；活在明天的人等待；活在今天的人最踏实。' }		
+        			
+	];
+var msgWall = new MessageWall("kaiwo", "http://www.kaiwo123.com");
+msgWall.show(data, 30);
+})();
+//]]>
+</script>
+
+
+
+
+
+</div>
+
+
+</BODY>
+</HTML>

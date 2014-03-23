@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>cxSelect 多级联动下拉菜单</title>
+<style>
+body{padding:20px;background:#ddd;font:14px/1.7 Arial,"\5b8b\4f53";}
+h1,h2,h3{font:bold 36px/1 "\5fae\8f6f\96c5\9ed1";}
+h2{font-size:20px;}
+h3{font-size:16px;}
+fieldset{margin:1em 0;}
+fieldset legend{font:bold 14px/2 "\5fae\8f6f\96c5\9ed1";}
+a{color:#06f;text-decoration:none;}
+a:hover{color:#00f;}
+
+.wrap{width:600px;margin:0 auto;padding:20px 40px;border:2px solid #999;border-radius:8px;background:#fff;box-shadow:0 0 10px rgba(0,0,0,0.5);}
+</style>
+</head>
+<body>
+<div class="wrap">
+	<h1>jQuery cxSelect 多级联动下拉菜单</h1>
+
+	<h2>示例</h2>
+	<form id="city_a" action="js/getcity.php" method="post">
+		<fieldset>
+			<legend>默认</legend>
+			<p>省份：<select class="province" name="province"></select></p>
+			<p>城市：<select class="city" disabled="disabled" name="city"></select></p>
+			<p>地区：<select class="area" disabled="disabled" name="area"></select></p>
+			<p><button type="submit">提 交</button></p>
+		</fieldset>
+	</form>
+
+	<fieldset id="city_b">
+		<legend>设置默认值及选项标题</legend>
+		<p>所在地区：
+			<select class="province" data-val="浙江" data-title="选择省"></select>
+			<select class="city" data-val="杭州" data-title="选择市" disabled="disabled"></select>
+			<select class="area" data-val="西湖区" data-title="选择地区" disabled="disabled"></select>
+		</p>
+	</fieldset>
+	
+	<fieldset id="city_c">
+		<legend>多级选项</legend>
+		<p>一：<select class="first"></select></p>
+		<p>二：<select class="second" disabled="disabled"></select></p>
+		<p>三：<select class="third" disabled="disabled"></select></p>
+		<p>四：<select class="fourth" disabled="disabled"></select></p>
+		<p>五：<select class="fifth" disabled="disabled"></select></p>
+	</fieldset>
+
+	<h2>文档</h2>
+	<ul>
+		<li><a target="_blank" href="https://github.com/ciaoca/cxSelect">Github</a></li>
+		<li><a target="_blank" href="http://code.ciaoca.com/jquery/cxselect/">中文文档</a></li>
+	</ul>
+	
+	<h2>作者</h2>
+	<p><a target="_blank" href="http://ciaoca.com/">http://ciaoca.com/</a></p>
+	<p>Released under the MIT license</p>
+</div>
+
+<script src="js/jquery-1.4.4.min.js"></script>
+<script src="js/jquery.cxselect.min.js"></script>
+<script>
+$.cxSelect.defaults.url="js/city.min.js";
+
+$("#city_a").cxSelect({
+	selects:["province","city","area"]
+});
+
+$("#city_b").cxSelect({
+	selects:["province","city","area"],
+	nodata:"none"
+});
+
+$("#city_c").cxSelect({
+	url:"js/test.js",
+	selects:["first","second","third","fourth","fifth"]
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>页面滚动开关</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<style type="text/css">
+p { width: 95%; height: 80vh; margin: 10px auto 0; }
+p.box1 { background: #333; }
+p.box2 { background: #777; }
+p.box3 { background: #aaa; }
+.switch { display: inline-block; height: 30px; line-height: 30px; padding: 0 15px; background: red; border-radius: 5px; color: #fff; position: fixed; right: 20px; top: 20px; }
+.on { background: red; }
+.off { background: green; }
+</style>
+<script>
+$(function () {
+	// 在addEventListener()和removeEventListener()中要用相同的函数
+	function preventScroll (event) {
+		window.scrollTo(0,topDistance);
+		console.log(topDistance);  //  用调试工具console查看滚动条位置
+	}
+	$(".switch").click(function () {
+		if ($(".switch").hasClass("on")) {
+			window.removeEventListener("scroll", preventScroll, false);
+			$(".switch").html("页面滚动（开）")
+			$(".switch").removeClass("on");
+			$(".switch").addClass("off");
+		}
+		else {
+			topDistance = parseInt($(document).scrollTop());
+			window.addEventListener("scroll", preventScroll, false);
+			$(".switch").html("页面滚动（关）")
+			$(".switch").removeClass("off");
+			$(".switch").addClass("on");
+		}
+	});
+})
+</script>
+</head>
+
+<body>
+<p class="box1"></p>
+<p class="box2"></p>
+<p class="box3"></p>
+<a class="off switch" href="javascript:;">页面滚动（开）</a>
+</body>
+</html>

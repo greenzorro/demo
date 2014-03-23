@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>限制只能输入数字</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<script type="text/javascript">
+$(function () {
+    $(".num_only").keyup(function(){  //keyup事件处理 
+        $(this).val($(this).val().replace(/\D|^0/g,''));  
+    }).bind("paste",function(){  //CTR+V事件处理 
+        $(this).val($(this).val().replace(/\D|^0/g,''));  
+    }).css("ime-mode", "disabled");  //CSS设置输入法不可用
+})
+</script>
+</head>
+
+<body>
+	<input class="num_only" type="text" />
+</body>
+</html>

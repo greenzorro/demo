@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>table属性</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<style>
+.t table { margin:auto; }
+ul { list-style:none; }
+table tr th { background:#dfdfdf; }
+table tr td { border:1px solid #ccc; }
+ul li { background:#ccc; line-height:25px; padding:0 5px; }
+.c1 { background:#ccc; }
+.c2 { background:#ddd; }
+.c3 { background:#aaa; }
+.c4 { background:#f00; }
+</style>
+</head>
+
+<body>
+<div class="t">
+<table border="0" cellpadding="0" cellspacing="0">
+	<colgroup span="1" class="c1" />
+    <colgroup span="1" class="c2" />
+    <colgroup span="3">
+    	<col span="2" class="c3" />
+        <col span="1" />
+        <col span="1" class="c4" />
+    </colgroup>
+    
+	<tr>
+    	<th>11</th>
+        <th>22</th>
+        <th>22</th>
+        <th>22</th>
+        <th>22</th>
+        <th>22</th>
+    </tr>
+    <tr>
+    	<td>232M</td>
+    	<td>232M</td>
+    	<td>232M</td>
+    	<td>232M</td>
+        <td>ofl</td>
+        <td>ofl</td>
+    </tr>
+    <tr>
+    	<td>so33</td>
+    	<td colspan="2" rowspan="2">so33</td>
+    	<td>so33</td>
+    	<td>so33</td>
+    	<td>so33</td>
+    </tr>
+    <tr>
+    	<td>so33</td>
+    	<td>so33</td>
+    	<td>so33</td>
+    	<td>so33</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

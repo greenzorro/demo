@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>malihu全屏相册插件</title>
+<link href="../../common/css/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../common/js/jquery-latest.js"></script>
+<link href="malihu.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="malihu.js"></script>
+</head>
+<body>
+<div class="malihu">
+<div id="bg"><img src="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_denebola.jpg" width="1680" height="1050" alt="Denebola" id="bgimg" /></div>
+<div id="preloader"><img src="images/ajax-loader_dark.gif" width="32" height="32" /></div>
+<div id="img_title"></div>
+<div id="toolbar"><a href="#" title="Maximize" onClick="ImageViewMode('full');return false"><img src="images/toolbar_fs_icon.png" width="50" height="50"  /></a></div>
+<div id="outer_container">
+<div id="thumbScroller">
+	<div class="container">
+    	<div class="content">
+        	<div><a href="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_denebola.jpg"><img src="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_denebola_thumb.jpg" title="Denebola" alt="Denebola" class="thumb" /></a></div>
+        </div>
+        <div class="content">
+        	<div><a href="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_lux.jpg"><img src="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_lux_thumb.jpg" title="Lux Aeterna" alt="Lux Aeterna" class="thumb" /></a></div>
+        </div>
+    	<div class="content">
+        	<div><a href="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_dk.jpg"><img src="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_dk_thumb.jpg" title="X-Wing on patrol" alt="X-Wing on patrol" class="thumb" /></a></div>
+        </div>
+        <div class="content">
+        	<div><a href="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_albireo.jpg"><img src="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_albireo_thumb.jpg" title="Albireo Outpost" alt="Albireo Outpost" class="thumb" /></a></div>
+        </div>
+        <div class="content">
+        	<div><a href="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_church.jpg"><img src="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_church_thumb.jpg" title="Church of Heaven" alt="Church of Heaven" class="thumb" /></a></div>
+        </div>
+        <div class="content">
+        	<div><a href="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_Decampment.jpg"><img src="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_Decampment_thumb.jpg" title="Decampment" alt="Decampment" class="thumb" /></a></div>
+        </div>
+        <div class="content">
+        	<div><a href="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_Hibernaculum.jpg"><img src="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_Hibernaculum_thumb.jpg" title="Hibernaculum" alt="Hibernaculum" class="thumb" /></a></div>
+        </div>
+        <div class="content">
+        	<div><a href="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_lucernarium.jpg"><img src="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_lucernarium_thumb.jpg" title="Supremus Lucernarium" alt="Supremus Lucernarium" class="thumb" /></a></div>
+        </div>
+        <div class="content">
+        	<div><a href="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_moons.jpg"><img src="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_moons_thumb.jpg" title="Aurea Mediocritas" alt="Aurea Mediocritas" class="thumb" /></a></div>
+        </div>
+        <div class="content">
+        	<div><a href="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_praedestinatio.jpg"><img src="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_praedestinatio_thumb.jpg" title="Praedestinatio" alt="Praedestinatio" class="thumb" /></a></div>
+        </div>
+        <div class="content">
+        	<div><a href="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_transitorius.jpg"><img src="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_transitorius_thumb.jpg" title="Transitorius" alt="Transitorius" class="thumb" /></a></div>
+        </div>
+        <div class="content">
+        	<div><a href="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_victimofgravity.jpg"><img src="http://www.w3csolutions.com/website-resources/gallery/jQuery-gallery/jquery-big-image-gallery/images/Universe_and_planets_digital_art_wallpaper_victimofgravity_thumb.jpg" title="Victim of Gravity" alt="Victim of Gravity" class="thumb" /></a></div>
+        </div>
+	</div>
+</div>
+</div>
+</div>
+</body>
+</html>

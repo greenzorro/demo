@@ -1,0 +1,12 @@
+﻿/* CSS Document */
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px;vertical-align:middle;}
+body{font-size:12px;font-family:Arial, Helvetica, sans-serif; margin:0 auto; }
+
+.box{border: #d8d8d8 1px solid; padding:10px; background:url(../images/wall_bg.png) repeat-y center top; OVERFLOW: hidden;WIDTH: 934px; POSITION: relative; HEIGHT: 500px; margin:20px auto;}
+.wall_paste {border: #c1c1c1 1px solid;  BACKGROUND: url(../images/wall_icon.png) #fafcfd no-repeat left top; OVERFLOW: hidden;WIDTH: 169px; CURSOR: move; BORDER-BOTTOM: #c1c1c1 1px solid; POSITION: absolute; HEIGHT: 167px}
+.sentto {PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; WIDTH: 130px; COLOR: #2b2b2b; PADDING-TOP: 12px; HEIGHT: 20px; TEXT-ALIGN: center}
+.wall_close {FLOAT: right; MARGIN: 7px 7px 0px 0px}
+.wall_subcont {PADDING-RIGHT: 20px; PADDING-LEFT: 20px; PADDING-BOTTOM: 4px; OVERFLOW: hidden; COLOR: #2b2b2b; LINE-HEIGHT: 20px; PADDING-TOP: 0px}
+p.from{ padding:6px 20px 6px 20px; BACKGROUND: url(../images/wall_point.png) repeat-x left top; PADDING-BOTTOM: 6px; COLOR: #8f8f8f; LINE-HEIGHT: 18px; }

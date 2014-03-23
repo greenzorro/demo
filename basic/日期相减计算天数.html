@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>日期相减计算天数</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<script type="text/javascript">
+
+$(function () {
+	var today = new Date();
+	var todayFormat = today.getFullYear()+"-"+Number(today.getMonth()+1)+"-"+today.getDate();
+	$('body').html("2013年12月1日距今：" + DateDiff("2013-12-1",todayFormat) + "天");
+});
+
+function DateDiff(sDate1, sDate2){ //sDate1和sDate2是2002-12-18格式   
+    var aDate, oDate1, oDate2, iDays   
+    aDate = sDate1.split("-")   
+    oDate1 = new Date(aDate[1] + '-' + aDate[2] + '-' + aDate[0]) //转换为12-18-2002格式   
+    aDate = sDate2.split("-")   
+    oDate2 = new Date(aDate[1] + '-' + aDate[2] + '-' + aDate[0])   
+    iDays = parseInt(Math.abs(oDate1 - oDate2) / 1000 / 60 / 60 /24) //把相差的毫秒数转换为天数   
+    return iDays   
+} 
+</script>
+</head>
+
+<body>
+</body>
+</html>

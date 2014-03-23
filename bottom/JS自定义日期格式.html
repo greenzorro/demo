@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>JS×Ô¶¨ÒåÈÕÆÚ¸ñÊ½</title>
+<meta charset="utf-8" />
+<title>JSè‡ªå®šä¹‰æ—¥æœŸæ ¼å¼</title>
 <link href="../common/css/global.css" rel="stylesheet" type="text/css" />
 <script src="../common/js/jquery-latest.js"></script>
 <style>
 </style>
 <script type="text/javascript">
 $(function(){
-    // JS×Ô¶¨ÒåÈÕÆÚ¸ñÊ½
+    // JSè‡ªå®šä¹‰æ—¥æœŸæ ¼å¼
     Date.prototype.format = function(format) {
         var date = {
             "M+": this.getMonth() + 1,
@@ -16,7 +17,7 @@ $(function(){
             "h+": this.getHours(),
             "m+": this.getMinutes(),
             "s+": this.getSeconds(),
-            "q+": Math.floor((this.getMonth() + 3) / 3),  //¼¾¶È
+            "q+": Math.floor((this.getMonth() + 3) / 3),  //å­£åº¦
             "S+": this.getMilliseconds()
         };
         if (/(y+)/i.test(format)) {
@@ -31,7 +32,7 @@ $(function(){
         return format;
     }
     var original = new Date();
-    var format = original.format('yyyy-MM-dd hh:mm:ss Sms µÚq¼¾¶È');
+    var format = original.format('yyyy-MM-dd hh:mm:ss Sms ç¬¬qå­£åº¦');
     $("body").append(original + "<br />");
     $("body").append(format);
 })

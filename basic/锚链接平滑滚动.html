@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>锚链接平滑滚动</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../common/js/jquery-latest.js"></script>
+<style>
+p { clear:both; }
+h1 a { float:left; }
+p a { display:block; width:500px; height:500px; margin-bottom:10px; background:#dfdfdf; }
+</style>
+</head>
+<body>
+<h1>
+    <a href="#a1">a1</a>
+    <a href="#a2">a2</a>
+    <a href="#a3">a3</a>
+</h1>
+<p>
+    <a name="a1">a1</a>
+    <a name="a2">a2</a>
+    <a name="a3">a3</a>
+</p>
+<script type="text/javascript">
+//	锚链接平滑移动
+	$("a[href*='#']").click(function() {
+		if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+			var $target = $(this.hash);
+			$target = $target.length && $target || $("[name=" + this.hash.slice(1) + "]");
+			if (this.hash.slice(1)){
+				if($target.length){
+					var targetOffset = $target.offset().top;
+					$("html,body").animate({
+						scrollTop: targetOffset
+					},
+					1000);
+					return false;
+				}
+			}
+			else{
+				$("html,body").animate({
+					scrollTop: 0
+				},
+				1000);
+				return false;
+			}
+		}
+	});	
+</script>
+</body>
+</html>

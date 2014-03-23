@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>弹窗</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../common/js/jquery-latest.js"></script>
+<style>
+body { height:2000px; }
+#dim { display:none; width:100%; height:100%; background:#000; filter:alpha(opacity=50); opacity:0.5; position:absolute; left:0; top:0; z-index:900; }
+.pop_layer { display:none; width:500px; height:300px; background:#fff; position:absolute; left:0; top:0; z-index:999; }
+</style>
+<script type="text/javascript">
+function setPosition(){
+	var popLayer = $(".pop_layer:first");
+	while(popLayer.length > 0){
+		var popId = popLayer.attr("id").substring(0,popLayer.attr("id").indexOf("_pop"));
+		var thisElement = $("#" + popId +"_pop");
+		var maxWidth = $(window).width();
+		var maxHeight = $(window).height();
+		var width = thisElement.width();
+		var height = thisElement.height();
+		var left = (maxWidth-width)/2;
+		var top = (maxHeight-height)/2+$(window).scrollTop();
+		thisElement.css({"left":left,"top":top});
+		if($("body").height() > $(window).height())
+		{
+			$("#dim").height($("body").height());
+		}
+		else
+		{
+			$("#dim").height($(window).height());
+		}
+		popLayer = popLayer.next(".pop_layer");
+	}
+}
+$(function(){
+	$(window).load(function(){
+		setPosition();
+	});
+	$(window).resize(function(){
+		setPosition();
+	});
+	$(window).scroll(function(){
+		setPosition();
+	});
+	$("body").on("click","a",function(){
+		if($(this).attr("id"))
+		{
+			var idName = $(this).attr("id");
+			$("#" + idName + "_pop").fadeIn();
+			$("#dim").fadeIn();
+		}
+	});
+	$("body").on("click","a.close_pop",function(){
+		$("#dim").fadeOut();
+		$(".pop_layer").fadeOut();
+	});
+})
+</script>
+</head>
+
+<body>
+
+<a id="what" href="javascript:;">pop1</a>
+<a id="OMG" href="javascript:;">pop2</a>
+<div id="dim"></div>
+<div id="what_pop" class="pop_layer">pop1<a class="close_pop" href="javascript:;">关闭</a></div>
+<div id="OMG_pop" class="pop_layer">pop2<a class="close_pop" href="javascript:;">关闭</a></div>
+
+</body>
+</html>

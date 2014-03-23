@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>滑动门按钮背景图</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js" type="text/javascript"></script>
+<style>
+span.button { float:left; width:auto; margin:0; padding:0; display:block; background:#fff url(../common/images/button.gif) right top no-repeat; overflow:hidden; cursor:pointer; }
+span.button a, span.button button { float:left; width:auto; margin:0; padding:0; display:block; background:#fff url(../common/images/button.gif) left top no-repeat; font-size:14px; font-weight:bold; color:#2d5294; outline:none; cursor:pointer; outline:none; border:none; white-space:nowrap; text-decoration:none; }
+span.button_l { height:62px; line-height:62px; padding-right:10px; background-position:right top; }
+span.button_l a, span.button_l button { height:62px; line-height:62px; padding:0 20px 0 30px; background-position:left top; }
+span.button_l button { _padding:0 0px 0 10px; }
+span.button_l:hover {background-position:right -62px; _background-position:right top; }
+span.button_l a:hover, span.button_l button:hover { background-position:left -62px; _background-position:left top; }
+span.button_l:active {background-position:right -124px; }
+span.button_l a:active, span.button_l button:active { background-position:left -124px; }
+span.button_disable_l { height:62px; line-height:62px; padding-right:10px; background-position:right -371px; cursor:default; }
+span.button_disable_l a, span.button_disable_l button { height:62px; line-height:62px; padding:0 20px 0 30px; background-position:left -371px; color:#888; cursor:default; }
+span.button_disable_l button { _padding:0 0px 0 10px; }
+span.button_m { height:33px; line-height:33px; padding-right:8px; background-position:right -183px; }
+span.button_m a, span.button_m button { height:33px; line-height:33px; padding:0 10px 0 21px; background-position:left -183px; font-size:12px; }
+span.button_m button { _padding:0 0px 0 8px; }
+span.button_m:hover { background-position:right -219px; _background-position:right -183px; }
+span.button_m a:hover, span.button_m button:hover { background-position:left -219px; _background-position:left -183px; }
+span.button_m:active { background-position:right -255px; }
+span.button_m a:active, span.button_m button:active { background-position:left -255px; }
+span.button_disable_m { height:33px; line-height:33px; padding-right:8px; background-position:right -432px; cursor:default; }
+span.button_disable_m a, span.button_disable_m button { height:33px; line-height:33px; padding:0 10px 0 21px; background-position:left -432px; font-size:12px; color:#888; cursor:default; }
+span.button_disable_m button { _padding:0 0px 0 8px; }
+span.button_s { height:25px; line-height:25px; padding-right:10px; background-position:right -290px; }
+span.button_s a, span.button_s button { height:25px; line-height:25px; padding:0 5px 0 17px; background-position:left -290px; font-size:12px; font-weight:normal; }
+span.button_s button { _padding:0 0px 0 10px; }
+span.button_s:hover { background-position:right -317px; _background-position:right -290px; }
+span.button_s a:hover, span.button_s button:hover { background-position:left -317px; _background-position:left -290px; }
+span.button_s:active { background-position:right -344px; }
+span.button_s a:active, span.button_s button:active { background-position:left -344px; }
+span.button_disable_s { height:25px; line-height:25px; padding-right:10px; background-position:right -467px; cursor:default; }
+span.button_disable_s a, span.button_disable_s button { height:25px; line-height:25px; padding:0 5px 0 17px; background-position:left -467px; font-size:12px; font-weight:normal; color:#888; cursor:default; }
+span.button_disable_s button { _padding:0 0px 0 10px; }
+</style>
+
+</head>
+
+<body>
+
+<span class="button button_l"><a href="#">同意并注册</a></span>
+<span class="button button_disable_l"><a href="#">同意并注册</a></span>
+<span class="button button_m"><a href="#">同意并注册</a></span>
+<span class="button button_disable_m"><a href="#">同意并注册</a></span>
+<span class="button button_s"><a href="#">同意并注册</a></span>
+<span class="button button_disable_s"><a href="#">同意并注册</a></span>
+<span class="button button_l"><button type="button">同意并注册</button></span>
+<span class="button button_disable_l"><button type="button">同意并注册</button></span>
+<span class="button button_m"><button type="button">同意并注册</button></span>
+<span class="button button_disable_m"><button type="button">同意并注册</button></span>
+<span class="button button_s"><button type="button">同意并注册</button></span>
+<span class="button button_disable_s"><button type="button">同意并注册</button></span>
+
+</body>
+</html>

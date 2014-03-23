@@ -1,0 +1,18 @@
+﻿@charset "utf-8";
+/* CSS Document */
+@import url(http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light);
+html,body{height:100%;}
+body{margin:0px; padding:0px; background:#000;}
+#toolbar{position:fixed; z-index:2; right:10px; top:10px; padding:5px; background:url(images/fs_img_g_bg.png);}
+#toolbar img{border:none;}
+#img_title{position:fixed; z-index:2; left:10px; top:10px; padding:10px; background:url(images/fs_img_g_bg.png); color:#FFF; font-family:'Josefin Sans Std Light', arial, serif; font-size:24px; text-transform:uppercase;}
+#bg{position:fixed; z-index:1; overflow:hidden;}
+#bgimg{display:none;}
+#preloader{position:relative; z-index:2; width:32px; padding:20px; top:80px; margin:auto; background:#000;}
+#outer_container{z-index:2; position:fixed; bottom:0; margin:0; height:170px; padding:40px 5px;}
+#thumbScroller{position:relative; overflow:hidden; background:url(images/fs_img_g_bg.png);}
+#thumbScroller .container{position:relative; left:0;}
+#thumbScroller .content{float:left;}
+#thumbScroller .content div{margin:10px; height:100%;}
+#thumbScroller img{border:5px solid #fff;}
+#thumbScroller a{padding:5px; display:block;}
