@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS获取class</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<style>
+</style>
+<script type="text/javascript">
+$(function(){
+	var tester = getElementsByClassName('test');
+	var nothing = getElementsByClassName('nothing');
+	var flag1 = 0, flag2 = 0;
+	if (tester.length > 0) {
+		flag1 = 1;
+	}
+	if (nothing.length > 0) {
+		flag2 = 1;
+	}
+	// getElementsByClassName函数获取到的是一个数组，数组长度为找到对象的个数
+	function getElementsByClassName(n) { 
+		var classElements = [],allElements = document.getElementsByTagName('*'); 
+		for (var i=0; i< allElements.length; i++ ) 
+		{ 
+			if (allElements[i].className == n ) { 
+				classElements[classElements.length] = allElements[i]; 
+			} 
+		} 
+		return classElements; 
+	}
+	$('p').html('获取class为"test"的对象：' + tester + '<br />获取class为"nothing"的对象（不存在）：' + nothing + '<br />flag1 = ' + flag1 + '<br />flag2 = ' + flag2);
+})
+</script>
+</head>
+
+<body>
+	<div class="test"></div>
+	<p></p>
+</body>
+</html>

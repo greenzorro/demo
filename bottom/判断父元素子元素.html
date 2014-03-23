@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>判断父元素子元素</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<style type="text/css">
+.demo {padding: 30px; height: 300px; position: relative; }
+.floatLayer{ position: absolute; top:50px; left: 100px; width: 200px;height: 200px; border: 10px solid #FF3300; padding: 10px }
+ol,ul{list-style:none; margin:0; padding:0}
+.topic-list li{ float:left; margin-right:15px}
+</style>
+<script>
+function isParent (obj,parentObj){
+    while (obj != undefined && obj != null && obj.tagName.toUpperCase() != 'BODY'){
+        if (obj == parentObj){
+            return true;
+        }
+        obj = obj.parentNode;
+    }
+    return false;
+}
+
+$(document).click(function(event){
+	<!-- event.target是JS对象，此处$(".floatLayer")[0]是用JQuery返回JS对象 -->
+    alert(isParent(event.target, $(".floatLayer")[0]));
+});
+</script>
+</head>
+
+<body>
+<div class="demo">
+	<div class="floatLayer"><h4>这是一个浮层</h4> 点击浮层内部警告true<br />点击浮层外部警告false</div>
+</div>
+</body>
+</html>

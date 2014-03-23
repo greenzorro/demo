@@ -1,0 +1,25 @@
+﻿/*reset*/
+* { margin:0; padding:0; }
+a img { border:none; }
+ol, ul { list-style:none; }
+button, input[type="submit"], input[type="button"], input[type="reset"] { cursor:pointer; }
+input[type=button], input[type=submit]{ -webkit-appearance:none; outline:none; }
+article,aside,dialog,footer,header,section,footer,nav,figure,menu { display:block; }
+table { width:100%; border-collapse:collapse; border-spacing:0; }
+a { text-decoration:none; outline:none; }
+body { line-height:1.6; }
+.clear { clear:both; display:block; height:0px; overflow:hidden; }
+.clearfix { zoom:1; }
+.clearfix:after { clear:both; display:block; height:0; content:"."; visibility:hidden; }
+
+/*layout*/
+body { font-family:'microsoft yahei','stheiti',sans-serif; font-size:1em; color:#333;
+    animation: movein_left .3s ease-in;
+    -webkit-animation: movein_left .3s ease-in;
+    -moz-animation: movein_left .3s ease-in;
+}
+input, textarea { font-family:'microsoft yahei','stheiti',sans-serif; }
+a { color: #2b97e8; }
+a:hover { color: #1a80cc; }
+::selection { background:#2b97e8; color:#fff; }
+::-moz-selection { background:#2b97e8; color:#fff; } 
