@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>JS»ñÈ¡class</title>
+<meta charset="utf-8" />
+<title>JSè·å–class</title>
 <link href="../common/css/global.css" rel="stylesheet" type="text/css" />
 <script src="../common/js/jquery-latest.js"></script>
 <style>
@@ -17,7 +18,7 @@ $(function(){
 	if (nothing.length > 0) {
 		flag2 = 1;
 	}
-	// getElementsByClassNameº¯Êı»ñÈ¡µ½µÄÊÇÒ»¸öÊı×é£¬Êı×é³¤¶ÈÎªÕÒµ½¶ÔÏóµÄ¸öÊı
+	// getElementsByClassNameå‡½æ•°è·å–åˆ°çš„æ˜¯ä¸€ä¸ªæ•°ç»„ï¼Œæ•°ç»„é•¿åº¦ä¸ºæ‰¾åˆ°å¯¹è±¡çš„ä¸ªæ•°
 	function getElementsByClassName(n) { 
 		var classElements = [],allElements = document.getElementsByTagName('*'); 
 		for (var i=0; i< allElements.length; i++ ) 
@@ -28,7 +29,7 @@ $(function(){
 		} 
 		return classElements; 
 	}
-	$('p').html('»ñÈ¡classÎª"test"µÄ¶ÔÏó£º' + tester + '<br />»ñÈ¡classÎª"nothing"µÄ¶ÔÏó£¨²»´æÔÚ£©£º' + nothing + '<br />flag1 = ' + flag1 + '<br />flag2 = ' + flag2);
+	$('p').html('è·å–classä¸º"test"çš„å¯¹è±¡ï¼š' + tester + '<br />è·å–classä¸º"nothing"çš„å¯¹è±¡ï¼ˆä¸å­˜åœ¨ï¼‰ï¼š' + nothing + '<br />flag1 = ' + flag1 + '<br />flag2 = ' + flag2);
 })
 </script>
 </head>

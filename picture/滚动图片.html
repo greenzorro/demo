@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>滚动图片</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js" type="text/javascript"></script>
+<script src="../common/js/showbox.js" type="text/javascript"></script>
+<style>
+/*film*/
+#filmContainer {
+	width:980px;
+	margin:0 auto;
+	overflow:hidden;
+	position:relative;
+	background:#f6f6f6;
+	padding:10px;
+}
+#film {
+	position:relative;
+	width:6000px;
+	left:-1936px;
+}
+#link1,#link2,#link3 {
+	float:left;
+}
+#film p { float:left; width:226px; padding-right:5px; text-align:center; }
+#film p a { display:block; }
+#film p a img { width:226px; height:150px; }
+</style>
+</head>
+
+<body>
+
+<div id="filmContainer">
+    <div id="film">
+        <div id="link2"></div> 
+        <div id="link1">
+            <p><a href="exhibition.html#ex8" target="_blank"><img src="http://www.baozang.com/zt/hujinxi/images/pic/ex1.jpg" alt="胡进曦 展览现场"  title="胡进曦 展览现场"/></a>
+            	<a href="exhibition.html#ex8" target="_blank">说明文字</a>
+            </p>
+            <p><a href="exhibition.html#ex8" target="_blank"><img src="http://www.baozang.com/zt/hujinxi/images/pic/ex8.jpg" alt="胡进曦 展览现场"  title="胡进曦 展览现场"/></a>
+            	<a href="exhibition.html#ex8" target="_blank">说明文字</a>
+            </p>
+            <p><a href="exhibition.html#ex8" target="_blank"><img src="http://www.baozang.com/zt/hujinxi/images/pic/ex8.jpg" alt="胡进曦 展览现场"  title="胡进曦 展览现场"/></a>
+            	<a href="exhibition.html#ex8" target="_blank">说明文字</a>
+            </p>
+            <p><a href="exhibition.html#ex8" target="_blank"><img src="http://www.baozang.com/zt/hujinxi/images/pic/ex8.jpg" alt="胡进曦 展览现场"  title="胡进曦 展览现场"/></a>
+            	<a href="exhibition.html#ex8" target="_blank">说明文字</a>
+            </p>
+            <p><a href="exhibition.html#ex8" target="_blank"><img src="http://www.baozang.com/zt/hujinxi/images/pic/ex8.jpg" alt="胡进曦 展览现场"  title="胡进曦 展览现场"/></a>
+            	<a href="exhibition.html#ex8" target="_blank">说明文字</a>
+            </p>
+        </div> 
+        <div id="link3"></div> 
+    </div>
+</div>
+<div id="test">
+</div>
+
+<script type="text/javascript">
+var items = 5;  //显示图片的张数
+var picWidth = 226; //图片宽度 (px)
+var space = 5; //图片间隔()
+var speed = 10; //自动滚动时间隔时间 (ms)
+var picTime = 10; //图片切换时间 (ms)
+$(document).ready(function(){
+	$("#link2").html($("#link1").html());
+	$("#link3").html($("#link1").html());
+//	var leftWidth = -(items * picWidth);
+	var filmwidth = - items * (picWidth + space);
+	var maxScrollWidth = items * (picWidth + space);
+	var pauseTime = setInterval(srollleft,speed);
+	$("#test").html("filmwidth:"+filmwidth); //test
+	function srollleft(){
+		if(filmwidth > -(maxScrollWidth*2)){
+			filmwidth--;
+			$("#film").animate({
+			left: filmwidth+'px'	   
+			}, picTime);
+		}else if(filmwidth <= -(maxScrollWidth*2)){
+			$("#film").css("left",filmwidth);
+			$("#film").stop();
+			filmwidth = -items * (picWidth + space);
+			srollleft();
+		}
+	}
+});
+</script>
+</body>
+</html>

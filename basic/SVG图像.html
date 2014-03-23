@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>SVG图像</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<style type="text/css">
+</style>
+</head>
+
+<body>
+	<svg class="test" height="100">
+		<circle cx="50" cy="50" r="40" stroke="#dfdfdf" stroke-width="2" fill="#eee" />
+	</svg>
+	<svg height="200">
+		<rect x="50" y="20" width="150" height="150" y="20" rx="20" style="fill:blue;stroke:pink;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9" />
+	</svg>
+	<svg height="200">
+		<ellipse cx="200" cy="80" rx="100" ry="50" style="fill:yellow;stroke:purple;stroke-width:2" />
+	</svg>
+	<svg height="250">
+		<line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
+	</svg>
+	<svg height="200">
+		<polygon points="100,10 40,180 190,60 10,60 160,180" style="fill:lime;stroke:purple;stroke-width:5;fill-rule:nonzero;" />
+		<polygon points="300,10 240,180 390,60 210,60 360,180" style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
+	</svg>
+	<svg height="200">
+		<polyline points="20,20 40,25 60,40 80,120 120,140 200,180" style="fill:none;stroke:black;stroke-width:3" />
+	</svg>
+	<svg height="400" width="450">
+		<path id="lineAB" d="M 100 350 l 150 -300" stroke="red" stroke-width="3" fill="none" />
+		<path id="lineBC" d="M 250 50 l 150 300" stroke="red" stroke-width="3" fill="none" />
+		<path d="M 175 200 l 150 0" stroke="green" stroke-width="3" fill="none" />
+		<path d="M 100 350 q 150 -300 300 0" stroke="blue" stroke-width="5" fill="none" />
+		<!-- Mark relevant points -->
+		<g stroke="black" stroke-width="3" fill="black">
+			<circle id="pointA" cx="100" cy="350" r="3" />
+			<circle id="pointB" cx="250" cy="50" r="3" />
+			<circle id="pointC" cx="400" cy="350" r="3" />
+		</g>
+		<!-- Label the points -->
+		<g font-size="30" font="sans-serif" fill="black" stroke="none" text-anchor="middle">
+			<text x="100" y="350" dx="-30">A</text>
+			<text x="250" y="50" dy="-10">B</text>
+			<text x="400" y="350" dx="30">C</text>
+		</g>
+	</svg>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>翻页图片画廊</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js" type="text/javascript"></script>
+<style>
+.pic_gallary { width:1000px; margin:auto; position:relative; }
+.pic_gallary .gallary_wrap { width:100%; overflow:hidden; position:relative; }
+.pic_gallary .inner_wrap { width:9999px; position:relative; left:0; }
+.pic_gallary p { float:left; }
+.pic_gallary p a { display:inline-block; width:130px; height:130px; overflow:hidden; margin-right:20px; text-align:center; }
+.pic_gallary p a.current, .pic_gallary p a:hover { width:124px; height:124px; border:3px solid #dfdfdf; }
+.pic_gallary p a img { height:100%; }
+.pic_gallary .gallay_pre { position:absolute; left:-50px; top:50%; }
+.pic_gallary .gallay_next { position:absolute; right:-50px; top:50%; }
+.pic_gallary a.disable { color:#aaa; }
+</style>
+<script type="text/javascript">
+$(function(){
+	if($(".pic_gallary").length > 0)
+	{
+		var itemWidth = $(".pic_gallary p").width();
+		var countNum = 0;
+		var globalNum = 0;
+		var thisGalleryItem = $(".pic_gallary p");
+		var containNum = Math.floor($(".gallary_wrap").width() / itemWidth);
+		while(thisGalleryItem.length > 0){
+			globalNum++;
+			thisGalleryItem = thisGalleryItem.next("p");
+		}
+		$(".pic_gallary p:first a").addClass("current");
+		$(".gallay_pre").addClass("disable");
+		$(".paging_btn").on("click",".gallay_pre",function(){
+			$(".gallay_next").removeClass("disable");
+			if(countNum > 0)
+			{
+				countNum--;
+				$(".inner_wrap").animate({
+					left:-itemWidth * countNum
+				},300);
+			}
+			if($(".pic_gallary p a.current").parent().prev("p").length > 0)
+			{
+				$(".pic_gallary p a.current").parent().prev("p").find("a").addClass("mark");
+				$(".pic_gallary p a.current").removeClass("current");
+				$(".pic_gallary p a.mark").addClass("current");
+				$(".pic_gallary p a.mark").removeClass("mark");
+				if($(".pic_gallary p a.current").parent().prev("p").length == 0)
+				{
+					$(".gallay_pre").addClass("disable");
+				}
+			}
+			return false;
+		});
+		$(".paging_btn").on("click",".gallay_next",function(){
+			$(".gallay_pre").removeClass("disable");
+			if(countNum < globalNum - containNum)
+			{
+				countNum++;
+				$(".inner_wrap").animate({
+					left:-itemWidth * countNum
+				},300);
+			}
+			if($(".pic_gallary p a.current").parent().next("p").length > 0)
+			{
+				$(".pic_gallary p a.current").parent().next("p").find("a").addClass("mark");
+				$(".pic_gallary p a.current").removeClass("current");
+				$(".pic_gallary p a.mark").addClass("current");
+				$(".pic_gallary p a.mark").removeClass("mark");
+				if($(".pic_gallary p a.current").parent().next("p").length == 0)
+				{
+					$(".gallay_next").addClass("disable");
+				}
+			}
+			return false;
+		});
+		$(".pic_gallary p").on("click","a",function(){
+			$(".pic_gallary p a").removeClass("current");
+			$(this).addClass("current");
+			if($(".pic_gallary p a.current").parent().prev("p").length > 0 && $(".pic_gallary p a.current").parent().next("p").length > 0)
+			{
+				$(".gallay_pre").removeClass("disable");
+				$(".gallay_next").removeClass("disable");
+			}
+			else {
+				if($(".pic_gallary p a.current").parent().prev("p").length > 0)
+				{
+					$(".gallay_next").addClass("disable");
+				}
+				if($(".pic_gallary p a.current").parent().next("p").length > 0)
+				{
+					$(".gallay_pre").addClass("disable");
+				}
+			}
+		});
+	}
+});
+</script>
+</head>
+<body>
+<div class="pic_gallary">
+	<div class="gallary_wrap">
+    	<div class="inner_wrap clearfix">
+            <p><a href="javascript:;"><img src="http://www.baozang.com/zt/xingweiyishu/images/pic/pic1-1.jpg" alt="" title="" /></a></p>
+            <p><a href="javascript:;"><img src="http://www.baozang.com/zt/xingweiyishu/images/pic/pic1-1.jpg" alt="" title="" /></a></p>
+            <p><a href="javascript:;"><img src="http://www.baozang.com/zt/xingweiyishu/images/pic/pic1-1.jpg" alt="" title="" /></a></p>
+            <p><a href="javascript:;"><img src="http://www.baozang.com/zt/xingweiyishu/images/pic/pic1-1.jpg" alt="" title="" /></a></p>
+            <p><a href="javascript:;"><img src="http://www.baozang.com/zt/xingweiyishu/images/pic/pic2-7.jpg" alt="" title="" /></a></p>
+            <p><a href="javascript:;"><img src="http://www.baozang.com/zt/xingweiyishu/images/pic/pic1-1.jpg" alt="" title="" /></a></p>
+            <p><a href="javascript:;"><img src="http://www.baozang.com/zt/xingweiyishu/images/pic/pic1-1.jpg" alt="" title="" /></a></p>
+            <p><a href="javascript:;"><img src="http://www.baozang.com/zt/xingweiyishu/images/pic/pic1-1.jpg" alt="" title="" /></a></p>
+            <p><a href="javascript:;"><img src="http://www.baozang.com/zt/xingweiyishu/images/pic/pic1-1.jpg" alt="" title="" /></a></p>
+            <p><a href="javascript:;"><img src="http://www.baozang.com/zt/xingweiyishu/images/pic/pic1-1.jpg" alt="" title="" /></a></p>
+        </div>
+    </div>
+    <div class="paging_btn">
+        <a class="gallay_pre" href="javascript:;">上一页</a>
+        <a class="gallay_next" href="javascript:;">下一页</a>
+    </div>
+</div>
+</body>
+</html>

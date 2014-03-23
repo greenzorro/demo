@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>textarea字数限制</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<script type="text/javascript">
+$(function () {
+	// textarea标签的maxlength属性在IE9及更低浏览器中无效
+    $('textarea').focus(function () {
+        limitLength($(this));
+    });
+    function limitLength (thisObj) {
+        var maxLength = thisObj.attr('maxlength'), thisContent;
+        thisObj.keyup(function () {
+            thisContent = thisObj.val()
+            if (thisContent.length > maxLength) {
+                thisObj.val(thisContent.substring(0,maxLength));
+            }
+        });
+    }
+})
+</script>
+</head>
+
+<body>
+	<textarea maxlength="20"></textarea>
+</body>
+</html>

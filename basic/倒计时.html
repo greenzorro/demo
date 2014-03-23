@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>倒计时</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../common/js/jquery-latest.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var countTime = 5;	// seconds
+	var currentTime = countTime;
+	$(".countboard span").html(countTime);
+	$("input#start").click(function(){
+		if($(this).attr("value") == "start"){
+			$(this).attr("value","pause");
+			countdown();
+		}
+		else {
+			$(this).attr("value","start");
+			clearInterval(counter);
+		}
+	});
+	$("input#reset").click(function(){
+		$("input#start").attr("value","start");
+		currentTime = countTime;
+		$(".countboard span").html(countTime);
+		clearInterval(counter);
+	});
+	function countdown(){
+		counter = setInterval(function() {
+			$(".countboard span").html(currentTime--);
+			if (currentTime < 0) {
+				$("input#start").attr("value","start");
+				currentTime = countTime;
+				clearInterval(counter);
+			}
+		}, 1000);
+	}
+});
+</script>
+<style>
+input[type="button"] { float:left; width:70px; height:25px; line-height:25px; text-align:center; }
+</style>
+</head>
+
+<body>
+<div class="countboard">
+    Counting Down: <span></span>
+</div>
+<input id="start" type="button" value="start" />
+<input id="reset" type="button" value="reset" />
+</body>
+</html>

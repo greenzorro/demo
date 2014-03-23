@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>showbox幻灯片</title>
+<link href="../../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../../common/js/jquery-latest.js" type="text/javascript"></script>
+<script src="showbox.js" type="text/javascript"></script>
+<style>
+.showbox { width:482px; height:239px; overflow:hidden; position:relative; }
+.showbox .switchPic a { position:absolute; top:0px; left:0px; z-index:10; }
+.showbox .switchPic a img { width:100%; height:100%; }
+.showbox .transbg { position:absolute; background:#000; z-index:100; opacity:0.5; filter:alpha(opacity=50); width:100%; height:50px; bottom:0px; left:0px; z-index:10; }
+.showbox #recommInfo { width:476px; height:40px; overflow:hidden; padding:5px; color:#fff; position:absolute; left:0px; bottom:0px; z-index:500; }
+.showbox #recommInfo h3 { font-size:14px; line-height:19px;}
+.showbox .btn { position:absolute; bottom:15px; right:15px;}
+.showbox .btn a { float:left; display:block; width:15px; height:15px; overflow:hidden; line-height:15px; background:#242424; margin-right:3px; color:#fff; text-align:center; }
+.showbox .btn a.selected { background:#fff; color:#242424; }
+</style>
+</head>
+
+<body>
+<div class="showbox">
+    <div class="switchPic">
+        <a style="display: block;" href="http://www.baozang.com/zt/chf/"><img src="http://img.baozang.com/201009/17/16/39/1639023013.jpg" ref="<h3>2010跨越欧亚世博行系列活动</h3><p>诠释上海世博会“城市——让生活更美好”的主题理念</p>"></a>
+        <a style="display: none;" href="http://www.baozang.com/zt/xihuxinshanshui/"><img src="http://img.baozang.com/201009/17/16/15/1615347857.jpg" ref="<h3>新西湖山水，尽在新黄龙</h3><p>2010年8月20日 在杭州黄龙饭店举行</p>"></a>
+        <a style="display: none;" href="http://www.baozang.com/zt/sunhaifeng/"><img src="http://img.baozang.com/201009/17/16/40/1640472076.jpg" ref="<h3>孙海峰山水·秀色亦苍茫</h3><p>孙海峰，号夹谷子，1964年9月生，浙江海宁人.....</p>"></a>
+    </div>
+    <div class="transbg"></div>
+    <div id="recommInfo">
+        <div class="btn"></div>
+    </div>
+</div>
+<script>
+$(function(){
+	$(".switchPic").switchPic({
+		infoWrap:"#recommInfo"   
+	});  
+});
+</script>
+</body>
+</html>

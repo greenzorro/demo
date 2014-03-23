@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>面包屑</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../common/js/jquery-latest.js"></script>
+<!--[if IE]>
+<script type="text/javascript" src="../common/js/html5.js"></script>
+<![endif]-->
+<style>
+.crumb { height: 32px; margin: 0 0 20px; padding: 0 0 0 3px; background: url(../common/images/crumb.png) no-repeat left 0px; }
+.crumb span { float: left; display: block; height: 30px; line-height: 30px; padding: 0 13px 0 0; border: 1px solid #eee; border-left: none; border-right: none; background: url(../common/images/crumb.png) no-repeat right -33px; }
+.crumb span a { display: block; padding: 0 10px 0 15px; font-size: 12px; color: #aaa; }
+.crumb span a:hover { color: #777; }
+.crumb span.last { border: none; }
+.crumb span.last a { border: 1px solid #eee; border-left: none; border-right: none; }
+</style>
+</head>
+
+<body>
+
+    <div class="crumb clearfix">
+        <span><a href="#">首页</a></span>
+        <span><a href="#">正能量故事</a></span>
+        <span class="last"><a href="#">地震中的父与子</a></span>
+    </div>
+
+</body>
+</html>

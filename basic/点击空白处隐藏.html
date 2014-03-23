@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>点击空白处隐藏</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<script type="text/javascript">
+window.document.onclick=function eventHandler(e){
+    //获取事件对象
+    e = e || window.event;//IE和Chrome下是window.event FF下是e
+    //获取事件源
+    var target = e.target || e.srcElement;//IE和Chrome下是srcElement FF下是target
+    if(target.getAttribute("class")!='div1'&&target.getAttribute("class")!='div2'&&target.tagName!="A"){
+        for(i=1;i<=2;i++){
+            if($(".div"+i).css("display")=="block"){
+                $(".div"+i).css("display","none");
+            }    
+        }            
+    }
+} 
+function showDiv(i){
+    $(".div"+i).css("display","block");
+}
+</script>
+</head>
+
+<body>
+<!-- 子元素的点击事件会传递给父元素 -->
+<span onclick="showDiv(1)" class="test1"><a href="javascript:;">弹出div1</a></span>
+<a href="javascript:;" class="test2" onclick="showDiv(2)">弹出div2</a>
+<div class="div1" style="display:none;width:100px;height:20px;background:red;">11111111</div>
+<div class="div2" style="display:none;width:100px;height:20px;background:green;color:white;">22222222</div>
+</body>
+</html>
