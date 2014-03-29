@@ -16,13 +16,13 @@
 /*workspace*/
 .workspace { width: 90%; height: 500px; overflow: scroll; margin: auto; border: 5px solid #99c8ec; position: relative; }
 /*.hidden_img { display: none; }*/
-#grid { position: absolute; left: 0; top: 0; }
+#grid { opacity: 0.3; position: absolute; left: 0; top: 0; }
 #grid a { float: left; display: block; border: 1px solid #78775f; }
 #grid a.left { border-left-color: #fd1800; }
 #grid a.right { border-right-color: #fd1800; }
 #grid a.top { border-top-color: #fd1800; }
 #grid a.bottom { border-bottom-color: #fd1800; }
-#grid a.road { background-color: rgba(43,151,232,0.7); }
+#grid a.road { background-color: rgba(43,151,232,1); }
 
 /*animations*/
 a {
