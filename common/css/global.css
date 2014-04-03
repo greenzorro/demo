@@ -1,5 +1,6 @@
 ﻿/*reset*/
 * { margin:0; padding:0; }
+*:focus { outline: none; }
 a img { border:none; }
 ol, ul { list-style:none; }
 button, input[type="submit"], input[type="button"], input[type="reset"] { cursor:pointer; }
