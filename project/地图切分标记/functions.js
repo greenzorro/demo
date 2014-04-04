@@ -1,6 +1,7 @@
 $(function () {
 	gridSize = parseInt($("#grid_size").val());  //网格大小
 	gridX = 0, gridY = 0;  //网格数量
+	marker = 1;  //标记内容
 
 	init();  //选择图片
 
@@ -16,6 +17,22 @@ $(function () {
 		init();  //初始化
     })
 
+    // 标记道路
+    $("#mark_road").click(function () {
+    	marker = 1;
+    })
+
+    // 标记柱子
+    $("#mark_pillar").click(function () {
+    	marker = 2;
+    })
+
+    // 选择标记内容
+    $(".marker_select a").click(function () {
+    	$(this).parent().find("a").removeClass("current");
+    	$(this).addClass("current");
+    })
+
     // 清除标记
     $("#clear_grid").click(function () {
     	clearGrid();
@@ -28,7 +45,7 @@ $(function () {
 
     // 点击标记道路
     $("#grid").on("click", "a", function () {
-    	markGrid($(this));
+    	markGrid($(this), marker);
     })
 
 })
@@ -78,19 +95,27 @@ function gridInit (gridX, gridY) {
 
 // 清除标记
 function clearGrid () {
-	$("#grid a").removeClass("road");
+	for (var i = 0; i < 10; i++) {
+		$("#grid a").removeClass("flag_" + i);
+	};
 	$("#grid a").attr("rel",0);
 }
 
-// 标记道路
-function markGrid (obj) {
-	if (obj.hasClass("road")) {
-		obj.removeClass("road");
+// 标记
+function markGrid (obj, marker_flag) {
+	if (obj.attr("rel") == marker_flag) {
+		removeClassName(obj);
 		obj.attr("rel",0);
 	}
 	else {
-		obj.addClass("road");
-		obj.attr("rel",1);
+		removeClassName(obj);
+		obj.addClass("flag_" + marker_flag);
+		obj.attr("rel",marker_flag);
+	}
+	function removeClassName (obj) {
+		for (var i = 0; i < 10; i++) {
+			obj.removeClass("flag_" + i);
+		};
 	}
 }
 
