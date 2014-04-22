@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>鼠标悬停效果</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js" type="text/javascript"></script>
+<style>
+
+/*demo样式*/
+.html5, .js { padding: 30px 0 20px; border-bottom: 1px solid #dfdfdf; text-align: center; }
+h1 { padding: 0 0 20px; }
+.group { display: inline-block; margin: 0 20px; }
+.group span { line-height: 3em; }
+
+/*HTML5移动效果*/
+.pic_hover_move_css { display: block; width: 400px; height: 250px; overflow: hidden; }
+.pic_hover_move_css img { width: 100%;
+	/*此处设置动画时间*/
+	transition:transform 2s ease-in-out;
+	-moz-transition:-moz-transform 2s ease-in-out;
+	-webkit-transition:-webkit-transform 2s ease-in-out;
+}
+.pic_hover_move_css:hover img {
+	/*为保证最佳效果，上移的距离要算好，不然移过头，框里会露出白边*/
+	transform: translate(0px,-50px);
+	-ms-transform: translate(0px,-50px); /* IE 9 */
+	-webkit-transform: translate(0px,-50px); /* Safari and Chrome */
+	-moz-transform: translate(0px,-50px); /* Firefox */
+}
+
+/*HTML5放大效果*/
+.pic_hover_zoom_css { display: block; width: 400px; height: 250px; overflow: hidden; }
+.pic_hover_zoom_css img { width: 100%;
+	transition:transform 2s ease-in;
+	-moz-transition:-moz-transform 2s ease-in;
+	-webkit-transition:-webkit-transform 2s ease-in;
+}
+.pic_hover_zoom_css:hover img {
+	/*此处设置图片放大的中心点*/
+	transform-origin:50% 50%;
+	-ms-transform-origin:50% 50%;
+	-webkit-transform-origin:50% 50%;
+	-moz-transform-origin:50% 50%;
+	/*此处设置放大倍数*/
+	transform: scale(1.05,1.05);
+	-ms-transform: scale(1.05,1.05); /* IE 9 */
+	-webkit-transform: scale(1.05,1.05); /* Safari and Chrome */
+	-moz-transform: scale(1.05,1.05); /* Firefox */
+}
+
+/*javascript移动效果*/
+.pic_hover_move_js { display: block; width: 400px; height: 250px; overflow: hidden; }
+.pic_hover_move_js img { width: 100%; }
+
+/*javascript放大效果*/
+.pic_hover_zoom_js { display: block; width: 400px; height: 250px; overflow: hidden; }
+.pic_hover_zoom_js img { width: 100%; }
+
+</style>
+</head>
+
+<body>
+
+<!-- class名为pic_hover_****_**的标签（可以是其他标签，例如<a>）是最小单位，只要保证最小单位内的HTML结构，效果就能生效 -->
+<div class="html5">
+	<h1>HTML5</h1>
+	<div class="group">
+		<div class="pic_hover_move_css"><img src="../common/images/photo.jpg" /></div>
+		<span>移动效果</span>
+	</div>
+	<div class="group">
+		<div class="pic_hover_zoom_css"><img src="../common/images/photo.jpg" /></div>
+		<span>放大效果</span>
+	</div>
+</div>
+
+<div class="js">
+	<h1>javascript</h1>
+	<div class="group">
+		<div class="pic_hover_move_js"><img src="../common/images/photo.jpg" /></div>
+		<span>移动效果</span>
+	</div>
+	<div class="group">
+		<div class="pic_hover_zoom_js"><img src="../common/images/photo.jpg" /></div>
+		<span>放大效果</span>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+
+// javascript移动效果
+$(".pic_hover_move_js").hover(
+	function () {
+		$(this).find("img").css({"position":"relative","left":"0px","top":"0px"});
+		$(this).find("img").animate({
+			top: -50  //为保证最佳效果，上移的距离要算好，不然移过头，框里会露出白边
+		},500);
+	},
+	function () {
+		$(this).find("img").stop();  //鼠标离开图片后，停止移动
+		$(this).find("img").animate({
+			top: 0
+		},500);
+	}
+)
+
+// javascript放大效果
+var wrapWidth = $(".pic_hover_zoom_js").width();  //获取外框的宽度
+var wrapHeight = $(".pic_hover_zoom_js").height();  //获取外框的高度
+$(".pic_hover_zoom_js").hover(
+	function () {
+		$(this).find("img").css({"position":"relative","left":"0px","top":"0px"});  //将图片设为相对定位
+		$(this).find("img").animate({
+			width: wrapWidth*1.05,  //设置放大倍数
+			left: -wrapWidth*0.025,  //图片相对定位横坐标 = -外框宽度*(放大倍数-1)/2
+			top: -wrapHeight*0.025  //图片相对定位纵坐标 = -外框高度*(放大倍数-1)/2
+		},300);  //javascript效果不如HTML5流畅，所以动画时间不能设置太长，否则有卡顿感
+	},
+	function () {
+		$(this).find("img").stop();  //鼠标离开图片后，停止放大
+		$(this).find("img").animate({
+			width: wrapWidth,
+			left: 0,
+			top: 0
+		},300);
+	}
+)
+
+})
+</script>
+</body>
+</html>
