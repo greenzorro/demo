@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>CSS三角箭头</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<style type="text/css">
+p { width: 120px; margin: 200px auto 0; }
+.center { float: left; display: inline-block; width: 10px; height: 10px; margin: 15px; background: #333; }
+.css_arrow { float: left; display: inline-block; width: 0; height: 0; line-height: 0; margin: 15px; }
+.top { border-left: 5px dashed transparent; border-right: 5px dashed transparent; border-top: 5px dashed transparent; border-bottom: 5px solid #333; }
+.bottom { border-left: 5px dashed transparent; border-right: 5px dashed transparent; border-top: 5px solid #333; border-bottom: 5px dashed transparent; }
+.left { border-top: 5px dashed transparent; border-bottom: 5px dashed transparent; border-left: 5px dashed transparent; border-right: 5px solid #333; }
+.right { border-top: 5px dashed transparent; border-bottom: 5px dashed transparent; border-left: 5px solid #333; border-right: 5px dashed transparent; }
+.top_left { border-left: 5px solid #333; border-right: 5px dashed transparent; border-top: 5px solid #333; border-bottom: 5px dashed transparent; }
+.top_right { border-left: 5px dashed transparent; border-right: 5px solid #333; border-top: 5px solid #333; border-bottom: 5px dashed transparent; }
+.bottom_left { border-left: 5px solid #333; border-right: 5px dashed transparent; border-top: 5px dashed transparent; border-bottom: 5px solid #333; }
+.bottom_righ { border-left: 5px dashed transparent; border-right: 5px solid #333; border-top: 5px dashed transparent; border-bottom: 5px solid #333; }
+</style>
+</head>
+
+<body>
+	<p>
+	    <i class="top_left css_arrow"></i>
+	    <i class="top css_arrow"></i>
+	    <i class="top_right css_arrow"></i>
+	    <i class="left css_arrow"></i>
+	    <i class="center"></i>
+	    <i class="right css_arrow"></i>
+	    <i class="bottom_left css_arrow"></i>
+	    <i class="bottom css_arrow"></i>
+	    <i class="bottom_righ css_arrow"></i>
+	</p>
+</body>
+</html>

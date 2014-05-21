@@ -8,7 +8,8 @@
 <style>
 p { clear:both; }
 h1 a { float:left; }
-p a { display:block; width:500px; height:500px; margin-bottom:10px; background:#dfdfdf; }
+p a { display:block; width:500px; height:1000px; margin-bottom:10px; background:#dfdfdf; }
+.go_top { display: block; width: 40px; height: 40px; line-height: 40px; background: #eee; text-align: center; color: #333; font-size: 14px; position: fixed; right: 0; top: 70%; }
 </style>
 </head>
 <body>
@@ -22,6 +23,7 @@ p a { display:block; width:500px; height:500px; margin-bottom:10px; background:#
     <a name="a2">a2</a>
     <a name="a3">a3</a>
 </p>
+<a class="go_top" href="#">↑</a>
 <script type="text/javascript">
 //	锚链接平滑移动
 	$("a[href*='#']").click(function() {

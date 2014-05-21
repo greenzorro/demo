@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>虚拟键盘</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<style>
+.keyboard_active { border-color: red; }
+.v_keyboard { position: relative; }
+.v_keyboard .keyboard { width: 320px; padding: 20px 20px 30px; background: #fff; border: 1px solid #dfdfdf; border-radius: 5px; box-shadow: 0 1px 5px #dfdfdf; position: absolute; left: 0; top: 30px; z-index: 999; }
+.v_keyboard .keyboard p { margin: 0 0 20px; }
+.v_keyboard .keyboard p:last-of-child { margin: 0; }
+.v_keyboard .keyboard p a { display: inline-block; width: 30px; height: 36px; line-height: 36px; margin: 1px; background: #f5f5f5; border-radius: 3px; color: #333; text-align: center; font-size: 12px; }
+.v_keyboard .keyboard p a:hover { background-color: #eee; }
+.v_keyboard .keyboard .close { display: block; height: 36px; line-height: 36px; margin: auto; border-radius: 3px; background: #586d77; color: #fff; text-align: center; font-size: 14px; }
+.v_keyboard .keyboard .close:hover { background-color: #50646e; }
+.v_keyboard .keyboard span { display: block; margin: 10px 0 0; text-align: center; }
+.v_keyboard .keyboard span a { display: inline-block; width: 155px; height: 30px; line-height: 30px; border-radius: 3px; background: #d83e54; color: #fff; text-align: center; font-size: 12px; }
+.v_keyboard .keyboard span a:hover { background-color: #cf354b; }
+.v_keyboard .keyboard .backspace { position: relative; }
+.v_keyboard .keyboard .clearall { margin: 0 0 0 10px; }
+</style>
+<script type="text/javascript">
+$(function () {
+	// 定义键盘按钮
+	var keyboardBtn = new Array();
+	keyboardBtn[0] = ["京","沪","浙","苏","粤","鲁","晋","冀","豫","川","渝","辽","吉","黑","皖","鄂","湘","赣","闽","陕","甘","宁","蒙","津","贵","云","桂","琼","青","新","藏"];
+	keyboardBtn[1] = ["1","2","3","4","5","6","7","8","9","0","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
+	// 获得焦点时生成键盘
+    $(".v_keyboard input").focus(function () {
+        keyboardClear();  //清除键盘
+        $(this).addClass("keyboard_active");  //添加输入框焦点样式
+        var wrapper = $(this).parent();
+        wrapper.append("<div class='keyboard'></div>");  //创建键盘容器
+    	for (var i = 0; i < keyboardBtn.length; i++) {  //输出键盘按钮
+    		wrapper.find(".keyboard").append("<p></p>");
+    		for (var j = 0; j < keyboardBtn[i].length; j++) {
+    			wrapper.find(".keyboard p:last-child").append("<a href='javascript:;'>" + keyboardBtn[i][j] + "</a>");
+    		};
+    	};
+    	wrapper.find(".keyboard").append("<a class='close' href='javascript:;'>完成</a><span><a class='backspace' href='javascript:;'>退格</a><a class='clearall' href='javascript:;'>清空</a></span>");  //输出功能按钮
+    })
+
+    // 点击输入文字
+    $(".v_keyboard").on("click","p a",function () {
+    	var inputBox = $(this).parent().parent().parent().find("input");
+    	inputBox.val(inputBox.val() + $(this).html());
+    })
+
+    // 点击退格
+    $(".v_keyboard").on("click",".backspace",function () {
+    	var inputBox = $(this).parent().parent().parent().find("input");
+    	inputBox.val(inputBox.val().substring(0,inputBox.val().length - 1));
+    })
+
+    // 点击清空输入框
+    $(".v_keyboard").on("click",".clearall",function () {
+    	$(this).parent().parent().parent().find("input").val("");
+    })
+
+    // 点击关闭键盘
+    $(".v_keyboard").on("click",".close",function () {
+        keyboardClear();
+    })
+
+    // 清除键盘
+    function keyboardClear () {
+        $(".keyboard").remove();  //清除已有键盘
+        $(".keyboard_active").removeClass("keyboard_active");  //清除输入框焦点样式
+    }
+})
+</script>
+</head>
+
+<body>
+<div class="v_keyboard">
+    <input type="text" />
+</div>
+</body>
+</html>
