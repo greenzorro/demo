@@ -35,7 +35,12 @@ $(function () {
         var wrapper = $(this).parent();
         wrapper.append("<div class='keyboard'></div>");  //创建键盘容器
     	for (var i = 0; i < keyboardBtn.length; i++) {  //输出键盘按钮
-    		wrapper.find(".keyboard").append("<p></p>");
+            if (i == 0) {
+                wrapper.find(".keyboard").append("<p class='province'></p>");
+            }
+            else {
+        		wrapper.find(".keyboard").append("<p></p>");
+            }
     		for (var j = 0; j < keyboardBtn[i].length; j++) {
     			wrapper.find(".keyboard p:last-child").append("<a href='javascript:;'>" + keyboardBtn[i][j] + "</a>");
     		};
@@ -45,8 +50,13 @@ $(function () {
 
     // 点击输入文字
     $(".v_keyboard").on("click","p a",function () {
-    	var inputBox = $(this).parent().parent().parent().find("input");
-    	inputBox.val(inputBox.val() + $(this).html());
+        var inputBox = $(this).parent().parent().parent().find("input");
+        if ($(this).parent().hasClass("province") && inputBox.val() != "") {
+            inputBox.val($(this).html() + inputBox.val().substring(1,inputBox.val().length));
+        }
+        else {
+            inputBox.val(inputBox.val() + $(this).html());
+        }
     })
 
     // 点击退格
@@ -76,7 +86,7 @@ $(function () {
 
 <body>
 <div class="v_keyboard">
-    <input type="text" />
+    <input type="text" value="浙" />
 </div>
 </body>
 </html>
