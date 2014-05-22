@@ -20,6 +20,8 @@
 .v_keyboard .keyboard span a:hover { background-color: #cf354b; }
 .v_keyboard .keyboard .backspace { position: relative; }
 .v_keyboard .keyboard .clearall { margin: 0 0 0 10px; }
+.v_keyboard .keyboard .num { text-align: center; }
+.v_keyboard .keyboard .num a { width: 32%; height: 50px; line-height: 50px; font-size: 18px; }
 </style>
 <script type="text/javascript">
 $(function () {
@@ -34,17 +36,25 @@ $(function () {
         $(this).addClass("keyboard_active");  //添加输入框焦点样式
         var wrapper = $(this).parent();
         wrapper.append("<div class='keyboard'></div>");  //创建键盘容器
-    	for (var i = 0; i < keyboardBtn.length; i++) {  //输出键盘按钮
-            if (i == 0) {
-                wrapper.find(".keyboard").append("<p class='province'></p>");
-            }
-            else {
-        		wrapper.find(".keyboard").append("<p></p>");
-            }
-    		for (var j = 0; j < keyboardBtn[i].length; j++) {
-    			wrapper.find(".keyboard p:last-child").append("<a href='javascript:;'>" + keyboardBtn[i][j] + "</a>");
-    		};
-    	};
+        if (wrapper.hasClass("num")) {
+            wrapper.find(".keyboard").append("<p class='num'></p>");
+            for (var i = 0; i < 10; i++) {  //输出数字键盘
+                wrapper.find(".keyboard p:last-child").append("<a href='javascript:;'>" + keyboardBtn[1][i] + "</a>");
+            };
+        }
+        else {
+            for (var i = 0; i < keyboardBtn.length; i++) {  //输出键盘按钮
+                if (i == 0) {
+                    wrapper.find(".keyboard").append("<p class='province'></p>");
+                }
+                else {
+                    wrapper.find(".keyboard").append("<p></p>");
+                }
+                for (var j = 0; j < keyboardBtn[i].length; j++) {
+                    wrapper.find(".keyboard p:last-child").append("<a href='javascript:;'>" + keyboardBtn[i][j] + "</a>");
+                };
+            };
+        }
     	wrapper.find(".keyboard").append("<a class='close' href='javascript:;'>完成</a><span><a class='backspace' href='javascript:;'>退格</a><a class='clearall' href='javascript:;'>清空</a></span>");  //输出功能按钮
     })
 
@@ -87,6 +97,9 @@ $(function () {
 <body>
 <div class="v_keyboard">
     <input type="text" value="浙" />
+</div>
+<div class="num v_keyboard">
+    <input type="text" />
 </div>
 </body>
 </html>
