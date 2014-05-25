@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>响应式</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<style type="text/css">
+p { height: 100px; text-align: center;
+	transition:height 0.5s, line-height 0.5s;
+	-moz-transition:height 0.5s, line-height 0.5s;
+	-webkit-transition:height 0.5s, line-height 0.5s;
+}
+@media only screen and (max-width:1920px){
+	p { height: 100px; line-height: 100px; background: #f5f5f5; }
+}
+@media only screen and (max-width:1024px){
+	p { height: 150px; line-height: 150px; background: #eee; }
+}
+@media only screen and (max-width:768px){
+	p { height: 200px; line-height: 200px; background: #dfdfdf; }
+}
+@media only screen and (max-width:568px){
+	p { height: 250px; line-height: 250px; background: #ccc; }
+}
+@media only screen and (max-width:320px){
+	p { height: 300px; line-height: 300px; background: #aaa; }
+}
+</style>
+<script>
+$(function () {
+	$(window).load(function () {
+		var winWidth = $(window).width();
+		$("p").html("window-width: " + winWidth + "px");
+	})
+	$(window).resize(function () {
+		var winWidth = $(window).width();
+		$("p").html("window-width: " + winWidth + "px");
+	})
+})
+</script>
+</head>
+
+<body>
+<p></p>
+</body>
+</html>
