@@ -6,14 +6,76 @@
 <link href="../common/css/global.css" rel="stylesheet" type="text/css" />
 <script src="../common/js/jquery-latest.js"></script>
 <style type="text/css">
-img { clip: rect(auto,auto,auto,100px); position: absolute; left: 0; top: 0; }
-p img { clip: rect(auto,100px,auto,auto); }
+.test { width: 200px; margin: 100px auto 0; }
+.form { margin: 30px 0 0; }
+.form input { width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #dfdfdf; box-shadow: inset 0 0 5px #dfdfdf; }
+.circle_progress .style { line-height: 180px; text-align: center; color: #3fb2ab; font-size: 24px; font-weight: bold; font-family: verdana, sans-serif; }
+
+/* circle progress style */
+.circle_progress { width: 200px; height: 200px; background: #6ed8d2; border-radius: 50%; position: relative; }
+.circle_progress .pie_left_wrap,
+.circle_progress .pie_left,
+.circle_progress .pie_right_wrap,
+.circle_progress .pie_right { display: block; width: 100%; height: 100%; position: absolute; left: 0; top: 0; }
+.circle_progress .pie_left_wrap,
+.circle_progress .pie_left { clip: rect(auto,100px,auto,auto); }
+.circle_progress .pie_right_wrap,
+.circle_progress .pie_right { clip: rect(auto,auto,auto,100px); }
+.circle_progress .pie_left,
+.circle_progress .pie_right { background: #3fb2ab; border-radius: 50%;
+	transition: transform 0.5 ease-in;
+	-webkit-transition: -webkit-transform 0.5 ease-in;
+	-moz-transition: -moz-transform 0.5 ease-in;
+}
+.circle_progress .pie_left { }
+.circle_progress .pie_right { }
+.circle_progress .center { width: 180px; height: 180px; background: #fff; border-radius: 50%; position: absolute; left: 10px; top: 10px; }
 </style>
 </head>
 
 <body>
-<p>
-	<img src="../common/images/photo.jpg" />
-</p>
+<div class="test">
+	<div class="circle_progress">
+		<div class="pie_left_wrap"><span class="pie_left"></span></div>
+		<div class="pie_right_wrap"><span class="pie_right"></span></div>
+		<div class="style center">
+			30%
+		</div>
+	</div>
+	<div class="form">
+		<input type="number" value="30" />
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+	setPercentage($("input").val(),$(".circle_progress"));  //初始化进度条
+	// 输入框控制进度条
+	$("input").keyup(function () {
+		setPercentage($(this).val(),$(".circle_progress"));
+		$(".circle_progress .center").html($(this).val() + "%");
+	}).bind("paste",function(){
+		setPercentage($(this).val(),$(".circle_progress"));
+		$(".circle_progress .center").html($(this).val() + "%");
+	}).change(function(){
+		setPercentage($(this).val(),$(".circle_progress"));
+		$(".circle_progress .center").html($(this).val() + "%");
+	});
+
+	// 设置进度
+	function setPercentage (n,obj) {
+		if (n >= 0 && n < 50) {
+			obj.find(".pie_right").css({"transform":"rotate(" + n/100*360 + "deg)","transform-origin":"50% 50%"})
+			obj.find(".pie_left").css({"transform":"rotate(0deg)","transform-origin":"50% 50%"})
+		}
+		else if (n >= 50 && n <= 100) {
+			obj.find(".pie_right").css({"transform":"rotate(180deg)","transform-origin":"50% 50%"})
+			obj.find(".pie_left").css({"transform":"rotate(" + (n-50)/100*360 + "deg)","transform-origin":"50% 50%"})
+		}
+		else {
+		}
+	}
+})
+</script>
 </body>
 </html>
