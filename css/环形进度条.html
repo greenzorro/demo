@@ -9,10 +9,10 @@
 .test { width: 200px; margin: 100px auto 0; }
 .form { margin: 30px 0 0; }
 .form input { width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #dfdfdf; box-shadow: inset 0 0 5px #dfdfdf; }
-.circle_progress .style { line-height: 180px; text-align: center; color: #3fb2ab; font-size: 24px; font-weight: bold; font-family: verdana, sans-serif; }
+.circle_progress .style { line-height: 180px; text-align: center; color: #86d592; font-size: 24px; font-weight: bold; font-family: verdana, sans-serif; }
 
 /* circle progress style */
-.circle_progress { width: 200px; height: 200px; background: #6ed8d2; border-radius: 50%; position: relative; }
+.circle_progress { width: 200px; height: 200px; background: #86d592; border-radius: 50%; position: relative; }
 .circle_progress .pie_left_wrap,
 .circle_progress .pie_left,
 .circle_progress .pie_right_wrap,
@@ -22,13 +22,14 @@
 .circle_progress .pie_right_wrap,
 .circle_progress .pie_right { clip: rect(auto,auto,auto,100px); }
 .circle_progress .pie_left,
-.circle_progress .pie_right { background: #3fb2ab; border-radius: 50%;
-	transition: transform 0.5 ease-in;
-	-webkit-transition: -webkit-transform 0.5 ease-in;
-	-moz-transition: -moz-transform 0.5 ease-in;
+.circle_progress .pie_right { background: #ebf2ec; border-radius: 50%;
+	transition: transform 0.5s linear;
+	-webkit-transition: -webkit-transform 0.5s linear;
+	-moz-transition: -moz-transform 0.5s linear;
+	transform-origin: 50% 50%;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50% 50%;
 }
-.circle_progress .pie_left { }
-.circle_progress .pie_right { }
 .circle_progress .center { width: 180px; height: 180px; background: #fff; border-radius: 50%; position: absolute; left: 10px; top: 10px; }
 </style>
 </head>
@@ -36,8 +37,8 @@
 <body>
 <div class="test">
 	<div class="circle_progress">
-		<div class="pie_left_wrap"><span class="pie_left"></span></div>
-		<div class="pie_right_wrap"><span class="pie_right"></span></div>
+		<div class="pie_left_wrap pie_wrap"><span class="pie_left"></span></div>
+		<div class="pie_right_wrap pie_wrap"><span class="pie_right"></span></div>
 		<div class="style center">
 			30%
 		</div>
@@ -49,30 +50,93 @@
 
 <script type="text/javascript">
 $(function () {
-	setPercentage($("input").val(),$(".circle_progress"));  //初始化进度条
+	setPercentage(parseInt($(".circle_progress .center").html())/100,parseInt($("input").val())/100,$(".circle_progress"));  //初始化进度条
 	// 输入框控制进度条
 	$("input").keyup(function () {
-		setPercentage($(this).val(),$(".circle_progress"));
+		setPercentage(parseInt($(".circle_progress .center").html())/100,parseInt($(this).val())/100,$(".circle_progress"));
 		$(".circle_progress .center").html($(this).val() + "%");
 	}).bind("paste",function(){
-		setPercentage($(this).val(),$(".circle_progress"));
+		setPercentage(parseInt($(".circle_progress .center").html())/100,parseInt($(this).val())/100,$(".circle_progress"));
 		$(".circle_progress .center").html($(this).val() + "%");
 	}).change(function(){
-		setPercentage($(this).val(),$(".circle_progress"));
+		setPercentage(parseInt($(".circle_progress .center").html())/100,parseInt($(this).val())/100,$(".circle_progress"));
 		$(".circle_progress .center").html($(this).val() + "%");
 	});
 
-	// 设置进度
-	function setPercentage (n,obj) {
-		if (n >= 0 && n < 50) {
-			obj.find(".pie_right").css({"transform":"rotate(" + n/100*360 + "deg)","transform-origin":"50% 50%"})
-			obj.find(".pie_left").css({"transform":"rotate(0deg)","transform-origin":"50% 50%"})
+	// 设置进度条，3个参数分别为：旧百分比、新百分比、作用对象
+	function setPercentage (m,n,obj) {
+		var speed = 0.5  //设置动画时长（单位：秒）
+		if (n >= 0 && n < 0.5) {  //是否低于50%
+			if (m >= 0.5) {  //跨越50%时，动画分两段播放，将第二段延迟
+				resetTime();  //重置延迟与动画时间
+				obj.find(".pie_left").css({
+					// 计算左半环的动画时间
+					"transition-duration":speed/(m-n)*(m-0.5) + "s",
+					"-webkit-transition-duration":speed/(m-n)*(m-0.5) + "s",
+					"-moz-transition-duration":speed/(m-n)*(m-0.5) + "s"
+				})
+				obj.find(".pie_right").css({
+					// 计算右半环的动画时间
+					"transition-duration":speed/(m-n)*(0.5-n) + "s",
+					"-webkit-transition-duration":speed/(m-n)*(0.5-n) + "s",
+					"-moz-transition-duration":speed/(m-n)*(0.5-n) + "s",
+					// 将左半环动画时间，设置为右半环的延迟
+					"transition-delay":speed/(m-n)*(m-0.5) + "s",
+					"-webkit-transition-delay":speed/(m-n)*(m-0.5) + "s",
+					"-moz-transition-delay":speed/(m-n)*(m-0.5) + "s"
+				})
+			}
+			obj.find(".pie_right").css({  //将右半环转到相应位置
+				"transform":"rotate(" + n*360 + "deg)",
+				"-webkit-transform":"rotate(" + n*360 + "deg)",
+				"-moz-transform":"rotate(" + n*360 + "deg)"
+			})
+			obj.find(".pie_left").css({  //将左半环转到默认位置
+				"transform":"rotate(0deg)",
+				"-webkit-transform":"rotate(0deg)",
+				"-moz-transform":"rotate(0deg)"
+			})
 		}
-		else if (n >= 50 && n <= 100) {
-			obj.find(".pie_right").css({"transform":"rotate(180deg)","transform-origin":"50% 50%"})
-			obj.find(".pie_left").css({"transform":"rotate(" + (n-50)/100*360 + "deg)","transform-origin":"50% 50%"})
+		else if (n >= 0.5 && n <= 1) {  //是否超过50%
+			if (m <= 0.5) {  //跨越50%时，动画分两段播放，将第二段延迟
+				resetTime();  //重置延迟与动画时间
+				obj.find(".pie_right").css({
+					// 计算右半环的动画时间
+					"transition-duration":speed/(n-m)*(0.5-m) + "s",
+					"-webkit-transition-duration":speed/(n-m)*(0.5-m) + "s",
+					"-moz-transition-duration":speed/(n-m)*(0.5-m) + "s"
+				})
+				obj.find(".pie_left").css({
+					// 计算左半环的动画时间
+					"transition-duration":speed/(n-m)*(n-0.5) + "s",
+					"-webkit-transition-duration":speed/(n-m)*(n-0.5) + "s",
+					"-moz-transition-duration":speed/(n-m)*(n-0.5) + "s",
+					// 将右半环动画时间，设置为左半环的延迟
+					"transition-delay":speed/(n-m)*(0.5-m) + "s",
+					"-webkit-transition-delay":speed/(n-m)*(0.5-m) + "s",
+					"-moz-transition-delay":speed/(n-m)*(0.5-m) + "s"
+				})
+			}
+			obj.find(".pie_right").css({  //将右半环转到默认位置
+				"transform":"rotate(180deg)",
+				"-webkit-transform":"rotate(180deg)",
+				"-moz-transform":"rotate(180deg)"
+			})
+			obj.find(".pie_left").css({  //将左半环转到相应位置
+				"transform":"rotate(" + (n-0.5)*360 + "deg)",
+				"-webkit-transform":"rotate(" + (n-0.5)*360 + "deg)",
+				"-moz-transform":"rotate(" + (n-0.5)*360 + "deg)"
+			})
 		}
-		else {
+		function resetTime () {  //重置延迟与动画时间
+			obj.find(".pie_wrap span").css({
+				"transition-delay":"0",
+				"-webkit-transition-delay":"0",
+				"-moz-transition-delay":"0",
+				"transition-duration":speed + "s",
+				"-webkit-transition-duration":speed + "s",
+				"-moz-transition-duration":speed + "s"
+			});
 		}
 	}
 })
