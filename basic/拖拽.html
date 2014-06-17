@@ -20,7 +20,7 @@ $(function () {
 	// 拖拽函数，参数为拖拽框限定容器对象
 	function dragEle (obj) {
 		var dragBox = obj.find(".drag_box");
-		dragBox.mousedown(function (){
+		dragBox.mousedown(function (event){
 			var halfWidth = dragBox.width()/2;  //计算拖拽元素一半宽度
 			var halfHeight = dragBox.height()/2;  //计算拖拽元素一半高度
 			var x = event.clientX;  //获取按下位置x坐标
@@ -98,8 +98,8 @@ $(function () {
 				else {
 					dragBox.css({"top":y + $(window).scrollTop() - obj.offset().top - posTop + "px"});
 				}
-				return false;  //阻止默认的拖拽选择效果
 			})
+			event.preventDefault();  //阻止默认按下事件，防止firefox拖拽打开url
 		});
 		$(document).mouseup(function (){
 			$(this).unbind("mousemove");
