@@ -98,8 +98,9 @@ $(function () {
 				else {
 					dragBox.css({"top":y + $(window).scrollTop() - obj.offset().top - posTop + "px"});
 				}
+				return false;  //防止拖拽产生选区
 			})
-			event.preventDefault();  //阻止默认按下事件，防止firefox拖拽打开url
+			return false;  //阻止默认按下事件，防止firefox拖拽打开url
 		});
 		$(document).mouseup(function (){
 			$(this).unbind("mousemove");
