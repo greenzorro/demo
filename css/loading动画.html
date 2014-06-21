@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>loading动画</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<style type="text/css">
+.test { width: 200px; margin: 100px auto 0; border: 1px solid #dfdfdf; }
+.loading { width: 200px; height: 200px; position: relative; }
+.loading .wrap { width: 100%; height: 100%; position: absolute; left: 0; top: 0; }
+.loading p { display: table-cell; width: 200px; height: 200px; vertical-align: middle; }
+.loading p:after { content: "."; display: block; width: 25%; height: 25%; overflow: hidden; margin: auto; border-radius: 50%; text-indent: -100%; z-index: 5;
+	transiform-origin: 50% 50%;
+	-webkit-transiform-origin: 50% 50%;
+}
+.loading .left:after { background: #2093ce;
+	animation:loading_left 1.5s linear infinite;
+	-webkit-animation:loading_left 10s ease-in infinite;
+}
+.loading .right:after { background: #6e4b5a;
+	animation:loading_right 1.5s linear infinite;
+	-webkit-animation:loading_right 10s ease-in infinite;
+}
+@keyframes loading_left
+{
+	0%	{ background:red; }
+	100%{ background:red; }
+}
+@-webkit-keyframes loading_left
+{
+	0%	{ -webkit-transform: matrix(0.6,0,0,0.6,0,0); z-index: 5; }
+	25%	{ -webkit-transform: matrix(0.8,0,0,0.8,-50,0); z-index: 6; }
+	50%	{ -webkit-transform: matrix(1,0,0,1,0,0); z-index: 6; }
+	75%	{ -webkit-transform: matrix(0.8,0,0,0.8,50,0); z-index: 5; }
+	100%{ -webkit-transform: matrix(0.6,0,0,0.6,0,0); z-index: 5; }
+}
+@keyframes loading_right
+{
+	0%	{ background:red; }
+	100%{ background:red; }
+}
+@-webkit-keyframes loading_right
+{
+	0%	{ -webkit-transform: matrix(1,0,0,1,0,0); z-index: 6; }
+	25%	{ -webkit-transform: matrix(0.8,0,0,0.8,50,0); z-index: 5; }
+	50%	{ -webkit-transform: matrix(0.6,0,0,0.6,0,0); z-index: 5; }
+	75%	{ -webkit-transform: matrix(0.8,0,0,0.8,-50,0); z-index: 6; }
+	100%{ -webkit-transform: matrix(1,0,0,1,0,0); z-index: 6; }
+}
+</style>
+</head>
+
+<body>
+<div class="test">
+	<div class="loading">
+		<div class="wrap"><p class="left"></p></div>
+		<div class="wrap"><p class="right"></p></div>
+	</div>
+</div>
+</body>
+</html>

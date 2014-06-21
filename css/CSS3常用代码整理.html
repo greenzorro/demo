@@ -40,47 +40,30 @@
 .font p { float:left; font-family:handwriting; font-size:36px; }
 
 /*******  translate 2D  *********************************************/
-.trans2d div { float:left; width:100px; height:50px; line-height:50px; margin-right:10px; background:#E6FFFD; border:1px solid #8DC4EB; text-align:center; }
+.trans2d div { float:left; width:100px; height:50px; line-height:50px; margin-right:10px; background:#E6FFFD; border:1px solid #8DC4EB; text-align:center;
+	transform-origin:100% 100%;
+	-webkit-transform-origin:100% 100%;
+}
 .trans2d .translate {
 	transform: translate(5px,10px);
-	-ms-transform: translate(5px,10px); /* IE 9 */
 	-webkit-transform: translate(5px,10px); /* Safari and Chrome */
-	-o-transform: translate(5px,10px); /* Opera */
-	-moz-transform: translate(5px,10px); /* Firefox */
 }
 .trans2d .rotate {
 	transform: rotate(-15deg);
-	transform-origin:100% 100%;
-	-ms-transform: rotate(-15deg); /* IE 9 */
-	-ms-transform-origin:100% 100%;
 	-webkit-transform: rotate(-15deg); /* Safari and Chrome */
-	-webkit-transform-origin:100% 100%;
-	-o-transform: rotate(-15deg); /* Opera */
-	-o-transform-origin:100% 100%;
-	-moz-transform: rotate(-15deg); /* Firefox */
-	-moz-transform-origin:100% 100%;
 }
 .trans2d .scale {
 	transform: scale(0.5,1.2);
-	-ms-transform: scale(0.5,1.2); /* IE 9 */
 	-webkit-transform: scale(0.5,1.2); /* Safari and Chrome */
-	-o-transform: scale(0.5,1.2); /* Opera */
-	-moz-transform: scale(0.5,1.2); /* Firefox */
 }
 .trans2d .skew {
 	transform: skew(15deg,10deg);
-	-ms-transform: skew(15deg,10deg); /* IE 9 */
 	-webkit-transform: skew(15deg,10deg); /* Safari and Chrome */
-	-o-transform: skew(15deg,10deg); /* Opera */
-	-moz-transform: skew(15deg,10deg); /* Firefox */
 }
 .trans2d .matrix {
 	/* how to use matrix (http://www.css88.com/tool/css3Preview/Transform-Matrix.html) */
 	transform:matrix(1.0,0.0,0.0,1.0,0,0);
-	-ms-transform:matrix(1.0,0.0,0.0,1.0,0,0); /* IE 9 */
-	-moz-transform:matrix(1.0,0.0,0.0,1.0,0,0); /* Firefox */
 	-webkit-transform:matrix(1.0,0.0,0.0,1.0,0,0); /* Safari and Chrome */
-	-o-transform:matrix(1.0,0.0,0.0,1.0,0,0); /* Opera */
 }
 
 /*******  translate 3D  *********************************************/
@@ -96,23 +79,16 @@
 }
 .transitions .transitions1 {
 	transition:width 2s, background-color 2s, color 2s, transform 2s;
-	-moz-transition:width 2s, background-color 2s, color 2s, -moz-transform 2s;
 	-webkit-transition:width 2s, background-color 2s, color 2s, -webkit-transform 2s;
-	-o-transition:width 2s, background-color 2s, color 0.5s, -o-transform 2s;
 }
 .transitions .transitions1:hover {
 	width:200px; background:#0CF; color:#fff;
 	transform: rotate(-720deg);
 	-webkit-transform: rotate(-720deg); /* Safari and Chrome */
-	-o-transform: rotate(-720deg); /* Opera */
-	-moz-transform: rotate(-720deg); /* Firefox */
 }
 .transitions .transitions2 {
 	/* several transition effects (http://www.w3schools.com/cssref/tryit.asp?filename=trycss3_transition-timing-function2)*/
 	transition:width 2s, height 1s ease-in 2s, background-color 2s, color 2s;
-	-moz-transition:width 2s, height 1s ease-in 2s, background-color 2s, color 2s;
-	-webkit-transition:width 2s, height 1s ease-in 2s, background-color 2s, color 2s;
-	-o-transition:width 2s, height 1s ease-in 2s, background-color 2s, color 0.5s;
 }
 .transitions .transitions2:hover {
 	width:500px; height:150px; background:#F60; color:#fff;
@@ -121,14 +97,6 @@
 /*******  animations  *********************************************/
 .animations div { float:left; width:100px; height:100px; margin-right:10px; background:#ccc; }
 @keyframes changecolor
-{
-	0%	{ background:red; }
-	25%	{ background:yellow; }
-	50%	{ background:blue; }
-	75%	{ background:green; }
-	100%{ background:red; }
-}
-@-moz-keyframes changecolor
 {
 	0%	{ background:red; }
 	25%	{ background:yellow; }
@@ -152,14 +120,6 @@
 	75%	{ width:50px; height:100px; }
 	100%{ width:100px; height:100px; }
 }
-@-moz-keyframes changeshape
-{
-	0%	{ width:100px; height:100px; }
-	25%	{ width:100px; height:50px; }
-	50%	{ width:50px; height:50px; }
-	75%	{ width:50px; height:100px; }
-	100%{ width:100px; height:100px; }
-}
 @-webkit-keyframes changeshape
 {
 	0%	{ width:100px; height:100px; }
@@ -170,37 +130,30 @@
 }
 .animations .animations1 {
 	animation:changecolor 4s linear infinite;
-	-moz-animation:changecolor 4s linear infinite;
 	-webkit-animation:changecolor 4s linear infinite;
 }
 .animations .animations2 {
 	animation:changeshape 4s ease-in 5s 2 alternate;
-	-moz-animation:changeshape 4s ease-in 5s 2 alternate;
 	-webkit-animation:changeshape 4s ease-in 5s 2 alternate;
 }
 
 /*******  multiple columns  *********************************************/
 .columns p {
 	column-count:3;
-	-moz-column-count:3; /* Firefox */
 	-webkit-column-count:3; /* Safari and Chrome */
+	-moz-column-count:3; /* Firefox */
 	column-gap:30px;
-	-moz-column-gap:30px; /* Firefox */
 	-webkit-column-gap:30px; /* Safari and Chrome */
+	-moz-column-gap:30px; /* Firefox */
 	column-rule:1px dotted #ccc;
-	-moz-column-rule:1px dotted #ccc; /* Firefox */
 	-webkit-column-rule:1px dotted #ccc; /* Safari and Chrome */
+	-moz-column-rule:1px dotted #ccc; /* Firefox */
 }
 
 /*******  multiple columns  *********************************************/
 .ui div { float:left; margin-right:10px; background:#eee; text-align:center; }
 .ui .resize { width:200px; height:100px; line-height:100px; resize:both; overflow:auto; }
-.ui .box-sizing {
-	width:400px; height:100px; line-height:80px; border:10px solid #aaa;
-	box-sizing:border-box;
-	-moz-box-sizing:border-box; /* Firefox */
-	-webkit-box-sizing:border-box; /* Safari */
-}
+.ui .box-sizing { width:400px; height:100px; line-height:80px; border:10px solid #aaa; box-sizing:border-box; }
 .ui .outline { width:180px; height:80px; line-height:80px; margin:10px; outline:1px solid #f00; outline-offset:10px; }
 </style>
 </head>
