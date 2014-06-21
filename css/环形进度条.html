@@ -25,10 +25,8 @@
 .circle_progress .pie_right { background: #ebf2ec; border-radius: 50%;
 	transition: transform 0.5s linear;
 	-webkit-transition: -webkit-transform 0.5s linear;
-	-moz-transition: -moz-transform 0.5s linear;
 	transform-origin: 50% 50%;
 	-webkit-transform-origin: 50% 50%;
-	-moz-transform-origin: 50% 50%;
 }
 .circle_progress .center { width: 180px; height: 180px; background: #fff; border-radius: 50%; position: absolute; left: 10px; top: 10px; }
 </style>
@@ -72,29 +70,24 @@ $(function () {
 				obj.find(".pie_left").css({
 					// 计算左半环的动画时间
 					"transition-duration":speed/(m-n)*(m-0.5) + "s",
-					"-webkit-transition-duration":speed/(m-n)*(m-0.5) + "s",
-					"-moz-transition-duration":speed/(m-n)*(m-0.5) + "s"
+					"-webkit-transition-duration":speed/(m-n)*(m-0.5) + "s"
 				})
 				obj.find(".pie_right").css({
 					// 计算右半环的动画时间
 					"transition-duration":speed/(m-n)*(0.5-n) + "s",
 					"-webkit-transition-duration":speed/(m-n)*(0.5-n) + "s",
-					"-moz-transition-duration":speed/(m-n)*(0.5-n) + "s",
 					// 将左半环动画时间，设置为右半环的延迟
 					"transition-delay":speed/(m-n)*(m-0.5) + "s",
-					"-webkit-transition-delay":speed/(m-n)*(m-0.5) + "s",
-					"-moz-transition-delay":speed/(m-n)*(m-0.5) + "s"
+					"-webkit-transition-delay":speed/(m-n)*(m-0.5) + "s"
 				})
 			}
 			obj.find(".pie_right").css({  //将右半环转到相应位置
 				"transform":"rotate(" + n*360 + "deg)",
-				"-webkit-transform":"rotate(" + n*360 + "deg)",
-				"-moz-transform":"rotate(" + n*360 + "deg)"
+				"-webkit-transform":"rotate(" + n*360 + "deg)"
 			})
 			obj.find(".pie_left").css({  //将左半环转到默认位置
 				"transform":"rotate(0deg)",
-				"-webkit-transform":"rotate(0deg)",
-				"-moz-transform":"rotate(0deg)"
+				"-webkit-transform":"rotate(0deg)"
 			})
 		}
 		else if (n >= 0.5 && n <= 1) {  //是否超过50%
@@ -103,39 +96,32 @@ $(function () {
 				obj.find(".pie_right").css({
 					// 计算右半环的动画时间
 					"transition-duration":speed/(n-m)*(0.5-m) + "s",
-					"-webkit-transition-duration":speed/(n-m)*(0.5-m) + "s",
-					"-moz-transition-duration":speed/(n-m)*(0.5-m) + "s"
+					"-webkit-transition-duration":speed/(n-m)*(0.5-m) + "s"
 				})
 				obj.find(".pie_left").css({
 					// 计算左半环的动画时间
 					"transition-duration":speed/(n-m)*(n-0.5) + "s",
 					"-webkit-transition-duration":speed/(n-m)*(n-0.5) + "s",
-					"-moz-transition-duration":speed/(n-m)*(n-0.5) + "s",
 					// 将右半环动画时间，设置为左半环的延迟
 					"transition-delay":speed/(n-m)*(0.5-m) + "s",
-					"-webkit-transition-delay":speed/(n-m)*(0.5-m) + "s",
-					"-moz-transition-delay":speed/(n-m)*(0.5-m) + "s"
+					"-webkit-transition-delay":speed/(n-m)*(0.5-m) + "s"
 				})
 			}
 			obj.find(".pie_right").css({  //将右半环转到默认位置
 				"transform":"rotate(180deg)",
-				"-webkit-transform":"rotate(180deg)",
-				"-moz-transform":"rotate(180deg)"
+				"-webkit-transform":"rotate(180deg)"
 			})
 			obj.find(".pie_left").css({  //将左半环转到相应位置
 				"transform":"rotate(" + (n-0.5)*360 + "deg)",
-				"-webkit-transform":"rotate(" + (n-0.5)*360 + "deg)",
-				"-moz-transform":"rotate(" + (n-0.5)*360 + "deg)"
+				"-webkit-transform":"rotate(" + (n-0.5)*360 + "deg)"
 			})
 		}
 		function resetTime () {  //重置延迟与动画时间
 			obj.find(".pie_wrap span").css({
 				"transition-delay":"0",
 				"-webkit-transition-delay":"0",
-				"-moz-transition-delay":"0",
 				"transition-duration":speed + "s",
-				"-webkit-transition-duration":speed + "s",
-				"-moz-transition-duration":speed + "s"
+				"-webkit-transition-duration":speed + "s"
 			});
 		}
 	}
