@@ -9,7 +9,7 @@
 <script type="text/javascript" src="../common/js/html5.js"></script>
 <![endif]-->
 <style>
-.DEMO { padding:10px 0; margin:0 10px; border-bottom:1px dotted #ccc; font-family:'微软雅黑','microsoft Yahei',宋体; }
+.DEMO { padding:10px 0; margin:0 10px; border-bottom:1px dotted #ccc; font-family:'microsoft Yahei',sans-serif; }
 .DEMO h2 { float:left; width:150px; line-height:35px; margin-right:20px; padding:5px 10px; background:#eee; font-size:24px; }
 
 /*******  border  *********************************************/
@@ -88,7 +88,8 @@
 }
 .transitions .transitions2 {
 	/* several transition effects (http://www.w3schools.com/cssref/tryit.asp?filename=trycss3_transition-timing-function2)*/
-	transition:width 2s, height 1s ease-in 2s, background-color 2s, color 2s;
+    transition:width 2s, height 1s ease-in 2s, background-color 2s, color 2s;
+	-webkit-transition:width 2s, height 1s ease-in 2s, background-color 2s, color 2s;
 }
 .transitions .transitions2:hover {
 	width:500px; height:150px; background:#F60; color:#fff;
