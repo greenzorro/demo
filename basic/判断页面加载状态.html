@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>判断页面加载状态</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<script>
+$(function () {
+	alert("页面加载前");
+	document.onreadystatechange = function () {
+		if (document.readyState == "complete" ) {  //页面加载完成，执行相应代码
+			alert("页面加载后"); 
+		} 
+	};
+})
+</script>
+</head>
+
+<body>
+	<img src="../common/images/photo.jpg" />
+</body>
+</html>
