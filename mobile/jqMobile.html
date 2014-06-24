@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>jQuery Mobile</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+<script src="../common/js/jquery-latest.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+
+<body>
+
+<div data-role="page" id="home">
+	<div data-role="header">home</div>
+	<div data-role="content">
+		<p><a href="#about">go to about</a></p>
+		<p><a href="#dialog" data-rel="dialog">go to dialog</a></p>
+	</div>
+	<div data-role="footer">footer</div>
+</div>
+<div data-role="page" id="about">
+	<div data-role="header">about</div>
+	<div data-role="content">
+		<p><a href="#home">go to home</a></p>
+	</div>
+</div>
+<div data-role="page" id="dialog">
+	<div data-role="header">dialog</div>
+	<div data-role="content">dialog content</div>
+</div>
+
+</body>
+</html>
