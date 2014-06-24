@@ -11,6 +11,27 @@
 <style type="text/css">
 </style>
 <script>
+$(document).on("pagebeforecreate",function (event) {
+	alert("页面即将初始化");
+})
+$(document).on("pagecreate",function (event) {
+	alert("页面已创建");
+})
+$(document).on("pageinit",function (event) {
+	alert("页面已初始化");
+})
+$(document).on("pagebeforeshow","#about",function(){
+	alert("即将进入about");
+});
+$(document).on("pageshow","#about",function(){
+	alert("已经进入about");
+});
+$(document).on("pagebeforehide","#home",function(){
+	alert("即将离开home");
+});
+$(document).on("pagehide","#home",function(){
+	alert("已经离开home");
+});
 $(document).on("pageinit","#home",function () {
 	$("#test").on("tap",function () {
 		$("#test").html("tap");
@@ -62,6 +83,8 @@ $(document).on("pageinit","#about",function () {
 		<a id="test" href="#" data-role="button">test button</a>
 		<p data-role="controlgroup" data-type="vertical">
 			<a href="#about" data-role="button" data-transition="slide">go to about</a>
+			<a href="http://colachan.com" data-role="button" data-transition="slide">load colachan.com</a>
+			<a href="http://colachan.com/notexist" data-role="button" data-transition="slide">load colachan.com failed</a>
 			<a href="#dialog1" data-role="button" data-rel="dialog">open dialog</a>
 		</p>
 		<div data-role="collapsible" data-inset="false" data-collapsed="false">
