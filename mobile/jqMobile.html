@@ -16,15 +16,20 @@
 <div data-role="page" id="home">
 	<div data-role="header">home</div>
 	<div data-role="content">
-		<p><a href="#about" data-transition="turn">go to about</a></p>
-		<p><a href="#dialog" data-rel="dialog">go to dialog</a></p>
+		<p data-role="controlgroup" data-type="horizontal">
+			<a href="#about" data-role="button" data-transition="slide">go to about</a>
+			<a href="#dialog" data-role="button" data-rel="dialog">open dialog</a>
+		</p>
 	</div>
 	<div data-role="footer">footer</div>
 </div>
 <div data-role="page" id="about">
 	<div data-role="header">about</div>
 	<div data-role="content">
-		<p><a href="#home" data-transition="turn" data-direction="reverse">go to home</a></p>
+		<p data-role="controlgroup" data-type="vertical">
+			<a href="#" data-role="button" data-transition="slide" data-rel="back">go back</a>
+			<a href="#home" data-role="button" data-transition="slide" data-direction="reverse">go to home</a>
+		</p>
 	</div>
 </div>
 <div data-role="page" id="dialog">
