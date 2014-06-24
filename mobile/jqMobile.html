@@ -12,25 +12,31 @@
 </style>
 <script>
 $(document).on("pagebeforecreate",function (event) {
-	alert("页面即将初始化");
+	// 页面即将初始化
 })
 $(document).on("pagecreate",function (event) {
-	alert("页面已创建");
+	// 页面已创建
 })
 $(document).on("pageinit",function (event) {
-	alert("页面已初始化");
+	// 页面已初始化
 })
+$(document).on("pageload",function(event,data){
+	// 页面加载成功
+});
+$(document).on("pageloadfailed",function(event,data){
+	// 页面加载失败
+});
 $(document).on("pagebeforeshow","#about",function(){
-	alert("即将进入about");
+	// 即将进入about
 });
 $(document).on("pageshow","#about",function(){
-	alert("已经进入about");
+	// 已经进入about
 });
 $(document).on("pagebeforehide","#home",function(){
-	alert("即将离开home");
+	// 即将离开home
 });
 $(document).on("pagehide","#home",function(){
-	alert("已经离开home");
+	// 已经离开home
 });
 $(document).on("pageinit","#home",function () {
 	$("#test").on("tap",function () {
@@ -80,13 +86,11 @@ $(document).on("pageinit","#about",function () {
 		</div>
 	</div>
 	<div data-role="content">
-		<a id="test" href="#" data-role="button">test button</a>
 		<p data-role="controlgroup" data-type="vertical">
 			<a href="#about" data-role="button" data-transition="slide">go to about</a>
-			<a href="http://colachan.com" data-role="button" data-transition="slide">load colachan.com</a>
-			<a href="http://colachan.com/notexist" data-role="button" data-transition="slide">load colachan.com failed</a>
 			<a href="#dialog1" data-role="button" data-rel="dialog">open dialog</a>
 		</p>
+		<a id="test" href="#" data-role="button">test button</a>
 		<div data-role="collapsible" data-inset="false" data-collapsed="false">
 			<h1>点击我 - 我可以折叠！</h1>
 			<p>现在我默认是展开的。</p>
@@ -164,11 +168,7 @@ $(document).on("pageinit","#about",function () {
 			</div>
 		</form>
 	</div>
-	<div data-role="footer">
-		<a href="#" data-role="button">转播到新浪微博</a>
-		<a href="#" data-role="button">转播到腾讯微博</a>
-		<a href="#" data-role="button">转播到 QQ 空间</a>
-	</div>
+	<div data-role="footer">footer</div>
 </div>
 <div data-role="page" id="about">
 	<div data-role="header">
