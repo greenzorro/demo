@@ -72,10 +72,6 @@
 				<input type="checkbox" name="favcolor" id="blue" value="blue">	
 				<label for="yellow">黄色</label>
 				<input type="checkbox" name="favcolor" id="yellow" value="yellow">	
-				<label for="black">黑色</label>
-				<input type="checkbox" name="favcolor" id="black" value="black">	
-				<label for="white">白色</label>
-				<input type="checkbox" name="favcolor" id="white" value="white">	
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="horizontal">
 				<legend>安排会议：</legend>
@@ -102,17 +98,15 @@
 					<option value="16">16:00</option>
 				</select>
 			</fieldset>
-			<select name="day" id="day" multiple data-native-menu="false">
-				<optgroup label="Weekdays">
-					<option value="mon">Monday</option>
-					<option value="tue">Tuesday</option>
-					<option value="wed">Wednesday</option>
-				</optgroup>
-				<optgroup label="Weekends">
-					<option value="sat">Saturday</option>
-					<option value="sun">Sunday</option>
-				</optgroup>
-			</select>
+			<div data-role="fieldcontain">
+				<input type="range" name="points" id="points" value="50" min="0" max="100" data-highlight="true">
+			</div>
+			<div data-role="fieldcontain">
+				<select name="switch" id="switch" data-role="slider">
+					<option value="on">On</option>
+					<option value="off" selected>Off</option>
+				</select>
+			</div>
 		</form>
 	</div>
 	<div data-role="footer">
@@ -134,8 +128,10 @@
 		</p>
 	</div>
 </div>
-<div data-role="page" id="dialog">
-	<div data-role="header">dialog</div>
+<div data-role="page" data-overlay-theme="b" id="dialog">
+	<div data-role="header">
+		<h1>dialog</h1>
+	</div>
 	<div data-role="content">dialog content</div>
 </div>
 
