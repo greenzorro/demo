@@ -10,6 +10,37 @@
 <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 <style type="text/css">
 </style>
+<script>
+$(document).on("pageinit","#home",function () {
+	$("#test").on("tap",function () {
+		$("#test").html("tap");
+	})
+	$("#test").on("taphold",function () {
+		$("#test").html("taphold!!");
+	})
+	$(document).on("swipe",function () {
+		$("#test").html("swipe");
+	})
+	$(document).on("swipeleft",function () {
+		$("#test").css("text-indent","-2em");
+	})
+	$(document).on("swiperight",function () {
+		$("#test").css("text-indent","2em");
+	})
+	$(document).on("scrollstart",function () {
+		$("#test").html("scrolling");
+		$("#test").css("color","red");
+	})
+	$(document).on("scrollstop",function () {
+		$("#test").css("color","inherit");
+	})
+	$(window).on("orientationchange",function(event){
+		alert("方向是：" + event.orientation);
+	});
+})
+$(document).on("pageinit","#about",function () {
+})
+</script>
 </head>
 
 <body>
@@ -28,9 +59,10 @@
 		</div>
 	</div>
 	<div data-role="content">
+		<a id="test" href="#" data-role="button">test button</a>
 		<p data-role="controlgroup" data-type="vertical">
 			<a href="#about" data-role="button" data-transition="slide">go to about</a>
-			<a href="#dialog" data-role="button" data-rel="dialog">open dialog</a>
+			<a href="#dialog1" data-role="button" data-rel="dialog">open dialog</a>
 		</p>
 		<div data-role="collapsible" data-inset="false" data-collapsed="false">
 			<h1>点击我 - 我可以折叠！</h1>
@@ -128,7 +160,7 @@
 		</p>
 	</div>
 </div>
-<div data-role="page" data-overlay-theme="b" id="dialog">
+<div data-role="page" data-overlay-theme="b" id="dialog1">
 	<div data-role="header">
 		<h1>dialog</h1>
 	</div>
