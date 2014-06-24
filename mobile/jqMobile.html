@@ -15,7 +15,7 @@
 <body>
 
 <div data-role="page" id="home">
-	<div data-role="header" data-position="fixed" data-fullscreen="true">
+	<div data-role="header" data-position="fixed">
 		<a href="#" data-role="button" data-icon="grid" data-iconpos="notext">menu</a>
 		<h1>home</h1>
 		<a href="#" data-role="button" data-icon="search" data-iconpos="notext">search</a>
@@ -29,17 +29,91 @@
 	</div>
 	<div data-role="content">
 		<p data-role="controlgroup" data-type="vertical">
-			<a href="#about" data-role="button" data-transition="slide" data-corners="false">go to about</a>
+			<a href="#about" data-role="button" data-transition="slide">go to about</a>
 			<a href="#dialog" data-role="button" data-rel="dialog">open dialog</a>
-			<a href="#" data-role="button" data-rel="dialog">test button</a>
-			<a href="#" data-role="button" data-rel="dialog">test button</a>
-			<a href="#" data-role="button" data-rel="dialog">test button</a>
-			<a href="#" data-role="button" data-rel="dialog">test button</a>
-			<a href="#" data-role="button" data-rel="dialog">test button</a>
-			<a href="#" data-role="button" data-rel="dialog">test button</a>
-			<a href="#" data-role="button" data-rel="dialog">test button</a>
-			<a href="#" data-role="button" data-rel="dialog">test button</a>
 		</p>
+		<div data-role="collapsible" data-inset="false" data-collapsed="false">
+			<h1>点击我 - 我可以折叠！</h1>
+			<p>现在我默认是展开的。</p>
+			<p>现在我默认是展开的。</p>
+			<p>现在我默认是展开的。</p>
+		</div>
+		<ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="搜索姓名">
+			<li><a href="#">Adele</a></li>
+			<li><a href="#">Agnes</a></li>
+			<li><a href="#">Albert</a></li>
+			<li><a href="#">Billy</a></li>
+			<li><a href="#">Bob</a></li>
+			<li><a href="#">Calvin</a></li>
+			<li><a href="#">Cameron</a></li>
+			<li><a href="#">Chloe</a></li>
+			<li><a href="#">Christina</a></li>
+			<li><a href="#">Diana</a></li>
+			<li><a href="#">Gabriel</a></li>
+			<li><a href="#">Glen</a></li>
+			<li><a href="#">Ralph</a></li>
+			<li><a href="#">Valarie</a></li>
+		</ul>
+		<form method="post" action="demoform.asp">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>请选择您的性别：</legend>
+				<label for="male">男性</label>
+				<input type="radio" name="gender" id="male" value="male" checked>
+				<label for="female">女性</label>
+				<input type="radio" name="gender" id="female" value="female">	
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>请选择您喜爱的颜色：</legend>
+				<label for="red">红色</label>
+				<input type="checkbox" name="favcolor" id="red" value="red">
+				<label for="green">绿色</label>
+				<input type="checkbox" name="favcolor" id="green" value="green">
+				<label for="blue">蓝色</label>
+				<input type="checkbox" name="favcolor" id="blue" value="blue">	
+				<label for="yellow">黄色</label>
+				<input type="checkbox" name="favcolor" id="yellow" value="yellow">	
+				<label for="black">黑色</label>
+				<input type="checkbox" name="favcolor" id="black" value="black">	
+				<label for="white">白色</label>
+				<input type="checkbox" name="favcolor" id="white" value="white">	
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>安排会议：</legend>
+				<label for="day">选择日期：</label>
+				<select name="day" id="day">
+					<option value="mon">Monday</option>
+					<option value="tue">Tuesday</option>
+					<option value="wed">Wednesday</option>
+					<option value="thu">Thursday</option>
+					<option value="fri">Friday</option>
+					<option value="sat">Saturday</option>
+					<option value="sun">Sunday</option>
+				</select>
+				<label for="time">选择时间：</label>
+				<select name="time" id="time">
+					<option value="08">08:00</option>
+					<option value="09">09:00</option>
+					<option value="10">10:00</option>
+					<option value="11">11:00</option>
+					<option value="12">12:00</option>
+					<option value="13">13:00</option>
+					<option value="14">14:00</option>
+					<option value="15">15:00</option>
+					<option value="16">16:00</option>
+				</select>
+			</fieldset>
+			<select name="day" id="day" multiple data-native-menu="false">
+				<optgroup label="Weekdays">
+					<option value="mon">Monday</option>
+					<option value="tue">Tuesday</option>
+					<option value="wed">Wednesday</option>
+				</optgroup>
+				<optgroup label="Weekends">
+					<option value="sat">Saturday</option>
+					<option value="sun">Sunday</option>
+				</optgroup>
+			</select>
+		</form>
 	</div>
 	<div data-role="footer">
 		<a href="#" data-role="button">转播到新浪微博</a>
