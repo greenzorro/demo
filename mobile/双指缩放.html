@@ -15,7 +15,7 @@ $(function () {
     document.addEventListener("touchstart", handleTouchEvent, false);
     document.addEventListener("touchend", handleTouchEvent, false);
     document.addEventListener("touchmove", handleTouchEvent, false);
-    var initialDistance, scaleDistance;
+    var initialDistance, scaleDistance, num;
     function handleTouchEvent(event) {
         if (event.touches.length == 2) {
             var pos1X, pos1Y, pos2X, pos2Y;
@@ -28,6 +28,7 @@ $(function () {
                     initialDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));
                     break;
                 case "touchend":  //触摸结束
+                    num = parseInt($("#test").html());
                     break;
                 case "touchmove":  //手指滑动
                     pos1X = event.touches[0].clientX;
@@ -35,7 +36,7 @@ $(function () {
                     pos2X = event.touches[1].clientX;
                     pos2Y = event.touches[1].clientY;
                     scaleDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));
-                    $("#test").html(100*scaleDistance/initialDistance);
+                    $("#test").html((num*scaleDistance/initialDistance).toFixed(2));
                     event.preventDefault();  //阻止滚动
                     break;
             }
