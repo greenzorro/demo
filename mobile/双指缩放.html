@@ -7,34 +7,35 @@
 <link href="../common/css/global.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../common/js/jquery-latest.js"></script>
 <style>
-#test { width: 10em; height: 10em; margin: 5em auto; background: #86d592; position: relative; left: 0; top: 0; }
+#test { width: 10em; height: 10em; line-height: 10em; margin: 5em auto; background: #86d592; text-align: center; color: #fff; }
 a { position: fixed; right: 1em; top: 1em; }
 </style>
 <script>
 $(function () {
-    // 初始x坐标，初始y坐标，触摸移动x坐标，触摸移动y坐标，滑块x偏移量，滑块y偏移量
     var beginPosX, beginPosY, currentPosX, currentPosY, posLeft, posTop;
     document.getElementById("test").addEventListener("touchstart", handleTouchEvent, false);
     document.getElementById("test").addEventListener("touchmove", handleTouchEvent, false);
     function handleTouchEvent(event) {
         var output = document.getElementById("test");
-        switch (event.type) {
-            case "touchstart":  //触摸开始
-                beginPosX = event.touches[0].clientX;
-                beginPosY = event.touches[0].clientY;
-                posLeft = parseInt($("#test").css("left").split("px")[0]);
-                posTop = parseInt($("#test").css("top").split("px")[0]);
-                break;
-            case "touchmove":  //手指滑动
-                currentPosX = event.changedTouches[0].clientX;
-                currentPosY = event.changedTouches[0].clientY;
-                $("#test").css({"left":posLeft + currentPosX - beginPosX + "px","top":posTop + currentPosY - beginPosY + "px"});
-                event.preventDefault();  //阻止滚动
-                break;
-        }
+        if (event.touches.length == 2) {
+            switch (event.type) {
+                case "touchstart":  //触摸开始
+                    beginPosX = event.touches[0].clientX;
+                    beginPosY = event.touches[0].clientY;
+                    posLeft = parseInt($("#test").css("left").split("px")[0]);
+                    posTop = parseInt($("#test").css("top").split("px")[0]);
+                    break;
+                case "touchmove":  //手指滑动
+                    currentPosX = event.changedTouches[0].clientX;
+                    currentPosY = event.changedTouches[0].clientY;
+                    $("#test").css({"left":posLeft + currentPosX - beginPosX + "px","top":posTop + currentPosY - beginPosY + "px"});
+                    event.preventDefault();  //阻止滚动
+                    break;
+            }
+        };
     }
     $("a").click(function () {  //重置滑块位置
-        $("#test").css({"left":0,"top":0});
+        $("#test").html(100);
     })
 })
 </script>
@@ -42,7 +43,7 @@ $(function () {
 
 <body>
 
-<div id="test"></div>
+<div id="test">100</div>
 <a href="#">reset</a>
 
 </body>
