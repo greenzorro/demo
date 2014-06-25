@@ -15,7 +15,7 @@ $(function () {
     document.addEventListener("touchstart", handleTouchEvent, false);
     document.addEventListener("touchend", handleTouchEvent, false);
     document.addEventListener("touchmove", handleTouchEvent, false);
-    var initialDistance, scaleDistance, num;
+    var initialDistance, scaleDistance, num = 100;
     function handleTouchEvent(event) {
         if (event.touches.length == 2) {
             var pos1X, pos1Y, pos2X, pos2Y;
