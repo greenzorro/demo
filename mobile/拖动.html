@@ -21,17 +21,18 @@ $(function () {
             case "touchstart":  //触摸开始
                 beginPosX = event.touches[0].clientX;
                 beginPosY = event.touches[0].clientY;
-                $("#test").html("test");
+                $("#test").html("start " + beginPosX + "," + beginPosY);
                 break;
             case "touchend":  //触摸结束
                 // beginPosX = currentPosX;
                 // beginPosY = currentPosY;
+                $("#test").html("end " + currentPosX + "," + currentPosY);
                 break;
             case "touchmove":  //手指滑动
                 currentPosX = event.changedTouches[0].clientX;
                 currentPosY = event.changedTouches[0].clientY;
                 $("#test").css({"left":currentPosX - beginPosX + "px","top":currentPosY - beginPosY + "px"});
-                $("#test").html("");
+                $("#test").html("move " + currentPosX + "," + currentPosY);
                 event.preventDefault();  //阻止滚动
                 break;
         }
