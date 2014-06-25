@@ -12,29 +12,29 @@
 $(function () {
 	function handleTouchEvent(event) {
         var output = document.getElementById("test");
-        var posX, posY, text;
+        var posX, posY;
 	    // if (event.touches.length == 1) {  //触点的个数
 	        switch (event.type) {
 	            case "touchstart":
 	            	posX = event.touches[0].clientX;
 	            	posY = event.touches[0].clientY;
-			        output.innerHTML = "";
-			        text = "Touch start (";
+			        output.innerHTML = "start (" + posX + "," + posY + ")<br>";
 	                break;
 	            case "touchend":
 	            	posX = event.changedTouches[0].clientX;
 	            	posY = event.changedTouches[0].clientY;
-			        text = "Touch end (";
+			        output.innerHTML = "end (" + posX + "," + posY + ")<br>";
 	                break;
 	            case "touchmove":
-	            	posX = event.changedTouches[0].clientX;
-	            	posY = event.changedTouches[0].clientY;
-			        text = "Touch move (";
+	            	for (var i = 0; i < event.touches.length; i++) {
+		            	posX = event.changedTouches[i].clientX;
+		            	posY = event.changedTouches[i].clientY;
+				        output.innerHTML = "finger" + i + " (" + posX + "," + posY + ")<br>";
+	            	};
 	                event.preventDefault();  //阻止滚动
 	                break;
 	        }
 	    // }
-        output.innerHTML += text + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")<br>";
 	}
 	document.addEventListener("touchstart", handleTouchEvent, false);
 	document.addEventListener("touchend", handleTouchEvent, false);
