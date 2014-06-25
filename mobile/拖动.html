@@ -17,7 +17,6 @@ $(function () {
     document.getElementById("test").addEventListener("touchstart", handleTouchEvent, false);
     document.getElementById("test").addEventListener("touchmove", handleTouchEvent, false);
     function handleTouchEvent(event) {
-        var output = document.getElementById("test");
         switch (event.type) {
             case "touchstart":  //触摸开始
                 beginPosX = event.touches[0].clientX;

@@ -12,23 +12,25 @@ a { position: fixed; right: 1em; top: 1em; }
 </style>
 <script>
 $(function () {
-    var beginPosX, beginPosY, currentPosX, currentPosY, posLeft, posTop;
-    document.getElementById("test").addEventListener("touchstart", handleTouchEvent, false);
-    document.getElementById("test").addEventListener("touchmove", handleTouchEvent, false);
+    document.addEventListener("touchstart", handleTouchEvent, false);
+    document.addEventListener("touchend", handleTouchEvent, false);
+    document.addEventListener("touchmove", handleTouchEvent, false);
     function handleTouchEvent(event) {
-        var output = document.getElementById("test");
         if (event.touches.length == 2) {
+            var pos1X, pos1Y, pos2X, pos2Y, initialDistance, scaleDistance;
             switch (event.type) {
                 case "touchstart":  //触摸开始
-                    beginPosX = event.touches[0].clientX;
-                    beginPosY = event.touches[0].clientY;
-                    posLeft = parseInt($("#test").css("left").split("px")[0]);
-                    posTop = parseInt($("#test").css("top").split("px")[0]);
+                    pos1X = event.touches[0].clientX;
+                    pos1Y = event.touches[0].clientY;
+                    pos2X = event.touches[1].clientX;
+                    pos2Y = event.touches[1].clientY;
+                    initialDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));
+                    break;
+                case "touchend":  //触摸结束
                     break;
                 case "touchmove":  //手指滑动
-                    currentPosX = event.changedTouches[0].clientX;
-                    currentPosY = event.changedTouches[0].clientY;
-                    $("#test").css({"left":posLeft + currentPosX - beginPosX + "px","top":posTop + currentPosY - beginPosY + "px"});
+                    scaleDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));
+                    $("#test").html(100*scaleDistance/initialDistance);
                     event.preventDefault();  //阻止滚动
                     break;
             }
