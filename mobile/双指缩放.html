@@ -25,10 +25,10 @@ $(function () {
                     pos1Y = event.touches[0].clientY;
                     pos2X = event.touches[1].clientX;
                     pos2Y = event.touches[1].clientY;
+                    num = parseInt($("#test").html());
                     initialDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));
                     break;
                 case "touchend":  //触摸结束
-                    num = parseInt($("#test").html());
                     break;
                 case "touchmove":  //手指滑动
                     pos1X = event.touches[0].clientX;
