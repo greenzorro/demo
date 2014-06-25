@@ -35,7 +35,6 @@ $(function () {
                     pos2X = event.touches[1].clientX;
                     pos2Y = event.touches[1].clientY;
                     scaleDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));
-                    alert(scaleDistance + "," + initialDistance);
                     $("#test").html(100*scaleDistance/initialDistance);
                     event.preventDefault();  //阻止滚动
                     break;
