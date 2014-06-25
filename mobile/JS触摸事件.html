@@ -12,8 +12,7 @@
 <script>
 $(function () {
 	function handleTouchEvent(event) {
-	    //只跟踪一次触摸
-	    if (event.touches.length == 2) {
+	    if (event.touches.length == 1) {  //触点的个数
 	        var output = document.getElementById("test");
 	        switch (event.type) {
 	            case "touchstart":
@@ -38,7 +37,6 @@ $(function () {
 
 <body>
 
-<img src="../common/images/photo.jpg" />
 <div id="test"></div>
 
 </body>
