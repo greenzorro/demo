@@ -7,12 +7,18 @@
 <link href="../common/css/global.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../common/js/jquery-latest.js"></script>
 <style>
-.test { background: #fff; position: fixed; right: 0; top: 20%; }
+.test { background: #fff; position: fixed; right: 0; top: 0; }
 </style>
 <script>
 $(function () {
 	$(document).on("touchstart",function () {
-		$("#test").html(e.touches[0].clientX + "-" + e.touches[0].clientY);
+		$(".test").html(e.touches[0].clientX + " - " + e.touches[0].clientY);
+		e.preventDefault();
+	}).on("touchmove",function () {
+		$(".test").html(e.changedTouches[0].clientX + " - " + e.changedTouches[0].clientY);
+		e.preventDefault();
+	}).on("touchend",function () {
+		$(".test").html(e.changedTouches[0].clientX + " - " + e.changedTouches[0].clientY);
 		e.preventDefault();
 	})
 })
