@@ -13,7 +13,6 @@ a { position: fixed; right: 1em; top: 1em; }
 <script>
 $(function () {
     document.addEventListener("touchstart", handleTouchEvent, false);
-    document.addEventListener("touchend", handleTouchEvent, false);
     document.addEventListener("touchmove", handleTouchEvent, false);
     var initialDistance, scaleDistance, num = 100;
     function handleTouchEvent(event) {
@@ -27,8 +26,6 @@ $(function () {
                     pos2Y = event.touches[1].clientY;
                     num = parseInt($("#test").html());
                     initialDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));
-                    break;
-                case "touchend":  //触摸结束
                     break;
                 case "touchmove":  //手指滑动
                     pos1X = event.touches[0].clientX;
