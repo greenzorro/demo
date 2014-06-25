@@ -10,6 +10,9 @@
 </style>
 <script>
 $(function () {
+    document.addEventListener("touchstart", handleTouchEvent, false);
+    document.addEventListener("touchend", handleTouchEvent, false);
+    document.addEventListener("touchmove", handleTouchEvent, false);
 	function handleTouchEvent(event) {
         var output = document.getElementById("test");
         var posX, posY;
@@ -38,9 +41,6 @@ $(function () {
                 break;
         }
 	}
-	document.addEventListener("touchstart", handleTouchEvent, false);
-	document.addEventListener("touchend", handleTouchEvent, false);
-	document.addEventListener("touchmove", handleTouchEvent, false);
 })
 </script>
 </head>
