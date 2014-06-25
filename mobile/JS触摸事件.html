@@ -18,7 +18,7 @@ $(function () {
 	                output.innerHTML = "Touch started (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";
 	                break;
 	            case "touchend":
-	                alert(1);
+	                alert("touchend");
 	                output.innerHTML += "<br>Touch ended (" + event.changedTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";
 	                break;
 	            case "touchmove":
@@ -29,7 +29,7 @@ $(function () {
 	    }
 	}
 	document.addEventListener("touchstart", handleTouchEvent, false);
-	document.addEventListener("touchend", handleTouchEvent, false);
+	document.addEventListener("touchend", alert(1), false);
 	document.addEventListener("touchmove", handleTouchEvent, false);
 })
 </script>
