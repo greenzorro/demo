@@ -21,24 +21,24 @@ $(function () {
             var pos1X, pos1Y, pos2X, pos2Y;
             switch (event.type) {
                 case "touchstart":  //触摸开始
-                    pos1X = event.touches[0].clientX;
-                    pos1Y = event.touches[0].clientY;
-                    pos2X = event.touches[1].clientX;
-                    pos2Y = event.touches[1].clientY;
+                    getPosition(pos1X, pos1Y, pos2X, pos2Y);
                     initialDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));
                     break;
                 case "touchend":  //触摸结束
                     num = parseInt($("#test").html());
                     break;
                 case "touchmove":  //手指滑动
-                    pos1X = event.touches[0].clientX;
-                    pos1Y = event.touches[0].clientY;
-                    pos2X = event.touches[1].clientX;
-                    pos2Y = event.touches[1].clientY;
+                    getPosition(pos1X, pos1Y, pos2X, pos2Y);
                     scaleDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));
                     $("#test").html((num*scaleDistance/initialDistance).toFixed(2));
                     event.preventDefault();  //阻止滚动
                     break;
+            }
+            function getPosition (pos1X, pos1Y, pos2X, pos2Y) {
+                pos1X = event.touches[0].clientX;
+                pos1Y = event.touches[0].clientY;
+                pos2X = event.touches[1].clientX;
+                pos2Y = event.touches[1].clientY;
             }
         };
     }
