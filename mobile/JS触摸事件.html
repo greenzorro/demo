@@ -12,18 +12,15 @@
 <script>
 $(function () {
 	$(document).on({
-		touchstart: function () {
-			alert("touchstart");
-			$(".test").html(e.touches[0].clientX + " - " + e.touches[0].clientY);
+		touchstart: function (event) {
+			$(".test").html(event.touches[0].clientX + " - " + event.touches[0].clientY);
 		},
-		touchmove: function () {
-			alert("touchmove");
-			$(".test").html(e.changedTouches[0].clientX + " - " + e.changedTouches[0].clientY);
-			e.preventDefault();
+		touchmove: function (event) {
+			$(".test").html(event.changedTouches[0].clientX + " - " + event.changedTouches[0].clientY);
+			event.preventDefault();
 		},
-		touchend: function () {
-			alert("touchend");
-			$(".test").html(e.changedTouches[0].clientX + " - " + e.changedTouches[0].clientY);
+		touchend: function (event) {
+			$(".test").html(event.changedTouches[0].clientX + " - " + event.changedTouches[0].clientY);
 		}
 	},"body");
 })
