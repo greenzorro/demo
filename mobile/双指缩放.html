@@ -30,7 +30,7 @@ $(function () {
                     break;
                 case "touchmove":  //手指滑动
                     scaleDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));
-                    $("#test").html(100*scaleDistance/initialDistance);
+                    $("#test").html(110);
                     event.preventDefault();  //阻止滚动
                     break;
             }
