@@ -7,24 +7,31 @@
 <link href="../common/css/global.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../common/js/jquery-latest.js"></script>
 <style>
-.test { background: #fff; position: fixed; right: 0; top: 0; }
+#test { background: #fff; position: fixed; right: 0; top: 0; }
 </style>
 <script>
 $(function () {
-	$(document).on({
-		touchstart: function (event) {
-			alert(event.touches[0].clientX + " - " + event.touches[0].clientY);
-			alert("touchstart");
-			$(".test").html(event.touches[0].clientX + " - " + event.touches[0].clientY);
-		},
-		touchmove: function (event) {
-			$(".test").html(event.changedTouches[0].clientX + " - " + event.changedTouches[0].clientY);
-			event.preventDefault();
-		},
-		touchend: function (event) {
-			$(".test").html(event.changedTouches[0].clientX + " - " + event.changedTouches[0].clientY);
-		}
-	},"body");
+	function handleTouchEvent(event) {
+	    //只跟踪一次触摸
+	    if (event.touches.length == 2) {
+	        var output = document.getElementById("test");
+	        switch (event.type) {
+	            case "touchstart":
+	                output.innerHTML = "Touch started (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";
+	                break;
+	            case "touchend":
+	                output.innerHTML += "<br>Touch ended (" + event.changedTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";
+	                break;
+	            case "touchmove":
+	                event.preventDefault(); //阻止滚动
+	                output.innerHTML += "<br>Touch moved (" + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")";
+	                break;
+	        }
+	    }
+	}
+	document.addEventListener("touchstart", handleTouchEvent, false);
+	document.addEventListener("touchend", handleTouchEvent, false);
+	document.addEventListener("touchmove", handleTouchEvent, false);
 })
 </script>
 </head>
@@ -32,7 +39,7 @@ $(function () {
 <body>
 
 <img src="../common/images/photo.jpg" />
-<div class="test"></div>
+<div id="test"></div>
 
 </body>
 </html>
