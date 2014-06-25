@@ -10,13 +10,30 @@
 </style>
 <script>
 $(function () {
+    function handleGestureEvent(event) {
+        var output = document.getElementById("test");
+        switch(event.type) {
+            case "gesturestart":
+                output.innerHTML = "Gesture started (rotation=" + event.ratation +",scale=" + event.scale + ")";
+                break;
+            case "gestureend":
+                output.innerHTML = "Gesture ended (rotation+" + event.rotation + ",scale=" + event.scale + ")";
+                break;
+            case "gesturechange":
+                output.innerHTML = "Gesture changed (rotation+=" + event.rotation + ",scale+" + event.scale + ")";
+                break;
+        }
+    }
+    document.addEventListener("gesturestart", handleGestureEvent, false);
+    document.addEventListener("gestureend", handleGestureEvent, false);
+    document.addEventListener("gesturechange", handleGestureEvent, false);
 })
 </script>
 </head>
 
 <body>
 
-<div id="test"></div>
+<div id="test">请使用双指操作</div>
 
 </body>
 </html>
