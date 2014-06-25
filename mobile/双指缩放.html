@@ -15,9 +15,10 @@ $(function () {
     document.addEventListener("touchstart", handleTouchEvent, false);
     document.addEventListener("touchend", handleTouchEvent, false);
     document.addEventListener("touchmove", handleTouchEvent, false);
+    var initialDistance, scaleDistance;
     function handleTouchEvent(event) {
         if (event.touches.length == 2) {
-            var pos1X, pos1Y, pos2X, pos2Y, initialDistance, scaleDistance;
+            var pos1X, pos1Y, pos2X, pos2Y;
             switch (event.type) {
                 case "touchstart":  //触摸开始
                     pos1X = event.touches[0].clientX;
