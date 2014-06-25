@@ -7,27 +7,35 @@
 <link href="../common/css/global.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../common/js/jquery-latest.js"></script>
 <style>
-#test { width: 20em; height: 20em; margin: 10em auto; background: #86d592; }
+#test { width: 10em; height: 10em; margin: 5em auto; background: #86d592; position: relative; }
 </style>
 <script>
 $(function () {
-    function handleGestureEvent(event) {
+    var beginPosX, beginPosY, currentPosX, currentPosY;
+    document.getElementById("test").addEventListener("touchstart", handleTouchEvent, false);
+    document.getElementById("test").addEventListener("touchend", handleTouchEvent, false);
+    document.getElementById("test").addEventListener("touchmove", handleTouchEvent, false);
+    function handleTouchEvent(event) {
         var output = document.getElementById("test");
-        switch(event.type) {
-            case "gesturestart":
-                output.innerHTML = "Gesture started<br>rotation=" + event.ratation +"<br>scale=" + event.scale;
+        switch (event.type) {
+            case "touchstart":  //触摸开始
+                beginPosX = event.touches[0].clientX;
+                beginPosY = event.touches[0].clientY;
+                $("#test").html("test");
                 break;
-            case "gestureend":
-                output.innerHTML = "Gesture ended<br>rotation=" + event.rotation + "<br>scale=" + event.scale;
+            case "touchend":  //触摸结束
+                // beginPosX = currentPosX;
+                // beginPosY = currentPosY;
                 break;
-            case "gesturechange":
-                output.innerHTML = "Gesture changed<br>rotation=" + event.rotation + "<br>scale=" + event.scale;
+            case "touchmove":  //手指滑动
+                currentPosX = event.changedTouches[0].clientX;
+                currentPosY = event.changedTouches[0].clientY;
+                $("#test").css({"left":currentPosX - beginPosX + "px","top":currentPosY - beginPosY + "px"});
+                $("#test").html("");
+                event.preventDefault();  //阻止滚动
                 break;
         }
     }
-    document.addEventListener("gesturestart", handleGestureEvent, false);
-    document.addEventListener("gestureend", handleGestureEvent, false);
-    document.addEventListener("gesturechange", handleGestureEvent, false);
 })
 </script>
 </head>

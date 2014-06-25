@@ -10,6 +10,9 @@
 </style>
 <script>
 $(function () {
+    document.addEventListener("gesturestart", handleGestureEvent, false);
+    document.addEventListener("gestureend", handleGestureEvent, false);
+    document.addEventListener("gesturechange", handleGestureEvent, false);
     function handleGestureEvent(event) {
         var output = document.getElementById("test");
         switch(event.type) {
@@ -24,9 +27,6 @@ $(function () {
                 break;
         }
     }
-    document.addEventListener("gesturestart", handleGestureEvent, false);
-    document.addEventListener("gestureend", handleGestureEvent, false);
-    document.addEventListener("gesturechange", handleGestureEvent, false);
 })
 </script>
 </head>
