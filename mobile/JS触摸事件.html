@@ -11,13 +11,14 @@
 <script>
 $(function () {
 	function handleTouchEvent(event) {
-	    if (event.touches.length == 2) {  //触点的个数
+	    if (event.touches.length == 1) {  //触点的个数
 	        var output = document.getElementById("test");
 	        switch (event.type) {
 	            case "touchstart":
 	                output.innerHTML = "Touch started (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";
 	                break;
 	            case "touchend":
+	                alert(1);
 	                output.innerHTML += "<br>Touch ended (" + event.changedTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";
 	                break;
 	            case "touchmove":
