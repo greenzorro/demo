@@ -26,10 +26,11 @@ $(function () {
 			        output.innerHTML = "end (" + posX + "," + posY + ")<br>";
 	                break;
 	            case "touchmove":
+			        output.innerHTML = "";
 	            	for (var i = 0; i < event.touches.length; i++) {
 		            	posX = event.changedTouches[i].clientX;
 		            	posY = event.changedTouches[i].clientY;
-				        output.innerHTML = "finger" + i + " (" + posX + "," + posY + ")<br>";
+				        output.innerHTML += "finger" + i + " (" + posX + "," + posY + ")<br>";
 	            	};
 	                event.preventDefault();  //阻止滚动
 	                break;
