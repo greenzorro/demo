@@ -13,6 +13,7 @@
 $(function () {
 	$(document).on({
 		touchstart: function (event) {
+			alert(event.touches[0].clientX + " - " + event.touches[0].clientY);
 			$(".test").html(event.touches[0].clientX + " - " + event.touches[0].clientY);
 		},
 		touchmove: function (event) {
@@ -29,7 +30,6 @@ $(function () {
 
 <body>
 
-<img src="../common/images/photo.jpg" />
 <img src="../common/images/photo.jpg" />
 <div class="test"></div>
 
