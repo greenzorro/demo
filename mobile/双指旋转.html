@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>双指旋转</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../common/js/jquery-latest.js"></script>
+<style>
+#test { width: 10em; height: 10em; line-height: 10em; margin: 5em auto; background: #86d592; text-align: center; color: #fff; }
+a { position: fixed; right: 1em; top: 1em; }
+</style>
+<script>
+$(function () {
+    document.addEventListener("touchstart", handleTouchEvent, false);
+    document.addEventListener("touchmove", handleTouchEvent, false);
+    var initialDeg, rotateDeg, deg = 0;
+    function handleTouchEvent(event) {
+        if (event.touches.length == 2) {
+            var pos1X, pos1Y, pos2X, pos2Y;
+            switch (event.type) {
+                case "touchstart":  //触摸开始
+                    pos1X = event.touches[0].clientX;
+                    pos1Y = event.touches[0].clientY;
+                    pos2X = event.touches[1].clientX;
+                    pos2Y = event.touches[1].clientY;
+                    deg = parseFloat($("#test").html());
+                    initialDeg = -Math.atan((pos2X - pos1X)/(pos2Y - pos1Y))*180/Math.PI;
+                    break;
+                case "touchmove":  //手指旋转
+                    pos1X = event.touches[0].clientX;
+                    pos1Y = event.touches[0].clientY;
+                    pos2X = event.touches[1].clientX;
+                    pos2Y = event.touches[1].clientY;
+                    rotateDeg = -Math.atan((pos2X - pos1X)/(pos2Y - pos1Y))*180/Math.PI;
+                    $("#test").html((rotateDeg - initialDeg).toFixed(2));
+                    event.preventDefault();  //阻止滚动
+                    break;
+            }
+        };
+    }
+    $("a").click(function () {  //重置滑块位置
+        $("#test").html(0);
+    })
+})
+</script>
+</head>
+
+<body>
+
+<div id="test">0</div>
+<a href="#">reset</a>
+
+</body>
+</html>
