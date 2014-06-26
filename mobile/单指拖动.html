@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>单指拖动</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../common/js/jquery-latest.js"></script>
+<style>
+#test { width: 10em; height: 10em; margin: 5em auto; background: #86d592; position: relative; left: 0; top: 0; }
+a { position: fixed; right: 1em; top: 1em; }
+</style>
+<script>
+$(function () {
+    // 初始x坐标，初始y坐标，触摸移动x坐标，触摸移动y坐标，滑块x偏移量，滑块y偏移量
+    var beginPosX, beginPosY, currentPosX, currentPosY, posLeft, posTop;
+    document.getElementById("test").addEventListener("touchstart", handleTouchEvent, false);
+    document.getElementById("test").addEventListener("touchmove", handleTouchEvent, false);
+    function handleTouchEvent(event) {
+        switch (event.type) {
+            case "touchstart":  //触摸开始
+                beginPosX = event.touches[0].clientX;
+                beginPosY = event.touches[0].clientY;
+                posLeft = parseInt($("#test").css("left").split("px")[0]);
+                posTop = parseInt($("#test").css("top").split("px")[0]);
+                break;
+            case "touchmove":  //手指滑动
+                currentPosX = event.changedTouches[0].clientX;
+                currentPosY = event.changedTouches[0].clientY;
+                $("#test").css({"left":posLeft + currentPosX - beginPosX + "px","top":posTop + currentPosY - beginPosY + "px"});
+                event.preventDefault();  //阻止滚动
+                break;
+        }
+    }
+    $("a").click(function () {  //重置滑块位置
+        $("#test").css({"left":0,"top":0});
+    })
+})
+</script>
+</head>
+
+<body>
+
+<div id="test"></div>
+<a href="#">reset</a>
+
+</body>
+</html>
