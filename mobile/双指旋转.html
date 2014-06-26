@@ -46,7 +46,12 @@ $(function () {
                         }
                     }
                     else {
-                        $("#test").html(rotateDeg.toFixed(1));
+                        if (rotateDeg == 0) {
+                            $("#test").html("180");
+                        }
+                        else {
+                            $("#test").html(rotateDeg.toFixed(1));
+                        }
                     }
                     event.preventDefault();  //阻止滚动
                     break;
