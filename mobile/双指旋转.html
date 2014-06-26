@@ -14,7 +14,7 @@ a { position: fixed; right: 1em; top: 1em; }
 $(function () {
     document.addEventListener("touchstart", handleTouchEvent, false);
     document.addEventListener("touchmove", handleTouchEvent, false);
-    var initialDeg, rotateDeg, deg, counterX = 0, counterY = 0;
+    var initialDeg, rotateDeg, deg, counter = 0;
     function handleTouchEvent(event) {
         if (event.touches.length == 2) {
             var pos1X, pos1Y, pos2X, pos2Y;
@@ -36,21 +36,13 @@ $(function () {
                     rotateDeg = -radToDeg(Math.atan((pos2X - pos1X)/(pos2Y - pos1Y)));
                     if (lastDeg*rotateDeg < -45*45) {  //两指连线转过X轴
                         if (lastDeg > rotateDeg) {  //顺时针
-                            counterX++;
+                            counter++;
                         }
                         else {  //逆时针
-                            counterX--;
+                            counter--;
                         }
                     };
-                    if (lastDeg*rotateDeg > -45*45 && lastDeg*rotateDeg < 0) {  //两指连线转过Y轴
-                        if (lastDeg < rotateDeg) {  //顺时针
-                            counterY++;
-                        }
-                        else {  //逆时针
-                            counterY--;
-                        }
-                    };
-                    $("#test").html((rotateDeg + 180*counterX).toFixed(1));
+                    $("#test").html((deg + rotateDeg - initialDeg + 180*counter).toFixed(1));
                     event.preventDefault();  //阻止滚动
                     break;
             }
