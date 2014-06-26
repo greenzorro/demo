@@ -38,7 +38,12 @@ $(function () {
                         flag = -flag;
                     };
                     if (flag < 0) {
-                        $("#test").html((rotateDeg - rotateDeg/Math.abs(rotateDeg)*180).toFixed(1));
+                        if (rotateDeg == 0) {
+                            $("#test").html("180.0");
+                        }
+                        else {
+                            $("#test").html((rotateDeg - rotateDeg/Math.abs(rotateDeg)*180).toFixed(1));
+                        }
                     }
                     else {
                         $("#test").html(rotateDeg.toFixed(1));
