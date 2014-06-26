@@ -33,7 +33,7 @@ $(function () {
                     pos2X = event.touches[1].clientX;
                     pos2Y = event.touches[1].clientY;
                     rotateDeg = -Math.atan((pos2X - pos1X)/(pos2Y - pos1Y))*180/Math.PI;
-                    $("#test").html((rotateDeg/Math.abs(rotateDeg)*rotateDeg).toFixed(1));
+                    $("#test").html((rotateDeg).toFixed(1));
                     event.preventDefault();  //阻止滚动
                     break;
             }
