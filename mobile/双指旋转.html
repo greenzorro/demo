@@ -14,7 +14,7 @@ a { position: fixed; right: 1em; top: 1em; }
 $(function () {
     document.addEventListener("touchstart", handleTouchEvent, false);
     document.addEventListener("touchmove", handleTouchEvent, false);
-    var initialDeg, rotateDeg, flag = 1, deg = 0;
+    var initialDeg, rotateDeg, deg, flag = 1;
     function handleTouchEvent(event) {
         if (event.touches.length == 2) {
             var pos1X, pos1Y, pos2X, pos2Y;
@@ -42,11 +42,11 @@ $(function () {
                             $("#test").html("180.0");
                         }
                         else {
-                            $("#test").html((rotateDeg - rotateDeg/Math.abs(rotateDeg)*180).toFixed(1));
+                            $("#test").html(deg + (rotateDeg - rotateDeg/Math.abs(rotateDeg)*180 - initialDeg).toFixed(1));
                         }
                     }
                     else {
-                        $("#test").html(rotateDeg.toFixed(1));
+                        $("#test").html(deg + rotateDeg.toFixed(1));
                     }
                     event.preventDefault();  //阻止滚动
                     break;
