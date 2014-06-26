@@ -14,7 +14,7 @@ a { position: fixed; right: 1em; top: 1em; }
 $(function () {
     document.addEventListener("touchstart", handleTouchEvent, false);
     document.addEventListener("touchmove", handleTouchEvent, false);
-    var initialDeg, rotateDeg, deg = 0;
+    var initialDeg, rotateDeg, flag = 1, deg = 0;
     function handleTouchEvent(event) {
         if (event.touches.length == 2) {
             var pos1X, pos1Y, pos2X, pos2Y;
@@ -28,7 +28,6 @@ $(function () {
                     initialDeg = -Math.atan((pos2X - pos1X)/(pos2Y - pos1Y))*180/Math.PI;
                     break;
                 case "touchmove":  //手指旋转
-                    var flag = 1;
                     var lastDeg = rotateDeg;
                     pos1X = event.touches[0].clientX;
                     pos1Y = event.touches[0].clientY;
