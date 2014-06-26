@@ -24,7 +24,7 @@ $(function () {
                 case "touchmove":  //手指滑动
                     move = (event.changedTouches[0].clientY + event.changedTouches[1].clientY)/2;
                     if (move > start + 30) {
-                        $("html,body").animate({
+                        $(window).animate({
                             scrollTop: 0
                         },
                         1000);
