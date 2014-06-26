@@ -50,7 +50,7 @@ $(function () {
                             counterY--;
                         }
                     };
-                    $("#test").html((rotateDeg - initialDeg + 90*counterX + 90*counterY).toFixed(1));
+                    $("#test").html((rotateDeg + 90*counterX + 90*counterY).toFixed(1));
                     event.preventDefault();  //阻止滚动
                     break;
             }
