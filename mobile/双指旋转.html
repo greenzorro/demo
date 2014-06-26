@@ -27,6 +27,7 @@ $(function () {
                     deg = parseFloat($("#test").html());
                     counter = 0;
                     initialDeg = -radToDeg(Math.atan((pos2X - pos1X)/(pos2Y - pos1Y)));
+                    rotateDeg = initialDeg;
                     break;
                 case "touchmove":  //手指旋转
                     var lastDeg = rotateDeg;
