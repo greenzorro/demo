@@ -25,7 +25,7 @@ $(function () {
                     pos2X = event.touches[1].clientX;
                     pos2Y = event.touches[1].clientY;
                     deg = parseFloat($("#test").html());
-                    initialDeg = -Math.atan((pos2X - pos1X)/(pos2Y - pos1Y))*180/Math.PI;
+                    initialDeg = -radToDeg(Math.atan((pos2X - pos1X)/(pos2Y - pos1Y)));
                     break;
                 case "touchmove":  //手指旋转
                     var lastDeg = rotateDeg;
@@ -33,28 +33,21 @@ $(function () {
                     pos1Y = event.touches[0].clientY;
                     pos2X = event.touches[1].clientX;
                     pos2Y = event.touches[1].clientY;
-                    rotateDeg = -Math.atan((pos2X - pos1X)/(pos2Y - pos1Y))*180/Math.PI;
+                    rotateDeg = -radToDeg(Math.atan((pos2X - pos1X)/(pos2Y - pos1Y)));
                     if (lastDeg*rotateDeg < -45*45) {
                         flag = -flag;
                     };
                     if (flag < 0) {
-                        if (rotateDeg == 0) {
-                            $("#test").html("0");
-                        }
-                        else {
-                            $("#test").html((rotateDeg - rotateDeg/Math.abs(rotateDeg)*180).toFixed(1));
-                        }
+                        $("#test").html((rotateDeg - rotateDeg/Math.abs(rotateDeg)*180).toFixed(1));
                     }
                     else {
-                        if (rotateDeg == 0) {
-                            $("#test").html("180");
-                        }
-                        else {
-                            $("#test").html(rotateDeg.toFixed(1));
-                        }
+                        $("#test").html(rotateDeg.toFixed(1));
                     }
                     event.preventDefault();  //阻止滚动
                     break;
+            }
+            function radToDeg (rad) {
+                return rad*180/Math.PI;
             }
         };
     }
