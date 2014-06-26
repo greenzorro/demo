@@ -42,7 +42,7 @@ $(function () {
                             counter--;
                         }
                     };
-                    $("#test").html((deg + rotateDeg - initialDeg + 180*counter).toFixed(1));
+                    $("#test").html((deg + rotateDeg - initialDeg + 180*counter).toFixed(1) + "," + counter);
                     event.preventDefault();  //阻止滚动
                     break;
             }
