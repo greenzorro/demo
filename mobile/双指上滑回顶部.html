@@ -14,9 +14,9 @@
 $(function () {
     document.addEventListener("touchstart", handleTouchEvent, false);
     document.addEventListener("touchmove", handleTouchEvent, false);
+    var start, move;
     function handleTouchEvent(event) {
         if (event.touches.length == 2) {
-            var start, move;
             switch (event.type) {
                 case "touchstart":  //触摸开始
                     start = (event.touches[0].clientY + event.touches[1].clientY)/2;
