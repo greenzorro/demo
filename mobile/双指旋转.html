@@ -43,6 +43,7 @@ $(function () {
                         }
                     };
                     $("#test").html((deg + rotateDeg - initialDeg + 180*counter).toFixed(1) + "," + counter);
+                    counter = 0;
                     event.preventDefault();  //阻止滚动
                     break;
             }
