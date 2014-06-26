@@ -42,11 +42,11 @@ $(function () {
                             $("#test").html("180.0");
                         }
                         else {
-                            $("#test").html(deg + (rotateDeg - rotateDeg/Math.abs(rotateDeg)*180 - initialDeg).toFixed(1));
+                            $("#test").html(parseFloat(deg) + (rotateDeg - rotateDeg/Math.abs(rotateDeg)*180 - initialDeg).toFixed(1));
                         }
                     }
                     else {
-                        $("#test").html(deg + rotateDeg.toFixed(1));
+                        $("#test").html(parseFloat(deg) + rotateDeg.toFixed(1));
                     }
                     event.preventDefault();  //阻止滚动
                     break;
