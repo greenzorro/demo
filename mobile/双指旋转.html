@@ -25,6 +25,7 @@ $(function () {
                     pos2X = event.touches[1].clientX;
                     pos2Y = event.touches[1].clientY;
                     deg = parseFloat($("#test").html());
+                    counter = 0;
                     initialDeg = -radToDeg(Math.atan((pos2X - pos1X)/(pos2Y - pos1Y)));
                     break;
                 case "touchmove":  //手指旋转
