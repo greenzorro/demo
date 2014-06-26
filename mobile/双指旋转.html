@@ -28,12 +28,18 @@ $(function () {
                     initialDeg = -Math.atan((pos2X - pos1X)/(pos2Y - pos1Y))*180/Math.PI;
                     break;
                 case "touchmove":  //手指旋转
+                    var lastDeg = rotateDeg;
                     pos1X = event.touches[0].clientX;
                     pos1Y = event.touches[0].clientY;
                     pos2X = event.touches[1].clientX;
                     pos2Y = event.touches[1].clientY;
                     rotateDeg = -Math.atan((pos2X - pos1X)/(pos2Y - pos1Y))*180/Math.PI;
-                    $("#test").html((rotateDeg - rotateDeg/Math.abs(rotateDeg)*180).toFixed(1));
+                    if (lastDeg*rotateDeg < -45*45) {
+                        $("#test").html((rotateDeg - rotateDeg/Math.abs(rotateDeg)*180).toFixed(1));
+                    }
+                    else {
+                        $("#test").html(rotateDeg.toFixed(1));
+                    }
                     event.preventDefault();  //阻止滚动
                     break;
             }
