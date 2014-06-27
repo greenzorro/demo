@@ -12,11 +12,11 @@ a { position: fixed; right: 1em; top: 1em; }
 </style>
 <script>
 $(function () {
-    document.addEventListener("touchstart", twoFingerRotate, false);
-    document.addEventListener("touchmove", twoFingerRotate, false);
+    document.addEventListener("touchstart", oneFingerRotate, false);
+    document.addEventListener("touchmove", oneFingerRotate, false);
     // 初始角度、当前角度、转动角度、计数器（用来计算触点与中心连线转过x轴的次数）
     var initialDeg, rotateDeg, deg, counter;
-    function twoFingerRotate(event) {
+    function oneFingerRotate(event) {
         var posX, posY, centerX, centerY;  //触点与中心的x、y坐标
         centerX = getCenterPos($("#test"))["x"];  //获取中心的x坐标
         centerY = getCenterPos($("#test"))["y"];  //获取中心的y坐标
