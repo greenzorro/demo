@@ -11,19 +11,19 @@
 <script>
 $(function () {
     document.addEventListener("gesturestart", handleGestureEvent, false);
-    document.addEventListener("gestureend", handleGestureEvent, false);
     document.addEventListener("gesturechange", handleGestureEvent, false);
+    document.addEventListener("gestureend", handleGestureEvent, false);
     function handleGestureEvent(event) {
         var output = document.getElementById("test");
         switch(event.type) {
             case "gesturestart":
                 output.innerHTML = "Gesture started<br>rotation=" + event.ratation +"<br>scale=" + event.scale;
                 break;
-            case "gestureend":
-                output.innerHTML = "Gesture ended<br>rotation=" + event.rotation + "<br>scale=" + event.scale;
-                break;
             case "gesturechange":
                 output.innerHTML = "Gesture changed<br>rotation=" + event.rotation + "<br>scale=" + event.scale;
+                break;
+            case "gestureend":
+                output.innerHTML = "Gesture ended<br>rotation=" + event.rotation + "<br>scale=" + event.scale;
                 break;
         }
     }

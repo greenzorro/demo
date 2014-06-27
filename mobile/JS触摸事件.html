@@ -11,8 +11,8 @@
 <script>
 $(function () {
     document.addEventListener("touchstart", handleTouchEvent, false);
-    document.addEventListener("touchend", handleTouchEvent, false);
     document.addEventListener("touchmove", handleTouchEvent, false);
+    document.addEventListener("touchend", handleTouchEvent, false);
 	function handleTouchEvent(event) {
         var output = document.getElementById("test");
         var posX, posY;
@@ -25,11 +25,6 @@ $(function () {
 			        output.innerHTML += "start" + i + " (" + posX + "," + posY + ")<br>";
             	};
                 break;
-            case "touchend":  //触摸结束
-            	posX = event.changedTouches[0].clientX;
-            	posY = event.changedTouches[0].clientY;
-		        output.innerHTML = "end (" + posX + "," + posY + ")<br>";
-                break;
             case "touchmove":  //手指滑动
 		        output.innerHTML = "";
             	for (var i = 0; i < event.touches.length; i++) {
@@ -38,6 +33,11 @@ $(function () {
 			        output.innerHTML += "finger" + i + " (" + posX + "," + posY + ")<br>";
             	};
                 event.preventDefault();  //阻止滚动
+                break;
+            case "touchend":  //触摸结束
+                posX = event.changedTouches[0].clientX;
+                posY = event.changedTouches[0].clientY;
+                output.innerHTML = "end (" + posX + "," + posY + ")<br>";
                 break;
         }
 	}
