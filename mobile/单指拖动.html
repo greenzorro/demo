@@ -16,6 +16,7 @@ $(function () {
     var beginPosX, beginPosY, currentPosX, currentPosY, posLeft, posTop;
     document.getElementById("test").addEventListener("touchstart", handleTouchEvent, false);
     document.getElementById("test").addEventListener("touchmove", handleTouchEvent, false);
+    document.getElementById("test").addEventListener("touchmove", handleTouchEvent2, false);
     function handleTouchEvent(event) {
         switch (event.type) {
             case "touchstart":  //触摸开始
@@ -29,6 +30,13 @@ $(function () {
                 currentPosY = event.changedTouches[0].clientY;
                 $("#test").css({"left":posLeft + currentPosX - beginPosX + "px","top":posTop + currentPosY - beginPosY + "px"});
                 event.preventDefault();  //阻止滚动
+                break;
+        }
+    }
+    function handleTouchEvent2(event) {
+        switch (event.type) {
+            case "touchmove":  //手指滑动
+                $("#test").css("background","blue");
                 break;
         }
     }

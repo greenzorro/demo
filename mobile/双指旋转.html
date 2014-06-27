@@ -14,6 +14,7 @@ a { position: fixed; right: 1em; top: 1em; }
 $(function () {
     document.addEventListener("touchstart", handleTouchEvent, false);
     document.addEventListener("touchmove", handleTouchEvent, false);
+    // 触摸开始时的角度，每次旋转的角度，显示角度，计数器
     var initialDeg, rotateDeg, deg, counter;
     function handleTouchEvent(event) {
         if (event.touches.length == 2) {
@@ -24,36 +25,36 @@ $(function () {
                     pos1Y = event.touches[0].clientY;
                     pos2X = event.touches[1].clientX;
                     pos2Y = event.touches[1].clientY;
-                    deg = parseFloat($("#test").html());
-                    counter = 0;
-                    initialDeg = -radToDeg(Math.atan((pos2X - pos1X)/(pos2Y - pos1Y)));
+                    deg = parseFloat($("#test").html());  //获取上次旋转角度
+                    counter = 0;  //计数器清零
+                    initialDeg = -radToDeg(Math.atan((pos2X - pos1X)/(pos2Y - pos1Y)));  //获取初始角度
                     rotateDeg = initialDeg;
                     break;
                 case "touchmove":  //手指旋转
-                    var lastDeg = rotateDeg;
+                    var lastDeg = rotateDeg;  //上次旋转角度
                     pos1X = event.changedTouches[0].clientX;
                     pos1Y = event.changedTouches[0].clientY;
                     pos2X = event.changedTouches[1].clientX;
                     pos2Y = event.changedTouches[1].clientY;
-                    rotateDeg = -radToDeg(Math.atan((pos2X - pos1X)/(pos2Y - pos1Y)));
+                    rotateDeg = -radToDeg(Math.atan((pos2X - pos1X)/(pos2Y - pos1Y)));  //获取旋转角度
                     if (lastDeg*rotateDeg < -45*45) {  //两指连线转过X轴
                         if (lastDeg > rotateDeg) {  //顺时针
-                            counter++;
+                            counter++;  //计数器+1
                         }
                         else {  //逆时针
-                            counter--;
+                            counter--;  //计数器-1
                         }
                     };
                     $("#test").html((deg + rotateDeg - initialDeg + 180*counter).toFixed(1));
                     event.preventDefault();  //阻止滚动
                     break;
             }
-            function radToDeg (rad) {
+            function radToDeg (rad) {  //弧度转角度
                 return rad*180/Math.PI;
             }
         };
     }
-    $("a").click(function () {  //重置滑块位置
+    $("a").click(function () {  //重置角度，显示文字归零
         $("#test").html(0);
     })
 })
