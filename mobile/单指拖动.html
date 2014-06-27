@@ -12,35 +12,27 @@ a { position: fixed; right: 1em; top: 1em; }
 </style>
 <script>
 $(function () {
-    // 初始x坐标，初始y坐标，触摸移动x坐标，触摸移动y坐标，滑块x偏移量，滑块y偏移量
+    // 初始x坐标、初始y坐标、当前x坐标、当前y坐标、方块x偏移量、方块y偏移量
     var beginPosX, beginPosY, currentPosX, currentPosY, posLeft, posTop;
-    document.getElementById("test").addEventListener("touchstart", handleTouchEvent, false);
-    document.getElementById("test").addEventListener("touchmove", handleTouchEvent, false);
-    document.getElementById("test").addEventListener("touchmove", handleTouchEvent2, false);
-    function handleTouchEvent(event) {
+    document.getElementById("test").addEventListener("touchstart", oneFingerDrag, false);
+    document.getElementById("test").addEventListener("touchmove", oneFingerDrag, false);
+    function oneFingerDrag(event) {
         switch (event.type) {
             case "touchstart":  //触摸开始
-                beginPosX = event.touches[0].clientX;
-                beginPosY = event.touches[0].clientY;
-                posLeft = parseInt($("#test").css("left").split("px")[0]);
-                posTop = parseInt($("#test").css("top").split("px")[0]);
+                beginPosX = event.touches[0].clientX;  //获取起始触点x坐标
+                beginPosY = event.touches[0].clientY;  //获取起始触点y坐标
+                posLeft = parseInt($("#test").css("left").split("px")[0]);  //获取方块x偏移量
+                posTop = parseInt($("#test").css("top").split("px")[0]);  //获取方块y偏移量
                 break;
             case "touchmove":  //手指滑动
-                currentPosX = event.changedTouches[0].clientX;
-                currentPosY = event.changedTouches[0].clientY;
-                $("#test").css({"left":posLeft + currentPosX - beginPosX + "px","top":posTop + currentPosY - beginPosY + "px"});
-                event.preventDefault();  //阻止滚动
+                currentPosX = event.changedTouches[0].clientX;  //获取当前触点x坐标
+                currentPosY = event.changedTouches[0].clientY;  //获取当前触点y坐标
+                $("#test").css({"left":posLeft + currentPosX - beginPosX + "px","top":posTop + currentPosY - beginPosY + "px"});  //移动方块
+                event.preventDefault();  //阻止默认滚动事件
                 break;
         }
     }
-    function handleTouchEvent2(event) {
-        switch (event.type) {
-            case "touchmove":  //手指滑动
-                $("#test").css("background","blue");
-                break;
-        }
-    }
-    $("a").click(function () {  //重置滑块位置
+    $("a").click(function () {  //重置方块位置
         $("#test").css({"left":0,"top":0});
     })
 })

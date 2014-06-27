@@ -12,35 +12,39 @@ a { position: fixed; right: 1em; top: 1em; }
 </style>
 <script>
 $(function () {
-    document.addEventListener("touchstart", handleTouchEvent, false);
-    document.addEventListener("touchmove", handleTouchEvent, false);
-    var initialDistance, scaleDistance, num = 100;
-    function handleTouchEvent(event) {
-        if (event.touches.length == 2) {
-            var pos1X, pos1Y, pos2X, pos2Y;
+    document.addEventListener("touchstart", twoFingerZoom, false);
+    document.addEventListener("touchmove", twoFingerZoom, false);
+    // 两指初始距离、两指当前距离、缩放倍数
+    var initialDistance, scaleDistance, num = 1.00;
+    function twoFingerZoom(event) {
+        if (event.touches.length == 2) {  //有第二根手指接触屏幕时
+            var pos1X, pos1Y, pos2X, pos2Y;  //两指的x、y坐标
             switch (event.type) {
                 case "touchstart":  //触摸开始
+                    // 获取两指的初始x、y坐标
                     pos1X = event.touches[0].clientX;
                     pos1Y = event.touches[0].clientY;
                     pos2X = event.touches[1].clientX;
                     pos2Y = event.touches[1].clientY;
-                    num = parseInt($("#test").html());
-                    initialDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));
+                    num = parseFloat($("#test").html()).toFixed(2);  //获取初始缩放倍数
+                    initialDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));  //获取两指初始距离
                     break;
                 case "touchmove":  //手指滑动
+                    // 获取两指的当前x、y坐标
                     pos1X = event.changedTouches[0].clientX;
                     pos1Y = event.changedTouches[0].clientY;
                     pos2X = event.changedTouches[1].clientX;
                     pos2Y = event.changedTouches[1].clientY;
-                    scaleDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));
+                    scaleDistance = Math.sqrt(Math.pow((pos2X - pos1X),2) + Math.pow((pos2Y - pos1Y),2));  //获取两指当前距离
+                    // 当前的缩放倍数 = 初始缩放倍数*两指当前距离/两指初始距离，结果保留2位小数
                     $("#test").html((num*scaleDistance/initialDistance).toFixed(2));
-                    event.preventDefault();  //阻止滚动
+                    event.preventDefault();  //阻止默认滚动事件
                     break;
             }
         };
     }
-    $("a").click(function () {  //重置缩放级别
-        $("#test").html(100);
+    $("a").click(function () {  //重置缩放倍数
+        $("#test").html(1.00);
     })
 })
 </script>
@@ -48,7 +52,7 @@ $(function () {
 
 <body>
 
-<div id="test">100</div>
+<div id="test">1.00</div>
 <a href="#">reset</a>
 
 </body>
