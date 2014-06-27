@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>单指旋转</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../common/js/jquery-latest.js"></script>
+<style>
+#test { width: 5em; height: 5em; line-height: 5em; margin: 5em auto; background: #86d592; border-radius: 50%; text-align: center; color: #fff; }
+a { position: fixed; right: 1em; top: 1em; }
+</style>
+<script>
+$(function () {
+    document.addEventListener("touchstart", twoFingerRotate, false);
+    document.addEventListener("touchmove", twoFingerRotate, false);
+    // 初始角度、当前角度、转动角度、计数器（用来计算两指穿过x轴的次数）
+    var initialDeg, rotateDeg, deg, counter;
+    function twoFingerRotate(event) {
+        if (event.touches.length == 2) {  //有第二根手指接触屏幕时
+            var pos1X, pos1Y, pos2X, pos2Y;  //两指的x、y坐标
+            switch (event.type) {
+                case "touchstart":  //触摸开始
+                    // 获取两指的初始x、y坐标
+                    pos1X = event.touches[0].clientX;
+                    pos1Y = event.touches[0].clientY;
+                    pos2X = event.touches[1].clientX;
+                    pos2Y = event.touches[1].clientY;
+                    deg = parseFloat($("#test").html());  //获取初始转动角度
+                    counter = 0;  //计数器清零
+                    initialDeg = -radToDeg(Math.atan((pos2X - pos1X)/(pos2Y - pos1Y)));  //获取初始角度
+                    rotateDeg = initialDeg;  //当前角度就是初始角度
+                    break;
+                case "touchmove":  //手指旋转
+                    var lastDeg = rotateDeg;  //记录上次的当前角度
+                    // 获取两指的当前x、y坐标
+                    pos1X = event.changedTouches[0].clientX;
+                    pos1Y = event.changedTouches[0].clientY;
+                    pos2X = event.changedTouches[1].clientX;
+                    pos2Y = event.changedTouches[1].clientY;
+                    rotateDeg = -radToDeg(Math.atan((pos2X - pos1X)/(pos2Y - pos1Y)));  //获取旋转后的当前角度
+                    if (lastDeg*rotateDeg < -45*45) {  //如果两指连线转过x轴
+                        if (lastDeg > rotateDeg) {  //顺时针
+                            counter++;  //计数器+1
+                        }
+                        else {  //逆时针
+                            counter--;  //计数器-1
+                        }
+                    };
+                    // 旋转角度 = 初始转动角度 + 当前角度 - 初始角度 + 180*计数器
+                    $("#test").html(parseInt(deg + rotateDeg - initialDeg + 180*counter));
+                    event.preventDefault();  //阻止默认滚动事件
+                    break;
+            }
+            function radToDeg (rad) {  //弧度转角度
+                return rad*180/Math.PI;
+            }
+        };
+    }
+    $("a").click(function () {  //重置旋转角度
+        $("#test").html(0);
+    })
+})
+</script>
+</head>
+
+<body>
+
+手指围绕圆形画圈
+<div id="test">0</div>
+<a href="#">reset</a>
+
+</body>
+</html>
