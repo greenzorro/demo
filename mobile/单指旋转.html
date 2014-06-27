@@ -25,7 +25,7 @@ $(function () {
                 // 获取触点的初始x、y坐标
                 posX = event.touches[0].clientX;
                 posY = event.touches[0].clientY;
-                deg = parseFloat($("#test").html());  //获取初始转动角度
+                deg = parseFloat($("#test").html().split("°")[0]);  //获取初始转动角度
                 counter = 0;  //计数器清零
                 initialDeg = -radToDeg(Math.atan((centerX - posX)/(centerY - posY)));  //获取初始角度
                 rotateDeg = initialDeg;  //当前角度就是初始角度
@@ -45,7 +45,7 @@ $(function () {
                     }
                 };
                 // 旋转角度 = 初始转动角度 + 当前角度 - 初始角度 + 180*计数器
-                $("#test").html(parseInt(deg + rotateDeg - initialDeg + 180*counter));
+                $("#test").html(parseInt(deg + rotateDeg - initialDeg + 180*counter) + "°");
                 event.preventDefault();  //阻止默认滚动事件
                 break;
         }
@@ -59,7 +59,7 @@ $(function () {
         }
     }
     $("a").click(function () {  //重置旋转角度
-        $("#test").html(0);
+        $("#test").html("0°");
     })
 })
 </script>
@@ -68,7 +68,7 @@ $(function () {
 <body>
 
 手指围绕圆形画圈
-<div id="test">0</div>
+<div id="test">0°</div>
 <a href="#">reset</a>
 
 </body>

@@ -26,8 +26,8 @@ $(function () {
     function bindSlideEvent () {
         for (var i = 0; i < document.getElementsByClassName("item").length; i++) {
             document.getElementsByClassName("item")[i].addEventListener("touchstart", slideHorizontal, false);
-            document.getElementsByClassName("item")[i].addEventListener("touchend", slideHorizontal, false);
             document.getElementsByClassName("item")[i].addEventListener("touchmove", slideHorizontal, false);
+            document.getElementsByClassName("item")[i].addEventListener("touchend", slideHorizontal, false);
         };
     }
     function slideHorizontal(event) {
@@ -40,6 +40,19 @@ $(function () {
             case "touchstart":  //触摸开始
                 beginPos = event.touches[0].clientX;  //获取起始触点x坐标
                 currentPos = beginPos;
+                break;
+            case "touchmove":  //手指滑动
+                currentPos = event.changedTouches[0].clientX;  //获取当前触点x坐标
+                var direction = (currentPos - beginPos)/Math.abs(currentPos - beginPos);
+                if (Math.abs(currentPos - beginPos) > maxWidth) {
+                    thisObj.css({"left":direction*maxWidth + "px"});  //移动方块
+                    thisObj.parent().find("a").width(maxWidth);
+                }
+                else {
+                    thisObj.css({"left":currentPos - beginPos + "px"});  //移动方块
+                    thisObj.parent().find("a").width(Math.abs(currentPos - beginPos));
+                }
+                event.preventDefault();  //阻止默认滚动事件
                 break;
             case "touchend":  //触摸结束 
                 thisObj.parent().find("a").animate({
@@ -68,19 +81,6 @@ $(function () {
                         }
                     };
                 });
-                break;
-            case "touchmove":  //手指滑动
-                currentPos = event.changedTouches[0].clientX;  //获取当前触点x坐标
-                var direction = (currentPos - beginPos)/Math.abs(currentPos - beginPos);
-                if (Math.abs(currentPos - beginPos) > maxWidth) {
-                    thisObj.css({"left":direction*maxWidth + "px"});  //移动方块
-                    thisObj.parent().find("a").width(maxWidth);
-                }
-                else {
-                    thisObj.css({"left":currentPos - beginPos + "px"});  //移动方块
-                    thisObj.parent().find("a").width(Math.abs(currentPos - beginPos));
-                }
-                event.preventDefault();  //阻止默认滚动事件
                 break;
         }
     }
