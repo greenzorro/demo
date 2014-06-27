@@ -20,7 +20,7 @@ li a.delete { background: #f35145; right: 0; }
 </style>
 <script>
 $(function () {
-    // 初始x坐标、初始y坐标、当前x坐标、当前y坐标、方块x偏移量、方块y偏移量
+    // 初始x坐标、当前x坐标、可滑动的最大距离
     var beginPos, currentPos, maxWidth = 80;
     bindSlideEvent();
     function bindSlideEvent () {
@@ -32,37 +32,37 @@ $(function () {
     }
     function slideHorizontal(event) {
         var thisObj = $(event.target);
-        while(!thisObj.hasClass("item"))
+        while(!thisObj.hasClass("item"))  //找到正在滑动的列表项
         {
             thisObj = thisObj.parent();
         }
         switch (event.type) {
             case "touchstart":  //触摸开始
-                beginPos = event.touches[0].clientX;  //获取起始触点x坐标
-                currentPos = beginPos;
+                beginPos = event.touches[0].clientX;  //获取初始触点x坐标
+                currentPos = beginPos;  //当前x坐标就是初始坐标
                 break;
             case "touchmove":  //手指滑动
                 currentPos = event.changedTouches[0].clientX;  //获取当前触点x坐标
-                var direction = (currentPos - beginPos)/Math.abs(currentPos - beginPos);
-                if (Math.abs(currentPos - beginPos) > maxWidth) {
-                    thisObj.css({"left":direction*maxWidth + "px"});  //移动方块
-                    thisObj.parent().find("a").width(maxWidth);
+                var direction = (currentPos - beginPos)/Math.abs(currentPos - beginPos);  //获取滑动方向（正负号）
+                if (Math.abs(currentPos - beginPos) > maxWidth) {  //超出最大可滑动距离
+                    thisObj.css({"left":direction*maxWidth + "px"});  //滑动到最大距离
+                    thisObj.parent().find("a").width(maxWidth);  //露出两侧内容
                 }
-                else {
-                    thisObj.css({"left":currentPos - beginPos + "px"});  //移动方块
-                    thisObj.parent().find("a").width(Math.abs(currentPos - beginPos));
+                else {  //在最大可滑动距离内
+                    thisObj.css({"left":currentPos - beginPos + "px"});  //任意滑动列表项
+                    thisObj.parent().find("a").width(Math.abs(currentPos - beginPos));  //露出两侧内容
                 }
                 event.preventDefault();  //阻止默认滚动事件
                 break;
             case "touchend":  //触摸结束 
-                thisObj.parent().find("a").animate({
+                thisObj.parent().find("a").animate({  //隐藏两侧内容
                     width: 0
                 },100);
-                thisObj.animate({
+                thisObj.animate({  //列表项归位
                     left: 0
                 },100,function () {
-                    if (Math.abs(currentPos - beginPos) >= maxWidth) {
-                        if (beginPos > currentPos) {
+                    if (Math.abs(currentPos - beginPos) >= maxWidth) {  //松手时滑动距离超出最大距离
+                        if (beginPos > currentPos) {  //左滑删除
                             thisObj.parent().animate({
                                 height: 0,
                                 opacity: 0
@@ -70,7 +70,7 @@ $(function () {
                                 $(this).remove();
                             })
                         }
-                        else {
+                        else {  //右滑复制
                             var thisHtml = thisObj.parent().html();
                             thisObj.parent().after("<li style='height:0'>" + thisHtml + "</li>");
                             thisObj.parent().next().animate({
