@@ -14,7 +14,7 @@ a { position: fixed; right: 1em; top: 1em; }
 $(function () {
     document.addEventListener("touchstart", twoFingerRotate, false);
     document.addEventListener("touchmove", twoFingerRotate, false);
-    // 初始角度、当前角度、转动角度、计数器（用来计算两指穿过x轴的次数）
+    // 初始角度、当前角度、转动角度、计数器（用来计算两指连线转过x轴的次数）
     var initialDeg, rotateDeg, deg, counter;
     function twoFingerRotate(event) {
         if (event.touches.length == 2) {  //有第二根手指接触屏幕时
