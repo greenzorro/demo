@@ -12,24 +12,23 @@
 </style>
 <script>
 $(function () {
-    document.addEventListener("touchstart", handleTouchEvent, false);
-    document.addEventListener("touchmove", handleTouchEvent, false);
-    var start, move;
-    function handleTouchEvent(event) {
-        if (event.touches.length == 2) {
+    document.addEventListener("touchstart", twoFingerDrag, false);
+    document.addEventListener("touchmove", twoFingerDrag, false);
+    var start, move;  //初始y坐标、当前y坐标
+    function twoFingerDrag(event) {
+        if (event.touches.length == 2) {  //有第二根手指接触屏幕时
             switch (event.type) {
                 case "touchstart":  //触摸开始
-                    start = (event.touches[0].clientY + event.touches[1].clientY)/2;
+                    start = (event.touches[0].clientY + event.touches[1].clientY)/2;  //初始y坐标为双指中点
                     break;
                 case "touchmove":  //手指滑动
-                    move = (event.changedTouches[0].clientY + event.changedTouches[1].clientY)/2;
-                    if (move > start + 30) {
+                    move = (event.changedTouches[0].clientY + event.changedTouches[1].clientY)/2;  //当前y坐标为双指中点
+                    if (move > start + 30) {  //向下移动30像素以上，页面滚动到顶部
                         $("html,body").animate({
                             scrollTop: 0
-                        },
-                        300);
+                        },300);
                     };
-                    event.preventDefault();  //阻止滚动
+                    event.preventDefault();  //阻止默认滚动事件
                     break;
             }
         };
