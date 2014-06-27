@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>列表项滑动删除</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../common/js/jquery-latest.js"></script>
+<style>
+body { background: #eee; }
+ul { overflow: hidden; margin: 1em; border: 1px solid #dfdfdf; border-radius: 0.5em; }
+li { height: 50px; border-top: 1px solid #dfdfdf; position: relative; }
+li:first-of-type { border: none; }
+li .item { width: 100%; height: 100%; background: #fff; position: absolute; left: 0; top: 0; z-index: 5; }
+li .item h3 { float: left; line-height: 50px; padding: 0 1em; }
+li .item p { float: right; line-height: 50px; padding: 0 1em; }
+li a { display: block; width: 0; height: 100%; line-height: 50px; overflow: hidden; color: #fff; text-align: center; font-size: 0.8em; position: absolute; top: 0; z-index: 1; }
+li a.duplicate { background: #6fa0b9; left: 0; }
+li a.delete { background: #f35145; right: 0; }
+</style>
+<script>
+$(function () {
+    // 初始x坐标、初始y坐标、当前x坐标、当前y坐标、方块x偏移量、方块y偏移量
+    var beginPos, currentPos, maxWidth = 80;
+    for (var i = 0; i < document.getElementsByClassName("item").length; i++) {
+        document.getElementsByClassName("item")[i].addEventListener("touchstart", slideHorizontal, false);
+        document.getElementsByClassName("item")[i].addEventListener("touchend", slideHorizontal, false);
+        document.getElementsByClassName("item")[i].addEventListener("touchmove", slideHorizontal, false);
+    };
+    function slideHorizontal(event) {
+        var thisObj = $(event.target);
+        while(!thisObj.hasClass("item"))
+        {
+            thisObj = thisObj.parent();
+        }
+        switch (event.type) {
+            case "touchstart":  //触摸开始
+                beginPos = event.touches[0].clientX;  //获取起始触点x坐标
+                currentPos = beginPos;
+                break;
+            case "touchend":  //触摸结束 
+                thisObj.parent().find("a").animate({
+                    width: 0
+                },100);
+                thisObj.animate({
+                    left: 0
+                },100,function () {
+                    if (Math.abs(currentPos - beginPos) >= maxWidth) {
+                        if (beginPos > currentPos) {
+                            thisObj.parent().animate({
+                                height: 0,
+                                opacity: 0
+                            },300,function () {
+                                $(this).remove();
+                            })
+                        }
+                        else {
+                            var thisHtml = thisObj.parent().html();
+                            thisObj.parent().after("<li style='height:0'>" + thisHtml + "</li>");
+                            thisObj.parent().next().animate({
+                                height: "50px",
+                                opacity: 1
+                            },300)
+                        }
+                    };
+                });
+                break;
+            case "touchmove":  //手指滑动
+                currentPos = event.changedTouches[0].clientX;  //获取当前触点x坐标
+                var direction = (currentPos - beginPos)/Math.abs(currentPos - beginPos);
+                if (Math.abs(currentPos - beginPos) > maxWidth) {
+                    thisObj.css({"left":direction*maxWidth + "px"});  //移动方块
+                    thisObj.parent().find("a").width(maxWidth);
+                }
+                else {
+                    thisObj.css({"left":currentPos - beginPos + "px"});  //移动方块
+                    thisObj.parent().find("a").width(Math.abs(currentPos - beginPos));
+                }
+                event.preventDefault();  //阻止默认滚动事件
+                break;
+        }
+    }
+    // getElementsByClassName函数获取到的是一个数组，数组长度为找到对象的个数
+    function getElementsByClassName(n) { 
+        var classElements = [],allElements = document.getElementsByTagName('*'); 
+        for (var i=0; i< allElements.length; i++ ) 
+        { 
+            if (allElements[i].className == n ) { 
+                classElements[classElements.length] = allElements[i]; 
+            } 
+        } 
+        return classElements; 
+    }
+})
+</script>
+</head>
+
+<body>
+
+<ul>
+    <li>
+        <div class="item">
+            <h3>08:10</h3>
+            <p>weekdays</p>
+        </div>
+        <a class="duplicate" href="javascript:;">duplicate</a>
+        <a class="delete" href="javascript:;">delete</a>
+    </li>
+    <li>
+        <div class="item">
+            <h3>09:30</h3>
+            <p>weekends</p>
+        </div>
+        <a class="duplicate" href="javascript:;">duplicate</a>
+        <a class="delete" href="javascript:;">delete</a>
+    </li>
+</ul>
+
+</body>
+</html>
