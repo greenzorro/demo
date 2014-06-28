@@ -16,44 +16,8 @@ $(function () {
 
 <body>
 
-<article>
-<style scoped>
-  video { transform: scaleX(-1); }
-  p { text-align: center; }
-</style>
-<h1>Snapshot Kiosk</h1>
-<section id="splash">
-  <p id="errorMessage">Loading...</p>
-</section>
-<section id="app" hidden>
-  <p><video id="monitor" autoplay></video> <canvas id="photo"></canvas>
-  <p><input type=button value="&#x1F4F7;" onclick="snapshot()">
-</section>
-<script>
-  navigator.getUserMedia({video:true}, gotStream, noStream);
-  var video = document.getElementById('monitor');
-  var canvas = document.getElementById('photo');
-  function gotStream(stream) {
-    video.src = URL.createObjectURL(stream);
-    video.onerror = function () {
-      stream.stop();
-    };
-    stream.onended = noStream;
-    video.onloadedmetadata = function () {
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      document.getElementById('splash').hidden = true;
-      document.getElementById('app').hidden = false;
-    };
-  }
-  function noStream() {
-    document.getElementById('errorMessage').textContent = 'No camera available.';
-  }
-  function snapshot() {
-    canvas.getContext('2d').drawImage(video, 0, 0);
-  }
-</script>
-</article>
+<input type="file" accept="video/*;capture=camcorder"> <input type="file" accept="audio/*;capture=microphone">
+<input type="file" accept="image/*;capture=camera">
 <a href="javascript">开启摄像头</a>
 
 </body>
