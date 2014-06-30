@@ -12,8 +12,9 @@ body { line-height:1.6; }
 .clear { clear:both; display:block; height:0px; overflow:hidden; }
 .clearfix { zoom:1; }
 .clearfix:after { clear:both; display:block; height:0; content:"."; visibility:hidden; }
+-webkit-tap-highlight-color: rgba(0,0,0,0);
 
-/*layout*/
+/*default*/
 body { font-family:'microsoft yahei','stheiti',sans-serif; font-size:1em; color:#333;
     animation: movein_left .3s ease-in;
     -webkit-animation: movein_left .3s ease-in;
