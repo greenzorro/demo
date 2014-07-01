@@ -22,6 +22,7 @@ $(function () {
             switch (event.type) {
                 case "touchstart":  //触摸开始
                     start = event.touches[0].clientY;  //获取初始y坐标
+                    move = start;
                     break;
                 case "touchmove":  //手指滑动
                     move = event.touches[0].clientY;  //获取当前y坐标
