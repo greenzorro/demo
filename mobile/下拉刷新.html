@@ -18,24 +18,29 @@ $(function () {
     var start, move;  //初始y坐标、当前y坐标
     function pulldownRefresh(event) {
         if ($(window).scrollTop() <= 0) {
-            var maxDistance = 100;  //可下拉的最大距离
+            var maxDistance = 200;  //可下拉的最大距离
             switch (event.type) {
                 case "touchstart":  //触摸开始
                     start = event.touches[0].clientY;  //获取初始y坐标
                     break;
                 case "touchmove":  //手指滑动
                     move = event.touches[0].clientY;  //获取当前y坐标
-                    if (move - start > maxDistance) {  //下拉超过最大距离
-                        $("body").css({"transform":"translate(0," + maxDistance + "px)","-webkit-transform":"translate(0," + maxDistance + "px)"});  //保持在最大距离处
-                    }
-                    else {  //下拉在最大距离内
-                        $("body").css({"transform":"translate(0," + (move - start) + "px)","-webkit-transform":"translate(0," + (move - start) + "px)"});  //跟随手指移动
+                    if (move - start >= 0) {
+                        if (move - start >= maxDistance) {  //下拉超过最大距离
+                            $("body").css({"transform":"translate(0," + maxDistance + "px)","-webkit-transform":"translate(0," + maxDistance + "px)"});  //保持在最大距离处
+                        }
+                        else {  //下拉在最大距离内
+                            $("body").css({"transform":"translate(0," + (move - start) + "px)","-webkit-transform":"translate(0," + (move - start) + "px)"});  //跟随手指移动
+                        }
+                        $("p").first().html(move - start);
+                        event.preventDefault();
                     }
                     break;
                 case "touchend":  //触摸结束
                     if (move > start + maxDistance) {  //下拉超出最大距离
                         location.reload();  //页面刷新，或者执行其他操作
                     };
+                    $("body").css({"transform":"translate(0,0px)","-webkit-transform":"translate(0,0px)"});  //页面回归原位
                     break;
             }
         }
