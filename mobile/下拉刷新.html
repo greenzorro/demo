@@ -52,14 +52,16 @@ $(function () {
         }
     }
     function refreshing () {  //页面刷新中
-        $("p").first().html("页面刷新中，点我模拟刷新完成");
+        // $("p").first().html("页面刷新中，点我模拟刷新完成");
+        $("p").first().html("下拉距离：" + (move - start) + "<br>" + move + "," + $("body").css("top"));
         $("p").first().click(function () {
             refreshComplete();
         })
     }
     function refreshComplete () {  //页面刷新完成
         refreshFlag = 0;  //标记页面为刷新完成
-        $("p").first().html("下拉刷新页面");
+        // $("p").first().html("下拉刷新页面");
+        $("p").first().html("下拉距离：" + (move - start) + "<br>" + move + "," + $("body").css("top"));
         $("body").animate({"top":0},150);  //页面回归原位
     }
 })
