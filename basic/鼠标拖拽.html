@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>鼠标拖拽</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<style type="text/css">
+.drag_wrap { width: 500px; height: 300px; overflow: hidden; margin: 50px auto; border: 1px solid #dfdfdf; position: relative; }
+.drag_box { width: 100px; height: 100px; background: #86d592; position: absolute; left: 0; top: 0; cursor: move; }
+.test { position: fixed; left: 20px; top: 20px; }
+.drag_wrap2 .drag_box { width: 600px; height: 800px; background: url(../common/images/photo.jpg) no-repeat center center; }
+</style>
+<script>
+$(function () {
+	dragEle($(".drag_wrap1"));
+	dragEle($(".drag_wrap2"));
+	
+	// 拖拽函数，参数为拖拽框限定容器对象
+	function dragEle (obj) {
+		var dragBox = obj.find(".drag_box");
+		dragBox.mousedown(function (event){
+			var halfWidth = dragBox.width()/2;  //计算拖拽元素一半宽度
+			var halfHeight = dragBox.height()/2;  //计算拖拽元素一半高度
+			var x = event.clientX;  //获取按下位置x坐标
+			var y = event.clientY;  //获取按下位置y坐标
+			var posLeft = x + $(window).scrollLeft() - dragBox.offset().left;  //获取按下位置相对拖拽元素左边的偏移量
+			var posTop = y + $(window).scrollTop() - dragBox.offset().top;  //获取按下位置相对拖拽元素上边的偏移量
+			$(document).mousemove(function (event){
+				x = event.clientX;  //跟踪鼠标x坐标
+				y = event.clientY;  //跟踪鼠标y坐标
+
+				// if (halfWidth*2 <= obj.width()) {  //如果拖拽元素宽度小于外框
+				// 	if (x + $(window).scrollLeft() < obj.offset().left + posLeft) {  //拖出外框左边
+				// 		dragBox.css({"left":0});  //不能再左移
+				// 	}
+				// 	else if (x + $(window).scrollLeft() + halfWidth*2 - posLeft > obj.offset().left + obj.width()) {  //拖出外框右边
+				// 		dragBox.css({"left":obj.width() - halfWidth*2 + "px"});  //不能再右移
+				// 	}
+				// 	else {  //在外框内
+				// 		dragBox.css({"left":x + $(window).scrollLeft() - obj.offset().left - posLeft + "px"});  //任意移动
+				// 	}
+				// }
+				// else {  //宽度大于外框
+				// 	if (x + $(window).scrollLeft() + halfWidth*2 - posLeft < obj.offset().left + obj.width()) {  //左移到右边框重合
+				// 		dragBox.css({"left":obj.width() - halfWidth*2 + "px"});  //不能再左移
+				// 	}
+				// 	else if (x + $(window).scrollLeft() > obj.offset().left + posLeft) {  //右移到左边框重合
+				// 		dragBox.css({"left":0});  //不能再右移
+				// 	}
+				// 	else {
+				// 		dragBox.css({"left":x + $(window).scrollLeft() - obj.offset().left - posLeft + "px"});  //任意移动
+				// 	}
+				// }
+
+				// 上面注释掉的部分是原始判断逻辑，不过比较啰嗦，通过异或抽象为下面的代码
+				if (halfWidth*2 <= obj.width() ^ x + $(window).scrollLeft() > obj.offset().left + posLeft) {
+					dragBox.css({"left":0});
+				}
+				else if (halfWidth*2 <= obj.width() ^ x + $(window).scrollLeft() + halfWidth*2 - posLeft < obj.offset().left + obj.width()) {
+					dragBox.css({"left":obj.width() - halfWidth*2 + "px"});
+				}
+				else {
+					dragBox.css({"left":x + $(window).scrollLeft() - obj.offset().left - posLeft + "px"});
+				}
+
+				// if (halfHeight*2 <= obj.height()) {  //如果拖拽元素宽度小于外框
+				// 	if (y + $(window).scrollTop() < obj.offset().top + posTop) {  //拖出外框上边
+				// 		dragBox.css({"top":0});  //不能再上移
+				// 	}
+				// 	else if (y + $(window).scrollTop() + halfHeight*2 - posTop > obj.offset().top + obj.height()) {  //拖出外框下边
+				// 		dragBox.css({"top":obj.height() - halfHeight*2 + "px"});  //不能再下移
+				// 	}
+				// 	else {  //在外框内
+				// 		dragBox.css({"top":y + $(window).scrollTop() - obj.offset().top - posTop + "px"});  //任意移动
+				// 	}
+				// }
+				// else {  //宽度大于外框
+				// 	if (y + $(window).scrollTop() + halfHeight*2 - posTop < obj.offset().top + obj.height()) {  //上移到下边框重合
+				// 		dragBox.css({"top":obj.height() - halfHeight*2 + "px"});  //不能再上移
+				// 	}
+				// 	else if (y + $(window).scrollTop() > obj.offset().top + posTop) {  //下移到上边框重合
+				// 		dragBox.css({"top":0});  //不能再下移
+				// 	}
+				// 	else {
+				// 		dragBox.css({"top":y + $(window).scrollTop() - obj.offset().top - posTop + "px"});  //任意移动
+				// 	}
+				// }
+
+				// 上面注释掉的部分是原始判断逻辑，不过比较啰嗦，通过异或抽象为下面的代码
+				if (halfHeight*2 <= obj.height() ^ y + $(window).scrollTop() > obj.offset().top + posTop) {
+					dragBox.css({"top":0});
+				}
+				else if (halfHeight*2 <= obj.height() ^ y + $(window).scrollTop() + halfHeight*2 - posTop < obj.offset().top + obj.height()) {
+					dragBox.css({"top":obj.height() - halfHeight*2 + "px"});
+				}
+				else {
+					dragBox.css({"top":y + $(window).scrollTop() - obj.offset().top - posTop + "px"});
+				}
+				return false;  //防止拖拽产生选区
+			})
+			return false;  //阻止默认按下事件，防止firefox拖拽打开url
+		});
+		$(document).mouseup(function (){
+			$(this).unbind("mousemove");
+		});
+	}
+})
+</script>
+</head>
+
+<body>
+<div class="drag_wrap1 drag_wrap">
+	<div class="drag_box"></div>
+</div>
+<div class="drag_wrap2 drag_wrap">
+	<div class="drag_box"></div>
+</div>
+<p class="test"></p>
+</body>
+</html>
