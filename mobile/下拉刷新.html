@@ -16,9 +16,9 @@ $(function () {
     document.addEventListener("touchstart", pulldownRefresh, false);
     document.addEventListener("touchmove", pulldownRefresh, false);
     document.addEventListener("touchend", pulldownRefresh, false);
-    var start, move;  //初始y坐标、当前y坐标
+    var start, move, refreshFlag = 0;  //初始y坐标、当前y坐标、刷新标记（判断是否在刷新中）
     function pulldownRefresh(event) {
-        if ($(window).scrollTop() <= 0) {
+        if ($(window).scrollTop() <= 0 && !refreshFlag) {  //页面滚动到顶端，并且不在刷新中
             var maxDistance = 200;  //可下拉的最大距离
             switch (event.type) {
                 case "touchstart":  //触摸开始
@@ -28,24 +28,39 @@ $(function () {
                 case "touchmove":  //手指滑动
                     move = event.touches[0].clientY;  //获取当前y坐标
                     if (move - start >= 0) {
-                        if (move - start >= maxDistance) {  //下拉超过最大距离
-                            $("body").css({"top":maxDistance + "px"});  //保持在最大距离处
+                        $("body").css({"top":(move - start) + "px"});  //跟随手指移动
+                        if (move - start > maxDistance) {  //下拉超过最大距离
+                            $("p").first().html("下拉距离：" + (move - start) + " 松开刷新");
                         }
-                        else {  //下拉在最大距离内
-                            $("body").css({"top":(move - start) + "px"});  //跟随手指移动
+                        else {
+                            $("p").first().html("下拉距离：" + (move - start));
                         }
-                        $("p").first().html(move - start);
                         event.preventDefault();
                     }
                     break;
                 case "touchend":  //触摸结束
                     if (move > start + maxDistance) {  //下拉超出最大距离
-                        location.reload();  //页面刷新，或者执行其他操作
-                    };
-                    $("body").animate({"top":0},150);  //页面回归原位
+                        $("body").animate({"top":maxDistance + "px"},150);  //页面回到最大下拉距离
+                        refreshFlag = 1;  //标记页面为刷新中，防止刷新过程中再触发下拉动作
+                        refreshing();  //页面刷新中
+                    }
+                    else {
+                        $("body").animate({"top":0},150);  //页面回归原位
+                    }
                     break;
             }
         }
+    }
+    function refreshing () {  //页面刷新中
+        $("p").first().html("页面刷新中，点我模拟刷新完成");
+        $("p").first().click(function () {
+            refreshComplete();
+        })
+    }
+    function refreshComplete () {  //页面刷新完成
+        refreshFlag = 0;  //标记页面为刷新完成
+        $("p").first().html("下拉刷新页面");
+        $("body").animate({"top":0},150);  //页面回归原位
     }
 })
 </script>
