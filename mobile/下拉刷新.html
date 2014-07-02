@@ -7,6 +7,7 @@
 <link href="../common/css/global.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../common/js/jquery-latest.js"></script>
 <style>
+body { position: relative; }
 #test { padding: 2em; }
 #test p { padding: 1em 0; }
 </style>
@@ -28,10 +29,10 @@ $(function () {
                     move = event.touches[0].clientY;  //获取当前y坐标
                     if (move - start >= 0) {
                         if (move - start >= maxDistance) {  //下拉超过最大距离
-                            $("body").css({"transform":"translate(0," + maxDistance + "px)","-webkit-transform":"translate(0," + maxDistance + "px)"});  //保持在最大距离处
+                            $("body").css({"top":maxDistance + "px"});  //保持在最大距离处
                         }
                         else {  //下拉在最大距离内
-                            $("body").css({"transform":"translate(0," + (move - start) + "px)","-webkit-transform":"translate(0," + (move - start) + "px)"});  //跟随手指移动
+                            $("body").css({"top":(move - start) + "px"});  //跟随手指移动
                         }
                         $("p").first().html(move - start);
                         event.preventDefault();
@@ -41,7 +42,7 @@ $(function () {
                     if (move > start + maxDistance) {  //下拉超出最大距离
                         location.reload();  //页面刷新，或者执行其他操作
                     };
-                    $("body").css({"transform":"translate(0,0px)","-webkit-transform":"translate(0,0px)"});  //页面回归原位
+                    $("body").animate({"top":0},150);  //页面回归原位
                     break;
             }
         }
