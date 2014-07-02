@@ -30,10 +30,10 @@ $(function () {
                     if (move - start >= 0) {
                         $("body").css({"top":(move - start) + "px"});  //跟随手指移动
                         if (move - start > maxDistance) {  //下拉超过最大距离
-                            $("p").first().html("下拉距离：" + (move - start) + " 松开刷新");
+                            $("p").first().html("下拉距离：" + (move - start) + " 松开刷新<br>" + move + "," + start);
                         }
                         else {
-                            $("p").first().html("下拉距离：" + (move - start));
+                            $("p").first().html("下拉距离：" + (move - start) + "<br>" + move + "," + start);
                         }
                         event.preventDefault();
                     }
