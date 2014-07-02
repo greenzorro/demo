@@ -11,6 +11,7 @@ html { background: #333; }
 body { background: #fff; position: relative; }
 #test { padding: 2em; }
 #test p { padding: 1em 0; }
+.test { padding: 0.5em; background: #fff; color: red; position: fixed; right: 0; top: 200px; }
 </style>
 <script>
 $(function () {
@@ -18,46 +19,51 @@ $(function () {
     document.addEventListener("touchmove", pulldownRefresh, false);
     document.addEventListener("touchend", pulldownRefresh, false);
     document.addEventListener("touchcancel", pulldownRefresh, false);
-    var start, move, refreshFlag = 0;  //初始y坐标、当前y坐标、刷新标记（判断是否在刷新中）
+    var start, move, refreshFlag = 0, scrollPos;  //初始y坐标、当前y坐标、刷新标记（判断是否在刷新中）、页面滚动位置
     function pulldownRefresh(event) {
             var maxDistance = 200;  //可下拉的最大距离
             switch (event.type) {
                 case "touchstart":  //触摸开始
                     start = event.touches[0].clientY;  //获取初始y坐标
                     move = start;
+                    scrollPos = $(window).scrollTop();
                     $(".test").html(start + "," + move + "," + $("body").css("top") + "," + $(window).scrollTop());
                     break;
                 case "touchmove":  //手指滑动
-                    move = event.touches[0].clientY;  //获取当前y坐标
+                    move = event.changedTouches[0].clientY;  //获取当前y坐标
                     if ($(window).scrollTop() == 0 && !refreshFlag) {  //页面滚动到顶端，并且不在刷新中
                         if (move >= start) {
-                            $("body").css({"top":(move - start) + "px"});  //跟随手指移动
-                            if (move - start >= maxDistance) {  //下拉超过最大距离
+                            $("body").css({"top":(move - start - scrollPos) + "px"});  //跟随手指移动
+                            if (move - start >= maxDistance + scrollPos) {  //下拉超过最大距离
                                 $("p").first().html("下拉距离：" + (move - start) + "，松开刷新");
                             }
                             else {
                                 $("p").first().html("下拉距离：" + (move - start));
                             }
+                            event.preventDefault();
                         }
                         else {
                             $("body").css({"top":"0px"});  //跟随手指移动
-                            event.preventDefault();
                         }
                     }
                     $(".test").html(start + "," + move + "," + $("body").css("top") + "," + $(window).scrollTop());
                     break;
                 case "touchend":  //触摸结束
                     if (!refreshFlag) {  //页面不在刷新中
-                        if (move > start + maxDistance) {  //下拉超出最大距离
-                            $("body").animate({"top":maxDistance + "px"},150);  //页面回到最大下拉距离
+                        if (move - start >= maxDistance + scrollPos) {  //下拉超出最大距离
+                            $("body").animate({"top":maxDistance + "px"},150,function () {
+                                $(".test").html(start + "," + move + "," + $("body").css("top") + "," + $(window).scrollTop());
+                            });  //页面回到最大下拉距离
                             refreshFlag = 1;  //标记页面为刷新中，防止刷新过程中再触发下拉动作
                             refreshing();  //页面刷新中
                         }
                         else {
-                            $("body").animate({"top":0},150);  //页面回归原位
+                            $("body").animate({"top":0},150,function () {
+                                $(".test").html(start + "," + move + "," + $("body").css("top") + "," + $(window).scrollTop());
+                            });  //页面回归原位
                         }
                     }
-                    $(".test").html(start + "," + move + "," + $("body").css("top") + "," + $(window).scrollTop());
+                    
                     break;
                 case "touchcancel":  //触摸取消
                     $("body").css({"top":"0px"});  //跟随手指移动
