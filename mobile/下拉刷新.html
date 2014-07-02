@@ -44,18 +44,15 @@ $(function () {
                 case "touchend":  //触摸结束
                     if (!refreshFlag) {  //页面不在刷新中
                         if (move > start + maxDistance) {  //下拉超出最大距离
-                            $("body").animate({"top":maxDistance + "px"},150,function () {
-                                $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
-                            });  //页面回到最大下拉距离
+                            $("body").animate({"top":maxDistance + "px"},150);  //页面回到最大下拉距离
                             refreshFlag = 1;  //标记页面为刷新中，防止刷新过程中再触发下拉动作
                             refreshing();  //页面刷新中
                         }
                         else {
-                            $("body").animate({"top":0},150,function () {
-                                $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
-                            });  //页面回归原位
+                            $("body").animate({"top":0},150);  //页面回归原位
                         }
                     }
+                    $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
                     break;
             }
     }
@@ -68,9 +65,8 @@ $(function () {
     function refreshComplete () {  //页面刷新完成
         refreshFlag = 0;  //标记页面为刷新完成
         $("p").first().html("下拉刷新页面");
-        $("body").animate({"top":0},150,function () {
-            $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
-        });  //页面回归原位
+        $("body").animate({"top":0},150);  //页面回归原位
+        $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
     }
 })
 </script>
