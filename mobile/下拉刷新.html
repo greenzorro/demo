@@ -23,11 +23,11 @@ $(function () {
                 case "touchstart":  //触摸开始
                     start = event.touches[0].clientY;  //获取初始y坐标
                     move = start;
-                    $(".test").html(move + "," + $("body").css("top") + "," + parseInt($("body").css("top").split("px")[0]));
+                    $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
                     break;
                 case "touchmove":  //手指滑动
                     move = event.touches[0].clientY;  //获取当前y坐标
-                    if (parseInt($("body").css("top").split("px")[0]) <= 0 && !refreshFlag) {  //页面滚动到顶端，并且不在刷新中
+                    if ($(window).scrollTop() <= 0 && !refreshFlag) {  //页面滚动到顶端，并且不在刷新中
                         if (move - start > 0) {
                             $("body").css({"top":(move - start) + "px"});  //跟随手指移动
                             if (move - start >= maxDistance) {  //下拉超过最大距离
@@ -39,20 +39,20 @@ $(function () {
                             event.preventDefault();
                         }
                     }
-                    $(".test").html(move + "," + $("body").css("top") + "," + parseInt($("body").css("top").split("px")[0]));
+                    $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
                     break;
                 case "touchend":  //触摸结束
                     if (!refreshFlag) {  //页面不在刷新中
                         if (move > start + maxDistance) {  //下拉超出最大距离
                             $("body").animate({"top":maxDistance + "px"},150,function () {
-                                $(".test").html(move + "," + $("body").css("top") + "," + parseInt($("body").css("top").split("px")[0]));
+                                $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
                             });  //页面回到最大下拉距离
                             refreshFlag = 1;  //标记页面为刷新中，防止刷新过程中再触发下拉动作
                             refreshing();  //页面刷新中
                         }
                         else {
                             $("body").animate({"top":0},150,function () {
-                                $(".test").html(move + "," + $("body").css("top") + "," + parseInt($("body").css("top").split("px")[0]));
+                                $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
                             });  //页面回归原位
                         }
                     }
@@ -69,7 +69,7 @@ $(function () {
         refreshFlag = 0;  //标记页面为刷新完成
         $("p").first().html("下拉刷新页面");
         $("body").animate({"top":0},150,function () {
-            $(".test").html(move + "," + $("body").css("top") + "," + parseInt($("body").css("top").split("px")[0]));
+            $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
         });  //页面回归原位
     }
 })
