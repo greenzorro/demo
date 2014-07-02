@@ -23,48 +23,54 @@ $(function () {
                 case "touchstart":  //触摸开始
                     start = event.touches[0].clientY;  //获取初始y坐标
                     move = start;
+                    $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
                     break;
                 case "touchmove":  //手指滑动
                     move = event.touches[0].clientY;  //获取当前y坐标
                     if ($(window).scrollTop() <= 0 && !refreshFlag) {  //页面滚动到顶端，并且不在刷新中
                         if (move - start > 0) {
                             $("body").css({"top":(move - start) + "px"});  //跟随手指移动
-                            if (move - start > maxDistance) {  //下拉超过最大距离
-                                $("p").first().html("下拉距离：" + (move - start) + " 松开刷新<br>" + move + "," + $("body").css("top"));
+                            if (move - start >= maxDistance) {  //下拉超过最大距离
+                                $("p").first().html("下拉距离：" + (move - start) + "，松开刷新");
                             }
                             else {
-                                $("p").first().html("下拉距离：" + (move - start) + "<br>" + move + "," + $("body").css("top"));
+                                $("p").first().html("下拉距离：" + (move - start));
                             }
                             event.preventDefault();
                         }
                     }
+                    $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
                     break;
                 case "touchend":  //触摸结束
                     if (!refreshFlag) {  //页面不在刷新中
                         if (move > start + maxDistance) {  //下拉超出最大距离
-                            $("body").animate({"top":maxDistance + "px"},150);  //页面回到最大下拉距离
+                            $("body").animate({"top":maxDistance + "px"},150,function () {
+                                $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
+                            });  //页面回到最大下拉距离
                             refreshFlag = 1;  //标记页面为刷新中，防止刷新过程中再触发下拉动作
                             refreshing();  //页面刷新中
                         }
                         else {
-                            $("body").animate({"top":0},150);  //页面回归原位
+                            $("body").animate({"top":0},150,function () {
+                                $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
+                            });  //页面回归原位
                         }
                     }
                     break;
             }
     }
     function refreshing () {  //页面刷新中
-        // $("p").first().html("页面刷新中，点我模拟刷新完成");
-        $("p").first().html("下拉距离：" + (move - start) + "<br>" + move + "," + $("body").css("top"));
+        $("p").first().html("页面刷新中，点我模拟刷新完成");
         $("p").first().click(function () {
             refreshComplete();
         })
     }
     function refreshComplete () {  //页面刷新完成
         refreshFlag = 0;  //标记页面为刷新完成
-        // $("p").first().html("下拉刷新页面");
-        $("p").first().html("下拉距离：" + (move - start) + "<br>" + move + "," + $("body").css("top"));
-        $("body").animate({"top":0},150);  //页面回归原位
+        $("p").first().html("下拉刷新页面");
+        $("body").animate({"top":0},150,function () {
+            $(".test").html(move + "," + $("body").css("top") + "," + $(window).scrollTop());
+        });  //页面回归原位
     }
 })
 </script>
@@ -74,6 +80,7 @@ $(function () {
 
 <div id="test">
     <p>下拉刷新页面</p>
+    <p class="test"></p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
