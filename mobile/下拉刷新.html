@@ -27,7 +27,7 @@ $(function () {
                 case "touchmove":  //手指滑动
                     move = event.touches[0].clientY;  //获取当前y坐标
                     if ($(window).scrollTop() <= 0 && !refreshFlag) {  //页面滚动到顶端，并且不在刷新中
-                        if (move - start >= 0) {
+                        if (move - start > 0) {
                             $("body").css({"top":(move - start) + "px"});  //跟随手指移动
                             if (move - start > maxDistance) {  //下拉超过最大距离
                                 $("p").first().html("下拉距离：" + (move - start) + " 松开刷新<br>" + move + "," + $("body").css("top"));
