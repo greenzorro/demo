@@ -18,7 +18,6 @@ $(function () {
     document.addEventListener("touchstart", pulldownRefresh, false);
     document.addEventListener("touchmove", pulldownRefresh, false);
     document.addEventListener("touchend", pulldownRefresh, false);
-    document.addEventListener("touchcancel", pulldownRefresh, false);
     var start, move, refreshFlag = 0, scrollPos;  //初始y坐标、当前y坐标、刷新标记（判断是否在刷新中）、页面滚动位置
     function pulldownRefresh(event) {
             var maxDistance = 200;  //可下拉的最大距离
@@ -26,24 +25,24 @@ $(function () {
                 case "touchstart":  //触摸开始
                     start = event.touches[0].clientY;  //获取初始y坐标
                     move = start;
-                    scrollPos = $(window).scrollTop();
+                    scrollPos = $(window).scrollTop();  //获取页面当前滚动位置
                     $(".test").html(start + "," + move + "," + $("body").css("top") + "," + $(window).scrollTop());
                     break;
                 case "touchmove":  //手指滑动
                     move = event.changedTouches[0].clientY;  //获取当前y坐标
                     if ($(window).scrollTop() == 0 && !refreshFlag) {  //页面滚动到顶端，并且不在刷新中
-                        if (move >= start) {
-                            $("body").css({"top":(move - start - scrollPos) + "px"});  //跟随手指移动
+                        if (move >= start) {  //向下滑
+                            $("body").css({"top":(move - start - scrollPos) + "px"});  //改变页面相对位置
                             if (move - start >= maxDistance + scrollPos) {  //下拉超过最大距离
                                 $("p").first().html("下拉距离：" + (move - start) + "，松开刷新");
                             }
                             else {
                                 $("p").first().html("下拉距离：" + (move - start));
                             }
-                            event.preventDefault();
+                            event.preventDefault();  //禁止window scroll事件
                         }
-                        else {
-                            $("body").css({"top":"0px"});  //跟随手指移动
+                        else {  //向上滑
+                            $("body").css({"top":"0px"});  //页面回归原位，靠window scroll滚动
                         }
                     }
                     $(".test").html(start + "," + move + "," + $("body").css("top") + "," + $(window).scrollTop());
@@ -63,11 +62,6 @@ $(function () {
                             });  //页面回归原位
                         }
                     }
-                    
-                    break;
-                case "touchcancel":  //触摸取消
-                    $("body").css({"top":"0px"});  //跟随手指移动
-                    $(".test").html(start + "," + move + "," + $("body").css("top") + "," + $(window).scrollTop());
                     break;
             }
     }
@@ -78,7 +72,7 @@ $(function () {
         })
     }
     function refreshComplete () {  //页面刷新完成
-        refreshFlag = 0;  //标记页面为刷新完成
+        refreshFlag = 0;  //标记页面为已刷新
         $("p").first().html("下拉刷新页面");
         $("body").animate({"top":0},150);  //页面回归原位
         $(".test").html(start + "," + move + "," + $("body").css("top") + "," + $(window).scrollTop());
