@@ -14,28 +14,6 @@ $(function () {
     $("a").click(function () {
         getLocation();
     })
-    function stateAction (x,y,state) {  //根据返回状态，执行相应操作
-        switch(state){
-            case 1:
-                $("#test").html("经度: " + x + "<br />纬度: " + y);  //显示位置
-                break;
-            case 0:
-                alert("该浏览器不支持获取位置信息");
-                break;
-            case 2:
-                alert("用户未授权获取位置信息");
-                break;
-            case 3:
-                alert("位置信息不可用");
-                break;
-            case 4:
-                alert("请求位置信息超时");
-                break;
-            case 5:
-                alert("定位时发生未知错误");
-                break;
-        }
-    }
     function getLocation () {
         var x,y,state;  //经度、纬度、返回状态
         var geo_options = {
@@ -74,6 +52,28 @@ $(function () {
                     break;
             }
             stateAction(x,y,state);  //根据返回状态，执行相应操作
+        }
+    }
+    function stateAction (x,y,state) {  //根据返回状态，执行相应操作
+        switch(state){
+            case 1:
+                $("#test").html("经度: " + x + "<br />纬度: " + y);  //显示位置
+                break;
+            case 0:
+                alert("该浏览器不支持获取位置信息");
+                break;
+            case 2:
+                alert("用户未授权获取位置信息");
+                break;
+            case 3:
+                alert("位置信息不可用");
+                break;
+            case 4:
+                alert("请求位置信息超时");
+                break;
+            case 5:
+                alert("定位时发生未知错误");
+                break;
         }
     }
 })
