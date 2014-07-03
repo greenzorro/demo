@@ -7,15 +7,19 @@
 <link href="common/css/global.css" rel="stylesheet" type="text/css" />
 <script src="common/js/jquery-latest.js"></script>
 <style type="text/css">
-a { display: block; width: 200px; margin: 3em auto; }
-a:active { color: red; }
 </style>
 <script type="text/javascript">
-document.addEventListener("touchstart", function(){}, true);
+$(function () {
+	var n = 0;
+	test();
+	alert(n);
+	function test () {
+		n = 1;
+	}
+})
 </script>
 </head>
 
 <body>
-<a href="javascript:;">button</a>
 </body>
 </html>
