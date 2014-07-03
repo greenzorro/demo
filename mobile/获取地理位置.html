@@ -14,7 +14,7 @@ $(function () {
     $("a").click(function () {
         getLocation();
     })
-    function showLocation (x,y,state) {  //执行获取位置后的操作
+    function stateAction (x,y,state) {  //根据返回状态，执行相应操作
         switch(state){
             case 1:
                 $("#test").html("经度: " + x + "<br />纬度: " + y);  //显示位置
@@ -55,7 +55,7 @@ $(function () {
             x = position.coords.longitude;  //获取经度
             y = position.coords.latitude;  //获取维度
             state = 1;  //获取状态：成功
-            showLocation(x,y,state);  //执行获取位置后的操作
+            stateAction(x,y,state);  //根据返回状态，执行相应操作
         }
         function getPosFail(error)  //获取位置失败
         {
@@ -73,7 +73,7 @@ $(function () {
                     state = 5;  //获取状态：定位时发生未知错误
                     break;
             }
-            showLocation(x,y,state);  //执行获取位置后的操作
+            stateAction(x,y,state);  //根据返回状态，执行相应操作
         }
     }
 })
