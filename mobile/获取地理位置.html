@@ -18,7 +18,6 @@ $(function () {
         switch(state){
             case 1:
                 $("#test").html("经度: " + x + "<br />纬度: " + y);  //显示位置
-                alert(x + "," + y);
                 break;
             case 0:
                 alert("该浏览器不支持获取位置信息");
@@ -40,9 +39,9 @@ $(function () {
     function getLocation () {
         var x,y,state;  //经度、纬度、返回状态
         var geo_options = {
-            enableHighAccuracy: true, 
-            maximumAge        : 30000, 
-            timeout           : 27000
+            enableHighAccuracy: true,  //高精度定位
+            maximumAge        : 3000,  //位置信息缓存时长
+            timeout           : 10000  //超时时间
         };
         if (navigator.geolocation)
         {
