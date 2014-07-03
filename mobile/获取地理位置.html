@@ -14,7 +14,7 @@ $(function () {
     $("a").click(function () {
         getLocation();
     })
-    function showLocation (x,y,state) {
+    function showLocation (x,y,state) {  //执行获取位置后的操作
         switch(state){
             case 1:
                 $("#test").html("经度: " + x + "<br />纬度: " + y);  //显示位置
@@ -48,32 +48,32 @@ $(function () {
             navigator.geolocation.getCurrentPosition(getPosSuccess,getPosFail,geo_options);  //开始获取地理位置，获取成功或失败执行相应操作
         }
         else {
-            state = 0;  //该浏览器不支持获取位置信息
+            state = 0;  //获取状态：该浏览器不支持获取位置信息
         }
         function getPosSuccess(position)  //获取位置成功
         {
             x = position.coords.longitude;  //获取经度
             y = position.coords.latitude;  //获取维度
-            state = 1;  //获取成功
-            showLocation(x,y,state);
+            state = 1;  //获取状态：成功
+            showLocation(x,y,state);  //执行获取位置后的操作
         }
         function getPosFail(error)  //获取位置失败
         {
             switch(error.code){  //根据返回信息判断错误类型
                 case error.PERMISSION_DENIED:
-                    state = 2;  //用户未授权获取位置信息
+                    state = 2;  //获取状态：用户未授权获取位置信息
                     break;
                 case error.POSITION_UNAVAILABLE:
-                    state = 3;  //位置信息不可用
+                    state = 3;  //获取状态：位置信息不可用
                     break;
                 case error.TIMEOUT:
-                    state = 4;  //请求位置信息超时
+                    state = 4;  //获取状态：请求位置信息超时
                     break;
                 case error.UNKNOWN_ERROR:
-                    state = 5;  //定位时发生未知错误
+                    state = 5;  //获取状态：定位时发生未知错误
                     break;
             }
-            showLocation(x,y,state);
+            showLocation(x,y,state);  //执行获取位置后的操作
         }
     }
 })
