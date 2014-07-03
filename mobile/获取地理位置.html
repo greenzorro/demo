@@ -18,7 +18,7 @@ $(function () {
     function showLocation (x,y,flag) {
         switch(flag){
             case 1:
-                showDate.html("纬度: " + position.coords.latitude + "<br />经度: " + position.coords.longitude);  //显示位置
+                showDate.html("经度: " + x + "<br />纬度: " + y);  //显示位置
                 break;
             case 0:
                 alert("该浏览器不支持获取位置信息");
