@@ -11,12 +11,12 @@
 <script>
 $(function () {
     var showDate = $("#test");
-    showLocation(getLocation()["x"],getLocation()["y"],getLocation()["flag"]);
+    showLocation(getLocation()["x"],getLocation()["y"],getLocation()["state"]);
     $("a").click(function () {
-        showLocation(getLocation()["x"],getLocation()["y"],getLocation()["flag"]);
+        showLocation(getLocation()["x"],getLocation()["y"],getLocation()["state"]);
     })
-    function showLocation (x,y,flag) {
-        switch(flag){
+    function showLocation (x,y,state) {
+        switch(state){
             case 1:
                 showDate.html("经度: " + x + "<br />纬度: " + y);  //显示位置
                 break;
@@ -38,44 +38,45 @@ $(function () {
         }
     }
     function getLocation () {
-        var x,y,flag;  //经度、纬度、返回状态
+        var x,y,state;  //经度、纬度、返回状态
         if (navigator.geolocation)
         {
             navigator.geolocation.getCurrentPosition(getPosSuccess,getPosFail);  //获取地理位置，获取成功或失败执行相应操作
         }
         else {
-            flag = 0;  //该浏览器不支持获取位置信息
+            state = 0;  //该浏览器不支持获取位置信息
             // showDate.html("该浏览器不支持获取位置信息");
         }
         function getPosSuccess(position)  //获取位置成功
         {
             x = position.coords.longitude;  //获取经度
             y = position.coords.latitude;  //获取维度
-            flag = 1;  //获取成功
+            state = 1;  //获取成功
+            alert(x + "," + y + "," + state);
             // showDate.html("纬度: " + position.coords.latitude + "<br />经度: " + position.coords.longitude);  //显示位置
         }
         function getPosFail(error)  //获取位置失败
         {
             switch(error.code){  //根据返回信息判断错误类型
                 case error.PERMISSION_DENIED:
-                    flag = 2;  //用户未授权获取位置信息
+                    state = 2;  //用户未授权获取位置信息
                     // showDate.html("用户未授权获取位置信息");
                     break;
                 case error.POSITION_UNAVAILABLE:
-                    flag = 3;  //位置信息不可用
+                    state = 3;  //位置信息不可用
                     // showDate.html("位置信息不可用");
                     break;
                 case error.TIMEOUT:
-                    flag = 4;  //请求位置信息超时
+                    state = 4;  //请求位置信息超时
                     // showDate.html("请求位置信息超时");
                     break;
                 case error.UNKNOWN_ERROR:
-                    flag = 5;  //定位时发生未知错误
+                    state = 5;  //定位时发生未知错误
                     // showDate.html("定位时发生未知错误");
                     break;
             }
         }
-        return {"x":x,"y":y,"flag":flag};
+        return {"x":x,"y":y,"state":state};
     }
 })
 </script>
