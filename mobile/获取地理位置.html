@@ -11,41 +11,71 @@
 <script>
 $(function () {
     var showDate = $("#test");
-    getLocation();
+    showLocation(getLocation()["x"],getLocation()["y"],getLocation()["flag"]);
     $("a").click(function () {
-        getLocation();
+        showLocation(getLocation()["x"],getLocation()["y"],getLocation()["flag"]);
     })
-    function getLocation()
-    {
+    function showLocation (x,y,flag) {
+        switch(flag){
+            case 1:
+                showDate.html("纬度: " + position.coords.latitude + "<br />经度: " + position.coords.longitude);  //显示位置
+                break;
+            case 0:
+                alert("该浏览器不支持获取位置信息");
+                break;
+            case 2:
+                alert("用户未授权获取位置信息");
+                break;
+            case 3:
+                alert("位置信息不可用");
+                break;
+            case 4:
+                alert("请求位置信息超时");
+                break;
+            case 5:
+                alert("定位时发生未知错误");
+                break;
+        }
+    }
+    function getLocation () {
+        var x,y,flag;  //经度、纬度、返回状态
         if (navigator.geolocation)
         {
             navigator.geolocation.getCurrentPosition(getPosSuccess,getPosFail);  //获取地理位置，获取成功或失败执行相应操作
         }
         else {
-            showDate.html("该浏览器不支持获取位置信息");
+            flag = 0;  //该浏览器不支持获取位置信息
+            // showDate.html("该浏览器不支持获取位置信息");
         }
-    }
-    function getPosSuccess(position)  //获取位置成功
-    {
-        showDate.html("纬度: " + position.coords.latitude + "<br />经度: " + position.coords.longitude);  //显示位置
-    }
-    function getPosFail(error)  //获取位置失败
-    {
-        switch(error.code)  //根据返回信息判断错误类型
+        function getPosSuccess(position)  //获取位置成功
         {
-            case error.PERMISSION_DENIED:
-                showDate.html("用户未授权获取位置信息");
-                break;
-            case error.POSITION_UNAVAILABLE:
-                showDate.html("位置信息不可用");
-                break;
-            case error.TIMEOUT:
-                showDate.html("请求位置信息超时");
-                break;
-            case error.UNKNOWN_ERROR:
-                showDate.html("未知错误");
-                break;
+            x = position.coords.longitude;  //获取经度
+            y = position.coords.latitude;  //获取维度
+            flag = 1;  //获取成功
+            // showDate.html("纬度: " + position.coords.latitude + "<br />经度: " + position.coords.longitude);  //显示位置
         }
+        function getPosFail(error)  //获取位置失败
+        {
+            switch(error.code){  //根据返回信息判断错误类型
+                case error.PERMISSION_DENIED:
+                    flag = 2;  //用户未授权获取位置信息
+                    // showDate.html("用户未授权获取位置信息");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    flag = 3;  //位置信息不可用
+                    // showDate.html("位置信息不可用");
+                    break;
+                case error.TIMEOUT:
+                    flag = 4;  //请求位置信息超时
+                    // showDate.html("请求位置信息超时");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    flag = 5;  //定位时发生未知错误
+                    // showDate.html("定位时发生未知错误");
+                    break;
+            }
+        }
+        return {"x":x,"y":y,"flag":flag};
     }
 })
 </script>
