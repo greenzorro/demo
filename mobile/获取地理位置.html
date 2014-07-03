@@ -10,6 +10,7 @@
 </style>
 <script>
 $(function () {
+    var showDate = $("#test");
     getLocation();
     $("a").click(function () {
         getLocation();
@@ -18,15 +19,33 @@ $(function () {
     {
         if (navigator.geolocation)
         {
-            navigator.geolocation.getCurrentPosition(showPosition);
+            navigator.geolocation.getCurrentPosition(getPosSuccess,getPosFail);  //获取地理位置，获取成功或失败执行相应操作
         }
         else {
-            $("#test").html("Geolocation is not supported by this browser.");
+            showDate.html("该浏览器不支持获取位置信息");
         }
     }
-    function showPosition(position)
+    function getPosSuccess(position)  //获取位置成功
     {
-        $("#test").html("Latitude: " + position.coords.latitude + "<br />Longitude: " + position.coords.longitude);
+        showDate.html("纬度: " + position.coords.latitude + "<br />经度: " + position.coords.longitude);  //显示位置
+    }
+    function getPosFail(error)  //获取位置失败
+    {
+        switch(error.code)  //根据返回信息判断错误类型
+        {
+            case error.PERMISSION_DENIED:
+                showDate.html("用户未授权获取位置信息");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                showDate.html("位置信息不可用");
+                break;
+            case error.TIMEOUT:
+                showDate.html("请求位置信息超时");
+                break;
+            case error.UNKNOWN_ERROR:
+                showDate.html("未知错误");
+                break;
+        }
     }
 })
 </script>
@@ -35,7 +54,7 @@ $(function () {
 <body>
 
 <div id="test"></div>
-<a href="javascript:;">获取地理位置</a>
+<a href="javascript:;">刷新地理位置</a>
 
 </body>
 </html>
