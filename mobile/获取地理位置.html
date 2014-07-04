@@ -23,7 +23,7 @@ $(function () {
         };
         if (navigator.geolocation)
         {
-            navigator.geolocation.getCurrentPosition(getPosSuccess,getPosFail,geo_options);  //开始获取地理位置，获取成功或失败执行相应操作
+            navigator.geolocation.getCurrentPosition(getPosSuccess,getPosFail);  //开始获取地理位置，获取成功或失败执行相应操作
         }
         else {
             state = 0;  //获取状态：该浏览器不支持获取位置信息
