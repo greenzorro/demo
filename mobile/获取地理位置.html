@@ -17,9 +17,9 @@ $(function () {
     function getLocation () {
         var x,y,state;  //经度、纬度、返回状态
         var geo_options = {
-            enableHighAccuracy: false,  //高精度定位
+            enableHighAccuracy: true,  //高精度定位
             maximumAge        : 0,  //位置信息缓存时长
-            timeout           : 30000  //超时时间
+            timeout           : 5000  //超时时间
         };
         if (navigator.geolocation)
         {
