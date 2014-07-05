@@ -15,7 +15,8 @@ $(function () {
         getLocation();
     })
     function getLocation () {
-        var x,y,state;  //经度、纬度、返回状态
+        // 经度、纬度、平面准确度、海拔高度、海拔准确度、朝向、速度、返回状态
+        var x,y,2dAccuracy,z,3dAccuracy,direction,speed,state;
         var geo_options = {
             enableHighAccuracy: true,  //高精度定位
             maximumAge        : 3000,  //位置信息缓存时长
