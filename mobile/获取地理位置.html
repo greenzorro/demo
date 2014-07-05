@@ -59,7 +59,7 @@ $(function () {
             stateAction(x,y,2dAccuracy,z,3dAccuracy,direction,speed,state);  //根据返回状态，执行相应操作
         }
     }
-    function stateAction (x,y,state) {  //根据返回状态，执行相应操作
+    function stateAction (x,y,2dAccuracy,z,3dAccuracy,direction,speed,state) {  //根据返回状态，执行相应操作
         switch(state){
             case 1:
                 $("#test").html("经度: " + x + "<br />纬度: " + y + "<br />平面准确度: " + 2dAccuracy + "<br />海拔: " + z + "<br />海拔准确度: " + 3dAccuracy + "<br />朝向: " + direction + "<br />速度: " + speed);  //显示位置
