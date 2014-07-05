@@ -16,7 +16,7 @@ $(function () {
     })
     function getLocation () {
         // 经度、纬度、平面准确度、海拔高度、海拔准确度、朝向、速度、返回状态
-        var x,y,2dAccuracy,z,3dAccuracy,direction,speed,state;
+        var x, y, accuracy, z, accuracyAlt, direction, speed, state;
         var geo_options = {
             enableHighAccuracy: true,  //高精度定位
             maximumAge        : 3000,  //位置信息缓存时长
@@ -33,13 +33,13 @@ $(function () {
         {
             x = position.coords.longitude;  //获取经度
             y = position.coords.latitude;  //获取维度
-            2dAccuracy = position.coords.accuracy;  //平面准确度
-            z = position.coords.altitude ;  //海拔高度
-            3dAccuracy = position.coords.altitudeAccuracy;  //海拔准确度
-            direction = position.coords.heading ;  //朝向
-            speed = position.coords.speed ;  //速度
+            accuracy = position.coords.accuracy;  //平面准确度
+            z = position.coords.altitude;  //海拔高度
+            accuracyAlt = position.coords.altitudeAccuracy;  //海拔准确度
+            direction = position.coords.heading;  //朝向
+            speed = position.coords.speed;  //速度
             state = 1;  //获取状态：成功
-            stateAction(x,y,2dAccuracy,z,3dAccuracy,direction,speed,state);  //根据返回状态，执行相应操作
+            stateAction(x,y,accuracy,z,accuracyAlt,direction,speed,state);  //根据返回状态，执行相应操作
         }
         function getPosFail(error)  //获取位置失败
         {
@@ -57,13 +57,13 @@ $(function () {
                     state = 5;  //获取状态：定位时发生未知错误
                     break;
             }
-            stateAction(x,y,2dAccuracy,z,3dAccuracy,direction,speed,state);  //根据返回状态，执行相应操作
+            stateAction(x,y,accuracy,z,accuracyAlt,direction,speed,state);  //根据返回状态，执行相应操作
         }
     }
-    function stateAction (x,y,2dAccuracy,z,3dAccuracy,direction,speed,state) {  //根据返回状态，执行相应操作
+    function stateAction (x,y,accuracy,z,accuracyAlt,direction,speed,state) {  //根据返回状态，执行相应操作
         switch(state){
             case 1:
-                $("#test").html("经度: " + x + "<br />纬度: " + y + "<br />平面准确度: " + 2dAccuracy + "<br />海拔: " + z + "<br />海拔准确度: " + 3dAccuracy + "<br />朝向: " + direction + "<br />速度: " + speed);  //显示位置
+                $("#test").html("经度: " + x + "<br />纬度: " + y + "<br />平面准确度: " + accuracy + "<br />海拔: " + z + "<br />海拔准确度: " + accuracyAlt + "<br />朝向: " + direction + "<br />速度: " + speed);  //显示位置
                 break;
             case 0:
                 alert("该浏览器不支持获取位置信息");
