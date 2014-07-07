@@ -26,7 +26,9 @@ $(function () {
             // Android版QQ/百度/微信内置浏览器：范围[-90,270]，右正左负，水平为0
             // Android版UC浏览器：范围[-90,90]，右正左负，水平为0
             var tiltLR = eventData.gamma;
-            deviceOrientationHandler(tiltLR, tiltFB, dir);  //根据陀螺仪数据执行相应动作
+            if (eventData.alpha && eventData.beta && eventData.gamma) {
+                deviceOrientationHandler(tiltLR, tiltFB, dir);  //根据陀螺仪数据执行相应动作
+            };
         }
     }
     else {
