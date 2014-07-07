@@ -10,24 +10,30 @@
 </style>
 <script>
 $(function () {
-    if (window.DeviceOrientationEvent) {
+    if (window.DeviceOrientationEvent) {  //是否支持陀螺仪
+        // 绑定陀螺仪转动事件。true使用指南针数据，false则使用当前角度与初始角度的相对值
         window.addEventListener('deviceorientation', devOrientHandler, false);
         function devOrientHandler (eventData) {
-            // gamma is the left-to-right tilt in degrees, where right is positive
-            var tiltLR = eventData.gamma;
-            // beta is the front-to-back tilt in degrees, where front is positive
+            // alpha是手机朝向，从0-360
+            // iOS不带指南针效果，任何方向初始状态都是0
+            // Android带有指南针效果，逆时针转，度数逐渐增大
+            var dir = eventData.alpha;
+            // beta是前后翻转角度
+            // 从-90到90，上正下负，水平为0
             var tiltFB = eventData.beta;
-            // alpha is the compass direction the device is facing in degrees
-            var dir = eventData.alpha
-            // call our orientation event handler
-            deviceOrientationHandler(tiltLR, tiltFB, dir);
+            // gamma是左右翻转角度
+            // iOS各浏览器：从-180到180，右正左负，水平为0
+            // Android版QQ/百度/微信内置浏览器：从-90到270，右正左负，水平为0
+            // Android版UC浏览器：从-90到90，右正左负，水平为0
+            var tiltLR = eventData.gamma;
+            deviceOrientationHandler(tiltLR, tiltFB, dir);  //根据陀螺仪数据执行相应动作
         }
     }
     else {
         $("#test").html("DeviceOrientation is not supported");
     }
-    function deviceOrientationHandler (tiltLR, tiltFB, dir) {
-        $("#test").html("Alpha=" + dir + "<br>Beta=" + tiltFB + "<br>Gamma=" + tiltLR + "<br />");
+    function deviceOrientationHandler (tiltLR, tiltFB, dir) {  //根据陀螺仪数据执行相应动作
+        $("#test").html("Alpha=" + dir.toFixed(2) + "<br>Beta=" + tiltFB.toFixed(2) + "<br>Gamma=" + tiltLR.toFixed(2) + "<br />");
     }
 })
 </script>
