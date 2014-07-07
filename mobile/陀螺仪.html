@@ -27,7 +27,7 @@ $(function () {
         $("#test").html("DeviceOrientation is not supported");
     }
     function deviceOrientationHandler (tiltLR, tiltFB, dir) {
-        $("#test").html("Alpha=" + event.dir + ",Beta=" + event.tiltFB + ",Gamma=" + event.tiltLR + "<br />");
+        $("#test").html("Alpha=" + dir + ",Beta=" + tiltFB + ",Gamma=" + tiltLR + "<br />");
     }
 })
 </script>
