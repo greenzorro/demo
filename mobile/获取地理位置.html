@@ -51,7 +51,7 @@ $(function () {
                     state = 3;  //获取状态：位置信息不可用
                     break;
                 case error.TIMEOUT:
-                    state = 4;  //获取状态：请求位置信息超时
+                    state = 4;  //获取状态：获取位置信息超时
                     break;
                 case error.UNKNOWN_ERROR:
                     state = 5;  //获取状态：定位时发生未知错误
@@ -75,7 +75,7 @@ $(function () {
                 alert("位置信息不可用");
                 break;
             case 4:
-                alert("请求位置信息超时");
+                alert("获取位置信息超时");
                 break;
             case 5:
                 alert("定位时发生未知错误");
@@ -90,7 +90,7 @@ $(function () {
 
 <div id="test"></div>
 <a href="javascript:;">刷新地理位置</a>
-<p><br>注：定位的实际效果取决于浏览器。经过测试，QQ浏览器、UC浏览器、百度浏览器都能正常获取位置，很多手机的自带浏览器不行</p>
+<p><br>注：定位的实际效果取决于浏览器。经过测试，QQ浏览器、UC浏览器、百度浏览器能正常获取位置，多数手机的自带浏览器和Android版微信的内嵌浏览器不行</p>
 
 </body>
 </html>
