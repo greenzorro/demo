@@ -10,11 +10,26 @@
 </style>
 <script>
 $(function () {
-    Event.addHandler(window,"deviceorientation",function(event){
-        var test=document.getElementById("test");
-        test.innerHTML="Alpha="+event.alpha+",Beta="+event.beta+",Gamma="+event.gamma+"<br />";
-        test.style.webkitTransfor="rotate("+Math.round(event.alpha)+"deg)";
-    });
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', devOrientHandler, false);
+        function devOrientHandler (eventData) {
+            // gamma is the left-to-right tilt in degrees, where right is positive
+            var tiltLR = eventData.gamma;
+            // beta is the front-to-back tilt in degrees, where front is positive
+            var tiltFB = eventData.beta;
+            // alpha is the compass direction the device is facing in degrees
+            var dir = eventData.alpha
+            // call our orientation event handler
+            deviceOrientationHandler(tiltLR, tiltFB, dir);
+        }
+    }
+    else {
+        $("#test").html("DeviceOrientation is not supported");
+    }
+    function deviceOrientationHandler (tiltLR, tiltFB, dir) {
+        $("#test").html("Alpha=" + event.dir + ",Beta=" + event.tiltFB + ",Gamma=" + event.tiltLR + "<br />");
+    }
+})
 </script>
 </head>
 
