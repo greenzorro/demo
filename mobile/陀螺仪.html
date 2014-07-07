@@ -12,7 +12,7 @@
 $(function () {
     if (window.DeviceOrientationEvent) {  //是否支持陀螺仪
         // 绑定陀螺仪转动事件。true使用指南针数据，false则使用当前角度与初始角度的相对值
-        window.addEventListener('deviceorientation', devOrientHandler, false);
+        window.addEventListener('deviceorientation', devOrientHandler, true);
         function devOrientHandler (eventData) {
             // alpha是手机朝向，从0-360
             // iOS不带指南针效果，任何方向初始状态都是0
