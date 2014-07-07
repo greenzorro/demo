@@ -11,7 +11,7 @@
 <script>
 $(function () {
     if (window.DeviceMotionEvent) {  //是否支持加速度计
-        window.addEventListener('devicemotion', deviceMotionHandler, false);
+        window.addEventListener("devicemotion", deviceMotionHandler, false);
         function deviceMotionHandler (eventData) {
             var info, xyz = "[X, Y, Z]";
 
