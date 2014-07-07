@@ -14,17 +14,17 @@ $(function () {
         // 绑定陀螺仪转动事件。true使用指南针数据，false则使用当前角度与初始角度的相对值
         window.addEventListener('deviceorientation', devOrientHandler, true);
         function devOrientHandler (eventData) {
-            // alpha是手机朝向，从0-360
+            // alpha是手机朝向，范围[0,360]，逆时针转，度数逐渐增大
             // iOS不带指南针效果，任何方向初始状态都是0
-            // Android带有指南针效果，逆时针转，度数逐渐增大
+            // Android带有指南针效果
             var dir = eventData.alpha;
             // beta是前后翻转角度
-            // 从-90到90，上正下负，水平为0
+            // 范围[-90,90]，上正下负，水平为0
             var tiltFB = eventData.beta;
             // gamma是左右翻转角度
-            // iOS各浏览器：从-180到180，右正左负，水平为0
-            // Android版QQ/百度/微信内置浏览器：从-90到270，右正左负，水平为0
-            // Android版UC浏览器：从-90到90，右正左负，水平为0
+            // iOS：范围[-180,180]，右正左负，水平为0
+            // Android版QQ/百度/微信内置浏览器：范围[-90,270]，右正左负，水平为0
+            // Android版UC浏览器：范围[-90,90]，右正左负，水平为0
             var tiltLR = eventData.gamma;
             deviceOrientationHandler(tiltLR, tiltFB, dir);  //根据陀螺仪数据执行相应动作
         }
