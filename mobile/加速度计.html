@@ -17,23 +17,23 @@ $(function () {
 
             // Grab the acceleration from the results
             var acceleration = eventData.acceleration;
-            info = xyz.replace("X", acceleration.x);
-            info = info.replace("Y", acceleration.y);
-            info = info.replace("Z", acceleration.z);
+            info = xyz.replace("X", acceleration.x.toFixed(2));
+            info = info.replace("Y", acceleration.y.toFixed(2));
+            info = info.replace("Z", acceleration.z.toFixed(2));
             $("#test1").html(info);
 
             // Grab the acceleration including gravity from the results
             acceleration = eventData.accelerationIncludingGravity;
-            info = xyz.replace("X", acceleration.x);
-            info = info.replace("Y", acceleration.y);
-            info = info.replace("Z", acceleration.z);
+            info = xyz.replace("X", acceleration.x.toFixed(2));
+            info = info.replace("Y", acceleration.y.toFixed(2));
+            info = info.replace("Z", acceleration.z.toFixed(2));
             $("#test2").html(info);
 
             // Grab the rotation rate from the results
             var rotation = eventData.rotationRate;
-            info = xyz.replace("X", rotation.alpha);
-            info = info.replace("Y", rotation.beta);
-            info = info.replace("Z", rotation.gamma);
+            info = xyz.replace("X", rotation.alpha.toFixed(2));
+            info = info.replace("Y", rotation.beta.toFixed(2));
+            info = info.replace("Z", rotation.gamma.toFixed(2));
             $("#test3").html(info);
 
             // // Grab the refresh interval from the results
