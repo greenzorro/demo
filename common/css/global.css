@@ -74,11 +74,7 @@ q:before, q:after {
 
 
 /*default*/
-body { line-height:1.6; font-family:'microsoft yahei','stheiti',sans-serif; font-size:1em; color:#333;
-    animation: movein_left .3s ease-in;
-    -webkit-animation: movein_left .3s ease-in;
-    -moz-animation: movein_left .3s ease-in;
-}
+body { line-height:1.6; font-family:'microsoft yahei','stheiti',sans-serif; font-size:1em; color:#333; }
 input, textarea { font-family:'microsoft yahei','stheiti',sans-serif; }
 a { color: #2b97e8; }
 a:hover { color: #1a80cc; }
