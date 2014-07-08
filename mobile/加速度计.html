@@ -66,7 +66,8 @@ $(function () {
         $("#test").append(parseInt(x) + "," + parseInt(y) + "," + parseInt(z) + "<br>");
     }
     function motionInterval (interval) {  //获取数据变化速率
-        $("#test").append(interval);
+        $("#test").append("数据变化速率：");
+        $("#test").append(interval.toFixed(2));
     }
 })
 </script>
