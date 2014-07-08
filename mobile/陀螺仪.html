@@ -15,7 +15,7 @@ $(function () {
         function devOrientHandler (eventData) {
             // alpha是手机朝向，范围[0,360]，逆时针转，度数逐渐增大
             // iOS不带指南针效果，任何方向初始状态都是0
-            // Android带有指南针效果
+            // Android带有指南针效果，正北方向是0
             var dir = eventData.alpha;
             // beta是前后翻转角度
             // 范围[-90,90]，上正下负，水平为0
@@ -31,7 +31,7 @@ $(function () {
         }
     }
     else {
-        $("#test").html("DeviceOrientation is not supported");
+        $("#test").html("设备不支持陀螺仪");
     }
     function deviceOrientationHandler (tiltLR, tiltFB, dir) {  //根据陀螺仪数据执行相应动作
         $("#test").html("Alpha=" + dir.toFixed(2) + "<br>Beta=" + tiltFB.toFixed(2) + "<br>Gamma=" + tiltLR.toFixed(2) + "<br />");
@@ -43,6 +43,7 @@ $(function () {
 <body>
 
 <div id="test"></div>
+<p><br>alpha是手机朝向，beta是前后翻转角度,gamma是左右翻转角度</p>
 
 </body>
 </html>
