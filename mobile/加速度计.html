@@ -13,44 +13,60 @@ $(function () {
     if (window.DeviceMotionEvent) {  //是否支持加速度计
         window.addEventListener("devicemotion", deviceMotionHandler, false);
         function deviceMotionHandler (eventData) {
-            var info, xyz = "[X, Y, Z]";
+            var info = new Array(3);
+            var interval;
+            for (var i = 0; i < 3; i++) {
+                info[i] = new Array(3);
+            };
 
-            // Grab the acceleration from the results
+            // 设备在各方向上的加速度，不包含重力
             if (eventData.acceleration) {
-                var acceleration = eventData.acceleration;
-                info = xyz.replace("X", parseInt(acceleration.x));
-                info = info.replace("Y", parseInt(acceleration.y));
-                info = info.replace("Z", parseInt(acceleration.z));
-                $("#test1").html(info);
+                info[0][0] = eventData.acceleration.x;
+                info[0][1] = eventData.acceleration.y;
+                info[0][2] = eventData.acceleration.z;
+                accelerationWithoutGravity(info[0][0],info[0][1],info[0][2]);  //获取加速度，执行相应动作
             };
 
-            // Grab the acceleration including gravity from the results
+            // 设备在各方向上的加速度，包含重力
             if (eventData.accelerationIncludingGravity) {
-                var acceleration = eventData.accelerationIncludingGravity;
-                info = xyz.replace("X", parseInt(acceleration.x));
-                info = info.replace("Y", parseInt(acceleration.y));
-                info = info.replace("Z", parseInt(acceleration.z));
-                $("#test2").html(info);
+                info[1][0] = eventData.accelerationIncludingGravity.x;
+                info[1][1] = eventData.accelerationIncludingGravity.y;
+                info[1][2] = eventData.accelerationIncludingGravity.z;
+                accelerationWithGravity(info[1][0],info[1][1],info[1][2]);  //获取加速度，执行相应动作
             };
 
-            // Grab the rotation rate from the results
+            // 设备在各方向上的旋转加速度
             if (eventData.rotationRate) {
-                var rotation = eventData.rotationRate;
-                info = xyz.replace("X", parseInt(rotation.alpha));
-                info = info.replace("Y",parseInt(rotation.beta));
-                info = info.replace("Z", parseInt(rotation.gamma));
-                $("#test3").html(info);
+                info[2][0] = eventData.rotationRate.alpha;
+                info[2][1] = eventData.rotationRate.beta;
+                info[2][2] = eventData.rotationRate.gamma;
+                rotationRate(info[2][0],info[2][1],info[2][2]);  //获取旋转加速度，执行相应动作
             };
 
-            // // Grab the refresh interval from the results
+            // 设备数据变化速率
             if (eventData.interval) {
-                info = eventData.interval;
-                $("#test4").html(info);
+                interval = eventData.interval;
+                motionInterval(interval);  //获取数据变化速率
             };
         }
     }
     else {
-        $("#test1").html("DeviceMotionEvent is not supported");
+        $("#test").html("设备不支持加速度计");
+    }
+    function accelerationWithoutGravity (x,y,z) {  //获取加速度，执行相应动作
+        $("#test").html("不计重力的加速度：");
+        $("#test").append(parseInt(x) + "," + parseInt(y) + "," + parseInt(z) + "<br>");
+    }
+    function accelerationWithGravity (x,y,z) {  //获取加速度，执行相应动作
+        $("#test").append("包括重力的加速度：");
+        $("#test").append(parseInt(x) + "," + parseInt(y) + "," + parseInt(z) + "<br>");
+    }
+    function rotationRate (x,y,z) {  //获取旋转加速度，执行相应动作
+        $("#test").append("旋转加速度：");
+        $("#test").append(parseInt(x) + "," + parseInt(y) + "," + parseInt(z) + "<br>");
+    }
+    function motionInterval (interval) {  //获取数据变化速率
+        $("#test").append(interval);
     }
 })
 </script>
@@ -58,10 +74,7 @@ $(function () {
 
 <body>
 
-<div id="test1"></div>
-<div id="test2"></div>
-<div id="test3"></div>
-<div id="test4"></div>
+<div id="test"></div>
 <p><br>注：目前只完全支持iOS，Android版仅支持带重力的位移加速度</p>
 
 </body>
