@@ -24,7 +24,9 @@ $(function () {
                 info[0][0] = eventData.acceleration.x;
                 info[0][1] = eventData.acceleration.y;
                 info[0][2] = eventData.acceleration.z;
-                accelerationWithoutGravity(info[0][0],info[0][1],info[0][2]);  //获取加速度，执行相应动作
+                if (info[0][0] != null && info[0][1] != null && info[0][2] != null) {
+                    accelerationWithoutGravity(info[0][0],info[0][1],info[0][2]);  //获取加速度，执行相应动作
+                };
             };
 
             // 设备在各方向上的加速度，包含重力
@@ -32,7 +34,9 @@ $(function () {
                 info[1][0] = eventData.accelerationIncludingGravity.x;
                 info[1][1] = eventData.accelerationIncludingGravity.y;
                 info[1][2] = eventData.accelerationIncludingGravity.z;
-                accelerationWithGravity(info[1][0],info[1][1],info[1][2]);  //获取加速度，执行相应动作
+                if (info[1][0] != null && info[1][1] != null && info[1][2] != null) {
+                    accelerationWithGravity(info[1][0],info[1][1],info[1][2]);  //获取加速度，执行相应动作
+                };
             };
 
             // 设备在各方向上的旋转加速度
@@ -40,7 +44,9 @@ $(function () {
                 info[2][0] = eventData.rotationRate.alpha;
                 info[2][1] = eventData.rotationRate.beta;
                 info[2][2] = eventData.rotationRate.gamma;
-                rotationRate(info[2][0],info[2][1],info[2][2]);  //获取旋转加速度，执行相应动作
+                if (info[2][0] != null && info[2][1] != null && info[2][2] != null) {
+                    rotationRate(info[2][0],info[2][1],info[2][2]);  //获取旋转加速度，执行相应动作
+                };
             };
 
             // 设备数据变化速率
