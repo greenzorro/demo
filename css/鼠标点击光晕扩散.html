@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>鼠标点击光晕扩散</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../common/js/jquery-latest.js"></script>
+<style>
+#test { width: 500px; height: 500px; margin: 100px auto; }
+#test i { display: block; width: 100%; height: 100%; overflow: hidden; position: absolute; z-index: 1; }
+#test i span { display: none; width: 50px; height: 50px; background: #fff; border-radius: 50%; position: absolute; left: 0; top: 0; }
+</style>
+<script>
+$(function () {
+	$("#test").click(function (e) {
+		var wrapper = $(this).find("i");
+		var light = $(this).find("i span");
+		var mouseX = e.pageX;
+		var mouseY = e.pageY;
+		light.css({"opacity":0.15,"left":mouseX - wrapper.offsetLeft(),""});
+		light.animate({
+			width: 2000,
+			height: 2000,
+		},300,function () {
+		});
+	})
+})
+</script>
+</head>
+
+<body>
+
+<div id="test">
+	<img src="../common/images/photo.jpg">
+	<i><span></span></i>
+</div>
+
+</body>
+</html>
