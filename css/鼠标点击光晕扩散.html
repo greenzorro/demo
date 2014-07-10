@@ -26,7 +26,7 @@ $(function () {
 		light.attr({"cx":mouseX - wrapper.offset().left,"cy":mouseY - wrapper.offset().top});
 		light.css({"fill":"#fff","transform":"scale(50,50)","-webkit-transform":"scale(50,50)","opacity":0});
 		var reset = setTimeout(function () {
-			light.css({"fill":"none","transform":"scale(1,1)","-webkit-transform":"scale(1,1)","opacity":0.2})
+			light.removeAttr("style");
 		},500);
 	})
 })

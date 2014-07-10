@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>创建svg元素</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js"></script>
+<style>
+svg ellipse { fill: #dfdfdf; stroke: none; }
+</style>
+<script type="text/javascript">
+$(function(){
+    $("#test svg").append(parseSVG('<ellipse cx="50%" cy="50%" rx="25" ry="25"></ellipse>'));
+    // 创建svg元素
+	function parseSVG(s) {
+        var div= document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
+        div.innerHTML= '<svg xmlns="http://www.w3.org/2000/svg">'+s+'</svg>';
+        var frag= document.createDocumentFragment();
+        while (div.firstChild.firstChild)
+            frag.appendChild(div.firstChild.firstChild);
+        return frag;
+    }
+})
+</script>
+</head>
+
+<body>
+
+<p>由于svg非标准html元素，所以jquery的.append()和原生js的innerHtml都无法操作svg元素，需要通过这个函数创建</p>
+<div id="test">
+	<svg></svg>
+</div>
+
+</body>
+</html>
