@@ -7,23 +7,27 @@
 <link href="../common/css/global.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../common/js/jquery-latest.js"></script>
 <style>
-#test { width: 500px; height: 500px; margin: 100px auto; }
-#test i { display: block; width: 100%; height: 100%; overflow: hidden; position: absolute; z-index: 1; }
-#test i span { display: none; width: 50px; height: 50px; background: #fff; border-radius: 50%; position: absolute; left: 0; top: 0; }
+#test { width: 300px; height: 300px; margin: 100px auto; position: relative; }
+#test img { width: 100%; }
+#test svg { display: block; width: 100%; height: 100%; overflow: hidden; position: absolute; left: 0; top: 0; z-index: 1; }
+#test svg ellipse { fill: none; stroke: none; opacity: 0.2;
+	transition: fill .3s linear, transform .3s linear, opacity .2s linear .3s;
+	-webkit-transition: fill .3s linear, -webkit-transform .3s linear, opacity .2s linear .3s;
+	transform-origin: 50% 50%;
+	-webkit-transform-origin: 50% 50%;
+}
 </style>
 <script>
 $(function () {
-	$("#test").click(function (e) {
-		var wrapper = $(this).find("i");
-		var light = $(this).find("i span");
-		var mouseX = e.pageX;
-		var mouseY = e.pageY;
-		light.css({"opacity":0.15,"left":mouseX - wrapper.offsetLeft(),""});
-		light.animate({
-			width: 2000,
-			height: 2000,
-		},300,function () {
-		});
+	$("#test a").click(function (e) {
+		var mouseX = e.pageX, mouseY = e.pageY;
+		var wrapper = $(this).find("svg");
+		var light = $(this).find("svg ellipse");
+		light.attr({"cx":mouseX - wrapper.offset().left,"cy":mouseY - wrapper.offset().top});
+		light.css({"fill":"#fff","transform":"scale(50,50)","-webkit-transform":"scale(50,50)","opacity":0});
+		var reset = setTimeout(function () {
+			light.css({"fill":"none","transform":"scale(1,1)","-webkit-transform":"scale(1,1)","opacity":0.2})
+		},500);
 	})
 })
 </script>
@@ -32,8 +36,12 @@ $(function () {
 <body>
 
 <div id="test">
-	<img src="../common/images/photo.jpg">
-	<i><span></span></i>
+	<a href="javascript:;">
+		<img src="../common/images/mask.png">
+		<svg>
+			<ellipse cx="50%" cy="50%" rx="25" ry="25"></ellipse>
+		</svg>
+	</a>
 </div>
 
 </body>
