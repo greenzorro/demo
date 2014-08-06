@@ -47,6 +47,9 @@ input, textarea {
 	border-radius: 0;
 	-webkit-appearance:none;
 }
+input[type="submit"], input[type="button"], input[type="reset"] {
+    cursor: pointer;
+}
 blockquote, q {
 	quotes: none;
 }
