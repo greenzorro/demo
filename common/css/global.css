@@ -35,8 +35,8 @@ a {
 a img {
 	border:none;
 }
-ol, ul {
-	list-style: none;
+ol, ul, nav {
+    list-style: none;
 }
 table {
 	border-collapse: collapse;
