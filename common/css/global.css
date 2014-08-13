@@ -35,17 +35,24 @@ a {
 a img {
 	border:none;
 }
-ol, ul {
-	list-style: none;
+ol, ul, nav {
+    list-style: none;
 }
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 input, textarea {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
 	outline:none;
 	border-radius: 0;
 	-webkit-appearance:none;
+}
+input[type="submit"], input[type="button"], input[type="reset"] {
+    cursor: pointer;
 }
 blockquote, q {
 	quotes: none;
