@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>js判断浏览器版本</title>
+<link href="../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../common/js/jquery-latest.js" type="text/javascript"></script>
+<style>
+</style>
+<script type="text/javascript">
+$(function () {
+	var explorer = explorerType(false);
+	$("body").html(explorer["type"] + ": " + explorer["version"]);
+})
+function explorerType (detailed) { //参数控制是否显示浏览器完整版本号
+    var Sys = {};
+    var ua = navigator.userAgent.toLowerCase();
+    var s;
+    (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? Sys.ie = s[1] :
+    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+    if (detailed) {
+		if (Sys.ie) return {"type":"ie","version":Sys.ie};
+		if (Sys.firefox) return {"type":"firefox","version":Sys.firefox};
+		if (Sys.chrome) return {"type":"chrome","version":Sys.chrome};
+		if (Sys.opera) return {"type":"opera","version":Sys.opera};
+		if (Sys.safari) return {"type":"safari","version":Sys.safari};
+    }
+    else {
+		if (Sys.ie) return {"type":"ie","version":parseInt(Sys.ie.split(".")[0])};
+		if (Sys.firefox) return {"type":"firefox","version":parseInt(Sys.firefox.split(".")[0])};
+		if (Sys.chrome) return {"type":"chrome","version":parseInt(Sys.chrome.split(".")[0])};
+		if (Sys.opera) return {"type":"opera","version":parseInt(Sys.opera.split(".")[0])};
+		if (Sys.safari) return {"type":"safari","version":parseInt(Sys.safari.split(".")[0])};
+    }
+}
+</script>
+
+</head>
+
+<body>
+
+
+</body>
+</html>
