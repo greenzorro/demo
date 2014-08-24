@@ -11,7 +11,7 @@
 <script type="text/javascript">
 $(function () {
 	var explorer = explorerType(false);
-	$("body").html(explorer["type"] + ": " + explorer["version"]);
+	$("body").prepend(explorer["type"] + ": " + explorer["version"]);
 })
 function explorerType (detailed) { //参数控制是否显示浏览器完整版本号
     var Sys = {};
@@ -44,6 +44,7 @@ function explorerType (detailed) { //参数控制是否显示浏览器完整版�
 
 <body>
 
+<br>注：此法对于手机浏览器的兼容性不好，多数外壳浏览器的标识不在此列。不过PC端兼容性不错，可用于判断非HTML5浏览器
 
 </body>
 </html>
