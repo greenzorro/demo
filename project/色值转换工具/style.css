@@ -2,21 +2,62 @@ body { font-family: 'microsoft yahei','stheiti',sans-serif; color: #333; font-si
 .title { margin: 50px 0 0; font-size: 2em; font-weight: normal; text-align: center; }
 .copyright { margin: 50px 0 50px; padding: 20px 0 0; border-top: 1px solid #eee; text-align: center; color: #aaa; }
 
-/*animations*/
-a { color: #2093ce;
-    transition:all .7s;
-    -moz-transition:all .7s;
-    -webkit-transition:all .7s;
+
+/*transform*/
+.transform {
+	max-width: 50em;
+	height: 10em;
+	margin: 5em auto 3em;
 }
-@keyframes fadein {
-    0% { opacity: 0.35; }
-    100% { opacity: 1; }
+.transform .group {
+	padding: 0.2em 0;
 }
-@-webkit-keyframes fadein {
-    0% { opacity: 0.35; }
-    100% { opacity: 1; }
+.transform label {
+	display: inline-block;
+	width: 1.5em;
 }
-@-moz-keyframes fadein {
-    0% { opacity: 0.35; }
-    100% { opacity: 1; }
+.transform input {
+	padding: 1em 0.8em;
+	border: 1px solid #dfdfdf;
+}
+.transform .hex {
+	float: left;
+	width: 33.3%;
+	margin: 3.45em 0 0;
+	text-align: center;
+}
+.transform .arrow {
+	float: left;
+	width: 33.3%;
+	line-height: 0.5em;
+	margin: 0.5em 0 0;
+	text-align: center;
+	font-size: 5em;
+}
+.transform .dec {
+	float: left;
+	width: 33.3%;
+	text-align: center;
+}
+
+
+/*recent*/
+.recent {
+	max-width: 45em;
+	margin: 0 auto 8em;
+}
+.recent h2 {
+	padding: 0 0 1em;
+}
+.recent p a {
+	float: left;
+	display: block;
+	width: 4em;
+	height: 4em;
+	line-height: 10.5em;
+	margin: 0 0.5em 0 0;
+	border-radius: 50%;
+	box-shadow: inset 0 0 1px #999;
+	text-align: center;
+	color: #aaa;
 }
