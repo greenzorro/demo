@@ -18,9 +18,9 @@ $(function () {
 
 <p>注：由于 Flash 本地沙箱的安全限制，以下代码如果是在本地HTML文件中被浏览器直接打开，将无法正常工作。</p>
 
-<textarea id="content" rows="10" cols="40">这里是需要复制的内容</textarea>
-
-<input id="copy" type="button" data-clipboard-target="content" value="复制">
+<input id="source" type="text" value="#sometext#">
+<a data-clipboard-target="source" href="javascript:;">copy</a>
+<textarea placeholder="paste here"></textarea>
 
 </body>
 </html>
