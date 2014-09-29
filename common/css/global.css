@@ -87,3 +87,4 @@ a { color: #2b97e8; }
 a:hover { color: #1a80cc; }
 ::selection { background:#2b97e8; color:#fff; }
 ::-moz-selection { background:#2b97e8; color:#fff; } 
+input { border: 1px solid #dfdfdf; }
