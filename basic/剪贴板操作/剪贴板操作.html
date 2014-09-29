@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>剪贴板操作</title>
+<link href="../../common/css/global.css" rel="stylesheet" type="text/css" />
+<script src="../../common/js/jquery-latest.js"></script>
+<script src="ZeroClipboard.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	var clip = new ZeroClipboard($(".copy"));
+})
+</script>
+</head>
+
+<body>
+
+<p>注：由于 Flash 本地沙箱的安全限制，以下代码如果是在本地HTML文件中被浏览器直接打开，将无法正常工作。</p>
+
+<div>
+	<input class="first" type="text" value="some text">
+	<input class="second" type="text">
+</div>
+<p>
+	<a class="copy" data-clipboard-target="first" href="javascript:;">copy from the first one</a>
+</p>
+<p>
+	<a class="paste" href="javascript:;">paste to the second one</a>
+</p>
+
+</body>
+</html>

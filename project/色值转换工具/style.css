@@ -13,12 +13,63 @@ body { font-family: 'microsoft yahei','stheiti',sans-serif; color: #333; font-si
 	padding: 0.2em 0;
 }
 .transform label {
-	display: inline-block;
-	width: 1.5em;
+	float: left;
+	display: block;
+	width: 15%;
+	height: 3em;
+	line-height: 3em;
+	text-align: center;
 }
 .transform input {
-	padding: 1em 0.8em;
+	float: left;
+	display: block;
+	width: 55%;
+	height: 1.4em;
+	line-height: 1.4em;
+	padding: 0.8em 2%;
 	border: 1px solid #dfdfdf;
+	font-size: 1em;
+}
+.transform .copy {
+	float: left;
+	display: block;
+	width: 17%;
+	height: 3em;
+	border: 1px solid #dfdfdf;
+	border-left: none;
+	background: #eee url(icon_copy.png) no-repeat center center;
+	background-size: 24px 24px;
+	transition: background-color 0.3s ease-out;
+	-webkit-transition: background-color 0.3s ease-out;
+	position: relative;
+}
+.transform .copy:hover {
+	background-color: #e7e7e7;
+}
+.transform .copy span {
+	display: block;
+	width: 3em;
+	padding: 0.2em 0.6em;
+	background: #333;
+	font-size: 0.9em;
+	color: #fff;
+	position: absolute;
+	left: 4em;
+	top: 0.6em;
+}
+.transform .copy span:after {
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	border-left: 3px dashed transparent;
+	border-right: 3px solid #333;
+	border-top: 5px dashed transparent;
+	border-bottom: 5px dashed transparent;
+	position: absolute;
+	left: -6px;
+	top: 0.6em;
 }
 .transform .hex {
 	float: left;
@@ -33,6 +84,7 @@ body { font-family: 'microsoft yahei','stheiti',sans-serif; color: #333; font-si
 	margin: 0.5em 0 0;
 	text-align: center;
 	font-size: 5em;
+	color: #eee;
 }
 .transform .dec {
 	float: left;
