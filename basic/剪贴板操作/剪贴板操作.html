@@ -18,9 +18,10 @@ $(function () {
 
 <p>注：由于 Flash 本地沙箱的安全限制，以下代码如果是在本地HTML文件中被浏览器直接打开，将无法正常工作。</p>
 
-<input id="source" type="text" value="#sometext#"><br>
-<a class="copy" data-clipboard-target="source" href="javascript:;">copy</a><br><br>
-<textarea placeholder="paste here"></textarea>
+<input id="source" type="text" value="#文字内容#"><br>
+<a class="copy" data-clipboard-target="source" href="javascript:;">复制输入框内容</a><br>
+<a class="copy" data-clipboard-text="#链接本身属性#" href="javascript:;">复制链接本身属性</a><br>
+<textarea placeholder="粘贴在此"></textarea>
 
 </body>
 </html>
