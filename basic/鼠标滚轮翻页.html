@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>鼠标滚轮翻页</title>
+<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
+<script src="http://greenzorro.github.io/colacdn/assets/frameworks/jquery.mousewheel/jquery.mousewheel.js"></script>
+<style>
+.scene { width: 100%; min-height: 100vh; }
+.scene1 { background: #75aecc; }
+.scene2 { background: #8182a6; }
+.scene3 { background: #a0677a; }
+</style>
+</head>
+
+<body>
+
+<div class="scene1 scene"></div>
+<div class="scene2 scene"></div>
+<div class="scene3 scene"></div>
+
+<script type="text/javascript">
+$(function () {
+	swipePage(); //滑动翻页
+})
+
+// 滑动翻页
+function swipePage () {
+
+	var currentPage;
+	var maxPage = $(".scene").length;
+
+	$(window).bind('mousewheel', function(event, delta) {  
+		var dir = parseInt(delta > 0 ? 1 : 0); //判断滚轮滚动方向
+		currentPage = thisPage();
+		if (dir) {
+			jumpTo((currentPage <= 1) ? 1 : currentPage - 1);
+			currentPage = (currentPage <= 1) ? 1 : currentPage - 1;
+		}
+		else {
+			jumpTo((currentPage >= maxPage) ? maxPage: currentPage + 1);
+			currentPage = (currentPage >= maxPage) ? maxPage: currentPage + 1;
+		}
+	});
+
+	// 判断当前页数
+	function thisPage () {
+		var pageNum = 0;
+		var scrollPos = $(window).scrollTop();
+		$(".scene").each(function () {
+			var thisOffsetTop = $(this).offset().top;
+			if (scrollPos >= thisOffsetTop) {
+				pageNum++;
+			};
+		})
+		return pageNum;
+	}
+
+	// 跳转至某页
+	function jumpTo (n) {
+		var offTop = $(".scene" + n).offset().top;
+		$("html,body").stop();
+		$("html,body").animate({
+			scrollTop: offTop
+		},500);
+	}
+
+}
+</script>
+</body>
+</html>
