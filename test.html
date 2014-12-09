@@ -8,17 +8,101 @@
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
 <style type="text/css">
-p {
-	float: left;
-	width: 40em;
-	margin: 1em;
-	background: #f5f5f5;
-}
 </style>
 <script type="text/javascript">
+$(function(){
+
+var hdzj = $('#hdj');
+var lis  = $('.nav-tab li');
+var tabs = $('.tab'); 
+
+  // for (var i = 1; i <= $('.nav-tab li').length; i++) {
+    
+  //  $('#li_' + i).hover(function(){
+  //       $('#tab_'+i).css('display','block');
+  //       $('#li_'+i).addClass("nav-hover"); 
+  //   },function(){
+  //       $('#tab_'+i).css('display','none');
+  //       $('#li_'+i).removeClass("nav-hover");
+  //   });
+
+  // }
+
+  lis.hover(function(){
+  	var num = $(this).index() + 1;
+  	for (var i = 1; i <= lis.length; i++) {
+        $('.tab').css('display','none');
+        $('#tab_'+num).css('display','block');
+        lis.removeClass("nav-hover"); 
+        $(this).addClass("nav-hover"); 
+  	};
+  });
+
+}) 
 </script>
 </head>
 
 <body>
+
+<div id="hdzj"> 
+        
+              <div class="hdzj-box">
+<div class="nav-tab">
+<li class="nav-hover" id="li_1">金牌1群</li>
+<li id="li_2">金牌2群</li>
+<li id="li_3">钻石喊单群</li>
+<li id="li_4">至尊喊单群</li>
+ </div>
+ <div class="clear"></div> 
+<div class="tab" style="display:block;" id="tab_1"> 
+ <div class="text">入群条件：入金1000美金以上 11月总盈利<span class="red">265</span>点</div>
+<div class="lipic"><a href="#"><img src="/templets/caifx/images/hdzj-pic.jpg"></a></div>
+ <div class="list">
+<li><a href="#">2014年12月05日金牌喊单1群喊单战绩展示</a></li>
+<li><a href="#">2014年12月04日金牌喊单1群喊单战绩展示</a></li>
+<li><a href="#">2014年12月03日金牌喊单1群喊单战绩展示</a></li>
+<li><a href="#">2014年12月02日金牌喊单1群喊单战绩展示</a></li>
+<li><a href="#">2014年12月01日金牌喊单1群喊单战绩展示</a></li>
+ </div> 
+</div>
+<div class="tab" style="display:none;" id="tab_2"> 
+ <div class="text"><p>入群条件：入金1000美金以上 11月总盈利<span class="red">325</span>点 </p></div>
+<div class="lipic"><a href="#"><img src="/templets/caifx/images/hdzj-pic.jpg"></a></div>
+ <div class="list">
+<li><a href="#">2014年12月05日金牌喊单2群喊单战绩展示</a></li>
+<li><a href="#">2014年12月04日金牌喊单2群喊单战绩展示</a></li>
+<li><a href="#">2014年12月03日金牌喊单2群喊单战绩展示</a></li>
+<li><a href="#">2014年12月02日金牌喊单2群喊单战绩展示</a></li>
+<li><a href="#">2014年12月01日金牌喊单2群喊单战绩展示</a></li>
+ </div> 
+</div>
+
+<div class="tab" style="display:none;" id="tab_3"> 
+ <div class="text"><p>入群条件：入金3000美金以上 11月总盈利<span class="red">425</span>点 </p></div>
+<div class="lipic"><a href="#"><img src="/templets/caifx/images/hdzj-pic.jpg"></a></div>
+ <div class="list">
+<li><a href="#">2014年12月05日钻石喊单群喊单战绩展示</a></li>
+<li><a href="#">2014年12月04日钻石喊单群喊单战绩展示</a></li>
+<li><a href="#">2014年12月03日钻石喊单群喊单战绩展示</a></li>
+<li><a href="#">2014年12月02日钻石喊单群喊单战绩展示</a></li>
+<li><a href="#">2014年12月01日钻石喊单群喊单战绩展示</a></li>
+ </div> 
+</div>
+
+<div class="tab" style="display:none;" id="tab_4"> 
+ <div class="text"><p>入群条件：入金5000美金以上 11月总盈利<span class="red">525</span>点 </p></div>
+<div class="lipic"><a href="#"><img src="/templets/caifx/images/hdzj-pic.jpg"></a></div>
+ <div class="list">
+<li><a href="#">2014年12月05日至尊喊单群喊单战绩展示</a></li>
+<li><a href="#">2014年12月04日至尊喊单群喊单战绩展示</a></li>
+<li><a href="#">2014年12月03日至尊喊单群喊单战绩展示</a></li>
+<li><a href="#">2014年12月02日至尊喊单群喊单战绩展示</a></li>
+<li><a href="#">2014年12月01日至尊喊单群喊单战绩展示</a></li>
+ </div> 
+</div>
+
+</div>
+          </div>
+
 </body>
 </html>
