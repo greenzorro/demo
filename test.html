@@ -8,92 +8,38 @@
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
 <style type="text/css">
+#level_10 { background: red; }
+.level_1 .level_2 .level_3 .level_4 .level_5 .level_6 .level_7 .level_8 .level_9 .level_10 .level_11 { background: blue; }
 </style>
 <script type="text/javascript">
-$(function(){
-
-var hdzj = $('#hdj');
-var lis  = $('.nav-tab li');
-var tabs = $('.tab'); 
-alert(lis.length);
-
-  for (var i = 1; i <= $('.nav-tab li').length; i++) {
-    
-   $('#li_' + i).hover(function(){
-   		 console.log($('#tab_'+i));
-        $('#tab_'+i).css('display','block');
-        $('#li_'+i).addClass("nav-hover"); 
-    },function(){
-        $('#tab_'+i).css('display','none');
-        $('#li_'+i).removeClass("nav-hover");
-    });
-
-  }
-}) 
-
 </script>
 </head>
 
 <body>
 
-<div id="hdzj"> 
-        
-              <div class="hdzj-box">
-<div class="nav-tab">
-<li class="nav-hover" id="li_1">金牌1群</li>
-<li id="li_2">金牌2群</li>
-<li id="li_3">钻石喊单群</li>
-<li id="li_4">至尊喊单群</li>
- </div>
- <div class="clear"></div> 
-<div class="tab" style="display:block;" id="tab_1"> 
- <div class="text">入群条件：入金1000美金以上 11月总盈利<span class="red">265</span>点</div>
-<div class="lipic"><a href="#"><img src="/templets/caifx/images/hdzj-pic.jpg"></a></div>
- <div class="list">
-<li><a href="#">2014年12月05日金牌喊单1群喊单战绩展示</a></li>
-<li><a href="#">2014年12月04日金牌喊单1群喊单战绩展示</a></li>
-<li><a href="#">2014年12月03日金牌喊单1群喊单战绩展示</a></li>
-<li><a href="#">2014年12月02日金牌喊单1群喊单战绩展示</a></li>
-<li><a href="#">2014年12月01日金牌喊单1群喊单战绩展示</a></li>
- </div> 
-</div>
-<div class="tab" style="display:none;" id="tab_2"> 
- <div class="text"><p>入群条件：入金1000美金以上 11月总盈利<span class="red">325</span>点 </p></div>
-<div class="lipic"><a href="#"><img src="/templets/caifx/images/hdzj-pic.jpg"></a></div>
- <div class="list">
-<li><a href="#">2014年12月05日金牌喊单2群喊单战绩展示</a></li>
-<li><a href="#">2014年12月04日金牌喊单2群喊单战绩展示</a></li>
-<li><a href="#">2014年12月03日金牌喊单2群喊单战绩展示</a></li>
-<li><a href="#">2014年12月02日金牌喊单2群喊单战绩展示</a></li>
-<li><a href="#">2014年12月01日金牌喊单2群喊单战绩展示</a></li>
- </div> 
+<div id="level_1" class="level_1">
+    <div id="level_2" class="level_2">
+        <div id="level_3" class="level_3">
+            <div id="level_4" class="level_4">
+                <div id="level_5" class="level_5">
+                    <div id="level_6" class="level_6">
+                        <div id="level_7" class="level_7">
+                            <div id="level_8" class="level_8">
+                                <div id="level_9" class="level_9">
+                                    <div id="level_10" class="level_10">
+                                        <div id="level_11" class="level_11">
+                                            something here
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="tab" style="display:none;" id="tab_3"> 
- <div class="text"><p>入群条件：入金3000美金以上 11月总盈利<span class="red">425</span>点 </p></div>
-<div class="lipic"><a href="#"><img src="/templets/caifx/images/hdzj-pic.jpg"></a></div>
- <div class="list">
-<li><a href="#">2014年12月05日钻石喊单群喊单战绩展示</a></li>
-<li><a href="#">2014年12月04日钻石喊单群喊单战绩展示</a></li>
-<li><a href="#">2014年12月03日钻石喊单群喊单战绩展示</a></li>
-<li><a href="#">2014年12月02日钻石喊单群喊单战绩展示</a></li>
-<li><a href="#">2014年12月01日钻石喊单群喊单战绩展示</a></li>
- </div> 
-</div>
-
-<div class="tab" style="display:none;" id="tab_4"> 
- <div class="text"><p>入群条件：入金5000美金以上 11月总盈利<span class="red">525</span>点 </p></div>
-<div class="lipic"><a href="#"><img src="/templets/caifx/images/hdzj-pic.jpg"></a></div>
- <div class="list">
-<li><a href="#">2014年12月05日至尊喊单群喊单战绩展示</a></li>
-<li><a href="#">2014年12月04日至尊喊单群喊单战绩展示</a></li>
-<li><a href="#">2014年12月03日至尊喊单群喊单战绩展示</a></li>
-<li><a href="#">2014年12月02日至尊喊单群喊单战绩展示</a></li>
-<li><a href="#">2014年12月01日至尊喊单群喊单战绩展示</a></li>
- </div> 
-</div>
-
-</div>
-          </div>
 </body>
 </html>
