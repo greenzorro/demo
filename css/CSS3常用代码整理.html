@@ -11,7 +11,7 @@
 <script type="text/javascript" src="http://greenzorro.github.io/colacdn/assets/js/html5.js"></script>
 <![endif]-->
 <style>
-.DEMO { padding:10px 0; margin:0 10px; border-bottom:1px dotted #ccc; font-family:'microsoft Yahei',sans-serif; }
+.DEMO { padding:1em 0; margin:0 1em; border-bottom:1px dotted #ccc; font-family:'microsoft Yahei',sans-serif; }
 .DEMO h2 { float:left; width:150px; line-height:35px; margin-right:20px; padding:5px 10px; background:#eee; font-size:24px; }
 
 /*******  border  *********************************************/
@@ -22,7 +22,7 @@
 .border a.border4 { border-radius:30px; box-shadow:2px 2px 15px #ccc; }
 
 /*******  background  *********************************************/
-.bg p { float:left; width:200px; height:200px; padding:10px; margin-right:10px; border:1px solid #ccc; background:url(http://greenzorro.github.io/colacdn/assets/images/photo.jpg) repeat left top; }
+.bg p { float:left; width:200px; height:200px; padding:10px; margin-right:10px; border:1px solid #ccc; background:url(http://greenzorro.github.io/colacdn/assets/images/mask.png) repeat left top; }
 .bg p.bg1 { background-size:20px 20px; background-origin:content-box; background-clip:content-box; }
 .bg p.bg2 { background-size:50px 50px; background-origin:padding-box; background-clip:content-box; }
 .bg p.bg3 { background-size:50px 50px; background-origin:padding-box; background-clip:padding-box; }
@@ -34,12 +34,12 @@
 .text span.text2 { text-shadow:0.2em 0.2em 0.2em #777; }
 .text span.text3 { text-shadow:0.2em 0.2em 0em #777; }
 .text span.text4 { text-shadow:2px 2px 0em #777; }
-.text span.overflow { display:block; height:30px; line-height:30px; padding:10px; border:1px solid #ccc; font-size:14px; white-space:nowrap; }
-.text span.overflow:hover { width:200px; overflow:hidden; text-overflow:ellipsis; }
+.text span.overflow { display:block; width:200px; height:30px; line-height:30px; overflow:hidden; padding:10px; border:1px solid #ccc; font-size:14px; white-space:nowrap; text-overflow:ellipsis; }
+.text span.overflow:hover { width: auto; overflow: visible; text-overflow:clip; }
 
 /*******  font  *********************************************/
-@font-face { font-family:handwriting; src:url('http://greenzorro.github.io/colacdn/assets/fonts/CW_WHWRM.TTF'); }
-.font p { float:left; font-family:handwriting; font-size:36px; }
+@font-face { font-family:custom; src:url('http://gstatic.cai-cai.me/s/dancingscript/v6/DK0eTGXiZjN6yA8zAEyM2Ud0sm1ffa_JvZxsF_BEwQk.woff2'); }
+.font p { float:left; font-family:custom; font-size:36px; }
 
 /*******  translate 2D  *********************************************/
 .trans2d div { float:left; width:100px; height:50px; line-height:50px; margin-right:10px; background:#E6FFFD; border:1px solid #8DC4EB; text-align:center;
@@ -69,10 +69,33 @@
 }
 
 /*******  translate 3D  *********************************************/
+/* perspective on html tags defines the perspective of all child tags */
+.trans3d { perspective: 100px; -webkit-perspective: 100px; }
 .trans3d div { float:left; width:100px; height:50px; line-height:50px; margin-right:10px; background:#E6FFFD; border:1px solid #8DC4EB; text-align:center; }
-.trans3d .matrix {
-	-webkit-transform:scale3d(0.8,1.2,1);
-	-webkit-transform:rotateX(30eg); 
+/* perspective in transform properties defines perspective of its own, perspective comes before retateX/Y/Z in transform properties */
+.trans3d .translate3D {
+    transform-origin: 50% 50% 10px;
+    -webkit-transform-origin: 50% 50% 10px;
+    transform:perspective(100px) scale3d(0.8,1.2,5);
+    -webkit-transform:perspective(100px) scale3d(0.8,1.2,5);
+}
+.trans3d .rotateX1 {
+    transform-origin: 50% 50% 40px;
+    -webkit-transform-origin: 50% 50% 40px;
+    transform:rotateX(45deg);
+    -webkit-transform:rotateX(45deg);
+}
+.trans3d .rotateY {
+    transform-origin: 50% 50% 40px;
+    -webkit-transform-origin: 50% 50% 40px;
+    transform:perspective(100px) rotateY(45deg);
+    -webkit-transform:perspective(100px) rotateY(45deg);
+}
+.trans3d .rotateZ1 {
+    transform-origin: 50% 50% 40px;
+    -webkit-transform-origin: 50% 50% 40px;
+    transform:rotateZ(45deg);
+	-webkit-transform:rotateZ(45deg);
 }
 
 /*******  transitions  *********************************************/
@@ -169,7 +192,7 @@
         <a class="border4" href="#">border</a>
     </div>
     <div class="bg DEMO clearfix">
-        <h2>bacground</h2>
+        <h2>background</h2>
         <p class="bg1"></p>
         <p class="bg2"></p>
         <p class="bg3"></p>
@@ -181,7 +204,7 @@
         <span class="text2">text</span>
         <span class="text3">text</span>
         <span class="text4">text</span>
-        <span class="overflow">hover on me, and text outside the box would be hidden.</span>
+        <span class="overflow">Hover to show more. And this is the extra content.</span>
     </div>
     <div class="font DEMO clearfix">
         <h2>font</h2>
@@ -199,12 +222,15 @@
     <div class="trans3d DEMO clearfix">
         <h2>transforms 3D</h2>
         <div class="ori">original</div>
-        <div class="matrix">matrix</div>
+        <div class="translate3D">translate3D</div>
+        <div class="rotateX">rotateX</div>
+        <div class="rotateY">rotateY</div>
+        <div class="rotateZ">rotateZ</div>
     </div>
     <div class="transitions DEMO clearfix">
         <h2>transitions</h2>
-        <div class="transitions1">hover<br />on<br />me</div>
-        <div class="transitions2">hover<br />on<br />me</div>
+        <div class="transitions1">hover</div>
+        <div class="transitions2">hover</div>
     </div>
     <div class="animations DEMO clearfix">
         <h2>animations</h2>
