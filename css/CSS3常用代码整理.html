@@ -69,8 +69,8 @@
 }
 
 /*******  translate 3D  *********************************************/
-/* perspective on html tags defines the perspective of all child tags */
-.trans3d { perspective: 100px; -webkit-perspective: 100px; }
+/* perspective on html tags defines a whole viewpoint of all child tags, each child would have different appearance */
+.trans3d { /*perspective: 100px; -webkit-perspective: 100px;*/ }
 .trans3d div { float:left; width:100px; height:50px; line-height:50px; margin-right:10px; background:#E6FFFD; border:1px solid #8DC4EB; text-align:center; }
 /* perspective in transform properties defines perspective of its own, perspective comes before retateX/Y/Z in transform properties */
 .trans3d .translate3D {
@@ -79,11 +79,11 @@
     transform:perspective(100px) scale3d(0.8,1.2,5);
     -webkit-transform:perspective(100px) scale3d(0.8,1.2,5);
 }
-.trans3d .rotateX_0 {
+.trans3d .rotateX {
     transform-origin: 50% 50% 40px;
     -webkit-transform-origin: 50% 50% 40px;
-    transform:rotateX(45deg);
-    -webkit-transform:rotateX(45deg);
+    transform:perspective(100px) rotateX(45deg);
+    -webkit-transform:perspective(100px) rotateX(45deg);
 }
 .trans3d .rotateY {
     transform-origin: 50% 50% 40px;
@@ -91,11 +91,11 @@
     transform:perspective(100px) rotateY(45deg);
     -webkit-transform:perspective(100px) rotateY(45deg);
 }
-.trans3d .rotateZ_0 {
+.trans3d .rotateZ {
     transform-origin: 50% 50% 40px;
     -webkit-transform-origin: 50% 50% 40px;
-    transform:rotateZ(45deg);
-	-webkit-transform:rotateZ(45deg);
+    transform:perspective(100px) rotateZ(45deg);
+	-webkit-transform:perspective(100px) rotateZ(45deg);
 }
 
 /*******  transitions  *********************************************/
