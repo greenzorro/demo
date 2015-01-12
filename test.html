@@ -8,6 +8,26 @@
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
 <style type="text/css">
+div {
+	width: 50%;
+	margin: auto;
+	perspective-origin: 50% 50%;
+	-webkit-perspective-origin: 50% 50%;
+	perspective: 100px;
+	-webkit-perspective: 100px;
+}
+span {
+	float: left;
+	display: block;
+	width: 5em;
+	height: 5em;
+	margin: 1em;
+	background: green;
+	transform-origin: 50% 50% 0;
+	-webkit-transform-origin: 50% 50% 0;
+	transform:rotateY(45deg);
+	-webkit-transform:rotateY(45deg);
+}
 </style>
 <script type="text/javascript">
 </script>
@@ -15,7 +35,12 @@
 
 <body>
 
-<input type="tel" placeholder="数字键盘" />
+<div class="clearfix">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
 
 </body>
 </html>
