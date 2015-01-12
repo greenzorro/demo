@@ -13,8 +13,8 @@ div {
 	margin: 300px auto;
 	perspective-origin: 50% 50%;
 	-webkit-perspective-origin: 50% 50%;
-	perspective: 300px;
-	-webkit-perspective: 300px;
+	perspective: 400px;
+	-webkit-perspective: 400px;
 }
 span {
 	float: left;
@@ -23,7 +23,6 @@ span {
 	height: 100px;
 	margin: 10px;
 	background: #58b798;
-	box-shadow: 0 0 0.2em rgba(0,0,0,0.3);
 	border-radius: 0.2em;
 	transform-origin: 50% 50% 40px;
 	-webkit-transform-origin: 50% 50% 40px;
@@ -39,10 +38,11 @@ $(function () {
 		var maxDistance = 2000;
 		var mouseX = mousePosition(e).x;
 		var mouseY = mousePosition(e).y;
-		rotateDegX = (mouseX-maxDistance/2)/maxDistance*2*90;
-		rotateDegY = (mouseY-350)/350*90;
+		rotateDegX = (mouseX-maxDistance/2)/maxDistance*2*90;  //X轴方向3D旋转角度
+		rotateDegY = (350-mouseY)/350*45;  //Y轴方向3D旋转角度
 		$("span").css({"transform":"rotateY(" + rotateDegX + "deg) rotateX(" + rotateDegY + "deg)","-webkit-transform":"rotateY(" + rotateDegX + "deg) rotateX(" + rotateDegY + "deg)"});
 	}
+	// 获取鼠标位置
 	function mousePosition(e){
 		if(e.pageX || e.pageY){
 			return {x:e.pageX, y:e.pageY};
