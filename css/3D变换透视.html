@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>3D变换透视</title>
+<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
+<style type="text/css">
+div {
+	width: 480px;
+	margin: 300px auto;
+	perspective-origin: 50% 50%;
+	-webkit-perspective-origin: 50% 50%;
+	perspective: 300px;
+	-webkit-perspective: 300px;
+}
+span {
+	float: left;
+	display: block;
+	width: 100px;
+	height: 100px;
+	margin: 10px;
+	background: #58b798;
+	box-shadow: 0 0 0.2em rgba(0,0,0,0.3);
+	border-radius: 0.2em;
+	transform-origin: 50% 50% 40px;
+	-webkit-transform-origin: 50% 50% 40px;
+	transform:rotateX(0) rotateY(0);
+	-webkit-transform:rotateX(0) rotateY(0);
+}
+</style>
+<script type="text/javascript">
+$(function () {
+	document.onmousemove = mouseMove;
+	function mouseMove(e){
+		e = e || window.event;
+		var maxDistance = 2000;
+		var mouseX = mousePosition(e).x;
+		var mouseY = mousePosition(e).y;
+		rotateDegX = (mouseX-maxDistance/2)/maxDistance*2*90;
+		rotateDegY = (mouseY-350)/350*90;
+		$("span").css({"transform":"rotateY(" + rotateDegX + "deg) rotateX(" + rotateDegY + "deg)","-webkit-transform":"rotateY(" + rotateDegX + "deg) rotateX(" + rotateDegY + "deg)"});
+	}
+	function mousePosition(e){
+		if(e.pageX || e.pageY){
+			return {x:e.pageX, y:e.pageY};
+		}
+		return {
+			x:e.clientX + document.body.scrollLeft - document.body.clientLeft,
+			y:e.clientY + document.body.scrollTop  - document.body.clientTop
+		};
+	}
+})
+</script>
+</head>
+
+<body>
+<div class="clearfix">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+</body>
+</html>
