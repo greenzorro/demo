@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>动态水平垂直居中</title>
+<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
+<style>
+div {
+    width: 30em;
+    height: 15em;
+    margin: 10em;
+    border: 1px solid #eee;
+    overflow: auto;
+    resize: both;
+    position: relative;
+}
+article {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div>
+    <article>
+        <h1>Headline here</h1>
+        <p>A few paragraphs here.</p>
+    </article>
+</div>
+
+</body>
+</html>
