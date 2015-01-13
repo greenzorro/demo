@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>CSS视觉差滚动</title>
+<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
+<style type="text/css">
+/* fixed_center style */
+.fixed_center_wrap {
+    position: relative;
+}
+.fixed_center {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+/* parallax style */
+.parallax {
+	min-height: 650px;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+	perspective-origin: 50% 50% ;
+	-webkit-perspective-origin: 50% 50% ;
+	perspective: 300px;
+	-webkit-perspective: 300px;
+}
+.parallax .parallax_section {
+	height: 100vh;
+	position: relative;
+	transform-style: preserve-3d;
+	transform: translate3d(700px, 0, -800px) rotateY(30deg);
+}
+.parallax_content {
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+/* custom style */
+.section1 {
+	z-index: 2;
+}
+.section2 {
+	z-index: 1;
+}
+.section3 {
+	z-index: 2;
+}
+.section1 .parallax_content_back {
+	background: url(http://greenzorro.github.io/colacdn/assets/images/texture1.png) repeat;
+	transform: translate3d(0,0,-300px) scale(2);
+	-webkit-transform: translate3d(0,0,-300px) scale(2);
+}
+.section2 .parallax_content_back2 {
+	background: url(http://greenzorro.github.io/colacdn/assets/images/texture3.jpg) repeat;
+	transform: translate3d(0,0,-600px) scale(3);
+	-webkit-transform: translate3d(0,0,-600px) scale(3);
+}
+.section3 .parallax_content_back {
+	background: url(http://greenzorro.github.io/colacdn/assets/images/texture2.png) repeat;
+	transform: translate3d(0,0,-300px) scale(2);
+	-webkit-transform: translate3d(0,0,-300px) scale(2);
+}
+.parallax_content_base {
+	z-index: 9;
+}
+.section2 .parallax_content_base {
+	color: #fff;
+}
+h1 {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+</style>
+<script type="text/javascript">
+</script>
+</head>
+
+<body>
+
+<div class="parallax">
+	<section class="section1 parallax_section">
+		<div class="parallax_content_back parallax_content"></div>
+		<div class="parallax_content_base parallax_content fixed_center_wrap">
+			<div class="fixed_center">
+				<h1>section 1</h1>
+				<p>this is section 1.</p>
+			</div>
+		</div>
+	</section>
+	<section class="section2 parallax_section">
+		<div class="parallax_content_back2 parallax_content fixed_center_wrap">
+			<div class="fixed_center">
+			</div>
+		</div>
+		<div class="parallax_content_base parallax_content fixed_center_wrap">
+			<div class="fixed_center">
+				<h1>section 2</h1>
+				<p>this is section 2.</p>
+			</div>
+		</div>
+	</section>
+	<section class="section3 parallax_section">
+		<div class="parallax_content_back parallax_content fixed_center_wrap">
+			<div class="fixed_center">
+			</div>
+		</div>
+		<div class="parallax_content_base parallax_content fixed_center_wrap">
+			<div class="fixed_center">
+				<h1>section 3</h1>
+				<p>this is section 3.</p>
+			</div>
+		</div>
+	</section>
+</div>
+
+</body>
+</html>
