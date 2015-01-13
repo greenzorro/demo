@@ -8,24 +8,12 @@
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
 <style type="text/css">
-div {
-	width: 30%;
-	margin: 15em auto;
-	perspective-origin: 50% 50%;
-	-webkit-perspective-origin: 50% 50%;
-	perspective: 100px;
-	-webkit-perspective: 100px;
-}
-span {
-	float: left;
-	display: block;
-	width: 25%;
-	height: 5em;
-	background: green;
-	transform-origin: 50% 50% 0;
-	-webkit-transform-origin: 50% 50% 0;
-	transform:rotateY(45deg);
-	-webkit-transform:rotateY(45deg);
+.trans3d div { float:left; width:100px; height:50px; line-height:50px; margin-right:10px; background:#E6FFFD; border:1px solid #8DC4EB; text-align:center; }
+.trans3d .rotateY {
+    transform-origin: 50% 50% 40px;
+    -webkit-transform-origin: 50% 50% 40px;
+    transform:perspective(100px) rotateY(45deg);
+    -webkit-transform:perspective(100px) rotateY(45deg);
 }
 </style>
 <script type="text/javascript">
@@ -34,11 +22,10 @@ span {
 
 <body>
 
-<div class="clearfix">
-	<span></span>
-	<span></span>
-	<span></span>
-	<span></span>
+<div class="trans3d DEMO clearfix">
+    <h2>transforms 3D</h2>
+    <div class="ori">original</div>
+    <div class="rotateY">rotateY</div>
 </div>
 
 </body>
