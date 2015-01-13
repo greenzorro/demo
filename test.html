@@ -10,10 +10,30 @@
 <style type="text/css">
 .trans3d div { float:left; width:100px; height:50px; line-height:50px; margin-right:10px; background:#E6FFFD; border:1px solid #8DC4EB; text-align:center; }
 .trans3d .rotateY {
-    transform-origin: 50% 50%;
-    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50% 40px;
+    -webkit-transform-origin: 50% 50% 40px;
     transform:perspective(100px) rotateY(45deg);
     -webkit-transform:perspective(100px) rotateY(45deg);
+}
+.parent {
+	width: 480px;
+	perspective-origin: 50% 50%;
+	-webkit-perspective-origin: 50% 50%;
+	perspective: 400px;
+	-webkit-perspective: 400px;
+}
+.parent span {
+	float: left;
+	display: block;
+	width: 100px;
+	height: 100px;
+	margin: 10px;
+	background: #58b798;
+	border-radius: 0.2em;
+	transform-origin: 50% 50% 40px;
+	-webkit-transform-origin: 50% 50% 40px;
+	transform:rotateY(45deg);
+	-webkit-transform:rotateY(45deg);
 }
 </style>
 <script type="text/javascript">
@@ -27,6 +47,14 @@
     <div class="ori">original</div>
     <div class="rotateY">rotateY</div>
 </div>
+
+<div class="parent clearfix">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+
 
 </body>
 </html>
