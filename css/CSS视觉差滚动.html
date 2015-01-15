@@ -8,41 +8,78 @@
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
 <style type="text/css">
+
 /* custom style */
-.section1 {
-	z-index: 2;
-}
 .section2 {
 	z-index: 1;
 }
-.section3 {
+.section1,
+.section4 {
 	z-index: 2;
+}
+.section3,
+.section5 {
+	z-index: 3;
 }
 .section1 .parallax_content_back {
 	background: url(http://greenzorro.github.io/colacdn/assets/images/texture1.png) repeat;
-	transform: translate3d(0,0,-300px) scale(2);
-	-webkit-transform: translate3d(0,0,-300px) scale(2);
 }
 .section2 .parallax_content_back2 {
 	background: url(http://greenzorro.github.io/colacdn/assets/images/texture3.jpg) repeat;
-	transform: translate3d(0,0,-600px) scale(3);
-	-webkit-transform: translate3d(0,0,-600px) scale(3);
 }
-.section3 .parallax_content_back {
+.section4 .parallax_content_back {
 	background: url(http://greenzorro.github.io/colacdn/assets/images/texture2.png) repeat;
-	transform: translate3d(0,0,-300px) scale(2);
-	-webkit-transform: translate3d(0,0,-300px) scale(2);
-}
-.parallax_content_base {
-	z-index: 9;
 }
 .section2 .parallax_content_base {
+	color: #fff;
+}
+.section3 .parallax_content_base {
+	background: #333;
+	color: #fff;
+}
+.section5 .parallax_content_base {
+	background: #fff;
+	color: #333;
+}
+.section2 .parallax_content_fore {
 	color: #fff;
 }
 h1 {
 	font-size: 1.5em;
 	font-weight: bold;
 }
+
+
+/*debug*/
+a.debug {
+	padding: 0.3em 0.5em;
+	border: 1px solid #58b798;
+	border-radius: 0.3em;
+	color: #58b798;
+	font-size: 0.9em;
+	position: fixed;
+	right: 2em;
+	top: 1em;
+	z-index: 99;
+	transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+}
+.debug_on a.debug {
+	background: #58b798;
+	color: #fff;
+}
+.parallax .parallax_section {
+	transition: transform 0.3s ease-in-out;
+	-webkit-transition: -webkit-transform 0.3s ease-in-out;
+}
+.debug_on .parallax .parallax_section {
+	transform: translate3d(800px, 0, -1200px) rotateY(30deg);
+	-webkit-transform: translate3d(800px, 0, -1200px) rotateY(30deg);
+}
+.debug_on .parallax .parallax_section .parallax_content {
+	box-shadow: 0 0 0 2px #e44e3f;
+}
+
 
 /* parallax style */
 .parallax {
@@ -59,8 +96,6 @@ h1 {
 	height: 100vh;
 	position: relative;
 	transform-style: preserve-3d;
-	/*transform: translate3d(700px, 0, -800px) rotateY(30deg);*/
-	/*-webkit-transform: translate3d(700px, 0, -800px) rotateY(30deg);*/
 }
 .parallax .parallax_content {
 	width: 100%;
@@ -69,6 +104,19 @@ h1 {
 	left: 0;
 	top: 0;
 }
+.parallax_content_fore {  /* foreground */
+	transform: translate3d(0,0,150px) scale(0.5);
+	-webkit-transform: translate3d(0,0,150px) scale(0.5);
+}
+.parallax_content_back {  /* deep background */
+	transform: translate3d(0,0,-300px) scale(2);
+	-webkit-transform: translate3d(0,0,-300px) scale(2);
+}
+.parallax_content_back2 {  /* deeper background */
+	transform: translate3d(0,0,-600px) scale(3);
+	-webkit-transform: translate3d(0,0,-600px) scale(3);
+}
+
 
 /* fixed_center style */
 .fixed_center_wrap {
@@ -82,8 +130,19 @@ h1 {
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
 }
+
 </style>
 <script type="text/javascript">
+$(function () {
+	$(".debug").click(function () {
+		if ($("html").hasClass("debug_on")) {
+			$("html").removeClass("debug_on");
+		}
+		else {
+			$("html").addClass("debug_on");
+		}
+	})
+})
 </script>
 </head>
 
@@ -99,23 +158,22 @@ h1 {
 			</div>
 		</div>
 	</section>
+	<section class="section_empty parallax_section"></section>
 	<section class="section2 parallax_section">
-		<div class="parallax_content_back2 parallax_content fixed_center_wrap">
-			<div class="fixed_center">
-			</div>
-		</div>
+		<div class="parallax_content_back2 parallax_content fixed_center_wrap"></div>
 		<div class="parallax_content_base parallax_content fixed_center_wrap">
 			<div class="fixed_center">
 				<h1>section 2</h1>
 				<p>this is section 2.</p>
 			</div>
 		</div>
-	</section>
-	<section class="section3 parallax_section">
-		<div class="parallax_content_back parallax_content fixed_center_wrap">
+		<div class="parallax_content_fore parallax_content fixed_center_wrap">
 			<div class="fixed_center">
+				<h1>Floating content</h1>
 			</div>
 		</div>
+	</section>
+	<section class="section3 parallax_section">
 		<div class="parallax_content_base parallax_content fixed_center_wrap">
 			<div class="fixed_center">
 				<h1>section 3</h1>
@@ -123,7 +181,30 @@ h1 {
 			</div>
 		</div>
 	</section>
+	<section class="section4 parallax_section">
+		<div class="parallax_content_back parallax_content fixed_center_wrap"></div>
+		<div class="parallax_content_base parallax_content fixed_center_wrap">
+			<div class="fixed_center">
+				<h1>section 4</h1>
+				<p>this is section 4.</p>
+			</div>
+		</div>
+		<div class="parallax_content_fore parallax_content fixed_center_wrap">
+			<div class="fixed_center">
+				<h1>Floating content</h1>
+			</div>
+		</div>
+	</section>
+	<section class="section5 parallax_section">
+		<div class="parallax_content_base parallax_content fixed_center_wrap">
+			<div class="fixed_center">
+				<h1>section 5</h1>
+				<p>this is section 5.</p>
+			</div>
+		</div>
+	</section>
 </div>
+<a class="debug" href="javascript:;">debug</a>
 
 </body>
 </html>
