@@ -98,17 +98,23 @@ a.debug {
 	height: 100vh;
 	position: relative;
 	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
 }
 .parallax .parallax_content {
-	width: 100%;
-	height: 100vh;
 	position: absolute;
 	left: 0;
 	top: 0;
+	bottom: 0;
+	right: 0;
+	/* set left and right, top and bottom 0 to make it fit the parent's width and height */
 }
 .parallax_content_fore {  /* foreground */
 	transform: translate3d(0,0,250px) scale(0.5);
 	-webkit-transform: translate3d(0,0,250px) scale(0.5);
+}
+.parallax_content_base {  /* base */
+	transform: translate3d(0,0,0) scale(1);
+	-webkit-transform: translate3d(0,0,0) scale(1);
 }
 .parallax_content_back {  /* deep background */
 	transform: translate3d(0,0,-500px) scale(2);
