@@ -10,25 +10,26 @@
 <style>
 </style>
 <script>
-function hotKeys() {
-	var ua = navigator.userAgent.toLowerCase();
-	var str = '';
-	var isWebkit = (ua.indexOf('webkit') != - 1);
-	var isMac = (ua.indexOf('mac') != - 1);
-	if (ua.indexOf('konqueror') != - 1) {
-		str = 'CTRL + B'; // Konqueror
-	}
-	else if (window.home || isWebkit || isIEmac || isMac) {
-		str = (isMac ? 'Command/Cmd' : 'CTRL') + ' + D'; // Netscape, Safari, iCab, IE5/Mac
-	}
-	return ((str) ? 'Press ' + str + ' to bookmark this page.' : str);
+function addBookmark(title,url) 
+{
+    if (window.sidebar) 
+    { 
+        window.sidebar.addPanel(title, url,""); 
+    } 
+    else if( document.all ) 
+    {
+        window.external.AddFavorite( url, title);
+    } 
+    else if( window.opera && window.print ) {
+        return true;
+    }
 }
 </script>
 </head>
 
 <body>
 
-<a href="javascript:;" onclick="hotKeys();">add to bookmark</a>
+<a href="javascript:;" onclick="addBookmark();">add to bookmark</a>
 
 </body>
 </html>
