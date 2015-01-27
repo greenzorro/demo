@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>添加书签</title>
+<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
+<style>
+</style>
+<script>
+function hotKeys() {
+	var ua = navigator.userAgent.toLowerCase();
+	var str = '';
+	var isWebkit = (ua.indexOf('webkit') != - 1);
+	var isMac = (ua.indexOf('mac') != - 1);
+	if (ua.indexOf('konqueror') != - 1) {
+		str = 'CTRL + B'; // Konqueror
+	}
+	else if (window.home || isWebkit || isIEmac || isMac) {
+		str = (isMac ? 'Command/Cmd' : 'CTRL') + ' + D'; // Netscape, Safari, iCab, IE5/Mac
+	}
+	return ((str) ? 'Press ' + str + ' to bookmark this page.' : str);
+}
+</script>
+</head>
+
+<body>
+
+<a href="javascript:;" onclick="hotKeys();">add to bookmark</a>
+
+</body>
+</html>
