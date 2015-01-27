@@ -30,6 +30,7 @@ function addBookmark(title,url)
 <body>
 
 <a href="javascript:;" onclick="addBookmark();">add to bookmark</a>
+<a href="javascript:;" onclick="window.external.addFavorite(this.href,this.title);return false;" title='名字' rel="sidebar">加入收藏</a> 
 
 </body>
 </html>
