@@ -22,11 +22,11 @@ function dateDiff(sDate1, sDate2) {
     cal = sDate1.split(" ");
     cal = cal[0].split("-") + "," + cal[1].split(":");
     cal = cal.split(",");
-    oDate1 = new Date(cal[1] + "-" + cal[2] + "-" + cal[0] + " " + cal[3] + ":" + cal[4] + ":" + cal[5]);  //转换为2014-12-18 10:57:47格式
+    oDate1 = new Date(cal[0], cal[1], cal[2], cal[3], cal[4], cal[5]);  //转换为2014-12-18 10:57:47格式
     cal = sDate2.split(" ");
     cal = cal[0].split("-") + "," + cal[1].split(":");
     cal = cal.split(",");
-    oDate2 = new Date(cal[1] + "-" + cal[2] + "-" + cal[0] + " " + cal[3] + ":" + cal[4] + ":" + cal[5]);
+    oDate2 = new Date(cal[0], cal[1], cal[2], cal[3], cal[4], cal[5]);
     cal = parseInt(Math.abs(oDate1 - oDate2)/1000);  //时间相减得到秒数
     diff[0] = Math.floor(cal/60/60/24);  //天
     diff[1] = cal%(60*60*24);
