@@ -13,7 +13,7 @@ $(function () {
 	var today = new Date();
     var todayFormat = today.getFullYear() + "-" + Number(today.getMonth() + 1) + "-" + today.getDate() + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var diffTime = dateDiff("2014-12-18 10:56:47", todayFormat);
-    $('body').html("2014-12-18 10:56:47 距今：" + diffTime[0] + "天 " + diffTime[1] + "小时 " + diffTime[2] + "分 " + diffTime[3] + "秒");
+    $('body').html("2014-12-18 10:56:47 距今：" + diffTime[1] + "天 " + diffTime[2] + "小时 " + diffTime[3] + "分 " + diffTime[4] + "秒");
 });
 
 // 日期时间相减，格式为：YYYY-MM-DD HH:MM:SS
@@ -27,13 +27,14 @@ function dateDiff(sDate1, sDate2) {
     cal = cal[0].split("-") + "," + cal[1].split(":");
     cal = cal.split(",");
     oDate2 = new Date(cal[0], cal[1], cal[2], cal[3], cal[4], cal[5]);
-    cal = parseInt(Math.abs(oDate1 - oDate2)/1000);  //时间相减得到秒数
-    diff[0] = Math.floor(cal/60/60/24);  //天
-    diff[1] = cal%(60*60*24);
-    diff[1] = Math.floor(diff[1]/60/60);  //时
-    diff[2] = cal%(60*60);
-    diff[2] = Math.floor(diff[2]/60);  //分
-    diff[3] = Math.floor(cal%(60));  //秒
+    cal = parseInt(Math.abs(oDate1 - oDate2));  //时间相减得到毫秒数
+    diff[0] = parseInt(cal/1000);  //总秒数
+    diff[1] = Math.floor(diff[0]/60/60/24);  //天
+    diff[2] = diff[0]%(60*60*24);
+    diff[2] = Math.floor(diff[2]/60/60);  //时
+    diff[3] = diff[0]%(60*60);
+    diff[3] = Math.floor(diff[3]/60);  //分
+    diff[4] = Math.floor(diff[0]%60);  //秒
     return diff;
 }
 </script>
