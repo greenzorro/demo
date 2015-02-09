@@ -27,14 +27,14 @@ function dateDiff(sDate1, sDate2) {
     cal = cal[0].split("-") + "," + cal[1].split(":");
     cal = cal.split(",");
     oDate2 = new Date(cal[0], cal[1], cal[2], cal[3], cal[4], cal[5]);
-    cal = parseInt(Math.abs(oDate1 - oDate2));  //时间相减得到毫秒数
+    cal = parseInt(oDate1 - oDate2);  //时间相减得到毫秒数
     return cal;
 }
 
 // 将毫秒数转化为天、时、分、秒
 function toTimeUnit (millisecond) {
     var diff = new Array();
-    diff[0] = parseInt(millisecond/1000);  //总秒数
+    diff[0] = Math.abs(parseInt(millisecond/1000));  //总秒数
     diff[1] = Math.floor(diff[0]/60/60/24);  //天
     diff[2] = diff[0]%(60*60*24);
     diff[2] = Math.floor(diff[2]/60/60);  //时
