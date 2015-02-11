@@ -244,7 +244,7 @@ body.disable-default-action
 	-webkit-transition: background 0.3s ease-out;
 }
 .index .menu li a:active {
-	background: #eee;
+	background: #dfdfdf;
 }
 .index .menu li img {
 	float: left;
@@ -254,9 +254,9 @@ body.disable-default-action
 	margin: 1em;
 }
 .index .menu li h2 {
-	padding: 0.8em 0 0;
+	padding: 0.9em 0 0;
 	color: #333;
-	font-size: 1.2em;
+	font-size: 1.1em;
 	font-weight: bold;
 }
 .index .menu li p {
