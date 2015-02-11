@@ -1,0 +1,282 @@
+﻿/*********************************************************************/
+/*                              global                               */
+/*********************************************************************/
+
+
+* {
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+}
+html, body{
+	height:100%;
+	-webkit-tap-highlight-color:transparent;
+}
+body {
+	line-height: 1.6;
+	font-size: 1em;
+	color: #707070;
+}
+body.disable-default-action
+{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+
+
+
+
+
+/*********************************************************************/
+/*                              common                               */
+/*********************************************************************/
+
+
+
+
+
+/*********************************************************************/
+/*                               index                               */
+/*********************************************************************/
+
+
+.index {
+	width: 100%;
+	min-height: 100vh;
+	background: #3da3f1 url(../images/index_bg@2x.png) no-repeat center center;
+	background-size: cover;
+	position: relative;
+}
+.index h1 {
+	width: 220px;
+	height: 80px;
+	overflow: hidden;
+	background: url(../images/index_slogen@2x.png) no-repeat center center;
+	background-size: cover;
+	text-indent: -100%;
+	position: absolute;
+	left: 50%;
+	top: 25vh;
+	z-index: 2;
+	transform: translate(-50%, 0);
+	-webkit-transform: translate(-50%, 0);
+}
+
+
+/*************************  index animation  *************************/
+
+.index .animation {
+	overflow-x: hidden;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 3em;
+	z-index: 3;
+}
+.index .air {
+	position: absolute;
+}
+.index .air .plane {
+	width: 150px;
+	height: 60px;
+	overflow: hidden;
+	background: url(../images/index_plane@2x.png) no-repeat center center;
+	background-size: contain;
+	transform: translate(150px, 0);
+	-webkit-transform: translate(150px, 0);
+}
+.index .air1 {
+	right: 0;
+	top: 10vh;
+}
+.index .air2 {
+	left: 0;
+	top: 45vh;
+	transform: scale(-0.6, 0.6);
+	-webkit-transform: scale(-0.6, 0.6);
+}
+.index .air1 .plane {
+	animation: plane 4s linear 3s infinite;
+	-webkit-animation: plane 4s linear 3s infinite;
+}
+.index .air2 .plane {
+	animation: plane 5s linear infinite;
+	-webkit-animation: plane 5s linear infinite;
+}
+@keyframes plane {
+	0% { transform: translate(800px, 0); }
+	100% { transform: translate(-800px, 0); }
+}
+@-webkit-keyframes plane {
+	0% { -webkit-transform: translate(800px, 0); }
+	100% { -webkit-transform: translate(-800px, 0); }
+}
+.index .sea {
+	width: 160px;
+	height: 42px;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: 70vh;
+	transform: translate(200px, 0);
+	-webkit-transform: translate(200px, 0);
+	animation: ship 8s linear 2s infinite;
+	-webkit-animation: ship 8s linear 2s infinite;
+}
+.index .sea .ship {
+	width: 130px;
+	height: 40px;
+	overflow: hidden;
+	background: url(../images/index_ship@2x.png) no-repeat center center;
+	background-size: contain;
+	position: absolute;
+	left: 50%;
+	top: 0;
+	transform: translate(-50%, 0);
+	-webkit-transform: translate(-50%, 0);
+}
+.index .sea .wave {
+	width: 355px;
+	height: 4px;
+	overflow: hidden;
+	background: url(../images/index_wave@2x.png) no-repeat center center;
+	background-size: contain;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	animation: wave 2s linear 2s infinite;
+	-webkit-animation: wave 2s linear 2s infinite;
+}
+@keyframes ship {
+	0% { transform: translate(160px, 0); }
+	100% { transform: translate(-500px, 0); }
+}
+@-webkit-keyframes ship {
+	0% { -webkit-transform: translate(160px, 0); }
+	100% { -webkit-transform: translate(-500px, 0); }
+}
+@keyframes wave {
+	0% { transform: translate(0, 0); }
+	100% { transform: translate(24px, 0); }
+}
+@-webkit-keyframes wave {
+	0% { -webkit-transform: translate(0, 0); }
+	100% { -webkit-transform: translate(24px, 0); }
+}
+
+
+/***************************  index menu  ****************************/
+
+.index nav {
+	height: 3em;
+	background: #1483d7;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9;
+}
+.index nav li {
+	float: left;
+	width: 33.33%;
+	height: 100%;
+	line-height: 3em;
+	transition: background 0.3s ease-out;
+}
+.index nav .active {
+	background: #0869b4;
+}
+.index nav a {
+	display: block;
+	height: 100%;
+	background: no-repeat 10% center;
+	background-size: 30px 30px;
+	font-size: 0.9em;
+	color: #fff;
+	text-align: center;
+	text-indent: 2em;
+}
+.index nav li:nth-child(1) a {
+	background-image: url(../images/menu_icon_planet@2x.png);
+}
+.index nav li:nth-child(2) a {
+	background-image: url(../images/menu_icon_comet@2x.png);
+}
+.index nav li:nth-child(3) a {
+	background-image: url(../images/menu_icon_earth@2x.png);
+}
+.index .menu {
+	overflow: hidden;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 3em;
+	z-index: 5;
+}
+.index .menu ul {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transition: transform 0.5s cubic-bezier(0.15, 0.95, 0.41, 0.95);
+	-webkit-transition: transform 0.5s cubic-bezier(0.15, 0.95, 0.41, 0.95);
+	transform: translate(0, 100%);
+	-webkit-transform: translate(0, 100%);
+}
+.index .menu .active {
+	transform: translate(0, 0%);
+	-webkit-transform: translate(0, 0%);
+}
+.index .menu li {
+	height: 5em;
+	border-bottom: 1px solid #eee;
+	position: relative;
+}
+.index .menu li:last-child {
+	border: none;
+}
+.index .menu li a {
+	display: block;
+	height: 100%;
+	background: #f5f5f5;
+}
+.index .menu li img {
+	float: left;
+	width: 3em;
+	height: 3em;
+	border-radius: 50%;
+	margin: 1em;
+}
+.index .menu li h2 {
+	padding: 0.8em 0 0;
+	color: #333;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.index .menu li p {
+	color: #1483d7;
+	font-size: 0.8em;
+}
+.index .menu li time {
+	color: #aaa;
+	font-size: 0.8em;
+	position: absolute;
+	right: 1.2em;
+	top: 1.6em;
+}
+
+
+
+
+
+/*********************************************************************/
+/*                               pages                               */
+/*********************************************************************/
+
+
+
+
+
+
+
