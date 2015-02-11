@@ -35,7 +35,7 @@ body.disable-default-action
 
 .inner {
 	min-height: 100vh;
-	padding: 0 0 4em;
+	padding: 0 0 3em;
 	background: #f0f2f5;
 }
 
@@ -70,7 +70,7 @@ body.disable-default-action
 	display: block;
 	width: 3em;
 	height: 3em;
-	background: url(../images/menu_icon_hamburger@2x.png) no-repeat center center;
+	background: url(../images/icon_hamburger@2x.png) no-repeat center center;
 	background-size: 40px 40px;
 }
 .toolbar ul {
@@ -105,7 +105,7 @@ body.disable-default-action
 }
 .toolbar li a {
 	display: block;
-	background: url(../images/menu_icon_arrow@2x.png) no-repeat 0.5em center;
+	background: url(../images/icon_arrow@2x.png) no-repeat 0.5em center;
 	background-size: 40px 40px;
 	color: #fff;
 	text-indent: 3em;
@@ -282,13 +282,13 @@ body.disable-default-action
 	text-indent: 2em;
 }
 .index nav li:nth-child(1) a {
-	background-image: url(../images/menu_icon_planet@2x.png);
+	background-image: url(../images/icon_planet@2x.png);
 }
 .index nav li:nth-child(2) a {
-	background-image: url(../images/menu_icon_comet@2x.png);
+	background-image: url(../images/icon_comet@2x.png);
 }
 .index nav li:nth-child(3) a {
-	background-image: url(../images/menu_icon_earth@2x.png);
+	background-image: url(../images/icon_earth@2x.png);
 }
 .index .menu {
 	overflow: hidden;
@@ -369,7 +369,7 @@ body.disable-default-action
 
 .hjzc .banner {
 	height: 240px;
-	background: url(../images/bg1.png) no-repeat center top;
+	background: url(../images/bg1@2x.png) no-repeat center top;
 	background-size: 100%;
 	color: #1c3c50;
 	position: relative;
@@ -465,7 +465,6 @@ body.disable-default-action
 /*****************************  跨境概念  ******************************/
 
 .rzlc .slider {
-	overflow: hidden;
 	position: absolute;
 	left: 0;
 	right: 0;
@@ -476,6 +475,144 @@ body.disable-default-action
 	width: 100%;
 	height: 100%;
 }
+
+
+/*****************************  提问留言  ******************************/
+
+.twly {
+	background: #fff;
+}
+.twly .input {
+	height: 2.2em;
+	padding: 0 5% 0.8em;
+	background: #3da3f1;
+}
+.twly .input input {
+	border-radius: 2em;
+	background: #1483d7;
+	color: #fff;
+}
+.twly .input input[type="text"] {
+	width: 68%;
+	padding: 0.8em;
+	color: rgba(255,255,255,0.7);
+}
+.twly .input input[type="submit"] {
+	float: right;
+	padding: 0.8em 1.5em;
+}
+.twly .question nav {
+	height: 3em;
+	line-height: 3em;
+	background: #f0f2f5;
+}
+.twly .question nav li {
+	float: left;
+	width: 33.33%;
+	border-bottom: 2px solid;
+	text-align: center;
+}
+.twly .question nav li:nth-child(1) {
+	border-color: #fc6e51;
+}
+.twly .question nav li:nth-child(2) {
+	border-color: #48cfad;
+}
+.twly .question nav li:nth-child(3) {
+	border-color: #ac92ec;
+}
+.twly .question nav li a {
+	color: #818a8c;
+}
+.twly .question ul li {
+	border-bottom: 1px solid #dfdfdf;
+}
+.twly .question ul li:last-of-type {
+	border: none;
+}
+.twly .question ul li a {
+	display: block;
+	padding: 1em 1em 1em 3em;
+	background: url(../images/icon_lamp@2x.png) no-repeat 0.8em 1em;
+	background-size: 30px 30px;
+	transition: background-color 0.3s ease-out;
+	-webkit-transition: background-color 0.3s ease-out;
+}
+.twly .question ul li a:active {
+	background: #eee;
+}
+.twly .question ul li h2 {
+	padding: 0 0 0.4em;
+	color: #aaa;
+}
+.twly .question ul li p {
+	color: #333;
+}
+
+
+/*****************************  新闻资讯  ******************************/
+
+.xwzx {
+	background: #fff;
+}
+.xwzx .tab {
+	height: 3em;
+	padding: 4.5em 0 0;
+	background: url(../images/bg2@2x.png) no-repeat center center;
+	background-size: cover;
+	position: relative;
+}
+.xwzx .tab a {
+	float: left;
+	display: block;
+	width: 50%;
+	height: 3em;
+	line-height: 3em;
+	text-align: center;
+	color: #fff;
+	transition: background 0.3s ease-out;
+	-webkit-transition: background 0.3s ease-out;
+}
+.xwzx .tab a.current {
+	background: rgba(255,255,255,0.3);
+}
+.xwzx .news_list ul {
+}
+.xwzx .news_list li {
+	border-bottom: 1px solid #dfdfdf;
+}
+.xwzx .news_list li a {
+	display: block;
+	height: 5em;
+	padding: 0.5em;
+	transition: background 0.3s ease-out;
+	-webkit-transition: background 0.3s ease-out;
+}
+.xwzx .news_list li a:active {
+	background: #eee;
+}
+.xwzx .news_list li img {
+	float: left;
+	width: 5em;
+	height: 5em;
+	margin: 0 0.5em 0 0;
+}
+.xwzx .news_list li h2 {
+	height: 2.4em;
+	line-height: 1.2;
+	overflow: hidden;
+	color: #1c3c50;
+	font-size: 1.1em;
+}
+.xwzx .news_list li p {
+	height: 2.2em;
+	overflow: hidden;
+	line-height: 1.2;
+	padding: 0.4em 0 0;
+	font-size: 0.9em;
+	color: #aaa;
+}
+
 
 
 
@@ -510,10 +647,16 @@ body.disable-default-action
 	-webkit-box-align: center;
 	list-style: none;
 }
-#iSlider-wrapper li  img{
+#iSlider-wrapper li img{
 	max-width: 100%;
 	max-height: 100%;
 }
+
+
+//***************************  tabSwitch  *****************************//
+
+.tab_switch_fade .switch_tab { display: none; }
+.tab_switch_fade .current_tab { display: block; }
 
 
 
