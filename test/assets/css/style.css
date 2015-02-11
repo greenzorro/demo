@@ -221,12 +221,12 @@ body.disable-default-action
 	bottom: 0;
 	transition: transform 0.5s cubic-bezier(0.15, 0.95, 0.41, 0.95);
 	-webkit-transition: transform 0.5s cubic-bezier(0.15, 0.95, 0.41, 0.95);
-	transform: translate(0, 100%);
-	-webkit-transform: translate(0, 100%);
+	transform: translate(0, 800px);
+	-webkit-transform: translate(0, 800px);
 }
 .index .menu .active {
-	transform: translate(0, 0%);
-	-webkit-transform: translate(0, 0%);
+	transform: translate(0, 0);
+	-webkit-transform: translate(0, 0);
 }
 .index .menu li {
 	height: 5em;
