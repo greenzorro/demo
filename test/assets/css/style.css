@@ -31,6 +31,91 @@ body.disable-default-action
 /*********************************************************************/
 
 
+/******************************  inner  ******************************/
+
+.inner {
+	min-height: 100vh;
+	padding: 0 0 4em;
+	background: #f0f2f5;
+}
+
+
+/****************************  title bar  ****************************/
+
+.inner h1.titlebar {
+	height: 3em;
+	line-height: 3em;
+	background: #3da3f1;
+	text-align: center;
+	color: #fff;
+	font-size: 1em;
+	position: relative;
+	z-index: 50;
+}
+
+
+/****************************  bottom menu  **************************/
+
+.toolbar {
+	height: 3em;
+	background: #1483d7;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 50;
+}
+.toolbar .menu_btn {
+	float: left;
+	display: block;
+	width: 3em;
+	height: 3em;
+	background: url(../images/menu_icon_hamburger@2x.png) no-repeat center center;
+	background-size: 40px 40px;
+}
+.toolbar ul {
+	padding: 0.5em 0;
+	background: #1483d7;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 3em;
+	z-index: 50;
+	transition: transform 0.1s ease-out;
+	-webkit-transition: -webkit-transform 0.1s ease-out;
+	transform-origin: 0% 100%;
+	-webkit-transform-origin: 0% 100%;
+	transform: scale(0);
+	-webkit-transform: scale(0);
+}
+.toolbar ul.show {
+	transform: scale(1);
+	-webkit-transform: scale(1);
+}
+.toolbar li {
+	float: left;
+	width: 50%;
+	height: 3em;
+	line-height: 3em;
+	overflow: hidden;
+}
+.toolbar li:nth-child(4n+1),
+.toolbar li:nth-child(4n+2) {
+	background: rgba(255,255,255,0.1);
+}
+.toolbar li a {
+	display: block;
+	background: url(../images/menu_icon_arrow@2x.png) no-repeat 0.5em center;
+	background-size: 40px 40px;
+	color: #fff;
+	text-indent: 3em;
+	transition: background-color 0.3s ease-out;
+	-webkit-transition: background-color 0.3s ease-out;
+}
+.toolbar li a:active {
+	background-color: rgba(0,0,0,0.2);
+}
+
 
 
 
@@ -280,6 +365,155 @@ body.disable-default-action
 /*********************************************************************/
 
 
+/*****************************  环境政策  ******************************/
+
+.hjzc .banner {
+	height: 240px;
+	background: url(../images/bg1.png) no-repeat center top;
+	background-size: 100%;
+	color: #1c3c50;
+	position: relative;
+}
+.hjzc .banner h1 {
+	padding: 7em 0 0;
+	margin: 0 30px;
+	border-bottom: 1px solid #1c3c50;
+	font-size: 1.2em;
+}
+.hjzc .banner p {
+	line-height: 1.2;
+	padding: 0.5em 0 0;
+	margin: 0 30px;
+	font-size: 1em;
+}
+.hjzc .expand {
+	margin: 0 30px;
+}
+.hjzc .expand li {
+	border-bottom: 1px solid #dfdfdf;
+}
+.hjzc .expand li a {
+	display: block;
+	height: 3em;
+	line-height: 3em;
+	color: #1483d7;
+}
+.hjzc .expand li a:before {
+	content: "+";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	margin: 0 0.5em 0 0;
+	background: #1483d7;
+	text-align: center;
+	border-radius: 0.2em;
+	color: #fff;
+}
+.hjzc .expand li .content {
+	display: none;
+}
+.hjzc .expand li .content p {
+	padding: 0 0 1em;
+}
+.hjzc .expand li.show a:before {
+	content: "-";
+}
+.hjzc .expand li.show .content {
+	display: block;
+}
+
+
+/*****************************  跨境概念  ******************************/
+
+.kjgn .taglist {
+	padding: 35vh 0;
+	position: relative;
+}
+.kjgn .taglist:before {
+	content: "";
+	display: block;
+	height: 30vh;
+	background-image:-webkit-linear-gradient(to bottom, rgba(240,242,245,1), rgba(240,242,245,0.9), rgba(240,242,245,0));
+	background-image:linear-gradient(to bottom, rgba(240,242,245,1), rgba(240,242,245,0.9), rgba(240,242,245,0));
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index: 20;
+}
+.kjgn .taglist:after {
+	content: "";
+	display: block;
+	height: 30vh;
+	background-image:-webkit-linear-gradient(to top, rgba(240,242,245,1), rgba(240,242,245,0.9), rgba(240,242,245,0));
+	background-image:linear-gradient(to top, rgba(240,242,245,1), rgba(240,242,245,0.9), rgba(240,242,245,0));
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 20;
+}
+.kjgn .taglist a {
+	display: block;
+	line-height: 2.4;
+	text-align: center;
+	color: #448aca;
+}
+
+
+/*****************************  跨境概念  ******************************/
+
+.rzlc .slider {
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 3em;
+	bottom: 3em;
+}
+.rzlc .slider #iSlider-wrapper {
+	width: 100%;
+	height: 100%;
+}
+
+
+
+
+
+/*********************************************************************/
+/*                              plugins                              */
+/*********************************************************************/
+
+
+//****************************  iSlider  ******************************//
+
+#iSlider-wrapper {
+	overflow: hidden;
+	position: absolute;
+}
+#iSlider-wrapper ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+}
+#iSlider-wrapper li {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	list-style: none;
+}
+#iSlider-wrapper li  img{
+	max-width: 100%;
+	max-height: 100%;
+}
 
 
 
