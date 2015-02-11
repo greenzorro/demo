@@ -22,7 +22,7 @@ $(function () {
 // 首页菜单切换
 function indexMenu () {
 	if ($(".index").length > 0) {
-		$("nav a").bind("touchstart", function () {
+		$("nav a").bind("touchend", function () {
 			var thisObj = $(this);
 			var flag = thisObj.parent().hasClass("active");  //记录当前菜单的状态
 			$(".active").removeClass("active");
@@ -40,7 +40,7 @@ function indexMenu () {
 function innerMenu () {
 	if ($(".toolbar").length > 0) {
 		var menu = $(".toolbar ul");
-		$(".toolbar .menu_btn").bind("touchstart", function () {
+		$(".toolbar .menu_btn").bind("touchend", function () {
 			if (menu.hasClass("show")) {
 				menu.removeClass("show");
 			}
@@ -56,7 +56,7 @@ function innerMenu () {
 function expandList () {
 	if ($(".expand").length > 0) {
 		$(".expand li>a").each(function () {
-			$(this).bind("touchstart", function () {
+			$(this).bind("touchend", function () {
 				if ($(this).parent().hasClass("show")) {
 					$(this).parent().removeClass("show");
 				}

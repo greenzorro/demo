@@ -58,10 +58,11 @@
         data: banner,
         type: 'dom',
         isLooping: true,
-        isAutoplay: false,
+        isAutoplay: true,
+        duration: 5000,
         animateType: 'default',
-        onslidechange: function() {
-	    	islider.renderBtn();
+        onslidechange: function(idx) {
+	    	islider.changeIndexBtn();
 	    }
     });
 	var btnOpt = {
