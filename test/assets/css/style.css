@@ -40,20 +40,6 @@ body.disable-default-action
 }
 
 
-/****************************  title bar  ****************************/
-
-.inner h1.titlebar {
-	height: 3em;
-	line-height: 3em;
-	background: #3da3f1;
-	text-align: center;
-	color: #fff;
-	font-size: 1em;
-	position: relative;
-	z-index: 50;
-}
-
-
 /****************************  bottom menu  **************************/
 
 .toolbar {
@@ -282,13 +268,13 @@ body.disable-default-action
 	text-indent: 2em;
 }
 .index nav li:nth-child(1) a {
-	background-image: url(../images/icon_planet@2x.png);
+	background-image: url(../images/icon_index1@2x.png);
 }
 .index nav li:nth-child(2) a {
-	background-image: url(../images/icon_comet@2x.png);
+	background-image: url(../images/icon_index2@2x.png);
 }
 .index nav li:nth-child(3) a {
-	background-image: url(../images/icon_earth@2x.png);
+	background-image: url(../images/icon_index3@2x.png);
 }
 .index .menu {
 	overflow: hidden;
@@ -461,7 +447,7 @@ body.disable-default-action
 	position: absolute;
 	left: 0;
 	right: 0;
-	top: 3em;
+	top: 0;
 	bottom: 3em;
 }
 .rzlc .slider #iSlider-wrapper {
@@ -510,7 +496,7 @@ body.disable-default-action
 }
 .twly .input {
 	height: 2.2em;
-	padding: 0 5% 0.8em;
+	padding: 0.5em 5%;
 	background: #3da3f1;
 }
 .twly .input input {
@@ -724,6 +710,14 @@ body.disable-default-action
 	line-height: 1.1em;
 	padding: 0.65em 0 0;
 	font-size: 0.9em;
+}
+
+
+/*****************************  业务模式  ******************************/
+
+.ywms .content img {
+	display: block;
+	width: 100%;
 }
 
 
