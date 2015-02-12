@@ -22,6 +22,28 @@
 	</div>
 	<!-- 轮播组件 -->
 
+	<!-- 轮播内容 -->
+	<div class="pages">
+		<div id="page1">
+			<div class="page_content">
+				<h2>Step1 企业提交入园申请</h2>
+				<h2>Step1 企业提交入园申请</h2>
+				<h2>Step1 企业提交入园申请</h2>
+				<h2>Step1 企业提交入园申请</h2>
+				<h2>Step1 企业提交入园申请</h2>
+				<a class="button" href="javascript:;">在线填表</a>
+				<p>欢迎您来到杭州跨境贸易电子商务产业园</p>
+				<!-- <img src="test_data/slider.png"> -->
+			</div>
+		</div>
+		<div id="page2">
+			<div class="page_content">
+				<img src="test_data/slider2.png">
+			</div>
+		</div>
+	</div>
+	<!-- 轮播内容 -->
+
 	<!-- 底部弹出式菜单 -->
 	<div class="toolbar">
 		<a class="menu_btn" href="javascript:;"></a>
@@ -47,10 +69,10 @@
 <script src="assets/plugin/islider_plugin.js"></script>
 <script type="text/javascript">
 	var banner = [{
-		content: '<img src="test_data/slider.png">',
+		content: document.getElementById("page1").innerHTML,
 	},
 	{
-		content: '<img src="test_data/slider2.png">',
+		content: document.getElementById("page2").innerHTML,
 	}];
 
     var islider = new iSlider({
@@ -58,7 +80,7 @@
         data: banner,
         type: 'dom',
         isLooping: true,
-        isAutoplay: true,
+        isAutoplay: false,
         duration: 5000,
         animateType: 'default',
         onslidechange: function(idx) {
