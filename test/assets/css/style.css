@@ -316,7 +316,6 @@ body.disable-default-action
 .index .menu li {
 	height: 5em;
 	border-bottom: 1px solid #eee;
-	position: relative;
 }
 .index .menu li:last-child {
 	border: none;
@@ -347,13 +346,6 @@ body.disable-default-action
 .index .menu li p {
 	color: #1483d7;
 	font-size: 0.8em;
-}
-.index .menu li time {
-	color: #aaa;
-	font-size: 0.8em;
-	position: absolute;
-	right: 1.2em;
-	top: 1.6em;
 }
 
 
@@ -464,8 +456,6 @@ body.disable-default-action
 
 /*****************************  入驻流程  ******************************/
 
-.rzlc {
-}
 .rzlc .slider {
 	overflow: hidden;
 	position: absolute;
@@ -481,15 +471,35 @@ body.disable-default-action
 .rzlc .pages {
 	display: none;
 }
-.rzlc .pages .page_content {
+.rzlc .page_content {
 	width: 100%;
 	height: 100%;
+	color: #1c3c50;
+	text-align: center;
 }
-.rzlc .pages h2 {
+.rzlc .page_content h2 {
+	padding: 0.8em 0;
+	font-size: 1.2em;
 }
-.rzlc .pages p {
+.rzlc .page_content p {
+	padding: 1em 0;
+	font-size: 0.9em;
 }
-.rzlc .pages a.button {
+.rzlc .page_content a.button {
+	display: block;
+	width: 80%;
+	height: 3em;
+	margin: auto;
+	line-height: 3em;
+	background: #3da3f1;
+	border-radius: 0.2em;
+	color: #fff;
+	text-align: center;
+	transition: background 0.3s ease-out;
+	-webkit-transition: background 0.3s ease-out;
+}
+.rzlc .page_content a.button:active {
+	background: #1f8adc;
 }
 
 
@@ -538,7 +548,15 @@ body.disable-default-action
 	border-color: #ac92ec;
 }
 .twly .question nav li a {
+	display: block;
+	width: 100%;
+	height: 100%;
 	color: #818a8c;
+	transition: background 0.3s ease-out;
+	-webkit-transition: background 0.3s ease-out;
+}
+.twly .question nav li a:active {
+	background: rgba(0,0,0,0.15);
 }
 .twly .question ul li {
 	border-bottom: 1px solid #dfdfdf;
@@ -664,6 +682,48 @@ body.disable-default-action
 	line-height: 1.2;
 	font-size: 0.8em;
 	color: #333;
+}
+
+
+/*****************************  园区微书  ******************************/
+
+.yqws .content a {
+	height: 0;
+	line-height: 0;
+	overflow: hidden;
+}
+.yqws .content img {
+	display: block;
+	width: 100%;
+}
+.yqws .nav {
+	height: 3em;
+	background: #1483d7;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 50;
+}
+.yqws .nav a {
+	float: left;
+	display: block;
+	width: 20%;
+	height: 100%;
+	text-align: center;
+	color: #fff;
+	transition: background 0.3s ease-out;
+	-webkit-transition: background 0.3s ease-out;
+}
+.yqws .nav a:active {
+	background: rgba(0,0,0,0.15);
+}
+.yqws .nav span {
+	display: inline-block;
+	width: 2em;
+	line-height: 1.1em;
+	padding: 0.65em 0 0;
+	font-size: 0.9em;
 }
 
 
