@@ -734,6 +734,7 @@ body.disable-default-action
 }
 .dsffw .slider {
 	position: relative;
+	z-index: 5;
 }
 .dsffw .slider #iSlider-wrapper {
 	height: 270px;
@@ -768,6 +769,7 @@ body.disable-default-action
 	overflow: hidden;
 	padding: 360px 0 0;
 	position: relative;
+	z-index: 2;
 }
 .dsffw .brands ul {
 	width: 99em;
