@@ -464,6 +464,10 @@ body.disable-default-action
 
 /*****************************  跨境概念  ******************************/
 
+.rzlc {
+	width: 100%;
+	overflow-x: hidden;
+}
 .rzlc .slider {
 	position: absolute;
 	left: 0;
