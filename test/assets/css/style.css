@@ -462,13 +462,12 @@ body.disable-default-action
 }
 
 
-/*****************************  跨境概念  ******************************/
+/*****************************  入驻流程  ******************************/
 
 .rzlc {
-	width: 100%;
-	overflow-x: hidden;
 }
 .rzlc .slider {
+	overflow: hidden;
 	position: absolute;
 	left: 0;
 	right: 0;
