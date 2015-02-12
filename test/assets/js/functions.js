@@ -101,3 +101,28 @@ function tabSwitch () {
 }
 
 
+//	锚链接平滑移动
+$("a[href*='#']").click(function() {
+	if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+		var $target = $(this.hash);
+		$target = $target.length && $target || $("[name=" + this.hash.slice(1) + "]");
+		if (this.hash.slice(1)){
+			if($target.length){
+				var targetOffset = $target.offset().top;
+				$("html,body").animate({
+					scrollTop: targetOffset
+				},
+				300);
+			}
+		}
+		else{
+			$("html,body").animate({
+				scrollTop: 0
+			},
+			300);
+		}
+		return false;  //防止页面跳动
+	}
+});	
+
+
