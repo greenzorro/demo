@@ -475,6 +475,19 @@ body.disable-default-action
 	width: 100%;
 	height: 100%;
 }
+.rzlc .pages {
+	display: none;
+}
+.rzlc .pages .page_content {
+	width: 100%;
+	height: 100%;
+}
+.rzlc .pages h2 {
+}
+.rzlc .pages p {
+}
+.rzlc .pages a.button {
+}
 
 
 /*****************************  提问留言  ******************************/
@@ -613,6 +626,42 @@ body.disable-default-action
 	color: #aaa;
 }
 
+
+/*****************************  海外资讯  ******************************/
+
+.hwzx .news_list {
+	margin: 2px;
+}
+.hwzx .news_list li {
+	float: left;
+	width: 50%;
+}
+.hwzx .news_list li .card {
+	display: block;
+	margin: 2px;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+.hwzx .news_list li img {
+	display: block;
+	width: 100%;
+}
+.hwzx .news_list li .text {
+	padding: 0.5em 0.8em 0.8em;
+	background: #fff;
+}
+.hwzx .news_list li h2 {
+	max-height: 1.6em;
+	overflow: hidden;
+	margin: 0 0 0.2em;
+	color: #1483d7;
+}
+.hwzx .news_list li p {
+	max-height: 2.2em;
+	overflow: hidden;
+	line-height: 1.2;
+	font-size: 0.8em;
+	color: #333;
+}
 
 
 
