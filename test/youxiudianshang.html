@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="telephone=no" name="format-detection"/>
+<link href="assets/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+<title>优秀电商</title>
+</head>
+
+<body class="disable-default-action">
+
+<div class="yxds inner">
+
+	<!-- 轮播组件 -->
+	<div class="slider">
+		<div id="iSlider-wrapper"></div>
+	</div>
+	<!-- 轮播组件 -->
+
+	<!-- 轮播内容 -->
+	<div class="pages">
+		<div id="page1">
+			<div class="page_content" style="background-image: url(test_data/poster.jpg);"></div>
+		</div>
+		<div id="page2">
+			<div class="page_content" style="background-image: url(test_data/poster.jpg);"></div>
+		</div>
+	</div>
+	<!-- 轮播内容 -->
+
+	<!-- 底部弹出式菜单 -->
+	<div class="toolbar">
+		<a class="menu_btn" href="javascript:;"></a>
+		<ul>
+			<li><a href="javascript:;">新闻资讯</a></li>
+			<li><a href="javascript:;">新闻资讯</a></li>
+			<li><a href="javascript:;">新闻资讯</a></li>
+			<li><a href="javascript:;">新闻资讯</a></li>
+			<li><a href="javascript:;">新闻资讯</a></li>
+			<li><a href="javascript:;">新闻资讯</a></li>
+			<li><a href="javascript:;">新闻资讯</a></li>
+			<li><a href="javascript:;">新闻资讯</a></li>
+			<li><a href="javascript:;">新闻资讯</a></li>
+			<li><a href="javascript:;">新闻资讯</a></li>
+		</ul>
+	</div>
+	<!-- 底部弹出式菜单 -->
+
+</div>
+
+<!-- 轮播组件 -->
+<script src="assets/plugin/islider.js"></script>
+<script src="assets/plugin/islider_plugin.js"></script>
+<script type="text/javascript">
+	var pages = [{
+		content: document.getElementById("page1").innerHTML,
+	},
+	{
+		content: document.getElementById("page2").innerHTML,
+	}];
+
+    var islider = new iSlider({
+        dom: document.getElementById("iSlider-wrapper"),
+        data: pages,
+        type: 'dom',
+        isLooping: true,
+        isAutoplay: true,
+        duration: 5000,
+        animateType: 'default',
+        onslidechange: function(idx) {
+	    	islider.changeIndexBtn();
+	    }
+    });
+	var btnOpt = {
+		isLooping: false,
+		isVertical: false,
+		width: '3em',
+		height: '3em',
+		backgroundColor: 'transparent',
+		border: '2px solid #3da3f1'
+	};
+	islider.renderBtn(btnOpt);
+</script>
+<!-- 轮播组件 -->
+
+<script src="assets/js/jquery-latest.js"></script>
+<script src="assets/js/functions.js"></script>
+</body>
+</html>

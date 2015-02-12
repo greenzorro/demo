@@ -325,7 +325,7 @@ body.disable-default-action
 }
 .index .menu li h2 {
 	padding: 0.9em 0 0;
-	color: #333;
+	color: #707070;
 	font-size: 1.1em;
 	font-weight: bold;
 }
@@ -370,13 +370,17 @@ body.disable-default-action
 .hjzc .expand li {
 	border-bottom: 1px solid #dfdfdf;
 }
-.hjzc .expand li a {
+    .hjzc .expand li a {
+        display:block;
+        color:rgb(112, 112, 112);
+    }
+.hjzc .expand li a.title {
 	display: block;
 	height: 3em;
 	line-height: 3em;
 	color: #1483d7;
 }
-.hjzc .expand li a:before {
+.hjzc .expand li a.title:before {
 	content: "+";
 	display: inline-block;
 	width: 20px;
@@ -394,7 +398,7 @@ body.disable-default-action
 .hjzc .expand li .content p {
 	padding: 0 0 1em;
 }
-.hjzc .expand li.show a:before {
+.hjzc .expand li.show a.title:before {
 	content: "-";
 }
 .hjzc .expand li.show .content {
@@ -434,9 +438,11 @@ body.disable-default-action
 }
 .kjgn .taglist a {
 	display: block;
-	line-height: 2.4;
+	line-height: 2;
 	text-align: center;
 	color: #448aca;
+	font-size: 1.2em;
+	font-weight: bold;
 }
 
 
@@ -718,6 +724,91 @@ body.disable-default-action
 .ywms .content img {
 	display: block;
 	width: 100%;
+}
+
+
+/****************************  第三方服务  *****************************/
+
+.dsffw {
+	/*padding: 1em 0 3em;*/
+}
+.dsffw .slider {
+	position: relative;
+}
+.dsffw .slider #iSlider-wrapper {
+	height: 270px;
+	overflow: hidden;
+	border: 10px solid #fff;
+	position: absolute;
+	left: 15%;
+	right: 15%;
+	top: 1em;
+}
+.dsffw .pages {
+	display: none;
+}
+.dsffw .page_content {
+	width: 100%;
+	height: 100%;
+	background: no-repeat center center;
+	background-size: cover;
+}
+.dsffw .shadow {
+	height: 15px;
+	background: url(../images/shadow@2x.png) no-repeat center top;
+	background-size: 100%;
+	position: absolute;
+	left: 15%;
+	right: 15%;
+	top: 306px;
+}
+.dsffw .brands {
+	width: 100%;
+	height: 50px;
+	overflow: hidden;
+	padding: 360px 0 0;
+	position: relative;
+}
+.dsffw .brands ul {
+	width: 99em;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transition: transform 0.3s ease-in-out;
+	-webkit-transition: -webkit-transform 0.3s ease-in-out;
+	transform: translate(-70px, 0);
+	-webkit-transform: translate(-70px, 0);
+}
+.dsffw .brands li {
+	float: left;
+	width: 120px;
+	height: 100%;
+	margin: 0 10px;
+}
+
+
+/*****************************  优秀电商  ******************************/
+
+.yxds .slider {
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 3em;
+}
+.yxds .slider #iSlider-wrapper {
+	width: 100%;
+	height: 100%;
+}
+.yxds .pages {
+	display: none;
+}
+.yxds .page_content {
+	width: 100%;
+	height: 100%;
+	background: no-repeat center center;
+	background-size: cover;
 }
 
 
