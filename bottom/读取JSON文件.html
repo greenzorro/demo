@@ -26,11 +26,11 @@ window.onload = function () {
 	function writeData (arr) {
 		console.log(arr);
 		console.log(arr.length);
-		var display = document.getElementById('test').innerHTML;
+		var testObj = document.getElementById('test');
 		var i, arrLength = arr.length;
 		for (var i = 0; i < arrLength; i++) {
-			console.log(1);
-			display += arr[i].day + ": " + arr[i].weather + "<br>";
+			console.log(testObj.innerHTML);
+			testObj.innerHTML += arr[i].day + ": " + arr[i].weather + "<br>";
 		}
 	}
 }
