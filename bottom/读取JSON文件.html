@@ -24,14 +24,11 @@ window.onload = function () {
 	xmlhttp.send();
 
 	function writeData (arr) {
-		console.log(arr);
-		console.log(arr.length);
-		var testObj = document.getElementById('test');
-		var i, arrLength = arr.length;
+		var data = "", i, arrLength = arr.length;
 		for (var i = 0; i < arrLength; i++) {
-			console.log(testObj.innerHTML);
-			testObj.innerHTML += arr[i].day + ": " + arr[i].weather + "<br>";
+			data += "<p>" + arr[i].day + ": " + arr[i].weather + "</p>";
 		}
+		document.getElementById('test').innerHTML = data;
 	}
 }
 </script>
