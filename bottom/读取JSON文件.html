@@ -13,7 +13,6 @@
 window.onload = function () {
 	var xmlhttp = new XMLHttpRequest();
 	var url = "data.json";
-	var display = document.getElementById('test').innerHTML;
 
 	xmlhttp.onreadystatechange = function () {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -25,7 +24,11 @@ window.onload = function () {
 	xmlhttp.send();
 
 	function writeData (arr) {
-		console.log(arr);
+		var display = document.getElementById('test').innerHTML;
+		var i, arrLength = arr.length;
+		for (var i = 0; i < arrLength; i++) {
+			display += arr[i].day + ": " + arr[i].weather + "<br>";
+		}
 	}
 }
 </script>
