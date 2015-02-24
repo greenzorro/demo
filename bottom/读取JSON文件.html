@@ -24,6 +24,7 @@ window.onload = function () {
 	xmlhttp.send();
 
 	function writeData (arr) {
+		console.log(arr);
 		var display = document.getElementById('test').innerHTML;
 		var i, arrLength = arr.length;
 		for (var i = 0; i < arrLength; i++) {
