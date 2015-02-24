@@ -1,0 +1,9 @@
+[
+	{"day":"Sunday", "weather":"sunny"},
+	{"day":"Monday", "weather":"cloudy"},
+	{"day":"Tuesday", "weather":"cloudy"},
+	{"day":"Wednesday", "weather":"rainy"},
+	{"day":"Thursday", "weather":"rainy"},
+	{"day":"Friday", "weather":"rainy"},
+	{"day":"Saturday", "weather":"sunny"}
+]
