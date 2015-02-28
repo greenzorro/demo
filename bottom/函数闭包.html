@@ -3,26 +3,36 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>test</title>
+<title>函数闭包</title>
 <link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
-<style type="text/css">
+<style>
 </style>
+<script type="text/javascript">
+window.onload = function () {
+	var test = document.getElementById("test");
+
+	// 定义外部函数
+	function outer () {
+		var a = 0;  //外部变量a
+		function inner () {  //定义内部函数
+			test.innerHTML = ++a;  //在内部函数改变外部变量
+		}
+		return inner;  //将内部函数作为返回值
+	}
+
+	var result = outer();  //执行一遍outer，然后将inner赋给result
+
+	// 执行result时，可以通过inner，从outer的外面获取到变量a的值
+	result();
+	result();
+	result();
+}
+</script>
 </head>
 
 <body>
-
-<div id="test"></div>
-
-<script type="text/javascript">
-window.onload = function () {
-	var a = 0;
-	var test = function () {
-		a++;
-	}
-	console.log(a);
-}
-</script>
+	<div id="test"></div>
 </body>
 </html>
