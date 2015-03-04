@@ -8,7 +8,7 @@
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
 <script type="text/javascript">
-$(function(){
+window.onload = function () {
 	var tester = getElementsByClassName('tester');
 	tester[0].onclick = function (){
 		removeElement(this);
@@ -29,7 +29,7 @@ $(function(){
 		} 
 		return classElements; 
 	}
-})
+}
 </script>
 </head>
 

@@ -10,7 +10,7 @@
 <style>
 </style>
 <script type="text/javascript">
-$(function(){
+window.onload = function () {
 	addEvent(getElementsByClassName('test')[0],'click',function () {
 		alert('1');
 	});
@@ -23,6 +23,7 @@ $(function(){
 		}):
 		obj.addEventListener(event,fn,0);
 	}
+
 	function getElementsByClassName(n) { 
 	    var classElements = [],allElements = document.getElementsByTagName('*'); 
 	    for (var i=0; i< allElements.length; i++ ) 
@@ -33,7 +34,7 @@ $(function(){
 	    } 
 	    return classElements; 
 	}
-})
+}
 </script>
 </head>
 
