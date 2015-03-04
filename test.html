@@ -13,12 +13,13 @@
 
 <body>
 
-<div id="test"></div>
+<div id="test">content</div>
 
 <script>
 window.onload = function () {
     var test = document.getElementById('test');
-    console.log(test.style);
+    var p = document.createElement("p");
+    var content = document.createTextNode("test");
 }
 </script>
 </body>
