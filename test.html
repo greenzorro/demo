@@ -20,6 +20,7 @@ window.onload = function () {
     var d = new Date();
     d.setTime(d.getTime() + (7*24*60*60*1000));
     document.cookie = "username=test; expires=" + d.toUTCString();
+    document.cookie = "useless=nothing; expires=" + d.toUTCString();
     console.log(document.cookie);
 }
 </script>
