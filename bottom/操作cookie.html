@@ -40,8 +40,8 @@ window.onload = function () {
 	        var c = ca[i], nameStr;
 	        while (c.charAt(0)==' ') c = c.substring(1);
 	        nameStr = c.split("=")[0];
+        	console.log(c.substring(nameStr.length + 1, c.length));
 	        if (nameStr == cname) {
-	        	console.log(c.substring(nameStr.length + 1, c.length));
 	        	return c.substring(nameStr.length + 1, c.length);
 	        }
 	    }
