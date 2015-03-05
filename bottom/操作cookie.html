@@ -35,19 +35,15 @@ window.onload = function () {
 	}
 
 	function getCookie(cname) {
+	    var name = cname + "=";
 	    var ca = document.cookie.split(';');
 	    for(var i=0; i<ca.length; i++) {
-	    	var c = ca[i];
-	    	var nameStr = c.split("=")[0];
-	    	if(nameStr.match(cname)) {
-	    		console.log(c.substring(nameStr.length + 1));
-	    		return c.substring(nameStr.length + 1);
-	    	}
-	        // var c = ca[i];
-	        // while (c.charAt(0)==' ') c = c.substring(1);
-	        // if (c.indexOf(cname) == 0) {
-	        //     return c.substring(cname.length, c.length);
-	        // }
+	        var c = ca[i];
+	        while (c.charAt(0)==' ') c = c.substring(1);
+	        if (c.indexOf(name) == 0) {
+	        	console.log(c.substring(name.length, c.length));
+	        	return c.substring(name.length, c.length);
+	        }
 	    }
 	    return "";
 	}
