@@ -10,7 +10,9 @@
 <script type="text/javascript">
 window.onload = function () {
 
-	checkCookie();
+	// checkCookie();
+	setCookie("username", "cola", 7);
+	getCookie("username");
 
 	function checkCookie() {
 	    var user=getCookie("username");
