@@ -11,8 +11,9 @@
 window.onload = function () {
 
 	// checkCookie();
-	setCookie("username", "cola", 7);
-	getCookie("username");
+	console.log(document.cookie);
+	getCookie("useless");
+	getCookie("use");
 
 	function checkCookie() {
 	    var user=getCookie("username");
@@ -34,13 +35,11 @@ window.onload = function () {
 	}
 
 	function getCookie(cname) {
-	    var name = cname + "=";
 	    var ca = document.cookie.split(';');
 	    for(var i=0; i<ca.length; i++) {
 	    	var c = ca[i];
 	    	var nameStr = c.split("=")[0];
 	    	if(nameStr.match(cname)) {
-	    		console.log(document.cookie);
 	    		console.log(c.substring(nameStr.length + 1));
 	    		return c.substring(nameStr.length + 1);
 	    	}
