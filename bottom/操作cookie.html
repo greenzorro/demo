@@ -10,6 +10,7 @@
 <script type="text/javascript">
 window.onload = function () {
 
+	setCookie("username", "", 1/24/60);
 	console.log(document.cookie);
 	checkCookie();
 
@@ -53,6 +54,6 @@ window.onload = function () {
 
 <body>
 	<div id="test"></div>
-	<button onclick='setCookie("username", "", 1/24/60)'>clear cookie</button>
+	<!-- <button onclick='setCookie("username", "", 1/24/60)'>clear cookie</button> -->
 </body>
 </html>
