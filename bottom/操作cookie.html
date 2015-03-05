@@ -10,20 +10,21 @@
 <script type="text/javascript">
 window.onload = function () {
 
-	// checkCookie();
 	console.log(document.cookie);
-	getCookie("username");
-	getCookie("useless");
+	checkCookie();
 
 	function checkCookie() {
-	    var user=getCookie("username");
+		var test = document.getElementById('test');
+	    var user = getCookie("username");
 	    if (user != "") {
-	        alert("Welcome again " + user);
-	    } else {
-	       user = prompt("Please enter your name:","");
-	       if (user != "" && user != null) {
-	           setCookie("username", user, 30);
-	       }
+	    	test.innerHTML = user;
+	    }
+	    else {
+	    	test.innerHTML = "";
+			user = prompt("Please enter your name:","");
+			if (user != "" && user != null) {
+				setCookie("username", user, 1/24/60);
+			}
 	    }
 	}
 
@@ -41,7 +42,6 @@ window.onload = function () {
 	        while (c.charAt(0)==' ') c = c.substring(1);
 	        nameStr = c.split("=")[0];
 	        if (nameStr == cname) {
-	        	console.log(c.substring(nameStr.length + 1, c.length));
 	        	return c.substring(nameStr.length + 1, c.length);
 	        }
 	    }
@@ -53,5 +53,6 @@ window.onload = function () {
 
 <body>
 	<div id="test"></div>
+	<button onclick='setCookie("username", "", 1/24/60)'>clear Cookie</button>
 </body>
 </html>
