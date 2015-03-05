@@ -17,9 +17,10 @@
 
 <script>
 window.onload = function () {
-    var test = document.getElementById('test');
-    var p = document.createElement("p");
-    var content = document.createTextNode("test");
+    var d = new Date();
+    d.setTime(d.getTime() + (7*24*60*60*1000));
+    document.cookie = "username=test; expires=" + d.toUTCString();
+    console.log(document.cookie);
 }
 </script>
 </body>
