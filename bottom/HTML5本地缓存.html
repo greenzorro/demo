@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>HTML5本地缓存</title>
+<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
+<script type="text/javascript">
+window.onload = function () {
+    var test = document.getElementById('test');
+    function addStoreage () {
+        if(typeof(Storage) !== "undefined") {
+            localStorage.setItem({"firstname":"Cola", "lastname":"Chan"});
+            // localStorage.setItem("lastname", "Chan");
+            console.log(localStorage);
+            test.innerHTML = localStorage.getItem("firstname") + " " + localStorage.getItem("lastname");
+        }
+        else {
+            test.innerHTML = "Local Storage not supported.";
+        }
+    }
+    function removeStoreage () {
+        localStorage.removeItem("lastname");
+        console.log(localStorage);
+    }
+}
+
+</script>
+</head>
+
+<body>
+	<div id="test"></div>
+    <button onclick='addStoreage()'>add storage</button>
+    <button onclick='removeStoreage()'>remove storage</button>
+</body>
+</html>
