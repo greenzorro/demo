@@ -13,8 +13,10 @@ window.onload = function () {
     if(typeof(Storage) !== "undefined") {
         localStorage.firstname = "Cola";
         localStorage.lastname = "Chan";
-        test.innerHTML = localStorage.getItem("firstname") + " " + localStorage.getItem("lastname");
+        sessionStorage.temp = "temp";
+        test.innerHTML = [localStorage.firstname, localStorage.lastname, sessionStorage.temp].join(" ");
         console.log(localStorage);
+        console.log(sessionStorage);
     }
     else {
         test.innerHTML = "Local Storage not supported.";
