@@ -13,15 +13,22 @@
 
 <body>
 
-<div id="test">content</div>
+<input type="color">
+<input type="date">
+<input type="datetime">
+<input type="datetime-local">
+<input type="email">
+<input type="month">
+<input type="number">
+<input type="range">
+<input type="search">
+<input type="tel">
+<input type="time">
+<input type="url">
+<input type="week">
 
 <script>
 window.onload = function () {
-    var d = new Date();
-    d.setTime(d.getTime() + (7*24*60*60*1000));
-    document.cookie = "username=test; expires=" + d.toUTCString();
-    document.cookie = "useless=nothing; expires=" + d.toUTCString();
-    console.log(document.cookie);
 }
 </script>
 </body>
