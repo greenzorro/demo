@@ -9,13 +9,14 @@
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
 <script type="text/javascript">
 window.onload = function () {
+    var w;
     var test = document.getElementById('test');
     if (typeof Worker !== "undefined") {
         if (typeof w == "undefined") {
-            var w = new Worker("web worker.js");
+            w = new Worker("web worker.js");
         }
         w.onmassage = function (e) {
-            console.log(e.data);
+            console.log(e + " " + e.data);
             test.innerHTML = e.data;
         }
     }
