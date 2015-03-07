@@ -14,9 +14,8 @@ window.onload = function () {
     if (typeof Worker !== "undefined") {
         if (!w) {
             w = new Worker("web_worker.js");
-            console.log(1);
         }
-        w.onmassage = function (e) {
+        w.onmessage = function (e) {
             console.log(e + " " + e.data);
             test.innerHTML = e.data;
         }
