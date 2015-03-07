@@ -30,6 +30,7 @@ p a { display:block; width:500px; height:1000px; margin-bottom:10px; background:
 //	锚链接平滑移动
 	$("a[href*='#']").click(function() {
 		if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+			e.preventDefault();  //防止页面跳动
 			if (this.hash.slice(1).length){
 				var $target = $("[name=" + this.hash.slice(1) + "]");
 				if($target.length){
@@ -46,7 +47,6 @@ p a { display:block; width:500px; height:1000px; margin-bottom:10px; background:
 				},
 				1000);
 			}
-			return false;  //防止页面跳动
 		}
 	});	
 </script>
