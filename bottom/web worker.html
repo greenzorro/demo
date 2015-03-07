@@ -12,9 +12,9 @@ window.onload = function () {
     var w;
     var test = document.getElementById('test');
     if (typeof Worker !== "undefined") {
-        console.log(1);
-        if (typeof w == "undefined") {
+        if (!w) {
             w = new Worker("web_worker.js");
+            console.log(1);
         }
         w.onmassage = function (e) {
             console.log(e + " " + e.data);
