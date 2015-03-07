@@ -12,6 +12,7 @@ window.onload = function () {
     var w;
     var test = document.getElementById('test');
     if (typeof Worker !== "undefined") {
+        console.log(1);
         if (typeof w == "undefined") {
             w = new Worker("web_worker.js");
         }
