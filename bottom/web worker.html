@@ -7,7 +7,15 @@
 <link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
-<script type="text/javascript">
+</head>
+
+<body>
+
+	<div id="test"></div>
+    <button onclick="stopWorker()">stop web worker</button>
+
+
+<script>
 window.onload = function () {
     var w;
     var test = document.getElementById('test');
@@ -24,17 +32,12 @@ window.onload = function () {
         test.innerHTML = "Web worker not supported."
     }
 
-    function stopWorker () {
-        w.terminate();
-        w = undefined;
-    }
 }
 
+function stopWorker () {
+    w.terminate();
+    w = undefined;
+}
 </script>
-</head>
-
-<body>
-	<div id="test"></div>
-    <button onclick="stopWorker()">stop web worker</button>
 </body>
 </html>
