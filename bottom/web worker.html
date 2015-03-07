@@ -15,13 +15,18 @@ window.onload = function () {
         if (!w) {
             w = new Worker("web_worker.js");
         }
+        console.log(w);
         w.onmessage = function (e) {
-            console.log(e + " " + e.data);
             test.innerHTML = e.data;
         }
     }
     else {
         test.innerHTML = "Web worker not supported."
+    }
+
+    function stopWorker () {
+        w.terminate();
+        w = undefined;
     }
 }
 
@@ -30,5 +35,6 @@ window.onload = function () {
 
 <body>
 	<div id="test"></div>
+    <button onclick="stopWorker()">stop web worker</button>
 </body>
 </html>
