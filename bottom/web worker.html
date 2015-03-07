@@ -13,7 +13,7 @@ window.onload = function () {
     var test = document.getElementById('test');
     if (typeof Worker !== "undefined") {
         if (typeof w == "undefined") {
-            w = new Worker("web worker.js");
+            w = new Worker("web_worker.js");
         }
         w.onmassage = function (e) {
             console.log(e + " " + e.data);
