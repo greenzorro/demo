@@ -28,6 +28,37 @@
 .bg p.bg3 { background-size:50px 50px; background-origin:padding-box; background-clip:padding-box; }
 .bg p.bg4 { background-size:50px 50px; background-origin:content-box; background-clip:padding-box; }
 
+/*******  gradient  *********************************************/
+.gradient p { float:left; width:120px; height:80px; padding:10px; margin-right:10px; border:1px solid #ccc; }
+.gradient p.gradient1 {
+    background-image: linear-gradient(90deg, red, yellow, blue);
+    background-image: -webkit-linear-gradient(90deg, red, yellow, blue);
+}
+.gradient p.gradient2 {
+    background-image: repeating-linear-gradient(90deg, red, yellow 50%, blue 80%);
+    background-image: -webkit-repeating-linear-gradient(90deg, red, yellow 50%, blue 80%);
+}
+.gradient p.gradient3 {
+    background-image: radial-gradient(red 10%, yellow 20%, blue);
+    background-image: -webkit-radial-gradient(red 10%, yellow 20%, blue);
+}
+.gradient p.gradient4 {
+    background-image: radial-gradient(circle, red 10%, yellow 20%, blue);
+    background-image: -webkit-radial-gradient(circle, red 10%, yellow 20%, blue);
+}
+.gradient p.gradient5 {
+    background-image: radial-gradient(closest-side at 80% 80%, red 10%, yellow 20%, blue);
+    background-image: -webkit-radial-gradient(80% 80%, closest-side, red 10%, yellow 20%, blue);
+}
+.gradient p.gradient6 {
+    background-image: radial-gradient(farthest-corner at 80% 80%, red 10%, yellow 20%, blue);  /* farthest-corner is default */
+    background-image: -webkit-radial-gradient(80% 80%, farthest-corner, red 10%, yellow 20%, blue);
+}
+.gradient p.gradient7 {
+    background-image: repeating-radial-gradient(circle, red, yellow 20%, blue 30%);
+    background-image: -webkit-repeating-radial-gradient(circle, red, yellow 20%, blue 30%);
+}
+
 /*******  text  *********************************************/
 .text span { float:left; margin-right:10px; font-size:36px; color:#39C; }
 .text span.text1 { text-shadow:0em 0em 0.2em #777; }
@@ -197,6 +228,16 @@
         <p class="bg2"></p>
         <p class="bg3"></p>
         <p class="bg4"></p>
+    </div>
+    <div class="gradient DEMO clearfix">
+        <h2>gradient</h2>
+        <p class="gradient1"></p>
+        <p class="gradient2"></p>
+        <p class="gradient3"></p>
+        <p class="gradient4"></p>
+        <p class="gradient5"></p>
+        <p class="gradient6"></p>
+        <p class="gradient7"></p>
     </div>
     <div class="text DEMO clearfix">
         <h2>text</h2>
