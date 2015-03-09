@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>flexbox</title>
+<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
+<style>
+div {
+	display: flex;
+	flex-flow: row wrap;  /* nowrap is default */
+}
+p {
+	margin: 1em;
+	padding: 1em;
+	border: 1px solid #dfdfdf;
+	order:1;
+	flex: 1 auto;
+}
+p:nth-child(2) {
+	flex: 2.5 auto;
+}
+p:nth-child(3) {
+	order:2;
+	flex: 2 auto;
+}
+p:nth-child(4) {
+	order:2;
+	flex: 0.5 auto;
+}
+</style>
+</head>
+
+<body>
+
+<div>
+	<p>1 short text</p>
+	<p>2 veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery long text</p>
+	<p>3 order:2</p>
+	<p>4 order:2</p>
+	<p>5</p>
+	<p>6</p>
+	<p><img src="http://greenzorro.github.io/colacdn/assets/images/mask.png"></p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+
+
+</body>
+</html>
