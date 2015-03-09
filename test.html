@@ -8,15 +8,25 @@
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
 <style>
+.parent {
+  display: flex;
+  height: 100vh; /* Or whatever */
+}
+
+.child {
+  background: red;
+  margin: auto;
+}
 </style>
 </head>
 
 <body>
 
+<div class="parent">
+	<div class="child">242334123</div>
+</div>
+
 <script>
-window.onload = function () {
-	console.log(window.applicationCache);
-}
 </script>
 </body>
 </html>

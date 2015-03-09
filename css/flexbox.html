@@ -8,34 +8,70 @@
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
 <style>
-div {
+.flexbox1 {
+	display: -webkit-flex;
 	display: flex;
+	-webkit-flex-flow: row wrap;
 	flex-flow: row wrap;  /* nowrap is default */
 }
-p {
-	margin: 1em;
+.flexbox1 p {
 	padding: 1em;
 	border: 1px solid #dfdfdf;
+	-webkit-order:1;
 	order:1;
+	-webkit-flex: 1 auto;
 	flex: 1 auto;
 }
-p:nth-child(2) {
+.flexbox1 p:nth-child(2) {
+	-webkit-flex: 2.5 auto;
 	flex: 2.5 auto;
 }
-p:nth-child(3) {
+.flexbox1 p:nth-child(3) {
+	-webkit-order:2;
 	order:2;
+	-webkit-flex: 2 auto;
 	flex: 2 auto;
 }
-p:nth-child(4) {
+.flexbox1 p:nth-child(4) {
+	-webkit-order:2;
 	order:2;
+	-webkit-flex: 0.5 auto;
 	flex: 0.5 auto;
+}
+
+.flexbox2 {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	/* flex-start is default, and there are flex-end, center and space-around */
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	/* stretch is default, and there are flex-start, flex-end and center */
+	-webkit-align-items: baseline;
+	align-items: baseline;
+	/* stretch is default, and there are flex-end, center, space-between and space-around */
+	-webkit-align-content: flex-start;
+	align-content: flex-start;
+	width: 100%;
+	min-height: 30em;
+}
+.flexbox2 p {
+	width: 5em;
+	min-height: 5em;
+	margin: 1em;
+	background: green;
+}
+.flexbox2 p:nth-child(2) {
+	width: 30em;
+	min-height: 10em;
 }
 </style>
 </head>
 
 <body>
 
-<div>
+<div class="flexbox1">
 	<p>1 short text</p>
 	<p>2 veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery long text</p>
 	<p>3 order:2</p>
@@ -46,6 +82,23 @@ p:nth-child(4) {
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 
+<div class="flexbox2">
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+</div>
 
 </body>
 </html>
