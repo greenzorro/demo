@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>转场效果-立方体</title>
+<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
+<style>
+#wrapper {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	-webkit-perspective-origin: 50% 50%;
+	perspective-origin: 50% 50%;
+	-webkit-perspective: 500px;
+	perspective: 500px;
+}
+#scenes {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transition: -webkit-transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
+}
+.scene {
+	display: -webkit-flex;
+	display: flex;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	backface-visibility: hidden;
+	opacity: 0.4;
+}
+.scene span {
+	margin: auto;
+	font-size: 5em;
+	color: #fff;
+}
+#scene1 {
+	background: #227788;
+}
+#scene2 {
+	background: #337722;
+}
+#scene3 {
+	background: #663355;
+}
+#scene4 {
+	background: #9922aa;
+}
+#scene5 {
+	background: #339977;
+}
+#scene6 {
+	background: #aa8855;
+}
+</style>
+</head>
+
+<body>
+
+<div id="wrapper">
+	<div id="scenes">
+		<div id="scene1" class="scene"><span>scene1</span></div>
+		<div id="scene6" class="scene"><span>scene6</span></div>
+		<div id="scene5" class="scene"><span>scene5</span></div>
+		<div id="scene4" class="scene"><span>scene4</span></div>
+		<div id="scene3" class="scene"><span>scene3</span></div>
+		<div id="scene2" class="scene"><span>scene2</span></div>
+	</div>
+</div>
+
+<script>
+window.onload = function () {
+	cube.init();
+	cube.swipe();
+}
+
+var cube = {
+	init: function () {
+		var sceneWrap = document.getElementById('scenes');
+		var scene = sceneWrap.getElementsByClassName("scene");
+		var sides = scene.length;
+		var wHeight = window.innerHeight;
+		var cubeOrigin = cube.getDistance(sides, wHeight);
+		sceneWrap.style.webkitTransformOrigin = "50% 50% " + cubeOrigin + "px";
+		sceneWrap.style.transformOrigin = "50% 50% " + cubeOrigin + "px";
+		sceneWrap.style.webkitTransform = "translate3d(0,0,-" + cubeOrigin*2 + "px)";
+		sceneWrap.style.transform = "translate3d(0,0,-" + cubeOrigin*2 + "px)";
+		for (var i = 0; i < sides; i++) {
+			scene[i].style.webkitTransformOrigin = "50% 50% -" + cubeOrigin + "px";
+			scene[i].style.transformOrigin = "50% 50% -" + cubeOrigin + "px";
+			scene[i].style.webkitTransform = ["translate3d(0,0,", cubeOrigin*2, "px) rotateX(", 360/sides*i, "deg)"].join("");
+			scene[i].style.transform = ["translate3d(0,0,", cubeOrigin*2, "px) rotateX(", 360/sides*i, "deg)"].join("");
+		}
+	},
+	swipe: function () {
+		var sceneWrap = document.getElementById('scenes');
+		var scene = sceneWrap.getElementsByClassName("scene");
+		var sides = scene.length;
+		var wHeight = window.innerHeight;
+		var cubeOrigin = cube.getDistance(sides, wHeight);
+		var currentPage = 0;
+		var maxPage = document.getElementById('scenes').getElementsByClassName("scene").length;
+		document.addEventListener("mousewheel", throttle(handlePaging, 100), false);
+		document.addEventListener("DOMMouseScroll", throttle(handlePaging, 100), false);
+		function handlePaging (e) {
+			e = e || window.event;
+			var dir = Number(e.wheelDelta || e.detail) > 0 ? 1 : -1;
+			currentPage -= dir;
+			jumpTo(currentPage);
+		}
+		function jumpTo (n) {
+			sceneWrap.style.webkitTransform = ["translate3d(0,0,-", cubeOrigin*2, "px) rotateX(", n/sides*360, "deg)"].join("");
+			sceneWrap.style.transform = ["translate3d(0,0,-", cubeOrigin*2, "px) rotateX(", n/sides*360, "deg)"].join("");
+		}
+	},
+	getDistance: function (num, wHeight) {  //根据正多边形边数与边长，计算出中点到边的垂线长度
+		var angle = 360/num/2*Math.PI/180;
+		return wHeight/2/Math.tan(angle);
+	}
+}
+
+var throttle = function(fn, timeout){
+    var timer;
+    return function(){
+        var self = this,
+            args = arguments;
+        clearTimeout( timer );
+        timer = setTimeout(function(){
+            fn.apply( self, args );
+        }, timeout );
+    };
+}
+
+</script>
+</body>
+</html>
