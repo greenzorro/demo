@@ -84,6 +84,7 @@ window.onload = function () {
 }
 
 var cube = {
+	// 初始化
 	init: function () {
 		var sceneWrap = document.getElementById('scenes');
 		var scene = sceneWrap.getElementsByClassName("scene");
@@ -101,6 +102,7 @@ var cube = {
 			scene[i].style.transform = ["translate3d(0,0,", cubeOrigin*2, "px) rotateX(", 360/sides*i, "deg)"].join("");
 		}
 	},
+	// 滚动翻页
 	swipe: function () {
 		var sceneWrap = document.getElementById('scenes');
 		var scene = sceneWrap.getElementsByClassName("scene");
@@ -113,21 +115,25 @@ var cube = {
 		document.addEventListener("DOMMouseScroll", throttle(handlePaging, 100), false);
 		function handlePaging (e) {
 			e = e || window.event;
-			var dir = Number(e.wheelDelta || e.detail) > 0 ? 1 : -1;
+			var dir = Number(e.wheelDelta || -e.detail) > 0 ? 1 : -1;
+			console.log(dir);
 			currentPage -= dir;
 			jumpTo(currentPage);
 		}
+		// 跳转到第n页
 		function jumpTo (n) {
 			sceneWrap.style.webkitTransform = ["translate3d(0,0,-", cubeOrigin*2, "px) rotateX(", n/sides*360, "deg)"].join("");
 			sceneWrap.style.transform = ["translate3d(0,0,-", cubeOrigin*2, "px) rotateX(", n/sides*360, "deg)"].join("");
 		}
 	},
-	getDistance: function (num, wHeight) {  //根据正多边形边数与边长，计算出中点到边的垂线长度
+	// 根据正多边形边数与边长，计算出中点到边的垂线长度
+	getDistance: function (num, wHeight) {
 		var angle = 360/num/2*Math.PI/180;
 		return wHeight/2/Math.tan(angle);
 	}
 }
 
+// 阻止滚轮事件频繁触发
 var throttle = function(fn, timeout){
     var timer;
     return function(){
