@@ -9,6 +9,7 @@
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
 <script src="http://greenzorro.github.io/colacdn/assets/frameworks/jquery.mousewheel/jquery.mousewheel.js"></script>
 <style>
+body { height: 100vh; overflow: hidden; }
 .scene { width: 100%; min-height: 100vh; }
 .scene1 { background: #75aecc; }
 .scene2 { background: #8182a6; }
@@ -30,33 +31,20 @@ $(function () {
 // 滑动翻页
 function scrollPage () {
 
-	var currentPage;
+	var currentPage = 1;  //从1开始
 	var maxPage = $(".scene").length;
 
-	$(window).bind('mousewheel', function(event, delta) {  
-		var dir = parseInt(delta > 0 ? 1 : 0); //判断滚轮滚动方向
-		currentPage = thisPage();
-		if (dir) {
-			jumpTo((currentPage <= 1) ? 1 : currentPage - 1);
-			currentPage = (currentPage <= 1) ? 1 : currentPage - 1;
+	document.addEventListener("mousewheel", throttle(handlePaging, 100), false);
+	document.addEventListener("DOMMouseScroll", throttle(handlePaging, 100), false);
+	function handlePaging (e) {
+		e.preventDefault();
+		e = e || window.event;
+		var dir = Number(e.wheelDelta || -e.detail) > 0 ? 1 : -1;
+		if (currentPage - dir >= 1 && currentPage - dir <= maxPage) {
+			currentPage -= dir;
 		}
-		else {
-			jumpTo((currentPage >= maxPage) ? maxPage: currentPage + 1);
-			currentPage = (currentPage >= maxPage) ? maxPage: currentPage + 1;
-		}
-	});
-
-	// 判断当前页数
-	function thisPage () {
-		var pageNum = 0;
-		var scrollPos = $(window).scrollTop();
-		$(".scene").each(function () {
-			var thisOffsetTop = $(this).offset().top;
-			if (scrollPos >= thisOffsetTop) {
-				pageNum++;
-			};
-		})
-		return pageNum;
+		jumpTo(currentPage);
+		console.log(currentPage);
 	}
 
 	// 跳转至某页
@@ -68,6 +56,19 @@ function scrollPage () {
 		},500);
 	}
 
+}
+
+// 阻止滚轮事件频繁触发
+var throttle = function(fn, timeout){
+    var timer;
+    return function(){
+        var self = this,
+            args = arguments;
+        clearTimeout( timer );
+        timer = setTimeout(function(){
+            fn.apply( self, args );
+        }, timeout );
+    };
 }
 </script>
 </body>
