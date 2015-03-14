@@ -107,7 +107,7 @@ var cube = {
 		var sides = scene.length;
 		var wHeight = window.innerHeight;
 		var cubeOrigin = cube.getDistance(sides, wHeight);
-		var currentPage = 0;
+		var currentPage = 0;  //从0开始
 		var maxPage = document.getElementById('scenes').getElementsByClassName("scene").length;
 		document.addEventListener("mousewheel", throttle(handlePaging, 100), false);
 		document.addEventListener("DOMMouseScroll", throttle(handlePaging, 100), false);
