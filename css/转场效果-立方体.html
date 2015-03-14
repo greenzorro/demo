@@ -34,8 +34,8 @@
 	right: 0;
 	top: 0;
 	bottom: 0;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
+	/*-webkit-backface-visibility: hidden;*/
+	/*backface-visibility: hidden;*/
 	opacity: 0.4;
 }
 .scene span {
@@ -69,18 +69,18 @@
 <div id="wrapper">
 	<div id="scenes">
 		<div id="scene1" class="scene"><span>scene1</span></div>
-		<div id="scene6" class="scene"><span>scene6</span></div>
-		<div id="scene5" class="scene"><span>scene5</span></div>
-		<div id="scene4" class="scene"><span>scene4</span></div>
-		<div id="scene3" class="scene"><span>scene3</span></div>
 		<div id="scene2" class="scene"><span>scene2</span></div>
+		<div id="scene3" class="scene"><span>scene3</span></div>
+		<div id="scene4" class="scene"><span>scene4</span></div>
+		<div id="scene5" class="scene"><span>scene5</span></div>
+		<div id="scene6" class="scene"><span>scene6</span></div>
 	</div>
 </div>
 
 <script>
 window.onload = function () {
 	cube.init();
-	cube.swipe();
+	cube.rotate();
 }
 
 var cube = {
@@ -91,19 +91,17 @@ var cube = {
 		var sides = scene.length;
 		var wHeight = window.innerHeight;
 		var cubeOrigin = cube.getDistance(sides, wHeight);
-		sceneWrap.style.webkitTransformOrigin = "50% 50% " + cubeOrigin + "px";
-		sceneWrap.style.transformOrigin = "50% 50% " + cubeOrigin + "px";
-		sceneWrap.style.webkitTransform = "translate3d(0,0,-" + cubeOrigin*2 + "px)";
-		sceneWrap.style.transform = "translate3d(0,0,-" + cubeOrigin*2 + "px)";
+		sceneWrap.style.webkitTransformOrigin = "50% 50% -" + cubeOrigin + "px";
+		sceneWrap.style.transformOrigin = "50% 50% -" + cubeOrigin + "px";
 		for (var i = 0; i < sides; i++) {
 			scene[i].style.webkitTransformOrigin = "50% 50% -" + cubeOrigin + "px";
 			scene[i].style.transformOrigin = "50% 50% -" + cubeOrigin + "px";
-			scene[i].style.webkitTransform = ["translate3d(0,0,", cubeOrigin*2, "px) rotateX(", 360/sides*i, "deg)"].join("");
-			scene[i].style.transform = ["translate3d(0,0,", cubeOrigin*2, "px) rotateX(", 360/sides*i, "deg)"].join("");
+			scene[i].style.webkitTransform = ["rotateX(", -360/sides*i, "deg)"].join("");
+			scene[i].style.transform = ["rotateX(", -360/sides*i, "deg)"].join("");
 		}
 	},
 	// 滚动翻页
-	swipe: function () {
+	rotate: function () {
 		var sceneWrap = document.getElementById('scenes');
 		var scene = sceneWrap.getElementsByClassName("scene");
 		var sides = scene.length;
@@ -116,14 +114,13 @@ var cube = {
 		function handlePaging (e) {
 			e = e || window.event;
 			var dir = Number(e.wheelDelta || -e.detail) > 0 ? 1 : -1;
-			console.log(dir);
 			currentPage -= dir;
 			jumpTo(currentPage);
 		}
 		// 跳转到第n页
 		function jumpTo (n) {
-			sceneWrap.style.webkitTransform = ["translate3d(0,0,-", cubeOrigin*2, "px) rotateX(", n/sides*360, "deg)"].join("");
-			sceneWrap.style.transform = ["translate3d(0,0,-", cubeOrigin*2, "px) rotateX(", n/sides*360, "deg)"].join("");
+			sceneWrap.style.webkitTransform = ["rotateX(", n/sides*360, "deg)"].join("");
+			sceneWrap.style.transform = ["rotateX(", n/sides*360, "deg)"].join("");
 		}
 	},
 	// 根据正多边形边数与边长，计算出中点到边的垂线长度
