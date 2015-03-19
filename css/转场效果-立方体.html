@@ -127,6 +127,7 @@ var cube = {
                     touchBegin = event.touches[0].clientY;
                     break;
                 case "touchmove":  //手指移动
+                    event.preventDefault();  //禁止window scroll事件
                     touchMove = event.changedTouches[0].clientY
                     break;
                 case "touchend":  //触摸结束
