@@ -12,6 +12,8 @@
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
 	-webkit-perspective-origin: 50% 50%;
 	perspective-origin: 50% 50%;
 	-webkit-perspective: 500px;
@@ -25,8 +27,6 @@
 	transform-style: preserve-3d;
 	-webkit-transition: -webkit-transform 0.3s ease-in-out;
 	transition: transform 0.3s ease-in-out;
-	-webkit-transform: translateZ(0);
-	transform: translateZ(0);
 }
 .scene {
 	display: -webkit-flex;
