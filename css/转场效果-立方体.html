@@ -109,13 +109,32 @@ var cube = {
 		var cubeOrigin = cube.getDistance(sides, wHeight);
 		var currentPage = 0;  //从0开始
 		var maxPage = document.getElementById('scenes').getElementsByClassName("scene").length;
+		var touchBegin = 0, touchMove = 0;
 		document.addEventListener("mousewheel", throttle(handlePaging, 100), false);
 		document.addEventListener("DOMMouseScroll", throttle(handlePaging, 100), false);
+	    document.addEventListener("touchstart", handleSwipe, false);
+	    document.addEventListener("touchmove", handleSwipe, false);
+	    document.addEventListener("touchend", handleSwipe, false);
 		function handlePaging (e) {
 			e = e || window.event;
 			var dir = Number(e.wheelDelta || -e.detail) > 0 ? 1 : -1;
 			currentPage -= dir;
 			jumpTo(currentPage);
+		}
+		function handleSwipe (e) {
+            switch (event.type) {
+                case "touchstart":  //触摸开始
+                    touchBegin = event.touches[0].clientY;
+                    break;
+                case "touchmove":  //手指移动
+                    touchMove = event.changedTouches[0].clientY
+                    break;
+                case "touchend":  //触摸结束
+                    if (touchMove > start + 120) { currentPage -= 1; }
+                    if (touchMove < start - 120) { currentPage += 1; }
+                    jumpTo(currentPage);
+                    break;
+            }
 		}
 		// 跳转到第n页
 		function jumpTo (n) {
