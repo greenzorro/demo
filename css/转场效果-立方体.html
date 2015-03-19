@@ -12,8 +12,6 @@
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
-	-webkit-transform-style: preserve-3d;
-	transform-style: preserve-3d;
 	-webkit-perspective-origin: 50% 50%;
 	perspective-origin: 50% 50%;
 	-webkit-perspective: 500px;
@@ -114,15 +112,15 @@ var cube = {
 		var touchBegin = 0, touchMove = 0;
 		document.addEventListener("mousewheel", throttle(handlePaging, 100), false);
 		document.addEventListener("DOMMouseScroll", throttle(handlePaging, 100), false);
-	    document.addEventListener("touchstart", handleSwipe, false);
-	    document.addEventListener("touchmove", handleSwipe, false);
-	    document.addEventListener("touchend", handleSwipe, false);
 		function handlePaging (e) {
 			e = e || window.event;
 			var dir = Number(e.wheelDelta || -e.detail) > 0 ? 1 : -1;
 			currentPage -= dir;
 			jumpTo(currentPage);
 		}
+	    document.addEventListener("touchstart", handleSwipe, false);
+	    document.addEventListener("touchmove", handleSwipe, false);
+	    document.addEventListener("touchend", handleSwipe, false);
 		function handleSwipe (e) {
             switch (event.type) {
                 case "touchstart":  //触摸开始
