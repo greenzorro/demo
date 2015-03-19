@@ -130,8 +130,9 @@ var cube = {
                     touchMove = event.changedTouches[0].clientY
                     break;
                 case "touchend":  //触摸结束
-                    if (touchMove > start + 120) { currentPage -= 1; }
-                    if (touchMove < start - 120) { currentPage += 1; }
+                	console.log("end");
+                    if (touchMove > touchBegin + 80) { currentPage -= 1; }
+                    if (touchMove < touchBegin - 80) { currentPage += 1; }
                     jumpTo(currentPage);
                     break;
             }
