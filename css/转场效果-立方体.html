@@ -12,6 +12,8 @@
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
 	-webkit-perspective-origin: 50% 50%;
 	perspective-origin: 50% 50%;
 	-webkit-perspective: 500px;
@@ -93,7 +95,6 @@ var cube = {
 		var cubeOrigin = cube.getDistance(sides, wHeight);
 		sceneWrap.style.webkitTransformOrigin = "50% 50% -" + cubeOrigin + "px";
 		sceneWrap.style.transformOrigin = "50% 50% -" + cubeOrigin + "px";
-		alert(sceneWrap.style.webkitTransformOrigin);
 		for (var i = 0; i < sides; i++) {
 			scene[i].style.webkitTransformOrigin = "50% 50% -" + cubeOrigin + "px";
 			scene[i].style.transformOrigin = "50% 50% -" + cubeOrigin + "px";
