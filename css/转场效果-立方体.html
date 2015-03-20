@@ -26,18 +26,6 @@
 	-webkit-transition: -webkit-transform 0.3s ease-in-out;
 	transition: transform 0.3s ease-in-out;
 }
-#scenes:after {
-	content: "";
-	display: block;
-	background: #000;
-	opacity: 0.4;
-	position: absolute;
-	left: 25%;
-	right: 25%;
-	top: 25%;
-	bottom: 25%;
-}
-/*test*/
 .scene {
 	display: -webkit-flex;
 	display: flex;
@@ -107,7 +95,6 @@ var cube = {
 		sceneWrap.style.transformOrigin = ["50% 50% -", cubeOrigin, "px"].join("");
 		sceneWrap.style.webkitTransform = ["translate3d(0,0,-", cubeOrigin, "px)"].join("");
 		sceneWrap.style.transform = ["translate3d(0,0,-", cubeOrigin, "px)"].join("");
-		alert(sceneWrap.style.transformOrigin + " " + sceneWrap.style.transform);
 		for (var i = 0; i < sides; i++) {
 			scene[i].style.webkitTransform = ["rotateX(", -360/sides*i, "deg) translate3d(0,0,", cubeOrigin, "px)"].join("");
 			scene[i].style.transform = ["rotateX(", -360/sides*i, "deg) translate3d(0,0,", cubeOrigin, "px)"].join("");
