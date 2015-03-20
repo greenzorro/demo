@@ -91,9 +91,11 @@ var cube = {
 		var sides = scene.length;
 		var wHeight = window.innerHeight;
 		var cubeOrigin = cube.getDistance(sides, wHeight);
-		sceneWrap.style.webkitTransformOrigin = "50% 50% -" + cubeOrigin + "px";
-		sceneWrap.style.transformOrigin = "50% 50% -" + cubeOrigin + "px";
+		// sceneWrap.style.webkitTransformOrigin = "50% 50% -" + cubeOrigin + "px";
+		// sceneWrap.style.transformOrigin = "50% 50% -" + cubeOrigin + "px";
 		// if mobile
+		// sceneWrap.style.webkitTransformOrigin = "50% 50% -" + cubeOrigin*2 + "px";
+		// sceneWrap.style.transformOrigin = "50% 50% -" + cubeOrigin*2 + "px";
 		sceneWrap.style.webkitTransform = "translate3d(0,0,-" + cubeOrigin*2 + "px)";
 		sceneWrap.style.transform = "translate3d(0,0,-" + cubeOrigin*2 + "px)";
 		for (var i = 0; i < sides; i++) {
