@@ -91,13 +91,11 @@ var cube = {
 		var sides = scene.length;
 		var wHeight = window.innerHeight;
 		var cubeOrigin = cube.getDistance(sides, wHeight);
-		sceneWrap.style.webkitTransformOrigin = "50% 50% -" + cubeOrigin + "px";
-		sceneWrap.style.transformOrigin = "50% 50% -" + cubeOrigin + "px";
-		sceneWrap.style.webkitTransform = "translate3d(0,0,-" + cubeOrigin + "px)";
-		sceneWrap.style.transform = "translate3d(0,0,-" + cubeOrigin + "px)";
+		// sceneWrap.style.webkitTransformOrigin = "50% 50% -" + cubeOrigin + "px";
+		// sceneWrap.style.transformOrigin = "50% 50% -" + cubeOrigin + "px";
+		// sceneWrap.style.webkitTransform = "translate3d(0,0,-" + cubeOrigin + "px)";
+		// sceneWrap.style.transform = "translate3d(0,0,-" + cubeOrigin + "px)";
 		for (var i = 0; i < sides; i++) {
-			// scene[i].style.webkitTransformOrigin = "50% 50% -" + cubeOrigin + "px";
-			// scene[i].style.transformOrigin = "50% 50% -" + cubeOrigin + "px";
 			scene[i].style.webkitTransform = ["rotateX(", -360/sides*i, "deg) translate3d(0,0,", cubeOrigin, "px)"].join("");
 			scene[i].style.transform = ["rotateX(", -360/sides*i, "deg) translate3d(0,0,", cubeOrigin, "px)"].join("");
 		}
@@ -141,8 +139,10 @@ var cube = {
 		}
 		// 跳转到第n页
 		function jumpTo (n) {
-			sceneWrap.style.webkitTransform = ["rotateX(", n/sides*360, "deg) translate3d(0,0,-", cubeOrigin, "px)"].join("");
-			sceneWrap.style.transform = ["rotateX(", n/sides*360, "deg) translate3d(0,0,-", cubeOrigin, "px)"].join("");
+			sceneWrap.style.webkitTransform = ["rotateX(", n/sides*360, "deg)"].join("");
+			sceneWrap.style.transform = ["rotateX(", n/sides*360, "deg)"].join("");
+			// sceneWrap.style.webkitTransform = ["rotateX(", n/sides*360, "deg) translate3d(0,0,-", cubeOrigin, "px)"].join("");
+			// sceneWrap.style.transform = ["rotateX(", n/sides*360, "deg) translate3d(0,0,-", cubeOrigin, "px)"].join("");
 		}
 	},
 	// 根据正多边形边数与边长，计算出中点到边的垂线长度
