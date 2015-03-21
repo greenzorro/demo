@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>基本动画与控制</title>
+<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
+<style>
+.wrapper {
+	display: -webkit-flex;
+	display: flex;
+	margin: 0 0 5em;
+}
+.test {
+	width: 200px;
+	height: 200px;
+	margin: 1em;
+	background: #227755;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+	<div id="test1" class="test"></div>
+	<div id="test2" class="test"></div>
+	<div id="test3" class="test"></div>
+</div>
+<p>
+	<button id="pause">pause</button>
+	<button id="resume">play</button>
+	<button id="reverse">reverse</button>
+	<button id="restart">restart</button>
+</p>
+<p>Manually control the 3rd animation which shows "done" when finished.</p>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+<script>
+(function () {
+	window.onload = function () {
+		TweenMax.to("#test1", 2, {scaleX:1.5, scaleY:1.5, backgroundColor:"#f5f5f5", borderRadius:"50%", boxShadow:"0 0.2em 0.5em rgba(0,0,0,0.15)", ease:Power2.easeOut});
+		TweenMax.from("#test2", 3, {scaleX:1.5, scaleY:1.5, ease:Power2.easeOut, delay:1});
+		var test3 = new TweenMax.fromTo("#test3", 5, {scaleX:1.5, scaleY:1.5}, {scaleX:0.5, scaleY:0.5, ease:Power4.easeOut, paused:true, onComplete:done});
+		$("#pause").click(function () {test3.pause();});
+		$("#resume").click(function () {test3.resume();});
+		$("#reverse").click(function () {test3.reverse();});
+		$("#restart").click(function () {test3.restart();});
+	}
+	function done () {
+		alert("done");
+	}
+})()
+</script>
+</body>
+</html>
