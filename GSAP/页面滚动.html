@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>页面滚动</title>
+<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
+<style>
+#test {
+	height: 300vh;
+	background: url(http://greenzorro.github.io/colacdn/assets/images/texture1.png) repeat;
+}
+a {
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+</style>
+</head>
+
+<body>
+
+<div id="test"></div>
+<a href="javascript:;">TOP</a>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/plugins/ScrollToPlugin.min.js"></script>
+<script>
+(function () {
+	window.onload = function () {
+		document.getElementsByTagName('a')[0].onclick = function () {
+			TweenMax.to(window, 2, {scrollTo:{y:0}, ease:Bounce.easeOut});
+		}
+	}
+})()
+</script>
+</body>
+</html>
