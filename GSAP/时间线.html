@@ -80,7 +80,10 @@ p {
 	<button id="pause">pause</button>
 	<button id="reverse">reverse</button>
 	<button id="restart">restart</button>
-	<button id="playfrom">play from test2</button>
+	<button id="playfrom1">play from part1</button>
+	<button id="playfrom2">play from part2</button>
+	<button id="playfrom3">play from part3</button>
+	<button id="playfrom4">play from part4</button>
 	<button id="timeScaleUp">speed x 5</button>
 	<button id="timeScaleNormal">speed x 1</button>
 	<button id="kill">kill</button>
@@ -91,17 +94,24 @@ p {
 (function () {
 	window.onload = function () {
 		var tl = new TimelineMax();
-		tl.to("[role='test1']", 2, {scaleX:1, ease:Power4.easeOut, repeat:1, repeatDelay:0.5});
-		tl.staggerFrom("[role='test2']", 0.5, {rotation:30, opacity:0, scale:2, ease:Power4.easeOut}, 0.1);
-		tl.to("[role='test3']", 3, {rotationX:0, ease:Elastic.easeOut.config(1, 0.3)});
-		tl.to("[role='test4']", 1, {scaleX:1, ease:Linear.noease, repeat:-1, yoyo:true});
+		tl.add("part1")
+			.to("[role='test1']", 2, {scaleX:1, ease:Power4.easeOut, repeat:1, repeatDelay:0.5})
+			.add("part2", "-=1.5")
+			.staggerFrom("[role='test2']", 0.5, {rotation:30, opacity:0, scale:2, ease:Power4.easeOut}, 0.1, "-=1.5")
+			.add("part3", "-=0.5")
+			.to("[role='test3']", 3, {rotationX:0, ease:Elastic.easeOut.config(1, 0.3)}, "-=0.5")
+			.add("part4")
+			.to("[role='test4']", 1, {scaleX:1, ease:Linear.noease, repeat:-1, yoyo:true});
 		tl.pause();
-		tl.add("test2", 4.5);  //mark a time to play from
+		// tl.add("test2", 4.5);  //mark a time to play from
 		$("#resume").click(function () {tl.resume();});
 		$("#pause").click(function () {tl.pause();});
 		$("#reverse").click(function () {tl.reverse();});
 		$("#restart").click(function () {tl.restart();});
-		$("#playfrom").click(function () {tl.play("test2");});
+		$("#playfrom1").click(function () {tl.play("part1");});
+		$("#playfrom2").click(function () {tl.play("part2");});
+		$("#playfrom3").click(function () {tl.play("part3");});
+		$("#playfrom4").click(function () {tl.play("part4");});
 		$("#timeScaleUp").click(function () {tl.timeScale(5);});
 		$("#timeScaleNormal").click(function () {tl.timeScale(1);});
 		$("#kill").click(function () {tl.kill();});
