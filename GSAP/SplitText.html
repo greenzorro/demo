@@ -25,6 +25,11 @@
 	font-size: 1.2em;
 	position: relative;
 }
+p {
+	position: fixed;
+	right: 2em;
+	top: 5em;
+}
 
 #valid {
 	padding: 0.8em 0;
@@ -47,6 +52,11 @@
 <div id="wrapper">
 	<div id="test">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 </div>
+<p>
+	<button id="chars">split chars</button>
+	<button id="words">split words</button>
+	<button id="lines">split lines</button>
+</p>
 
 <div id="valid">SplitText need a valid membership to use.</div>
 
@@ -55,11 +65,38 @@
 <script>
 (function () {
 	window.onload = function () {
-		var st = new SplitText("#test", {type:"words,lines", position:"absolute"});
-		TweenMax.staggerFrom(st.words, 0.5, {opacity:0, rotationX:60, transformOrigin:"50% 50% 30px", ease:Back.easeOut}, 0.002, done);
-		function done () {
-			st.revert();  //revert splited text to the original paragraph.
+		var testTimeline = new TimelineMax({onComplete:kill});
+		var test = new SplitText("#test", {type:"words", position:"absolute"});
+
+		$("#chars").click(function () {
+			kill();
+			test.split({type:"words,chars"});
+			$(test.chars).each(function () {
+				testTimeline.from($(this), 2, {opacity:0, scale:Math.random()*0.5, ease:Power2.easeOut}, Math.random());
+			})
+		})
+		$("#words").click(function () {
+			kill();
+			test.split({type:"lines,words"});
+			testTimeline.staggerFrom(test.words, 0.5, {opacity:0, rotationX:60, transformOrigin:"50% 50% 30px", ease:Back.easeOut}, 0.005);
+		})
+		$("#lines").click(function () {
+			kill();
+			test.split({type:"lines,words"});
+			testTimeline.staggerFrom(test.lines, 1, {opacity:0, rotationY:-10, transformOrigin:"0 50%", ease:Back.easeOut}, 0.1);
+		})
+
+		//kill any animations and set text back to its pre-split state
+		function kill(){
+			testTimeline.clear().time(0);
+			test.revert();
 		}
+
+		// using splitText without timeline
+		var valid = new SplitText("#valid", {type:"words", position:"absolute"});
+		TweenMax.staggerFrom(valid.words, 0.5, {y:10, opacity:0, ease:Back.easeOut}, 0.1, function () {
+			valid.revert();
+		})
 	}
 })()
 </script>
