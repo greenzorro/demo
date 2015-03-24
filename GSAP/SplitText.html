@@ -55,8 +55,8 @@
 <script>
 (function () {
 	window.onload = function () {
-		var st = new SplitText("#test", {type:"words,lines,chars", position:"absolute"});
-		TweenMax.staggerFrom(st.chars, 0.5, {opacity:0, rotationX:60, transformOrigin:"50% 50% 30px", ease:Back.easeOut}, 0.002, done);
+		var st = new SplitText("#test", {type:"words,lines", position:"absolute"});
+		TweenMax.staggerFrom(st.words, 0.5, {opacity:0, rotationX:60, transformOrigin:"50% 50% 30px", ease:Back.easeOut}, 0.002, done);
 		function done () {
 			st.revert();  //revert splited text to the original paragraph.
 		}
