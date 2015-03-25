@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>SVG绘图</title>
+<title>文字解码</title>
 <link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
@@ -12,12 +12,16 @@
 	display: -webkit-flex;
 	display: flex;
 	height: 100vh;
+	overflow: hidden;
+	-webkit-perspective: 500px;
+	perspective: 500px;
 }
 #test {
 	margin: auto;
+	font-size: 1.5em;
 }
-circle {
-	fill: none;
+.reveled {
+	color: red;
 }
 
 #valid {
@@ -39,22 +43,17 @@ circle {
 <body>
 
 <div id="wrapper">
-	<svg id="test">
-		<circle cx="60" cy="60" r="50"></circle>
-	</svg>
+	<div id="test">Some default text.</div>
 </div>
 
-<div id="valid">DrawSVGPlugin need a valid membership to use.</div>
+<div id="valid">ScrambleTextPlugin need a valid membership to use.</div>
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-<script src="http://greenzorro.github.io/colacdn/assets/frameworks/GSAP/membership/DrawSVGPlugin.js"></script>
+<script src="http://greenzorro.github.io/colacdn/assets/frameworks/GSAP/membership/ScrambleTextPlugin.min.js"></script>
 <script>
 (function () {
 	window.onload = function () {
-		var tl = new TimelineMax();
-		tl.set("circle", {stroke:"#275", strokeWidth:4});
-		tl.fromTo("circle", 1, {drawSVG:"0% 15%"}, {drawSVG:"85% 100%", ease:Bounce.easeOut})
-			.to("circle", 1, {drawSVG:"100%", ease:Power4.easeOut})
+		TweenMax.to("#test", 3, {scrambleText:{text:"Lorem ipsum dolor sit amet, consectetur adipisicing elit.", chars:"!@#$%^&*", revealDelay:2, speed:0.3, newClass:"reveled", ease:Power4.easeOut}}); 
 	}
 })()
 </script>
