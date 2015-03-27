@@ -8,12 +8,79 @@
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
 <style>
+#wrapper {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
 </style>
 </head>
 
 <body>
 
-<canvas id="test"></canvas>
+<div id="wrapper">
+	<canvas id="test"></canvas>
+</div>
+
+<script>
+(function () {
+	window.onresize = setCanvas;
+	window.onload = setCanvas;
+	function setCanvas () {
+		var canvas = document.getElementById('test');
+		var paint = canvas.getContext("2d");
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		console.log(paint);
+
+		// draw rectangular
+		paint.fillStyle = "#275";
+		paint.fillRect(50, 50, 150, 100);
+
+		// draw line
+		paint.moveTo(50, 50);
+		paint.lineTo(200, 150);
+		paint.lineWidth = 2;
+		paint.strokeStyle = "#fff";
+		paint.stroke();
+
+		// draw circle
+		paint.beginPath();
+		paint.arc(300, 100, 50, 0, 2*Math.PI);  //centre x, centre y, radius, begin radian, end radian
+		paint.lineWidth = 4;
+		paint.strokeStyle = "#c22";
+		paint.stroke();
+
+		// draw gradient circle
+		var gra1 = paint.createLinearGradient(50, 200, 150, 300);
+		gra1.addColorStop(0, "#275");
+		gra1.addColorStop(0.6, "#772");
+		gra1.addColorStop(1, "#c22");
+		paint.beginPath();
+		paint.arc(100, 250, 50, 0, 2*Math.PI);
+		paint.fillStyle = gra1;
+		paint.fill();
+
+		// draw radial gradient
+		var gra2 = paint.createRadialGradient(250, 250, 0, 299, 250, 50);
+		gra2.addColorStop(0, "#275");
+		gra2.addColorStop(1, "#c22");
+		paint.fillStyle = gra2;
+		paint.fillRect(200, 200, 150, 100);
+
+		// draw text
+		paint.font = "1.5em Helvetica";
+		paint.fillStyle = "#fff";
+		paint.strokeStyle = "#275";
+		paint.lineWidth = 1;
+		paint.fillText("Draw text on canvas.", 50, 350);
+		paint.strokeText("Draw text on canvas.", 50, 350);
+		paint.fillStyle = "#c22";
+		paint.textAlign = "center";
+		paint.fillText("The center.", canvas.width/2, canvas.height/2);
+	}
+})()
+</script>
 
 <div style="display:none;">
 <script>
