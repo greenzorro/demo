@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>模拟时钟</title>
+<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
+<style>
+#wrapper {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+</style>
+</head>
+
+<body>
+
+<div id="wrapper">
+	<canvas id="test"></canvas>
+</div>
+
+<script>
+(function () {
+	var timer;
+	window.onresize = setCanvas;
+	window.onload = setCanvas;
+	function setCanvas () {
+		var canvas = document.getElementById('test');
+		var paint = canvas.getContext("2d");
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		paint.clearRect(0,0,canvas.width,canvas.height);  //first, clear canvas
+
+		var radius = Math.min(canvas.width, canvas.height)/2;
+		paint.translate(canvas.width>canvas.height?canvas.width/2:radius, canvas.width>canvas.height?radius:canvas.height/2);
+		radius *= 0.8;
+		clearInterval(timer);
+		timer = setInterval(drawClock, 500);
+
+		function drawClock () {
+			var gra, ang, pi = Math.PI;
+
+			// draw plate
+			paint.beginPath();
+			paint.arc(0, 0, radius, 0, 2*pi);
+			paint.fillStyle = "#333";
+			paint.fill();
+
+			// draw center hole
+			paint.beginPath();
+			paint.arc(0, 0, radius*0.05, 0, 2*pi);
+			paint.fillStyle = "#fff";
+			paint.fill();
+
+			// draw outer frame
+			gra = paint.createRadialGradient(0,0,radius*0.97,0,0,radius*1.03);
+			gra.addColorStop(0, "#2dce88");
+			gra.addColorStop(0.5, "#84f9c6");
+			gra.addColorStop(1, "#2dce88");
+			paint.beginPath();
+			paint.arc(0, 0, radius, 0, 2*pi);
+			paint.strokeStyle = gra;
+			paint.lineWidth = radius*0.06;
+			paint.stroke();
+
+			// draw number
+			paint.font = radius*0.1 + "px arial";
+			paint.textBaseline = "middle";
+			paint.fillStyle = "#fff";
+			paint.textAlign = "center";
+			for (var i = 1; i <= 12; i++) {
+				ang = i*2*pi/12;
+				paint.rotate(ang);
+				paint.translate(0, -radius*0.85);
+				paint.rotate(-ang);
+				paint.fillText(i + "", 0, 0);
+				paint.rotate(ang);
+				paint.translate(0, radius*0.85);
+				paint.rotate(-ang);
+			}
+
+			// draw pointer
+			var time = new Date();
+			var hour = time.getHours(),
+				minute = time.getMinutes(),
+				second = time.getSeconds();
+			hour = hour%12;
+			hour = (hour/12*2*pi) + (minute/12/60*2*pi) + (second/12/60/60*2*pi);
+			minute = (minute/60*2*pi) + (second/60/60*2*pi);
+			second = second/60*2*pi;
+			drawPointer(radius*0.6, radius*0.03, hour);
+			drawPointer(radius*0.3, radius*0.03, minute);
+			drawPointer(radius*0.6, radius*0.01, second);
+			function drawPointer (length, width, ang) {
+				paint.rotate(ang);
+				paint.beginPath();
+				paint.strokeStyle = "#fff";
+				paint.lineWidth = width;
+				paint.lineCap = "round";
+				paint.moveTo(0, 0);
+				paint.lineTo(0, -length);
+				paint.stroke();
+				paint.rotate(-ang);
+			}
+		}
+	}
+})()
+</script>
+
+<div style="display:none;">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "http://hm.baidu.com/hm.js?63ba884cf404de06c7d8dcc2fc46343e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</div>
+</body>
+</html>

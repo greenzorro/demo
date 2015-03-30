@@ -31,6 +31,7 @@
 		var paint = canvas.getContext("2d");
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
+		paint.clearRect(0,0,canvas.width,canvas.height);  //first, clear canvas
 		console.log(paint);
 
 		// draw rectangular
@@ -39,7 +40,8 @@
 
 		// draw line
 		paint.moveTo(50, 50);
-		paint.lineTo(200, 150);
+		paint.lineTo(125, 150);
+		paint.lineTo(200, 50);
 		paint.lineWidth = 2;
 		paint.strokeStyle = "#fff";
 		paint.stroke();
@@ -51,7 +53,7 @@
 		paint.strokeStyle = "#c22";
 		paint.stroke();
 
-		// draw gradient circle
+		// draw linear gradient
 		var gra1 = paint.createLinearGradient(50, 200, 150, 300);
 		gra1.addColorStop(0, "#275");
 		gra1.addColorStop(0.6, "#772");
@@ -78,6 +80,13 @@
 		paint.fillStyle = "#c22";
 		paint.textAlign = "center";
 		paint.fillText("The center.", canvas.width/2, canvas.height/2);
+
+		// draw image
+		var img = new Image();
+		img.src = "http://greenzorro.github.io/colacdn/assets/images/mask.png";
+		img.addEventListener("load", function () {
+			paint.drawImage(img, 50, 400);
+		}, false)
 	}
 })()
 </script>
