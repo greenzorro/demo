@@ -23,22 +23,22 @@ body { width:1000px; margin:auto; }
 
 <script>
 $(function(){
-	function setImg(thisEle){
-		var wrapWidth = $(thisEle).width();
-		var wrapHeight = $(thisEle).height();
-		var picWidth = $(thisEle).find("img").width();
-		var picHeight = $(thisEle).find("img").height();
+	function setImg(obj){
+		var wrapWidth = $(obj).width();
+		var wrapHeight = $(obj).height();
+		var picWidth = $(obj).find("img").width();
+		var picHeight = $(obj).find("img").height();
 		var wrapShape = wrapWidth / wrapHeight;
 		var picShape = picWidth / picHeight;
 		var picWidthS = picWidth/picHeight*wrapHeight;
 		var picHeightS = picHeight/picWidth*wrapWidth;
 		if(wrapShape > picShape)
 		{
-			$(thisEle).find("img").css({"width":"100%","height":"auto","top":(wrapHeight-picHeightS)/2,"left":"0"});
+			$(obj).find("img").css({"width":"100%","height":"auto","top":(wrapHeight-picHeightS)/2,"left":"0"});
 		}
 		else
 		{
-			$(thisEle).find("img").css({"width":"auto","height":"100%","left":(wrapWidth-picWidthS)/2,"top":"0"});
+			$(obj).find("img").css({"width":"auto","height":"100%","left":(wrapWidth-picWidthS)/2,"top":"0"});
 		}
 	}
 	function setAllCenter(){
