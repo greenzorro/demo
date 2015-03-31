@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>绘制位图</title>
+<title>EaselJS基础</title>
 <link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
@@ -22,6 +22,7 @@
 	<canvas id="test"></canvas>
 </div>
 
+<script src="https://code.createjs.com/easeljs-0.8.0.min.js"></script>
 <script>
 (function () {
 	window.onresize = setCanvas;
@@ -31,26 +32,14 @@
 		var paint = canvas.getContext("2d");
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
-		paint.clearRect(0,0,canvas.width,canvas.height);  //first, clear canvas
 
-		var boxSize = 200,
-			x, y, stripe, width = 4, step = 20;
-		var imgData = paint.createImageData(boxSize, boxSize);
-		for (var i = 0; i < imgData.data.length; i+=4) {
-			imgData.data[i+0] = 34;
-			imgData.data[i+1] = 119;
-			imgData.data[i+2] = 85;
-			imgData.data[i+3] = 255;
-
-			// draw stripe
-			stripe = i/4%(boxSize+0.5);
-			for (var j = 0; j < boxSize/step; j++) {
-				if (stripe > step*j && stripe < step*j + width) {
-					imgData.data[i+3] = 230;
-				}
-			}
-		}
-		paint.putImageData(imgData, 50, 50);
+		var stage = new createjs.Stage("test");
+		var circle = new createjs.Shape();
+		circle.graphics.beginFill("#275").drawCircle(0, 0, 50);
+		circle.x = 100;
+		circle.y = 100;
+		stage.addChild(circle);
+		stage.update();
 	}
 })()
 </script>
