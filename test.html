@@ -8,19 +8,41 @@
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
 <style>
-#test {
-	width: 200px;
-	height: 200px;
-	background: #227755;
-	-webkit-transform: translate(50%, 50%);
-	transform: translate(50%, 50%);
+body input {
+	font-family: sans-serif;
+}
+#test i {
+	display: inline-block;
+	width: 10px;
+	height: 1ex;
+	background: #275;
+}
+.input {
+	width: 30px;
+	height: 2em;
+}
+.wrapper {
+	height: 2em;
+}
+.wrapper input {
+	height: 100%;
 }
 </style>
 </head>
 
 <body>
 
-<div id="test"></div>
+<div id="test"><span>letter</span><span>汉字</span><span>123</span><i></i></div>
+<input type="text" value="letter汉字123" />
+<p></p>
+<input class="input" type="text" value="letter" />
+<input class="input" type="text" value="汉字" />
+<input class="input" type="text" value="123" />
+<div class="wrapper">
+	<input class="input" type="text" value="letter" />
+	<input class="input" type="text" value="汉字" />
+	<input class="input" type="text" value="123" />
+</div>
 
 <script>
 </script>
