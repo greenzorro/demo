@@ -8,8 +8,8 @@
     left: 0;
     top: 0;
     z-index: 99;
-    -webkit-transition: opacity 1s linear;
-    transition: opacity 1s linear;
+    -webkit-transition: opacity 2s linear;
+    transition: opacity 2s linear;
 }
 #loading span {
     margin: auto;
