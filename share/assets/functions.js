@@ -2,7 +2,7 @@ var counter = 1;
 
 var loader = new resLoader({
     resources : [
-        '../test.hyperesources/bgmusic.mp3'
+        'test.hyperesources/bgmusic.mp3'
     ],
     onStart : function(total){
     },
