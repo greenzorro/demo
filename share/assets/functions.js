@@ -1,8 +1,12 @@
 var counter = 1;
 
-window.onload = function () {
+document.onreadystatechange = function () {
+    if (document.readyState == "complete" ) {  //页面加载完成，执行相应代码
+        document.getElementById('loading').style.display = 'none';
+    } 
+};
 
-    document.getElementById('loading').style.display = 'none';
+window.onload = function () {
 
 	var num = document.getElementById('num');
 	num.innerHTML = counter;
@@ -23,7 +27,7 @@ window.onload = function () {
         }
 	}
 
-    document.getElementById('floading').style = '';
 
 
 }
+
