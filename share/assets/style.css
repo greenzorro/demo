@@ -1,7 +1,6 @@
 #loading {
     display: -webkit-flex;
     display: flex;
-    display: none;
     width: 100%;
     height: 100%;
     background: #333;
@@ -9,6 +8,10 @@
     left: 0;
     top: 0;
     z-index: 99;
+    transition: opacity 0.1s linear;
+}
+.loading_hide {
+    opacity: 0;
 }
 #loading span {
     margin: auto;

@@ -10,7 +10,11 @@ var loader = new resLoader({
     onProgress : function(current, total){
     },
     onComplete : function(total){
-        document.getElementById('loading').style.display = 'none';
+        var loading = document.getElementById('loading');
+        loading.className += 'loading_hide'
+        setTimeout(function(){
+            loading.style.display = 'none';
+        },1000);
     }
 });
 loader.start();
