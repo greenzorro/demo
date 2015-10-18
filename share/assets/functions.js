@@ -1,10 +1,18 @@
 var counter = 1;
 
-document.onreadystatechange = function () {
-    if (document.readyState == "complete" ) {  //页面加载完成，执行相应代码
+var loader = new resLoader({
+    resources : [
+        '../test.hyperesources/bgmusic.mp3'
+    ],
+    onStart : function(total){
+    },
+    onProgress : function(current, total){
+    },
+    onComplete : function(total){
         document.getElementById('loading').style.display = 'none';
-    } 
-};
+    }
+});
+loader.start();
 
 window.onload = function () {
 
