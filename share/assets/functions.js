@@ -2,6 +2,8 @@ var counter = 1;
 
 window.onload = function () {
 
+    document.getElementById('loading').style.display = 'none';
+
 	var num = document.getElementById('num');
 	num.innerHTML = counter;
 
