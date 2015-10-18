@@ -14,8 +14,8 @@
 #loading span {
     margin: auto;
     color: #333;
-    -webkit-transition: -webkit-transform 1s ease-in-out;
-    transition: transform 1s ease-in-out;
+    -webkit-transition: opacity 1s linear, -webkit-transform 1s ease-in-out;
+    transition: opacity 1s linear, transform 1s ease-in-out;
     -webkit-animation: breath 2.4s linear infinite;
     animation: breath 2.4s linear infinite;
 }
@@ -23,8 +23,11 @@
     opacity: 0;
 }
 .loading_hide span {
+    opacity: 0;
     -webkit-transform: translate(0,20px);
     transform: translate(0,20px);
+    -webkit-animation: none;
+    animation: none;
 }
 
 @-webkit-keyframes breath {
