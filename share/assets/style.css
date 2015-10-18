@@ -7,17 +7,21 @@
     left: 0;
     top: 0;
     z-index: 99;
-    -webkit-transition: opacity 1s linear, -webkit-transform 1s ease-in-out;
-    transition: opacity 1s linear, transform 1s ease-in-out;
+    -webkit-transition: opacity 1s linear;
+    transition: opacity 1s linear;
 }
 #loading span {
     margin: auto;
     color: #333;
+    -webkit-transition: -webkit-transform 1s ease-in-out;
+    transition: transform 1s ease-in-out;
     -webkit-animation: breath 2.4s linear infinite;
     animation: breath 2.4s linear infinite;
 }
-.loading_hide {
+.loading_hide span {
     opacity: 0;
+}
+.loading_hide span {
     -webkit-transform: translate(0,20px);
     transform: translate(0,20px);
 }
