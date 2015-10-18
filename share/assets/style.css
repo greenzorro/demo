@@ -19,7 +19,7 @@
     -webkit-animation: breath 2.4s linear infinite;
     animation: breath 2.4s linear infinite;
 }
-.loading_hide span {
+.loading_hide {
     opacity: 0;
 }
 .loading_hide span {
