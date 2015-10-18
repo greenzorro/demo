@@ -18,4 +18,17 @@
 #loading span {
     margin: auto;
     color: #333;
+    -webkit-animate: breath 2s linear infinite;
+    animate: breath 2s linear infinite;
+}
+
+@-webkit-keyframes breath {
+    0% { opacity: 1; }
+    40% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+@keyframes breath {
+    0% { opacity: 1; }
+    40% { opacity: 0.6; }
+    100% { opacity: 1; }
 }
