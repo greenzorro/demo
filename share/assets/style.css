@@ -7,8 +7,8 @@
     left: 0;
     top: 0;
     z-index: 99;
-    -webkit-transition: opacity 1s linear, -webkit-transform 1s ease-out;
-    transition: opacity 1s linear, transform 1s ease-out;
+    -webkit-transition: opacity 1s linear, -webkit-transform 1s ease-in-out;
+    transition: opacity 1s linear, transform 1s ease-in-out;
 }
 .loading_hide {
     opacity: 0;
