@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8" />
+<title>示例页面</title>
+<script src="http://s0.qhimg.com/lib/jquery/183.js"></script>
+<script src="resLoader.js"></script>
+<style>
+.progress{
+	width: 600px;
+	height: 20px;
+	border:3px solid red;
+	position: absolute;
+	left: 0;top: 0;right: 0;bottom: 0;
+	margin:auto;
+}
+.progressbar{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 100%;
+	background-color: green;
+	-webkit-transition:width ease-in 200ms;
+}
+.progresstext{
+	position: absolute;
+	top: 30px;
+	right: 0;
+}
+.bg1{
+	width: 100px;
+	height: 100px;
+	background: url(http://p2.qhimg.com/t01ed1438874f940dc0.jpg);
+}
+</style>
+</head>
+<body>
+<div class="progress">
+	<div class="progressbar"></div>
+	<div class="progresstext">
+		<span class="current"></span>/
+		<span class="total"></span>
+	</div>
+</div>
+
+<div class="bg"></div>
+<img class="img1" width=100 height=100>
+<button id="btn">bg1</button>
+<button id="btn2">add img</button>
+<button id="btn3">set src</button>
+
+<script>
+var loader = new resLoader({
+	resources : [
+		'http://p2.qhimg.com/t01ed1438874f940dc0.jpg',
+		'http://p9.qhimg.com/t01b4ff03b72c7dc6c7.jpg',
+		'http://p2.qhimg.com/t01dd90dfbec92074d0.jpg',
+		'http://p7.qhimg.com/t01cfec6d87cde457c5.jpg',
+		'http://p9.qhimg.com/t01943ced462da67833.jpg',
+		'http://p0.qhimg.com/t01943ced462da67833.jpg',
+		'http://p6.qhimg.com/t01aa15a7ba7ccb49a7.jpg',
+		'http://p8.qhimg.com/t010f1e8badf1134376.jpg',
+		'http://p8.qhimg.com/t01cf37ea915533a032.jpg',
+		'http://p3.qhimg.com/t0193d8a3963e1803e9.jpg',
+		'http://p3.qhimg.com/t01cd6a4d4b4bd4457b.jpg'
+	],
+	onStart : function(total){
+		console.log('start:'+total);
+	},
+	onProgress : function(current, total){
+		console.log(current+'/'+total);
+		var percent = current/total*100;
+		$('.progressbar').css('width', percent+'%');
+		$('.progresstext .current').text(current);
+		$('.progresstext .total').text(total);
+	},
+	onComplete : function(total){
+		alert('加载完毕:'+total+'个资源');
+	}
+});
+
+loader.start();
+
+$('#btn').click(function(){
+	$('.bg').addClass('bg1');
+});
+$('#btn2').click(function(){
+	$('body').append('<img src="http://p9.qhimg.com/t01b4ff03b72c7dc6c7.jpg" width=100 height=100 />');
+});
+$('#btn3').click(function(){
+	$('.img1').attr('src', 'http://p2.qhimg.com/t01dd90dfbec92074d0.jpg');
+});
+</script>
+</body>
+</html>
