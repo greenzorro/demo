@@ -1,18 +1,19 @@
 var counter = 1;
 
-var loader = new resLoader({
-    resources : [
-        'test.hyperesources/bgmusic.mp3'
-    ],
-    onStart : function(total){
-    },
-    onProgress : function(current, total){
-    },
-    onComplete : function(total){
-        document.getElementById('loading').style.display = 'none';
-    }
-});
-loader.start();
+// var loader = new resLoader({
+//     resources : [
+//         'test.hyperesources/HYPE-466.full.min.js',
+//         'test.hyperesources/bgmusic.mp3'
+//     ],
+//     onStart : function(total){
+//     },
+//     onProgress : function(current, total){
+//     },
+//     onComplete : function(total){
+//         document.getElementById('loading').style.display = 'none';
+//     }
+// });
+// loader.start();
 
 window.onload = function () {
 
