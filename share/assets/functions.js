@@ -21,5 +21,7 @@ window.onload = function () {
         }
 	}
 
+    document.getElementById('floading').style = '';
+
 
 }
