@@ -4,6 +4,15 @@
         mySwiper,
         score=[], total;
 
+    document.onreadystatechange = function () {
+        if (document.readyState == "complete" ) {  //页面加载完成，执行相应代码
+            $(".loading").addClass("loading_hide");
+            setTimeout(function() {
+                $(".loading").hide();
+            }, 500);
+        } 
+    };
+
     $(document).ready(function () {
         mySwiper = new Swiper ('.swiper-container', {
             // Optional parameters
@@ -15,7 +24,9 @@
 
             // If we need pagination
             pagination: '.swiper-pagination',
-
+            paginationBulletRender: function (index, className) {
+                return ['<span class="', className, ' bullet_', Number(index+1), '">', (index + 1), '</span>'].join("");
+            },
             onSlideChangeEnd: function (argument) {
             }
         })        
@@ -47,10 +58,10 @@
         },
         share: function () {  //显示隐藏右上角分享提示
             $('.share').click(function () {
-                $('#share_mask').show();
+                $('.share_mask').addClass('share_mask_on');
             })
-            $('#share_mask').click(function () {
-                $('#share_mask').hide();
+            $('.share_mask').click(function () {
+                $('.share_mask').removeClass('share_mask_on');
             })
         }
     }
