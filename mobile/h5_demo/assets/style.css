@@ -18,25 +18,35 @@ body {
 
 
 
-/*share*/
-#share_mask {
+/*paging*/
+.bullet_1, .bullet_5, .bullet_6 {
     display: none;
+}
+
+
+
+/*share*/
+.share_mask {
     background: rgba(0,0,0,0.6);
+    opacity: 0;
     position: absolute;
     left: 0;
-    right: 0;
     top: 0;
-    bottom: 0;
     z-index: 99;
+    transition: opacity 0.3s linear;
+}
+.share_mask_on {
+    right: 0;
+    bottom: 0;
+    opacity: 1;
 }
 
 
 
 /*loading*/
-#loading {
+.loading {
     display: -webkit-flex;
     display: flex;
-    display: none;
     width: 100%;
     height: 100%;
     background: #fff;
@@ -44,14 +54,14 @@ body {
     left: 0;
     top: 0;
     z-index: 99;
-    -webkit-transition: opacity 1s linear;
-    transition: opacity 1s linear;
+    -webkit-transition: opacity 0.5s linear;
+    transition: opacity 0.5s linear;
 }
-#loading span {
+.loading span {
     margin: auto;
     color: #333;
-    -webkit-transition: -webkit-transform 1s ease-in-out;
-    transition: transform 1s ease-in-out;
+    -webkit-transition: -webkit-transform 0.5s ease-out;
+    transition: transform 0.5s ease-out;
     -webkit-animation: breath 2.4s linear infinite;
     animation: breath 2.4s linear infinite;
 }
@@ -59,10 +69,9 @@ body {
     opacity: 0;
 }
 .loading_hide span {
-    -webkit-transform: translate(0,20px);
-    transform: translate(0,20px);
+    -webkit-transform: translate(0,10px);
+    transform: translate(0,10px);
 }
-
 @-webkit-keyframes breath {
     0% { opacity: 1; }
     40% { opacity: 0.4; }
