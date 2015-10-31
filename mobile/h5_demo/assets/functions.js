@@ -33,6 +33,7 @@
 
         plugin.init();
         pageFunc.quiz();
+        pageFunc.music();
         pageFunc.share();
     });
 
@@ -56,11 +57,68 @@
                 }
             })
         },
+        music: function () {  //音乐播放/暂停
+            $('body').on('click','.music',function () {
+                play_music();
+                $('.music').toggleClass('music_play');
+            })
+            // var play_filter=$('.music')[0];
+            // play_filter.addEventListener('click', function(){
+            //     just_play(1);
+            // });
+            // play_filter.addEventListener('touchstart', function(){
+            //     just_play(1);
+            // });
+            // play_filter.addEventListener('touchend', function(){
+            //     just_play(1);
+            // });
+            // play_filter.addEventListener('touchmove', function(){
+            //     just_play(1);
+            // });
+            // play_filter.addEventListener('mousedown', function(){
+            //     just_play(1);
+            // });
+            // play_filter.addEventListener('mouseup', function(){
+            //     just_play(1);
+            // });
+            // play_filter.addEventListener('mousemove',function(){
+            //     just_play(1);
+            // });
+            // window.onload=function(){
+            //     if (!is_weixn()){
+            //         just_play();
+            //     }
+            // } 
+            function play_music(){
+                if ($('.music').hasClass('music_play')){
+                    $('.music audio').get(0).pause();
+                } else {
+                    $('.music audio').get(0).play();
+                }
+                event.stopPropagation(); //阻止冒泡 
+            }
+            // function just_play(id){
+            //     $('.music audio').get(0).play();
+            //     // if (typeof(id)!='undefined'){
+            //     //     $('#music_play_filter').hide();
+            //     // }
+            //     event.stopPropagation(); //阻止冒泡 
+            // } 
+            // function is_weixn(){
+            //     return false;
+            //     var ua = navigator.userAgent.toLowerCase();
+            //     if(ua.match(/MicroMessenger/i)=="micromessenger") {
+            //         return true;
+            //     } else {
+            //         return false;
+            //     }
+            // }
+        },
         share: function () {  //显示隐藏右上角分享提示
-            $('.share').click(function () {
+            $('body').on('click','.share',function () {
                 $('.share_mask').addClass('share_mask_on');
             })
-            $('.share_mask').click(function () {
+            $('body').on('click','.share_mask',function () {
                 $('.share_mask').removeClass('share_mask_on');
             })
         }
@@ -72,7 +130,7 @@
                 e.preventDefault();
             }
             mySwiper.lockSwipeToNext();  //禁止向后翻页
-            $('#start').click(function () {  //点击开始按钮
+            $('body').on('click','#start',function () {  //点击开始按钮
                 mySwiper.unlockSwipeToNext();
                 mySwiper.slideNext(true, 300);
                 mySwiper.lockSwipeToNext();
