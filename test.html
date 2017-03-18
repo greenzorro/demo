@@ -8,41 +8,31 @@
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
 <style>
-body input {
-	font-family: sans-serif;
+
+div {
+	width: 200px;
+	height: 100px;
+	background-color: #eee;
 }
-#test i {
-	display: inline-block;
-	width: 10px;
-	height: 1ex;
-	background: #275;
+.fl {
+	float: left;
 }
-.input {
-	width: 30px;
-	height: 2em;
+.fr {
+	float: right;
 }
-.wrapper {
-	height: 2em;
+p {
+	float: left;
 }
-.wrapper input {
-	height: 100%;
-}
+
 </style>
 </head>
 
 <body>
 
-<div id="test"><span>letter</span><span>汉字</span><span>123</span><i></i></div>
-<input type="text" value="letter汉字123" />
-<p></p>
-<input class="input" type="text" value="letter" />
-<input class="input" type="text" value="汉字" />
-<input class="input" type="text" value="123" />
-<div class="wrapper">
-	<input class="input" type="text" value="letter" />
-	<input class="input" type="text" value="汉字" />
-	<input class="input" type="text" value="123" />
-</div>
+<div class="fl"></div>
+<div class="fl"></div>
+<div class="fr"></div>
+<p>第二行和第三行是一组对比，表现了非浮动元素与浮动元素混合排列时的规则。第二行的文字是一个常规布局的元素，可以看到左右浮动的元素各就各位，常规布局元素中的文字很灵活地填充空隙，就像报纸排版一样。而第三行里的情况，文字段落也加上浮动属性，并且加上固定宽度，它就</p>
 
 <script>
 </script>
