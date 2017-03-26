@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>操作DOM</title>
+<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="http://greenzorro.github.io/colacdn/assets/js/react.js"></script>
+<script src="http://greenzorro.github.io/colacdn/assets/js/react-dom.js"></script>
+<script src="http://greenzorro.github.io/colacdn/assets/js/browser.min.js"></script>
+</head>
+
+<body>
+
+	<div id="example"></div>
+
+	<script type="text/babel">
+		var TestComponent = React.createClass({
+			// click button to focus the input form
+			handleClick: function() {
+				this.refs.inputForm.focus();
+			},
+			// click on the input form immediately unfocus it
+			handleFocus: function() {
+				this.refs.inputForm.blur();
+			},
+			render: function() {
+				return (
+					<div>
+						<input type="text" ref="inputForm" onClick={this.handleFocus} />
+						<input type="button" value="get focus" onClick={this.handleClick} />
+					</div>
+				);
+			}
+		});
+		ReactDOM.render(
+			<TestComponent />,
+			document.getElementById('example')
+		);
+	</script>
+
+
+<div style="display:none;">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "http://hm.baidu.com/hm.js?63ba884cf404de06c7d8dcc2fc46343e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</div>
+
+</body>
+</html>
