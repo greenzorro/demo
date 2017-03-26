@@ -17,15 +17,18 @@
 
 	<script type="text/babel">
 		var TestComponent = React.createClass({
+			// set the initial text
 			getInitialState: function (){
 				return {content: "type something"};
 			},
+			// every change of the input updates the state
 			handleInput: function (event){
 				this.setState(
 					{content: event.target.value}
 				);
 			},
 			render: function() {
+				// read the text and write it in the <p>
 				var content = this.state.content;
 				return (
 					<div>
