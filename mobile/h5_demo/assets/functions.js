@@ -44,7 +44,7 @@
                 $('.quiz-' + mySwiper.activeIndex + " .quiz_item").removeClass('quiz_item_selected');
                 $(this).addClass('quiz_item_selected');
                 mySwiper.unlockSwipeToNext();  //允许向后翻页
-                if (mySwiper.activeIndex <= 2) {  //前几题
+                if (mySwiper.activeIndex <= $('.quiz').length - 1) {  //前几题
                     mySwiper.slideNext(true, 300);
                     mySwiper.lockSwipeToNext();  //禁止向后翻页
                 } else {  //最后一题
