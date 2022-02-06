@@ -3,21 +3,43 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>条件表达式</title>
-<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<title>web worker</title>
+<link href="http://greenzorro.github.io/demo/assets/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
-<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
-<script type="text/javascript">
-$(function () {
-	var num = 2;
-	var test;
-	test = (num<=10 && num>=0)?"between 0 and 10":(num<0)?"less than 0":"more than 10";
-	$('body').html(test);
-})
-</script>
+<script src="http://greenzorro.github.io/demo/assets/js/jquery-latest.js"></script>
 </head>
 
 <body>
+
+    <button onclick="stopWorker()">stop web worker</button>
+	<div id="test"></div>
+
+
+<script>
+var w;
+
+window.onload = function () {
+    var test = document.getElementById('test');
+    if (typeof Worker !== "undefined") {
+        if (!w) {
+            w = new Worker("web_worker.js");
+        }
+        console.log(w);
+        w.onmessage = function (e) {
+            test.innerHTML = e.data;
+        }
+    }
+    else {
+        test.innerHTML = "Web worker not supported."
+    }
+
+}
+
+function stopWorker () {
+    w.terminate();
+    w = undefined;
+}
+</script>
 
 <div style="display:none;">
 <script>
