@@ -1,0 +1,26 @@
+﻿/*global*/
+html, body{
+	height:100%;
+}
+html {
+	line-height: 1;
+	font-size: 16px;
+}
+body {
+	font-family: -apple-system,Helvetica,Arial,"PingFang SC","Source Han Sans SC","Microsoft YaHei","WenQuanYi MicroHei",sans-serif;
+	line-height: 1.6;
+	color: #333;
+	}
+a {
+	color: #31b5bd;
+}
+input, textarea, button {
+	font-family: -apple-system,Helvetica,Arial,"PingFang SC","Source Han Sans SC","Microsoft YaHei","WenQuanYi MicroHei",sans-serif;}
+::selection {
+	background: #31b5bd;
+	color: #fff;
+}
+::-moz-selection {
+	background: #31b5bd;
+	color: #fff;
+}
