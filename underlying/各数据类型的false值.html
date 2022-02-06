@@ -3,33 +3,17 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>读取JSON文件</title>
-<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<title>各数据类型的false值</title>
+<link href="http://greenzorro.github.io/demo/assets/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
-<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
-<style>
-</style>
+<script src="http://greenzorro.github.io/demo/assets/js/jquery-latest.js"></script>
 <script type="text/javascript">
 window.onload = function () {
-	var xmlhttp = new XMLHttpRequest();
-	var url = "data.json";
-
-	xmlhttp.onreadystatechange = function () {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			var test = JSON.parse(xmlhttp.responseText);
-			writeData(test);
-		}
-	}
-	xmlhttp.open("GET", url, true);
-	xmlhttp.send();
-
-	function writeData (arr) {
-		var data = "", i, arrLength = arr.length;
-		for (var i = 0; i < arrLength; i++) {
-			data += "<p>" + arr[i].day + ": " + arr[i].weather + "</p>";
-		}
-		document.getElementById('test').innerHTML = data;
-	}
+	var test = document.getElementById('test');
+	var testObj = [0, NaN, false, "", null, undefined];
+	for (var i = 0; i < testObj.length; i++) {
+		test.innerHTML = test.innerHTML + testObj[i] + ": " + typeof testObj[i] + "<br>";
+	};
 }
 </script>
 </head>

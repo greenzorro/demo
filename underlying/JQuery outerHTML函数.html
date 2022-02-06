@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html manifest='offline.manifest'>
+<html>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>HTML5离线存储</title>
-<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<title>JQuery outerHTML函数</title>
+<link href="http://greenzorro.github.io/demo/assets/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
-<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
+<script src="http://greenzorro.github.io/demo/assets/js/jquery-latest.js"></script>
+<script type="text/javascript">
+jQuery.fn.outerHTML = function(s) {
+	return s
+    ? this.before(s).remove()
+    : jQuery("<p>").append(this.eq(0).clone()).html();
+};
+
+$(function () {
+	alert('outerHTML: ' + $('.test').outerHTML());
+})
+</script>
 </head>
 
 <body>
 
-<p>下面有两张图片，缓存了其中一张。可以发现，断网后只有一张图显示出来了。</p>
-<p><img src="http://greenzorro.github.io/colacdn/assets/images/mask.png"></p>
-<p><img src="http://greenzorro.github.io/colacdn/assets/images/photo.jpg"></p>
-
+	<div class="test">content</div>
+	
 <div style="display:none;">
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

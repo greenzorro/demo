@@ -3,18 +3,26 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>各数据类型的false值</title>
-<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<title>HTML5本地存储</title>
+<link href="http://greenzorro.github.io/demo/assets/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
-<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
+<script src="http://greenzorro.github.io/demo/assets/js/jquery-latest.js"></script>
 <script type="text/javascript">
 window.onload = function () {
-	var test = document.getElementById('test');
-	var testObj = [0, NaN, false, "", null, undefined];
-	for (var i = 0; i < testObj.length; i++) {
-		test.innerHTML = test.innerHTML + testObj[i] + ": " + typeof testObj[i] + "<br>";
-	};
+    var test = document.getElementById('test');
+    if(typeof(Storage) !== "undefined") {
+        localStorage.firstname = "Cola";
+        localStorage.lastname = "Chan";
+        sessionStorage.temp = "temp";
+        test.innerHTML = [localStorage.firstname, localStorage.lastname, sessionStorage.temp].join(" ");
+        console.log(localStorage);
+        console.log(sessionStorage);
+    }
+    else {
+        test.innerHTML = "Local Storage not supported.";
+    }
 }
+
 </script>
 </head>
 

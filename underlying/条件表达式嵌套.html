@@ -3,37 +3,21 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>函数闭包</title>
-<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<title>条件表达式</title>
+<link href="http://greenzorro.github.io/demo/assets/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
-<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
-<style>
-</style>
+<script src="http://greenzorro.github.io/demo/assets/js/jquery-latest.js"></script>
 <script type="text/javascript">
-window.onload = function () {
-	var test = document.getElementById("test");
-
-	// 定义外部函数
-	function outer () {
-		var a = 0;  //外部变量a
-		function inner () {  //定义内部函数
-			test.innerHTML = ++a;  //在内部函数改变外部变量
-		}
-		return inner;  //将内部函数作为返回值
-	}
-
-	var result = outer();  //执行一遍outer，然后将inner赋给result
-
-	// 执行result时，可以通过inner，从outer的外面获取到变量a的值
-	result();
-	result();
-	result();
-}
+$(function () {
+	var num = 2;
+	var test;
+	test = (num<=10 && num>=0)?"between 0 and 10":(num<0)?"less than 0":"more than 10";
+	$('body').html(test);
+})
 </script>
 </head>
 
 <body>
-	<div id="test"></div>
 
 <div style="display:none;">
 <script>

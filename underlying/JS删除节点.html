@@ -3,27 +3,37 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>JS判断是否数组</title>
-<link href="http://greenzorro.github.io/colacdn/assets/css/reset.css" rel="stylesheet" type="text/css" />
+<title>JS删除节点</title>
+<link href="http://greenzorro.github.io/demo/assets/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="http://greenzorro.github.io/colacdn/assets/css/global.css" rel="stylesheet" type="text/css" />
-<script src="http://greenzorro.github.io/colacdn/assets/js/jquery-latest.js"></script>
-<style>
-</style>
+<script src="http://greenzorro.github.io/demo/assets/js/jquery-latest.js"></script>
 <script type="text/javascript">
 window.onload = function () {
-	var test = document.getElementById('test');
-	var testObj1 = [];
-	var testObj2 = {"attr1":"", "attr2":""};
-	test.innerHTML = "isArray(testObj1): " + isArray(testObj1) + "<br>isArray(testObj2): " + isArray(testObj2);
-	function isArray(myArray) {
-		return myArray.constructor.toString().indexOf("Array") > -1;
-	}	
+	var tester = getElementsByClassName('tester');
+	tester[0].onclick = function (){
+		removeElement(this);
+	}
+	function removeElement(child) {
+		if(child.parentNode){
+			child.parentNode.removeChild(child);  
+		}
+	}
+	function getElementsByClassName(n) { 
+		var classElements = [],allElements = document.getElementsByTagName('*'); 
+		for (var i=0; i< allElements.length; i++ ) 
+		{ 
+			if (allElements[i].className == n ) { 
+				classElements[classElements.length] = allElements[i]; 
+			} 
+		} 
+		return classElements; 
+	}
 }
 </script>
 </head>
 
 <body>
-	<div id="test"></div>
+	<a class="tester" href="javascript:;">tester</a>
 
 <div style="display:none;">
 <script>
